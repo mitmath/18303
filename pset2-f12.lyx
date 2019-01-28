@@ -1,0 +1,744 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+
+\renewcommand{\vec}[1]{\mathbf{#1}}
+
+\renewcommand{\labelenumi}{(\alph{enumi})}
+\renewcommand{\labelenumii}{(\roman{enumii})}
+\end_preamble
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_amsmath 1
+\use_esint 0
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\topmargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section*
+18.303 Problem Set 2
+\end_layout
+
+\begin_layout Standard
+Due Wednesday, 19 September 2012.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Note
+\series default
+: For Matlab homework problems in 18.303, turn in with your solutions a printout
+ of any commands used and their results (please edit out extraneous/irrelevant
+ stuff; e.g.
+ don't turn in pages and pages of numbers if you accidentally output the
+ contents of a large matrix), and a printout of any graphs requested.
+ 
+\series bold
+Always label
+\series default
+ the axes of your graphs (with the 
+\family typewriter
+xlabel
+\family default
+ and 
+\family typewriter
+ylabel
+\family default
+ commands), add a title with the 
+\family typewriter
+title
+\family default
+ command, and add a legend (if there are multiple curves) with the 
+\family typewriter
+legend
+\family default
+ command.
+ (Labelling graphs is a good habit to acquire.)
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Note:
+\series default
+ You can run Matlab on Athena with 
+\family typewriter
+add matlab && matlab
+\family default
+ at the Athena prompt.
+ You can also get a free Matlab for your own computer.
+ See 
+\family typewriter
+http://web.mit.edu/matlab/www
+\family default
+/
+\end_layout
+
+\begin_layout Subsection*
+Problem 1: Finite-difference approximations
+\end_layout
+
+\begin_layout Standard
+For this question you may find it helpful to refer to the notes and readings
+ from lecture
+\begin_inset space ~
+\end_inset
+
+3.
+ Consider a finite-difference approximation for the second derivative of
+ the form: 
+\begin_inset Formula 
+\[
+u''(x)\approx\frac{a\cdot u(x+2\Delta x)+b\cdot u(x+\Delta x)+c\cdot u(x)+b\cdot u(x-\Delta x)+a\cdot u(x-2\Delta x)}{d\cdot(\Delta x)^{2}}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+By substituting the Taylor expansion for 
+\begin_inset Formula $u(x+\delta)$
+\end_inset
+
+, solve for coefficients 
+\begin_inset Formula $a,b,c,d$
+\end_inset
+
+ that make this expression 
+\emph on
+fourth-order accurate
+\emph default
+: errors proportional to 
+\begin_inset Formula $(\Delta x)^{4}$
+\end_inset
+
+ for small 
+\begin_inset Formula $\Delta x$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Check your answer to the previous part by numerically computing 
+\begin_inset Formula $u''(1)$
+\end_inset
+
+ for 
+\begin_inset Formula $u(x)=\sin(x)$
+\end_inset
+
+, as a function of 
+\begin_inset Formula $\Delta x$
+\end_inset
+
+, exactly as in the handout from class (refer to the handout for the relevant
+ Matlab commands and adapt them as needed).
+ Verify from your log-log plot of the 
+\begin_inset Formula $|\mbox{errors}|$
+\end_inset
+
+ versus 
+\begin_inset Formula $\Delta x$
+\end_inset
+
+ that you obtained the expected rate of convergence.
+\end_layout
+
+\begin_layout Subsection*
+Problem 2: Inner products, adjoints, definiteness
+\end_layout
+
+\begin_layout Standard
+Here, we consider inner products 
+\begin_inset Formula $\langle u,v\rangle$
+\end_inset
+
+ on some vector space of complex-valued functions and the corresponding
+ adjoint 
+\begin_inset Formula $\hat{A}^{*}$
+\end_inset
+
+ of linear operators 
+\begin_inset Formula $\hat{A}$
+\end_inset
+
+, where the adjoint is defined, as in class, by whatever satisfies 
+\begin_inset Formula $\langle u,\hat{A}v\rangle$
+\end_inset
+
+ for all 
+\begin_inset Formula $u$
+\end_inset
+
+ and 
+\begin_inset Formula $v$
+\end_inset
+
+.
+ Usually, 
+\begin_inset Formula $\hat{A}^{*}$
+\end_inset
+
+ is obtained from 
+\begin_inset Formula $\hat{A}$
+\end_inset
+
+ by some kind of integration by parts.
+ In particular, suppose 
+\begin_inset Formula $V$
+\end_inset
+
+ consists of functions
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+As mentioned in class, we technically need to restrict ourselves to a Sobolev
+ space of 
+\begin_inset Formula $u$
+\end_inset
+
+ where 
+\begin_inset Formula $\langle u,\hat{A}u\rangle$
+\end_inset
+
+ is defined and finite, i.e.
+ we are implicitly assuming that 
+\begin_inset Formula $u$
+\end_inset
+
+ is sufficiently differentiable and not too divergent, etcetera, but for
+ the most part we will pass over such technicalities in 18.303 (which are
+ important for rigorous proofs, but only serve to exclude counter-examples
+ that have no physical relevance).
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $u(x)$
+\end_inset
+
+ on 
+\begin_inset Formula $x\in[0,L]$
+\end_inset
+
+ with 
+\emph on
+periodic
+\emph default
+ boundary conditions 
+\begin_inset Formula $u(0)=u(L)$
+\end_inset
+
+ as in pset
+\begin_inset space ~
+\end_inset
+
+1, and define the inner product 
+\begin_inset Formula $\langle u,v\rangle=\int_{0}^{L}\overline{u(x)}v(x)dx$
+\end_inset
+
+ as in class.
+\end_layout
+
+\begin_layout Enumerate
+Show that 
+\begin_inset Formula $\hat{A}=-\frac{d}{dx}\left(c\frac{d}{dx}\right)$
+\end_inset
+
+ is self-adjoint (
+\begin_inset Formula $\hat{A}^{*}=\hat{A}$
+\end_inset
+
+) and positive semi-definite (
+\begin_inset Formula $\langle u,\hat{A}u\rangle\geq0$
+\end_inset
+
+) for any function 
+\begin_inset Formula $c(x)>0$
+\end_inset
+
+,
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Again, assuming 
+\begin_inset Formula $c$
+\end_inset
+
+ is sufficiently well-behaved that the various integrals exist.
+\end_layout
+
+\end_inset
+
+ but is 
+\emph on
+not
+\emph default
+ positive definite (
+\begin_inset Formula $\langle u,\hat{A}u\rangle=0$
+\end_inset
+
+ for some 
+\begin_inset Formula $u\neq0$
+\end_inset
+
+ in 
+\begin_inset Formula $V$
+\end_inset
+
+).
+ 
+\end_layout
+
+\begin_layout Enumerate
+Suppose that we define the 
+\emph on
+integral
+\emph default
+ operator 
+\begin_inset Formula $\hat{B}$
+\end_inset
+
+ as follows: if 
+\begin_inset Formula $v=\hat{B}u$
+\end_inset
+
+, 
+\begin_inset Formula $v(x)=\int_{0}^{L}G(x,x')u(x')dx'$
+\end_inset
+
+ for some function 
+\begin_inset Formula $G(x,x')$
+\end_inset
+
+.
+ This is a perfectly good linear operator (which we will return to later
+ in 18.303).
+ (You can assume that 
+\begin_inset Formula $G$
+\end_inset
+
+ is sufficiently well-behaved for all such integrals to exist.) What condition
+ must 
+\begin_inset Formula $G$
+\end_inset
+
+ satisfy in order for 
+\begin_inset Formula $\hat{B}$
+\end_inset
+
+ to be self-adjoint?
+\end_layout
+
+\begin_layout Subsection*
+Problem 2: Finite-difference matrices in Matlab
+\end_layout
+
+\begin_layout Standard
+For this problem, the Matlab function 
+\family typewriter
+diff1.m
+\family default
+ linked on the web site will be helpful.
+ If you download this file and put it in your directory (the one you run
+ Matlab from), the command
+\end_layout
+
+\begin_layout LyX-Code
+D = diff1(M);
+\end_layout
+
+\begin_layout Standard
+will return the 
+\begin_inset Formula $(M+1)\times M$
+\end_inset
+
+ first derivative matrix 
+\begin_inset Formula $D$
+\end_inset
+
+ from class for Dirichlet boundary conditions 
+\begin_inset Formula $u(0)=u(L)=0$
+\end_inset
+
+, omitting the 
+\begin_inset Formula $\Delta x$
+\end_inset
+
+ factor, so that the discrete 1d Laplacian 
+\begin_inset Formula $\approx-\frac{d^{2}}{dx^{2}}$
+\end_inset
+
+ is approximated by 
+\begin_inset Formula $A=D^{T}D/\Delta x$
+\end_inset
+
+ (
+\family typewriter
+D'*D/dx^2
+\family default
+ in Matlab) for 
+\begin_inset Formula $\Delta x=L/(M+1)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+If, instead of Dirichlet boundaries, we have periodic boundaries 
+\begin_inset Formula $u(0)=u(L)$
+\end_inset
+
+, how is 
+\begin_inset Formula $A$
+\end_inset
+
+ modified? Assume you discretize 
+\begin_inset Formula $[0,L]$
+\end_inset
+
+ into the points 
+\begin_inset Formula $u_{m}\approx u(m\Delta x)$
+\end_inset
+
+ for 
+\begin_inset Formula $m=0,1,\ldots,M$
+\end_inset
+
+, with 
+\begin_inset Formula $u_{0}=u_{M}$
+\end_inset
+
+ (so that we have 
+\begin_inset Formula $M$
+\end_inset
+
+ degrees of freedom 
+\begin_inset Formula $u_{1},\ldots,u_{M}$
+\end_inset
+
+) and 
+\begin_inset Formula $\Delta x=L/M$
+\end_inset
+
+.
+ Write down what the new 
+\begin_inset Formula $A$
+\end_inset
+
+ matrix looks like (hint: only the first and last rows are changed).
+ (Careful: the 
+\begin_inset Formula $A$
+\end_inset
+
+ in class was for 
+\begin_inset Formula $d^{2}/dx^{2}$
+\end_inset
+
+, whereas now we have 
+\begin_inset Formula $-d^{2}/dx^{2}$
+\end_inset
+
+.)
+\end_layout
+
+\begin_layout Enumerate
+Write Matlab code to create such an 
+\begin_inset Formula $A$
+\end_inset
+
+ matrix for 
+\begin_inset Formula $M=100$
+\end_inset
+
+ and 
+\begin_inset Formula $L=1$
+\end_inset
+
+, of the form:
+\begin_inset Newline newline
+\end_inset
+
+
+\family typewriter
+L=1; M=100;
+\begin_inset Newline newline
+\end_inset
+
+dx = L/M; D = diff1(M); A = D'*D / dx^2;
+\begin_inset Newline newline
+\end_inset
+
+??????
+\family default
+
+\begin_inset Newline newline
+\end_inset
+
+where ?????? is code to change the Dirichlet 
+\begin_inset Formula $A$
+\end_inset
+
+ matrix into the periodic one.
+ Hint: you can change the 
+\begin_inset Formula $i,j$
+\end_inset
+
+ entry of 
+\begin_inset Formula $A$
+\end_inset
+
+ (row 
+\begin_inset Formula $i$
+\end_inset
+
+, column 
+\begin_inset Formula $j$
+\end_inset
+
+) in Matlab by 
+\family typewriter
+A(i,j)=
+\family default
+\emph on
+...new value...
+\family typewriter
+\emph default
+; 
+\family default
+Note: your 
+\begin_inset Formula $A$
+\end_inset
+
+ should still be symmetric!
+\end_layout
+
+\begin_layout Enumerate
+You can get a list of the eigenvalues in Matlab by 
+\family typewriter
+eig(A)
+\family default
+, and sort them in ascending order by 
+\family typewriter
+sort(eig(A))
+\family default
+.
+ Check that they are 
+\begin_inset Formula $\geq0$
+\end_inset
+
+ (semidefinite 
+\begin_inset Formula $A$
+\end_inset
+
+), that there is a zero eigenvalue (or at least one that is very close to
+ zero...there will be some roundoff error to make it slightly nonzero, and
+ it may even be slightly negative, e.g.
+ 
+\begin_inset Formula $-10^{-12}$
+\end_inset
+
+), that the nonzero eigenvalues are doubly repeated (as predicted in pset
+\begin_inset space ~
+\end_inset
+
+1), and that the first few nonzero eigenvalues area approximately 
+\begin_inset Formula $(2\pi n/L)^{2}$
+\end_inset
+
+ for 
+\begin_inset Formula $n=1,2,\ldots$
+\end_inset
+
+ (as predicted in pset
+\begin_inset space ~
+\end_inset
+
+1).
+\end_layout
+
+\begin_layout Enumerate
+Get the eigenvectors 
+\emph on
+and
+\emph default
+ eigenvalues by [V,S]=eig(A); (the columns of 
+\begin_inset Formula $V$
+\end_inset
+
+ are the eigenvectors, and 
+\begin_inset Formula $S$
+\end_inset
+
+ is a diagonal matrix of eigenvalues).
+ Again, make sure these are sorted in order of 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ by using the commands: [lambda,i]=sort(diag(S)); and V = V(:,i); Now, plot
+ the first few eigenvectors by the command x=linspace(0,L,M+1); x=x(2:end);
+ plot(x,V(:,1),'r-', x,V(:,2), 'b--', x,V(:3),'k:', x,V(:4),'c.-'); legend('1','2
+','3','4'); xlabel('x'); ylabel('eigenfunctions') ...do they match your predictions
+ from pset
+\begin_inset space ~
+\end_inset
+
+1?
+\end_layout
+
+\begin_layout Enumerate
+It is actually possible to solve the discrete Laplacian eigenproblem 
+\emph on
+analytically
+\emph default
+.
+ In particular, at each point 
+\begin_inset Formula $m$
+\end_inset
+
+ we have the discrete eigenequation 
+\begin_inset Formula $\frac{-u_{m+1}+2u_{m}-u_{m-1}}{\Delta x^{2}}=\lambda u_{m}$
+\end_inset
+
+, with periodic boundary conditions (
+\begin_inset Formula $u_{0}=u_{M}$
+\end_inset
+
+, 
+\begin_inset Formula $u_{M+1}=u_{1}$
+\end_inset
+
+).
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Show that an eigenvector of the form 
+\begin_inset Formula 
+\[
+u_{m}=e^{ikm\Delta x}
+\]
+
+\end_inset
+
+is an 
+\emph on
+exact
+\emph default
+ solution to this discrete eigenproblem for certain values of 
+\begin_inset Formula $k$
+\end_inset
+
+ (which 
+\begin_inset Formula $k$
+\end_inset
+
+ satisfy the discrete boundary condition?).
+\end_layout
+
+\begin_layout Enumerate
+Use this to find an 
+\emph on
+exact
+\emph default
+ formula for the eigenvalues 
+\begin_inset Formula $\lambda$
+\end_inset
+
+, and explicitly check that it 
+\emph on
+exactly
+\emph default
+ matches (up to roundoff errors, 12-13 digits) the Matlab eigenvalues from
+ part (c) above.
+\end_layout
+
+\begin_layout Enumerate
+Show that as 
+\begin_inset Formula $\Delta x\to0$
+\end_inset
+
+, your eigenvalues 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ approach the eigenvalues 
+\begin_inset Formula $(2\pi n/L)^{2}$
+\end_inset
+
+ of the continuous problem (hint: Taylor expand), with an error proportional
+ to 
+\begin_inset Formula $\Delta x^{2}$
+\end_inset
+
+ for small 
+\begin_inset Formula $\Delta x$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\end_body
+\end_document

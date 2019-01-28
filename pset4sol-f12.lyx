@@ -1,0 +1,967 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+
+\renewcommand{\vec}[1]{\mathbf{#1}}
+
+\renewcommand{\labelenumi}{(\alph{enumi})}
+\renewcommand{\labelenumii}{(\roman{enumii})}
+\newcommand{\rank}{\operatorname{rank}}
+
+\usepackage{cancel}
+\end_preamble
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_amsmath 2
+\use_esint 0
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\topmargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section*
+18.303 Problem Set 4 Solutions
+\end_layout
+
+\begin_layout Subsection*
+Problem 1: (10+10+10)
+\end_layout
+
+\begin_layout Enumerate
+Define the 
+\emph on
+translation
+\emph default
+ operator 
+\begin_inset Formula $\hat{T}_{a}$
+\end_inset
+
+ by 
+\begin_inset Formula $\hat{T}_{a}u(x,y,z)=u(x,y,z-a)$
+\end_inset
+
+: 
+\begin_inset Formula $\hat{T}_{a}$
+\end_inset
+
+ shifts functions by 
+\begin_inset Formula $a$
+\end_inset
+
+ in the 
+\begin_inset Formula $z$
+\end_inset
+
+ direction.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+We have 
+\begin_inset Formula $\langle u,\hat{T}_{a}v\rangle=\int_{\Omega}dxdy\int_{-\infty}^{\infty}dz\,\overline{u(x,y,z)}v(x,y,z-a)$
+\end_inset
+
+, where we have explicitly written the 
+\begin_inset Formula $z$
+\end_inset
+
+ integral (noting that 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ only affects the 
+\begin_inset Formula $xy$
+\end_inset
+
+ integration domain).
+ Now, we do a change of variables 
+\begin_inset Formula $\tilde{z}=z-a$
+\end_inset
+
+, to obtain 
+\begin_inset Formula $\langle u,\hat{T}_{a}v\rangle=\int_{\Omega}dxdy\int_{-\infty}^{\infty}d\tilde{z}\,\overline{u(x,y,\tilde{z}+a)}v(x,y,\tilde{z})=\langle\hat{T}_{-a}u,v\rangle$
+\end_inset
+
+.
+ Hence 
+\begin_inset Formula $\hat{T}_{a}^{*}=\hat{T}_{-a}$
+\end_inset
+
+, and obviously 
+\begin_inset Formula $\hat{T}_{-a}=\hat{T}_{a}^{-1}$
+\end_inset
+
+ (since translating by 
+\begin_inset Formula $-a$
+\end_inset
+
+ undoes translation by 
+\begin_inset Formula $+a$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Enumerate
+This is actually pretty obvious, because translation does not affect 
+\begin_inset Formula $w$
+\end_inset
+
+ or 
+\begin_inset Formula $c$
+\end_inset
+
+, nor does it affect derivatives since 
+\begin_inset Formula $d(z-a)/dz=1$
+\end_inset
+
+, but let's go through it explicitly.
+ Let's show that 
+\begin_inset Formula $\hat{T}_{a}$
+\end_inset
+
+ commutes with the terms in 
+\begin_inset Formula $\hat{A}$
+\end_inset
+
+ one by one.
+ That is, we wish to show that
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $\nabla\hat{T}_{a}u=\hat{T}_{a}\nabla u$
+\end_inset
+
+ for any 
+\begin_inset Formula $u(x,y,z)$
+\end_inset
+
+.
+ Proof: 
+\begin_inset Formula 
+\[
+\nabla\hat{T}_{a}u(x,y,z)=\nabla u(x,y,z-a)=u_{x}(x,y,z-a)+u_{y}(x,y,z-a)+\cancelto{1}{\frac{\partial(z-a)}{\partial z}}u_{z}(x,y,z-a)=\hat{T}_{a}\nabla u,
+\]
+
+\end_inset
+
+where subscripts denote partial derivatives and the key point is that we
+ can translate either before or after differentiation because the chain
+ rule factor is
+\begin_inset space ~
+\end_inset
+
+1.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $c(x,y)\hat{T}_{a}\vec{v}(x,y,z)=\hat{T}_{a}c(x,y)\vec{v}(x,y,z)$
+\end_inset
+
+ for any vector field 
+\begin_inset Formula $\vec{v}(x,y,z)$
+\end_inset
+
+.
+ This is obvious because 
+\begin_inset Formula $c$
+\end_inset
+
+ does not depend on 
+\begin_inset Formula $z$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\nabla\cdot\hat{T}_{a}\vec{v}(x,y,z)=\hat{T}_{a}\nabla\cdot\vec{v}(x,y,z)$
+\end_inset
+
+ for any 
+\begin_inset Formula $\vec{v}$
+\end_inset
+
+.
+ Proof: essentially the same as in (i).
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $-\frac{1}{w(x,y)}\hat{T}_{a}u(x,y,z)=\hat{T}_{a}[-\frac{1}{w(x,y)}u(x,y,z)]$
+\end_inset
+
+ for any 
+\begin_inset Formula $u$
+\end_inset
+
+.
+ This is obvious because 
+\begin_inset Formula $-1/w$
+\end_inset
+
+ does not depend on 
+\begin_inset Formula $z$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Putting (i)--(iv) together, we have: 
+\begin_inset Formula 
+\[
+\hat{A}\hat{T}_{a}u=-\frac{1}{w}\nabla\cdot c\nabla\hat{T}_{a}u=-\frac{1}{w}\nabla\cdot c\hat{T}_{a}\nabla u=-\frac{1}{w}\nabla\cdot\hat{T}_{a}c\nabla u=-\frac{1}{w}\hat{T}_{a}\nabla\cdot c\nabla u=\hat{T}_{a}\left[-\frac{1}{w}\nabla\cdot c\nabla u\right]=\hat{T}_{a}\hat{A}u.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Enumerate
+\begin_inset Formula $\hat{A}(\hat{T}_{a}u)=\hat{T}_{a}(\hat{A}u)=\hat{T}_{a}(\lambda u)=\lambda(\hat{T}_{a}u)$
+\end_inset
+
+ using commutation, the eigenequation, and linearity of 
+\begin_inset Formula $\hat{T}_{a}$
+\end_inset
+
+.
+ Moreover, if 
+\begin_inset Formula $u\neq0$
+\end_inset
+
+ then 
+\begin_inset Formula $\hat{T}_{a}u\neq0$
+\end_inset
+
+.
+ Therefore, we have just shown that 
+\begin_inset Formula $\hat{T}_{a}u$
+\end_inset
+
+ is an eigenfunction of 
+\begin_inset Formula $\hat{A}$
+\end_inset
+
+ with eigenvalue 
+\begin_inset Formula $\lambda$
+\end_inset
+
+.
+ But we are given that 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ has multiplicity 
+\begin_inset Formula $1$
+\end_inset
+
+, which means that the only eigenfunctions are 
+\begin_inset Formula $u$
+\end_inset
+
+ and scalar multiples of 
+\begin_inset Formula $u$
+\end_inset
+
+.
+ Hence 
+\begin_inset Formula $\hat{T}_{a}u$
+\end_inset
+
+ must be some multiple 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ of 
+\begin_inset Formula $u$
+\end_inset
+
+: 
+\begin_inset Formula 
+\[
+\hat{T}_{a}u=\alpha u,
+\]
+
+\end_inset
+
+hence 
+\begin_inset Formula $u$
+\end_inset
+
+is an eigenfunction of 
+\begin_inset Formula $\hat{T}_{a}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+If 
+\begin_inset Formula $u$
+\end_inset
+
+ is an eigenfunction of 
+\begin_inset Formula $\hat{T}_{a}$
+\end_inset
+
+ for all 
+\begin_inset Formula $a$
+\end_inset
+
+, that means 
+\begin_inset Formula $\hat{T}_{a}u=\alpha(a)u$
+\end_inset
+
+ for some eigenvalues 
+\begin_inset Formula $\alpha(a)$
+\end_inset
+
+.
+ Show that the functions 
+\begin_inset Formula $\alpha(a)$
+\end_inset
+
+ and 
+\begin_inset Formula $u(\vec{x})$
+\end_inset
+
+ must have the properties:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $\hat{T}_{0}u=u$
+\end_inset
+
+ by definition, so 
+\begin_inset Formula $\alpha(0)=1$
+\end_inset
+
+ follows.
+\end_layout
+
+\begin_layout Enumerate
+Let 
+\begin_inset Formula $v(x,y)=u(x,y,0)$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula $\hat{T}_{a}u=u(x,y,z-a)=\alpha(a)u(x,y,z)$
+\end_inset
+
+.
+ Hence, if we evaluate both sizes for 
+\begin_inset Formula $z=0$
+\end_inset
+
+, we obtain 
+\begin_inset Formula $u(x,y,-a)=\alpha(a)v(x,y)$
+\end_inset
+
+, and then if we let 
+\begin_inset Formula $a=-z$
+\end_inset
+
+ the result follows.
+\end_layout
+
+\begin_layout Enumerate
+We have 
+\begin_inset Formula $\alpha(a_{1})\alpha(a_{2})u(x,y,z)=\hat{T}_{a_{1}}\hat{T}_{a_{2}}u(x,y,z)=\hat{T}_{a_{1}}u(x,y,z-a_{2})=u(x,y,z-a_{1}-a_{2})=\hat{T}_{a_{1}+a_{2}}u(x,y,z)=\alpha(a_{1}+a_{2})u(x,y,z)$
+\end_inset
+
+for all 
+\begin_inset Formula $u$
+\end_inset
+
+, hence 
+\begin_inset Formula $\alpha(a_{1}+a_{2})=\alpha(a_{1})\alpha(a_{2})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Using 
+\begin_inset Formula $\alpha(x+h)=\alpha(x)\alpha(h)$
+\end_inset
+
+ and 
+\begin_inset Formula $\alpha(x)=\alpha(x)\alpha(0)$
+\end_inset
+
+ from above, we have 
+\begin_inset Formula 
+\[
+\alpha'(x)=\lim_{h\to0}\frac{\alpha(x+h)-\alpha(x)}{h}=\alpha(x)\lim_{h\to0}\frac{\alpha(h)-\alpha(0)}{h}=\alpha(x)\alpha'(0),
+\]
+
+\end_inset
+
+which is an ordinary differential equation 
+\begin_inset Formula $\alpha'(x)=\beta\alpha(x)$
+\end_inset
+
+ for 
+\begin_inset Formula $\beta=\alpha'(0)$
+\end_inset
+
+, which has the solution 
+\begin_inset Formula $\alpha(x)=\alpha(0)e^{\beta x}=e^{\beta x}$
+\end_inset
+
+.
+ If we don't allow exponential solutions, 
+\begin_inset Formula $\beta$
+\end_inset
+
+ must be purely imaginary, hence 
+\begin_inset Formula $\alpha(x)=e^{-ikx}$
+\end_inset
+
+ for some real 
+\begin_inset Formula $k$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Subsection*
+Problem 2: (10+10+10+5)
+\end_layout
+
+\begin_layout Enumerate
+The boundary conditions give two equations 
+\begin_inset Formula 
+\[
+\alpha J_{m}(kR_{1})+\beta Y_{m}(kR_{1})=0
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\alpha kJ_{m}'(kR_{2})+\beta kY_{m}'(kR_{2})=0
+\]
+
+\end_inset
+
+(noting the 
+\begin_inset Formula $k$
+\end_inset
+
+ factors from the chain rule in the second equation).
+ These equations are linear in 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ and 
+\begin_inset Formula $\beta$
+\end_inset
+
+, so we can write them as 
+\begin_inset Formula $E\left(\begin{array}{c}
+\alpha\\
+\beta
+\end{array}\right)=0$
+\end_inset
+
+ for 
+\begin_inset Formula 
+\[
+E=\left(\begin{array}{cc}
+J_{m}(kR_{1}) & Y_{m}(kR_{1})\\
+kJ_{m}'(kR_{2}) & kY_{m}'(kR_{2})
+\end{array}\right).
+\]
+
+\end_inset
+
+Hence 
+\begin_inset Formula $\det E=0$
+\end_inset
+
+ and we have the equation for 
+\begin_inset Formula 
+\[
+0=\det E=J_{m}(kR_{1})kY_{m}'(kR_{2})-Y_{m}(kR_{1})kJ_{m}'(kR_{2}).
+\]
+
+\end_inset
+
+This has an apparent solution for 
+\begin_inset Formula $k=0$
+\end_inset
+
+, but actually 
+\begin_inset Formula $\lim_{k\to0}\det E\neq0$
+\end_inset
+
+, because the overall 
+\begin_inset Formula $k$
+\end_inset
+
+ factor multiplying the expression turns out to exactly cancel the divergences
+ in 
+\begin_inset Formula $JY'$
+\end_inset
+
+ and 
+\begin_inset Formula $YJ'$
+\end_inset
+
+ expressions.
+ [This can be seen from the asymptotic analysis in class, where we showed
+ that 
+\begin_inset Formula $J_{m}(x)\sim x^{m}$
+\end_inset
+
+ and 
+\begin_inset Formula $Y_{m}(x)\sim x^{-m}$
+\end_inset
+
+ for small 
+\begin_inset Formula $x$
+\end_inset
+
+ and 
+\begin_inset Formula $m>0$
+\end_inset
+
+, hence 
+\begin_inset Formula $J_{m}(x)Y'_{m}(x)\sim1/x\sim J_{m}'(x)Y_{m}(x)$
+\end_inset
+
+ for small 
+\begin_inset Formula $x$
+\end_inset
+
+.] So, we obtain:
+\begin_inset Formula 
+\[
+f_{m}(k)=k[J_{m}(kR_{1})Y_{m}'(kR_{2})-Y_{m}(kR_{1})J_{m}'(kR_{2})].
+\]
+
+\end_inset
+
+ (Of course, we could also multiply 
+\begin_inset Formula $f_{m}(k)$
+\end_inset
+
+ by any nonzero function if we wanted, since we only care about the zeros
+ of 
+\begin_inset Formula $f_{m}$
+\end_inset
+
+.)
+\end_layout
+
+\begin_layout Enumerate
+For this part, it is useful to use the @ syntax in Matlab to first define
+ the derivatives of the Bessel functions using the formulas provided: 
+\family typewriter
+Jp = @(m,x) 0.5 * (besselj(m-1,x)-besselj(m+1,x))
+\family default
+ and 
+\family typewriter
+Yp = @(m,x) 0.5 * (bessely(m-1,x)-bessely(m+1,x))
+\family default
+.
+ Now, setting 
+\family typewriter
+R1=1
+\family default
+ and 
+\family typewriter
+R2=2
+\family default
+, we can define 
+\begin_inset Formula $f_{m}(k)$
+\end_inset
+
+ via 
+\family typewriter
+f = @(m,k) besselj(m,k*R1) .* Yp(m,k*R2) - bessely(m,k*R1) .* Jp(m,k*R2)
+\family default
+.
+ Now, we can plot it for 
+\begin_inset Formula $m=0,1,2$
+\end_inset
+
+ (using the 
+\family typewriter
+hold
+\family default
+ command to put multiple curves on the same plot) with:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+fplot(@(k) f(0,k), [0,20], 'r-'); hold on;
+\begin_inset Newline newline
+\end_inset
+
+fplot(@(k) f(1,k), [0,20], 'b--'); 
+\begin_inset Newline newline
+\end_inset
+
+fplot(@(k) f(2,k), [0,20], 'k:'); hold off
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+The resulting plot is shown in figure
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:p2b"
+
+\end_inset
+
+; note that 
+\begin_inset Formula $f_{m}(k)$
+\end_inset
+
+ seems to converge to the same curve, independent of 
+\begin_inset Formula $m$
+\end_inset
+
+, for large 
+\begin_inset Formula $k$
+\end_inset
+
+.
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename p2b-pset4-f12.png
+	width 50col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:p2b"
+
+\end_inset
+
+Plot of 
+\begin_inset Formula $f_{m}(k)$
+\end_inset
+
+ for 
+\begin_inset Formula $m=0,1,2$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+From the graph, the first three zeros of 
+\begin_inset Formula $f_{m}$
+\end_inset
+
+ are close to 
+\begin_inset Formula $k=1.5,$
+\end_inset
+
+ 
+\begin_inset Formula $4.5$
+\end_inset
+
+, and 
+\begin_inset Formula $7.5$
+\end_inset
+
+, so we can use the 
+\family typewriter
+fzero
+\family default
+ command to find the precise roots from these starting guesses:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\family typewriter
+k1 = fzero(@(k) f(0,k), 1.5)
+\begin_inset Newline newline
+\end_inset
+
+k2 = fzero(@(k) f(0,k), 4.5)
+\begin_inset Newline newline
+\end_inset
+
+k3 = fzero(@(k) f(0,k), 7.5)
+\family default
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+which gives 
+\begin_inset Formula $k_{1}\approx1.360777385337$
+\end_inset
+
+, 
+\begin_inset Formula $k_{2}\approx4.645899896125$
+\end_inset
+
+, and 
+\begin_inset Formula $k_{2}\approx7.814162750132$
+\end_inset
+
+.
+ Given 
+\begin_inset Formula $k$
+\end_inset
+
+, we can then find 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ and 
+\begin_inset Formula $\beta$
+\end_inset
+
+ by the following procedure.
+ Since the overall scale is arbitrary, set 
+\begin_inset Formula $\alpha=1$
+\end_inset
+
+.
+ Then solve the first equation from (a) above to obtain 
+\begin_inset Formula $\beta=-J_{m}(kR_{1})/Y_{m}(kR_{1})$
+\end_inset
+
+.
+ In Matlab:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\family typewriter
+beta1 = -besselj(0,k1*R1)/bessely(0,k1*R1)
+\begin_inset Newline newline
+\end_inset
+
+beta2 = -besselj(0,k2*R1)/bessely(0,k2*R1)
+\begin_inset Newline newline
+\end_inset
+
+beta3 = -besselj(0,k3*R1)/bessely(0,k3*R1)
+\family default
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+The resulting curves, via 
+\family typewriter
+fplot(@(r) besselj(0,k1*r)+beta1*bessely(0,k1*r), [R1,R2])
+\family default
+ and so on, are shown in figure
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:p2c"
+
+\end_inset
+
+.
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename p2c-pset4-f12.png
+	width 50col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:p2c"
+
+\end_inset
+
+Plot of 
+\begin_inset Formula $f_{m}(k)$
+\end_inset
+
+ for 
+\begin_inset Formula $m=0,1,2$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ As desired, they are zero at 
+\begin_inset Formula $r=R_{1}$
+\end_inset
+
+ and have zero slope at 
+\begin_inset Formula $r=R_{2}$
+\end_inset
+
+.
+ Also as expected from the min--max theorem, they oscillate as little as
+ possible, with larger 
+\begin_inset Formula $k$
+\end_inset
+
+ solutions gaining more nodes one at a time in order to stay orthogonal
+ to the previous modes.
+\end_layout
+
+\begin_layout Enumerate
+Running 
+\family typewriter
+quadl(@(r) r .* (besselj(0,k1*r)+beta1*bessely(0,k1*r)) .* (besselj(0,k2*r)+beta2*
+bessely(0,k2*r)), R1, R2, 1e-6)
+\family default
+ yields 
+\begin_inset Formula $\approx3.7\times10^{-16}$
+\end_inset
+
+, i.e.
+ zero up to roundoff errors! (Even though we only requested 6 digits of
+ accuracy, the numerical integration routine typically gives us much better
+ accuracy, at least when integrating smooth functions.)
+\end_layout
+
+\end_body
+\end_document

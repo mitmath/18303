@@ -1,0 +1,550 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+
+\renewcommand{\vec}[1]{\mathbf{#1}}
+
+\renewcommand{\labelenumi}{(\alph{enumi})}
+\renewcommand{\labelenumii}{(\roman{enumii})}
+\newcommand{\rank}{\operatorname{rank}}
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
+
+\usepackage{cancel}
+\end_preamble
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_amsmath 2
+\use_esint 0
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 0.7in
+\topmargin 0.7in
+\rightmargin 0.7in
+\bottommargin 0.7in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section*
+18.303 Midterm Solutions, Fall 2012
+\end_layout
+
+\begin_layout Subsection*
+Problem 1: Adjoints and operators (20 points)
+\end_layout
+
+\begin_layout Enumerate
+Integrating by parts, and using the fact that 
+\begin_inset Formula $u'(L)=\alpha u(L)$
+\end_inset
+
+, have 
+\begin_inset Formula 
+\begin{align*}
+\langle u,\hat{A}v\rangle & =\int_{0}^{L}\bar{u}v''=\left.\bar{u}v'\right|_{0}^{L}-\int_{0}^{L}\overline{u'}v'=\left.\bar{u}v'-\overline{u'}v\right|_{0}^{L}+\int_{0}^{L}\overline{u''}v\\
+ & =\overline{u(L)}v'(L)-\overline{u'(L)}v(L)-\cancel{\overline{u(0)}}v'(0)+\overline{u'(0)}\cancel{v(0)}+\langle\hat{A}u,v\rangle\\
+ & =\mbox{\alpha}\cancel{\left[\overline{u(L)}v(L)-\overline{u(L)}v(L)\right]}+\langle\hat{A}u,v\rangle\\
+ & =\langle\hat{A}u,v\rangle,
+\end{align*}
+
+\end_inset
+
+hence 
+\begin_inset Formula $\hat{A}=\hat{A}^{*}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+For it to have decaying solutions, as in class we want 
+\begin_inset Formula $\hat{A}$
+\end_inset
+
+ to be negative definite (or negative semidefinite, if we allow the solutions
+ to decay to a nonzero asymptote).
+ Hence, we need 
+\begin_inset Formula $\langle u,\hat{A}u\rangle<0$
+\end_inset
+
+ (or 
+\begin_inset Formula $\leq0$
+\end_inset
+
+) for 
+\begin_inset Formula $u\neq0$
+\end_inset
+
+.
+ As in class, we look at the middle step above where we have integrated
+ by parts once: 
+\begin_inset Formula 
+\begin{align*}
+\langle u,\hat{A}u\rangle & =\left.\bar{u}u'\right|_{0}^{L}-\int_{0}^{L}\overline{u'}u'\\
+ & =\alpha\left|u(L)\right|^{2}-\int_{0}^{L}\left|u'(x)\right|^{2}dx
+\end{align*}
+
+\end_inset
+
+This is 
+\begin_inset Formula $\leq0$
+\end_inset
+
+ if 
+\begin_inset Formula $\alpha\leq0$
+\end_inset
+
+.
+ It would 
+\begin_inset Formula $=0$
+\end_inset
+
+ if 
+\begin_inset Formula $u'=0$
+\end_inset
+
+ and 
+\begin_inset Formula $\alpha u(L)=0$
+\end_inset
+
+.
+ However, 
+\begin_inset Formula $u'=0$
+\end_inset
+
+ implies 
+\begin_inset Formula $u(x)=\mbox{constant}$
+\end_inset
+
+, but since 
+\begin_inset Formula $u(0)=0$
+\end_inset
+
+ the only constant it can be is 
+\begin_inset Formula $0$
+\end_inset
+
+.
+ Hence, 
+\begin_inset Formula $\langle u,\hat{A}u\rangle<0$
+\end_inset
+
+ for 
+\begin_inset Formula $u\neq0$
+\end_inset
+
+ for any 
+\begin_inset Formula $\boxed{\alpha\leq0}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Subsection*
+Problem 2: Finite differences (20 points)
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $m=M+1$
+\end_inset
+
+ correspond to the 
+\begin_inset Formula $x=L$
+\end_inset
+
+ boundary, in which case we set 
+\begin_inset Formula $u_{M+1}=0$
+\end_inset
+
+ similar to class.
+ The discrete form of the left boundary condition will be something like
+ 
+\begin_inset Formula 
+\[
+u'(0)=1\approx\frac{u_{1}-u_{0}}{\Delta x}\implies u_{0}=u_{1}-\Delta x.
+\]
+
+\end_inset
+
+ There is some subtlety about where to place the left boundary.
+ If we want this boundary condition to be imposed with second-order accuracy,
+ we need 
+\begin_inset Formula $\frac{u_{1}-u_{0}}{\Delta x}$
+\end_inset
+
+ to be a center-difference approximation, in which case we should make 
+\begin_inset Formula $x=0$
+\end_inset
+
+ correspond to 
+\begin_inset Formula $m=0.5$
+\end_inset
+
+.
+ This means that 
+\begin_inset Formula $(M+1-0.5)\Delta x=L$
+\end_inset
+
+, or 
+\begin_inset Formula $\boxed{\Delta x=\frac{L}{M+0.5}}$
+\end_inset
+
+.
+ [However, I didn't specify that second-order accuracy was required, so
+ it is acceptable if you make, e.g., 
+\begin_inset Formula $m=0$
+\end_inset
+
+ correspond to 
+\begin_inset Formula $x=0$
+\end_inset
+
+ similar to class, in which case we have a first-order forward difference
+ approximation for 
+\begin_inset Formula $u'(0)$
+\end_inset
+
+ and you will get 
+\begin_inset Formula $\Delta x=L/(M+1)$
+\end_inset
+
+.
+ I do expect you to specify 
+\begin_inset Formula $\Delta x$
+\end_inset
+
+.]
+\end_layout
+
+\begin_layout Standard
+Then, applying 
+\begin_inset Formula $u''_{m}\approx\frac{u_{m+1}-2u_{m}+u_{m-1}}{\Delta x^{2}}$
+\end_inset
+
+ for 
+\begin_inset Formula $m=1,2,\ldots,M$
+\end_inset
+
+ will give us the same matrix as usual except that we need to be careful
+ with the first and last rows, where: 
+\begin_inset Formula 
+\[
+u''_{1}=\frac{u_{2}-2u_{1}+u_{0}}{\Delta x^{2}}=\frac{u_{2}-u_{1}}{\Delta x^{2}}-\frac{1}{\Delta x},
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+u''_{M}=\frac{\cancel{u_{M+1}}-2u_{M}+u_{M-1}}{\Delta x^{2}}.
+\]
+
+\end_inset
+
+In particular, the 
+\begin_inset Formula $1/\Delta x$
+\end_inset
+
+ term in the 
+\begin_inset Formula $u''_{1}$
+\end_inset
+
+ equation needs to be moved to the right-hand side of 
+\begin_inset Formula $\hat{A}u-cu=\cancel{\frac{\partial u}{\partial t}}$
+\end_inset
+
+.
+ The 
+\begin_inset Formula $-cu$
+\end_inset
+
+ term just gives us a diagonal term 
+\begin_inset Formula $-c_{m}u_{m}$
+\end_inset
+
+.
+ Writing this all out in matrix form, we obtain: 
+\begin_inset Formula 
+\[
+Au=b
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula 
+\[
+\boxed{A=\frac{1}{\Delta x^{2}}\left(\begin{array}{ccccc}
+-1 & 1\\
+1 & -2 & 1\\
+ & \ddots & \ddots & \ddots\\
+ &  & 1 & -2 & 1\\
+ &  &  & 1 & -2
+\end{array}\right)-\left(\begin{array}{ccccc}
+c_{1}\\
+ & c_{2}\\
+ &  & \ddots\\
+ &  &  & c_{M-1}\\
+ &  &  &  & c_{M}
+\end{array}\right)}
+\]
+
+\end_inset
+
+and 
+\begin_inset Formula 
+\[
+\boxed{b=\frac{1}{\Delta x}\left(\begin{array}{c}
+1\\
+0\\
+\vdots\\
+0\\
+0
+\end{array}\right)}.
+\]
+
+\end_inset
+
+Notice that, much like in class, the nonzero boundary condition adds a source
+ term to the right-hand-side, and the source term looks much like a (discretized
+) delta function since it has height 
+\begin_inset Formula $1/\Delta x$
+\end_inset
+
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+width
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Formula $\Delta x$
+\end_inset
+
+ (one 
+\begin_inset Quotes eld
+\end_inset
+
+pixel
+\begin_inset Quotes erd
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Subsection*
+Problem 3: Green-ish functions (20 points)
+\end_layout
+
+\begin_layout Enumerate
+As in class, for 
+\begin_inset Formula $x\neq y$
+\end_inset
+
+ we have 
+\begin_inset Formula $u''=0$
+\end_inset
+
+, or 
+\begin_inset Formula $u$
+\end_inset
+
+ is a straight line.
+ Since it has to go through zero at the endpoints, we have 
+\begin_inset Formula 
+\[
+u(x)=\begin{cases}
+\alpha x & x<y\\
+\beta(x-L) & x>y
+\end{cases}
+\]
+
+\end_inset
+
+for some constants 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ and 
+\begin_inset Formula $\beta$
+\end_inset
+
+ to be determined.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+The first derivative, in the distribution sense, gives
+\begin_inset Formula 
+\[
+u'(x)=\left[\beta(y-L)-\alpha y\right]\delta(x-y)+\begin{cases}
+\alpha & x<y\\
+\beta & x>y
+\end{cases},
+\]
+
+\end_inset
+
+where we have picked up a 
+\begin_inset Formula $\delta$
+\end_inset
+
+ function from the discontinuity at 
+\begin_inset Formula $y$
+\end_inset
+
+.
+ The second derivative, in the distribution sense, then gives
+\begin_inset Formula 
+\[
+u''(x)=\left[\beta(y-L)-\alpha y\right]\delta'(x-y)+(\beta-\alpha)\delta(x-y),
+\]
+
+\end_inset
+
+where the derivative of 
+\begin_inset Formula $\delta$
+\end_inset
+
+ gave us 
+\begin_inset Formula $\delta'$
+\end_inset
+
+ and the discontinuity 
+\begin_inset Formula $\beta-\alpha$
+\end_inset
+
+ gave us another 
+\begin_inset Formula $\delta$
+\end_inset
+
+.
+ Comparing to 
+\begin_inset Formula $-u''(x)=\delta'(x-y)$
+\end_inset
+
+, we immediately obtain the equations 
+\begin_inset Formula 
+\[
+\beta=\alpha,
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\alpha(y-L)-\alpha y=-1\implies\alpha=\frac{1}{L}.
+\]
+
+\end_inset
+
+Note that since 
+\begin_inset Formula $y\in[0,L]$
+\end_inset
+
+, the denominator in 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ is never zero and so 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ is always finite.
+ Hence, we obtain the regular distribution 
+\begin_inset Formula 
+\[
+\boxed{u(x)=\frac{1}{L}\begin{cases}
+x & x<y\\
+x-L & x>y
+\end{cases}},
+\]
+
+\end_inset
+
+which is discontinuous but has continuous slope.
+\end_layout
+
+\begin_layout Enumerate
+Similar to the Green's functions in class, we can do this by superposition:
+ 
+\begin_inset Formula 
+\[
+\boxed{u(x)=-\int_{0}^{L}D(x,y)f(y)dy},
+\]
+
+\end_inset
+
+since 
+\begin_inset Formula 
+\[
+\hat{A}u=-\int_{0}^{L}\left[AD(x,y)\right]f(y)dy=\int_{0}^{L}[-\delta'(x-y)]f(y)dy=-\delta'(x-y)\{f(y)\}=f'(y).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

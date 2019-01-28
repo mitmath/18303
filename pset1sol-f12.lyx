@@ -1,0 +1,730 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+
+\renewcommand{\vec}[1]{\mathbf{#1}}
+
+\renewcommand{\labelenumi}{(\alph{enumi})}
+\renewcommand{\labelenumii}{(\roman{enumii})}
+\end_preamble
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_amsmath 1
+\use_esint 0
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1in
+\topmargin 1in
+\rightmargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section*
+18.303 Problem Set 1 Solutions
+\end_layout
+
+\begin_layout Subsection*
+Problem 1: (5+(5+5)+(5+5))
+\end_layout
+
+\begin_layout Enumerate
+Since 
+\begin_inset Formula $\vec{v}$
+\end_inset
+
+ is a constant, 
+\begin_inset Formula $\frac{d}{dt}(\vec{v}^{T}\vec{x})=v^{T}\frac{d\vec{x}}{dt}=\vec{v}^{T}A\vec{x}=0$
+\end_inset
+
+.
+ Since this is given to be true for all times, including all 
+\begin_inset Formula $t=0$
+\end_inset
+
+, and for all initial conditions 
+\begin_inset Formula $\vec{x}(0)$
+\end_inset
+
+, it means that 
+\begin_inset Formula $\vec{v}^{T}A\vec{x}=0$
+\end_inset
+
+ for all 
+\begin_inset Formula $\vec{x}$
+\end_inset
+
+, and hence 
+\begin_inset Formula $\vec{v}^{T}A=0$
+\end_inset
+
+, or (taking the transpose) 
+\begin_inset Formula $A^{T}\vec{v}=0$
+\end_inset
+
+.
+ Hence 
+\begin_inset Formula $\vec{v}$
+\end_inset
+
+ is in the 
+\series bold
+left nullspace
+\series default
+ 
+\begin_inset Formula $N(A^{T})$
+\end_inset
+
+.
+ Equivalently, 
+\begin_inset Formula $\vec{v}$
+\end_inset
+
+ is orthogonal to the column space 
+\begin_inset Formula $C(A)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Given an eigensolution 
+\begin_inset Formula $A\vec{x}=\lambda\vec{x}$
+\end_inset
+
+ (
+\begin_inset Formula $\vec{x}\neq0$
+\end_inset
+
+) and 
+\begin_inset Formula $A^{*}=A^{-1}$
+\end_inset
+
+, consider 
+\begin_inset Formula $\vec{x}^{*}A\vec{x}=\vec{x}^{*}\lambda\vec{x}=\lambda|\vec{x}|^{2}=(\vec{x}^{*}A)\vec{x}=(A^{*}\vec{x})^{*}\vec{x}=(A^{-1}\vec{x})^{*}\vec{x}=(\lambda^{-1}\vec{x})^{*}\vec{x}=\bar{\lambda}^{-1}\vec{x}^{*}\vec{x}=\bar{\lambda}^{-1}|\vec{x}|^{2}$
+\end_inset
+
+.
+ 
+\begin_inset Formula $|\vec{x}|\neq0$
+\end_inset
+
+, so 
+\begin_inset Formula $\lambda=\bar{\lambda}^{-1}$
+\end_inset
+
+ and hence 
+\begin_inset Formula $\lambda\bar{\lambda}=|\lambda|^{2}=1$
+\end_inset
+
+, thus 
+\begin_inset Formula $|\lambda|=1$
+\end_inset
+
+ as desired.
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Suppose we have two eigensolutions 
+\begin_inset Formula $A\vec{x}_{1}=\lambda_{1}\vec{x}_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $A\vec{x}_{2}=\lambda_{2}\vec{x}_{2}$
+\end_inset
+
+ with distinct eigenvalues 
+\begin_inset Formula $\lambda_{1}\neq\lambda_{2}$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula $\vec{x}_{2}^{*}A\vec{x}_{1}=\lambda_{1}\vec{x}_{2}^{*}\vec{x}_{1}=(A^{*}\vec{x}_{2})^{*}\vec{x}_{1}=\bar{\lambda}_{2}^{-1}\vec{x}_{2}^{*}\vec{x}_{1},$
+\end_inset
+
+ similar to above.
+ Since 
+\begin_inset Formula $|\lambda_{2}|=1$
+\end_inset
+
+, we can use the hint to conclude 
+\begin_inset Formula $\bar{\lambda}_{2}^{-1}=\lambda_{2}$
+\end_inset
+
+,and hence 
+\begin_inset Formula $(\lambda_{1}-\lambda_{2})\vec{x}_{2}^{*}\vec{x}_{1}=0$
+\end_inset
+
+.
+ Since 
+\begin_inset Formula $\lambda_{1}-\lambda_{2}\neq0$
+\end_inset
+
+, this means 
+\begin_inset Formula $\vec{x}_{2}^{*}\vec{x}_{1}=0$
+\end_inset
+
+: the eigenvectors are orthogonal.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+First, a familiar property of such recurrences from 18.06: 
+\begin_inset Formula $\vec{x}^{(1)}=A\vec{b}$
+\end_inset
+
+, 
+\begin_inset Formula $\vec{x}^{(2)}=A\vec{x}^{(1)}=A^{2}\vec{b},$
+\end_inset
+
+
+\begin_inset Formula $\vec{x}^{(3)}=A^{3}\vec{b}$
+\end_inset
+
+, and so on, so that 
+\begin_inset Formula $\vec{x}^{(n)}=A^{n}\vec{b}$
+\end_inset
+
+.
+ (This could be proved more formally by induction.) Since we have an 
+\begin_inset Formula $8\times8$
+\end_inset
+
+ matrix with 
+\begin_inset Formula $8$
+\end_inset
+
+ eigenvectors, it is diagonalizable, so we can expand 
+\begin_inset Formula $\vec{b}$
+\end_inset
+
+ in the basis of eigenvectors: 
+\begin_inset Formula $\vec{b}=\sum_{i=1}^{8}c_{i}\vec{x}_{i}$
+\end_inset
+
+ for some coefficients 
+\begin_inset Formula $c_{i}$
+\end_inset
+
+.
+ Hence 
+\begin_inset Formula 
+\[
+\vec{x}^{(n)}=A^{n}\vec{b}=\sum_{i=1}^{8}c_{i}\lambda_{i}^{n}\vec{x}_{i},
+\]
+
+\end_inset
+
+since 
+\begin_inset Formula $A^{n}$
+\end_inset
+
+ multiplies each eigenvector by the corresponding eigenvalue to the 
+\begin_inset Formula $n$
+\end_inset
+
+-th power.
+ For large positive 
+\begin_inset Formula $n$
+\end_inset
+
+, this is dominated by the two eigenvectors with largest 
+\begin_inset Formula $|\lambda|$
+\end_inset
+
+: 
+\begin_inset Formula $\vec{x}_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $\vec{x}_{2}$
+\end_inset
+
+, so 
+\begin_inset Formula 
+\[
+\vec{x}^{(n)}\approx c_{1}2^{n}\vec{x}_{1}+c_{2}(-2)^{n}\vec{x}_{2}=2^{n}\left[c_{1}\vec{x}_{1}+(-1)^{n}c_{2}\vec{x}_{2}\right],
+\]
+
+\end_inset
+
+with all other terms being exponentially smaller.
+\end_layout
+
+\begin_layout Enumerate
+If 
+\begin_inset Formula $A$
+\end_inset
+
+ is (real) symmetric, then the eigenvectors are orthogonal (since all the
+ eigenvalues are distinct).
+ Hence we can solve for 
+\begin_inset Formula $c_{i}$
+\end_inset
+
+ just by taking the dot product: 
+\begin_inset Formula 
+\[
+\vec{x}_{i}^{*}\vec{b}=c_{i}\vec{x}_{i}^{*}\vec{x}_{i},
+\]
+
+\end_inset
+
+since all other terms in the sum are zero, and thus 
+\begin_inset Formula $c_{i}=\vec{x}_{i}^{*}\vec{b}/\vec{x}_{i}^{*}\vec{x}_{i}=\vec{x}_{i}^{*}\vec{b}/|\vec{x}_{i}|^{2}$
+\end_inset
+
+.
+ So, from above: 
+\begin_inset Formula 
+\[
+\vec{x}^{(n)}\approx2^{n}\left[\frac{\vec{x}_{1}\vec{x}_{1}^{*}\vec{b}}{|\vec{x}_{1}|^{2}}+(-1)^{n}\frac{\vec{x}_{2}\vec{x}_{2}^{*}\vec{b}}{|\vec{x}_{2}|^{2}}\right].
+\]
+
+\end_inset
+
+Note that while it is common to assume that eigenvectors are normalized
+ to length
+\begin_inset space ~
+\end_inset
+
+1, this is 
+\emph on
+not
+\emph default
+ automatic and you were 
+\emph on
+not
+\emph default
+ given such a normalization.
+\end_layout
+
+\end_deeper
+\begin_layout Subsection*
+Problem 2: ((5+5+10)+5+5)
+\end_layout
+
+\begin_layout Enumerate
+Suppose that we we change the boundary conditions to the 
+\emph on
+periodic
+\emph default
+ boundary condition 
+\begin_inset Formula $u(0)=u(L)$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+As in class, the eigenfunctions are sines, cosines, and exponentials, and
+ it only remains to apply the boundary conditions.
+ 
+\begin_inset Formula $\sin(kx)$
+\end_inset
+
+ is periodic if 
+\begin_inset Formula $k=\frac{2\pi n}{L}$
+\end_inset
+
+ for 
+\begin_inset Formula $n=1,2,\ldots$
+\end_inset
+
+ (excluding 
+\begin_inset Formula $n=0$
+\end_inset
+
+ because we do not allow zero eigenfunctions and excluding 
+\begin_inset Formula $n<0$
+\end_inset
+
+ because they are not linearly independent), and 
+\begin_inset Formula $\cos(kx)$
+\end_inset
+
+ is periodic if 
+\begin_inset Formula $n=0,1,2,\ldots$
+\end_inset
+
+ (excluding 
+\begin_inset Formula $n<0$
+\end_inset
+
+ since they are the same functions).
+ The eigenvalues are 
+\begin_inset Formula $-k^{2}=-(2\pi n/L)^{2}$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $e^{kx}$
+\end_inset
+
+ is periodic only for imaginary 
+\begin_inset Formula $k=i\frac{2\pi n}{L}$
+\end_inset
+
+, but in this case we obtain 
+\begin_inset Formula $e^{i\frac{2\pi n}{L}x}=\cos(2\pi nx/L)+i\sin(2\pi nx/L)$
+\end_inset
+
+, which is 
+\emph on
+not linearly independent
+\emph default
+ of the 
+\begin_inset Formula $\sin$
+\end_inset
+
+ and 
+\begin_inset Formula $\cos$
+\end_inset
+
+ eigenfunctions above.
+ Recall from 18.06 that the eigenvectors for a given eigenvalue form a vector
+ space (the null space of 
+\begin_inset Formula $A-\lambda I$
+\end_inset
+
+), and when asked for eigenvectors we only want a 
+\emph on
+basis
+\emph default
+ of this vector space.
+ Alternatively, it is acceptable to start with exponentials and call our
+ eigenfunctions 
+\begin_inset Formula $e^{i\frac{2\pi n}{L}x}$
+\end_inset
+
+ for all integers 
+\begin_inset Formula $n$
+\end_inset
+
+, in which case we wouldn't give 
+\begin_inset Formula $\sin$
+\end_inset
+
+ and 
+\begin_inset Formula $\cos$
+\end_inset
+
+ eigenfunctions separately.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Similarly, 
+\begin_inset Formula $\sin(\phi+2\pi nx/L)$
+\end_inset
+
+ is periodic for any 
+\begin_inset Formula $\phi$
+\end_inset
+
+, but this is not linearly independent since 
+\begin_inset Formula $\sin(\phi+2\pi nx/L)=\sin\phi\cos(2\pi nx/L)+\cos\phi\sin(2\pi nx/L)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+No, any solution will not be unique, because we now have a nonzero nullspace
+ spanned by the constant function 
+\begin_inset Formula $u(x)=1$
+\end_inset
+
+ (which is periodic): 
+\begin_inset Formula $\frac{d^{2}}{dx^{2}}1=0$
+\end_inset
+
+.
+ Equivalently, we have a 0 eigenvalue corresponding to 
+\begin_inset Formula $\cos(2\pi nx/L)$
+\end_inset
+
+ for 
+\begin_inset Formula $n=0$
+\end_inset
+
+ above.
+\end_layout
+
+\begin_layout Enumerate
+As suggested, let us restrict ourselves to 
+\begin_inset Formula $f(x)$
+\end_inset
+
+ with a convergent Fourier series.
+ That is, as in class, we are expanding 
+\begin_inset Formula $f(x)$
+\end_inset
+
+ in terms of the eigenfunctions: 
+\begin_inset Formula 
+\[
+f(x)=\sum_{n=-\infty}^{\infty}c_{n}e^{i\frac{2\pi n}{L}x}.
+\]
+
+\end_inset
+
+(You could also write out the Fourier series in terms of sines and cosines,
+ but the complex-exponential form is more compact so I will use it here.)
+ Here, the coefficients 
+\begin_inset Formula $c_{n}$
+\end_inset
+
+, by the usual orthogonality properties of the Fourier series, are 
+\begin_inset Formula $c_{n}=\frac{1}{L}\int_{0}^{L}e^{-\frac{2\pi n}{L}x}f(x)dx$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+In order to solve 
+\begin_inset Formula $\frac{d^{2}u}{dx^{2}}=f$
+\end_inset
+
+, as in class we would divide each term by its eigenvalue 
+\begin_inset Formula $-(2\pi n/L)^{2}$
+\end_inset
+
+, but we can only do this for 
+\begin_inset Formula $n\neq0$
+\end_inset
+
+.
+ Hence, we can only solve the equation if the 
+\begin_inset Formula $n=0$
+\end_inset
+
+ term is absent, i.e.
+ 
+\begin_inset Formula $c_{0}=0.$
+\end_inset
+
+ Appling the explicit formula for 
+\begin_inset Formula $c_{0}$
+\end_inset
+
+, the equation is solvable (for 
+\begin_inset Formula $f$
+\end_inset
+
+ with a Fourier series) if and only if: 
+\begin_inset Formula 
+\[
+\boxed{\int_{0}^{L}f(x)dx=0}.
+\]
+
+\end_inset
+
+There are other ways to come to the same conclusion.
+ For example, we could expand 
+\begin_inset Formula $u(x)$
+\end_inset
+
+ in a Fourier series (i.e.
+ in the eigenfunction basis), apply 
+\begin_inset Formula $d^{2}/dx^{2}$
+\end_inset
+
+, and ask 
+\emph on
+what is the column space
+\emph default
+ of 
+\begin_inset Formula $d^{2}/dx^{2}?$
+\end_inset
+
+ Again, we would find that upon taking the second derivative the 
+\begin_inset Formula $n=0$
+\end_inset
+
+ (constant) term vanishes, and so the column space consist of Fourier series
+ missing a constant term.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+The same reasoning works if you write out the Fourier series in terms of
+ 
+\begin_inset Formula $\sin$
+\end_inset
+
+ and 
+\begin_inset Formula $\cos$
+\end_inset
+
+ sums separately, in which case you find that 
+\begin_inset Formula $f$
+\end_inset
+
+ must be missing the 
+\begin_inset Formula $n=0$
+\end_inset
+
+ cosine term, giving the same result.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+No.
+ For example, the function 
+\begin_inset Formula $0$
+\end_inset
+
+ (which must be in any vector space)does not satisy those boundary conditions.
+ (Also adding functions doesn't work, scaling them by constants, etcetera.)
+\end_layout
+
+\begin_layout Enumerate
+We merely pick any twice-differentiable function 
+\begin_inset Formula $q(x)$
+\end_inset
+
+ with 
+\begin_inset Formula $q(L)-q(0)=-1$
+\end_inset
+
+, in which case 
+\begin_inset Formula $u(L)-u(0)=[v(L)-v(0)]+[q(L)-q(0)]=1-1=0$
+\end_inset
+
+ and 
+\begin_inset Formula $u$
+\end_inset
+
+ is periodic.
+ Then, plugging 
+\begin_inset Formula $v=u-q$
+\end_inset
+
+ into 
+\begin_inset Formula $\frac{d^{2}}{dx^{2}}v(x)=f(x)$
+\end_inset
+
+, we obtain 
+\begin_inset Formula 
+\[
+\frac{d^{2}}{dx^{2}}u(x)=f(x)+\frac{d^{2}q}{dx^{2}},
+\]
+
+\end_inset
+
+which is the (periodic-
+\begin_inset Formula $u$
+\end_inset
+
+) Poisson equation for 
+\begin_inset Formula $u$
+\end_inset
+
+ with a (possibly) modified right-hand side.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+For example, the simplest such 
+\begin_inset Formula $q$
+\end_inset
+
+ is probably 
+\begin_inset Formula $q(x)=x/L$
+\end_inset
+
+, in which case 
+\begin_inset Formula $d^{2}q/dx^{2}=0$
+\end_inset
+
+ and 
+\begin_inset Formula $u$
+\end_inset
+
+ solves the Poisson equation with an 
+\emph on
+unmodified
+\emph default
+ right-hand side.
+\end_layout
+
+\end_body
+\end_document

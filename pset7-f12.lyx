@@ -1,0 +1,262 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+
+\renewcommand{\vec}[1]{\mathbf{#1}}
+
+\renewcommand{\labelenumi}{(\alph{enumi})}
+\renewcommand{\labelenumii}{(\roman{enumii})}
+\newcommand{\rank}{\operatorname{rank}}
+\end_preamble
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_amsmath 2
+\use_esint 0
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 0.7in
+\topmargin 0.7in
+\rightmargin 0.7in
+\bottommargin 0.7in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section*
+18.303 Problem Set 7
+\end_layout
+
+\begin_layout Standard
+Due Wednesday, 21 November 2012.
+\end_layout
+
+\begin_layout Subsection*
+Problem 1: Crank-Nicolson
+\end_layout
+
+\begin_layout Standard
+Suppose we are discretizing a wave equation 
+\begin_inset Formula $\frac{\partial\vec{w}}{\partial t}=\hat{D}\vec{w}$
+\end_inset
+
+ for an anti-Hermitian 
+\begin_inset Formula $\hat{D}$
+\end_inset
+
+.
+ We discretize space to obtain an anti-Hermitian matrix 
+\begin_inset Formula $D$
+\end_inset
+
+.
+ Show that the Crank-Nicolson time discretization 
+\begin_inset Formula 
+\[
+\frac{\vec{w}^{n+1}-\vec{w}^{n}}{\Delta t}=D\frac{\vec{w}^{n+1}+\vec{w}^{n}}{2}
+\]
+
+\end_inset
+
+ is unconditionally stable.
+\end_layout
+
+\begin_layout Subsection*
+Problem 1: Schrödinger 
+\end_layout
+
+\begin_layout Standard
+Suppose that you are discretizing the 1d Schrödinger wave equation (nondimension
+alized and with a real potential 
+\begin_inset Formula $V(x)$
+\end_inset
+
+): 
+\begin_inset Formula 
+\[
+\frac{\partial u}{\partial t}=i\left[\frac{\partial^{2}u}{\partial x^{2}}+V(x)u\right].
+\]
+
+\end_inset
+
+Suppose that we discretize in space at intervals 
+\begin_inset Formula $\Delta x$
+\end_inset
+
+ and in time with some timestep 
+\begin_inset Formula $\Delta t$
+\end_inset
+
+, denoting 
+\begin_inset Formula $u(m\Delta x,n\Delta t)\approx u_{m}^{n}$
+\end_inset
+
+ as in class.
+ We will discretized 
+\begin_inset Formula $\partial^{2}/\partial x^{2}$
+\end_inset
+
+ with the usual center-difference approximation 
+\begin_inset Formula $\frac{u_{m+1}-2u_{m}+u_{m-1}}{\Delta x^{2}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Describe a second-order accurate (in space and time) explicit timestepping
+ scheme, constructed by using center differences in both space 
+\emph on
+and
+\emph default
+ time.
+ [Hint: write 
+\begin_inset Formula $u=a+bi$
+\end_inset
+
+ in terms of its real part 
+\begin_inset Formula $a(x,t)$
+\end_inset
+
+ and its imaginary part 
+\begin_inset Formula $b(x,t)$
+\end_inset
+
+, and discretize 
+\begin_inset Formula $a$
+\end_inset
+
+ and 
+\begin_inset Formula $b$
+\end_inset
+
+ at different times (offset by 
+\begin_inset Formula $\Delta t/2$
+\end_inset
+
+); you should be able to write two coupled 
+\emph on
+real
+\emph default
+ PDEs for 
+\begin_inset Formula $a$
+\end_inset
+
+ and 
+\begin_inset Formula $b$
+\end_inset
+
+.]
+\end_layout
+
+\begin_layout Enumerate
+Anayze the stability of your scheme using Von Neumann analysis, assuming
+ 
+\begin_inset Formula $V(x)=0$
+\end_inset
+
+.
+ (Hint: similar to how we analyzed the wave equation in class, take an additiona
+l time derivative, or the discrete analogue thereof, to obtain an equation
+ just in 
+\begin_inset Formula $a$
+\end_inset
+
+ or just in 
+\begin_inset Formula $b$
+\end_inset
+
+, and then plug in e.g.
+ 
+\begin_inset Formula $a_{m}^{n}=e^{i(k\Delta x\cdot m-\omega\Delta t\cdot n)}$
+\end_inset
+
+ and solve for 
+\begin_inset Formula $\Delta t$
+\end_inset
+
+, if any, such that 
+\begin_inset Formula $\omega$
+\end_inset
+
+ is real for all 
+\begin_inset Formula $k$
+\end_inset
+
+.)
+\end_layout
+
+\begin_layout Enumerate
+Plot the dispersion relation 
+\begin_inset Formula $\omega(k)$
+\end_inset
+
+ from the previous part for 
+\begin_inset Formula $V_{0}=0$
+\end_inset
+
+, using some 
+\begin_inset Formula $\Delta t$
+\end_inset
+
+ such that the scheme is stable, and compare to the 
+\begin_inset Formula $\omega(k)=k^{2}$
+\end_inset
+
+ from the exact wave equation.
+ What does this tell you about how, qualitatively, the wave solutions should
+ differ in the discrete vs.
+ exact case, from what we know about group velocity and dispersion?
+\end_layout
+
+\end_body
+\end_document

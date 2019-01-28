@@ -1,0 +1,395 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+
+\renewcommand{\vec}[1]{\mathbf{#1}}
+
+\renewcommand{\labelenumi}{(\alph{enumi})}
+\renewcommand{\labelenumii}{(\roman{enumii})}
+\end_preamble
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_amsmath 1
+\use_esint 0
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\topmargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section*
+18.303 Problem Set 1
+\end_layout
+
+\begin_layout Standard
+Due Wednesday, 12 September 2012.
+\end_layout
+
+\begin_layout Subsection*
+Problem 1: 18.06 warmup
+\end_layout
+
+\begin_layout Standard
+Here are a few questions that you should be able to answer based only on
+ 18.06:
+\end_layout
+
+\begin_layout Enumerate
+Suppose that 
+\begin_inset Formula $A$
+\end_inset
+
+ is a real square matrix, and consider the linear system of ODEs 
+\begin_inset Formula $\frac{d\vec{x}}{dt}=A\vec{x}.$
+\end_inset
+
+ Suppose that we have a 
+\emph on
+conserved quantity
+\emph default
+: there exists some constant vector 
+\begin_inset Formula $\vec{v}$
+\end_inset
+
+ such that 
+\begin_inset Formula $\frac{d}{dt}(\vec{v}^{T}\vec{x})=0$
+\end_inset
+
+ for 
+\emph on
+all 
+\emph default
+solutions 
+\begin_inset Formula $\vec{x}(t)$
+\end_inset
+
+ of the ODE (that is, for any initial condition 
+\begin_inset Formula $\vec{x}(0)$
+\end_inset
+
+ and for all 
+\begin_inset Formula $t$
+\end_inset
+
+).
+ Explain how 
+\begin_inset Formula $\vec{v}$
+\end_inset
+
+ is related to one or more of the four fundamental subspaces of 
+\begin_inset Formula $A$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+In 18.06, you were shown a simple (2--3 line) proof that the eigenvalues
+ 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ of 
+\begin_inset Formula $A$
+\end_inset
+
+ (solutions of 
+\begin_inset Formula $A\vec{x}=\lambda\vec{x}$
+\end_inset
+
+) must be real numbers if 
+\begin_inset Formula $A$
+\end_inset
+
+ is real-symmetric (if you've forgot it, look it up), and eigenvectors of
+ distinct 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ must be orthogonal.
+ Adapt a similar proof to show that eigenvectors of distinct 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ are orthogonal and 
+\begin_inset Formula $|\lambda|=1$
+\end_inset
+
+ (not necessarily real!) if 
+\begin_inset Formula $A$
+\end_inset
+
+ is 
+\emph on
+unitary
+\emph default
+: 
+\begin_inset Formula $A^{*}=A^{-1}$
+\end_inset
+
+.
+ (Notation: 
+\begin_inset Formula $A^{*}=\overline{A^{T}}$
+\end_inset
+
+, the complex conjugate of the transpose.
+ The special case of a real unitary matrix is called an 
+\emph on
+orthogonal
+\emph default
+ matrix.) (Note: 
+\begin_inset Formula $|\lambda|=1=\bar{\lambda}\lambda\Longleftrightarrow1/\lambda=\bar{\lambda}$
+\end_inset
+
+.)
+\end_layout
+
+\begin_layout Enumerate
+Suppose that 
+\begin_inset Formula $A$
+\end_inset
+
+ is a real 
+\begin_inset Formula $8\times8$
+\end_inset
+
+ matrix with eigenvalues 
+\begin_inset Formula $2,-2,1,-1,0.5,-0.5,0.25,-0.25$
+\end_inset
+
+ and corresponding eigenvectors 
+\begin_inset Formula $\vec{x}_{1},\vec{x}_{2},\ldots,\vec{x}_{8}$
+\end_inset
+
+, respectively.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+If 
+\begin_inset Formula $\vec{x}^{(n)}$
+\end_inset
+
+ solves the recurrence relation 
+\begin_inset Formula $\vec{x}^{(n+1)}=A\vec{x}^{(n)}$
+\end_inset
+
+ with initial condition 
+\begin_inset Formula $\vec{x}^{(0)}=\vec{b}$
+\end_inset
+
+ for some random vector 
+\begin_inset Formula $\vec{b}$
+\end_inset
+
+, what is likely to be true about 
+\begin_inset Formula $\vec{x}^{(n)}$
+\end_inset
+
+ for large positive 
+\begin_inset Formula $n$
+\end_inset
+
+?
+\end_layout
+
+\begin_layout Enumerate
+If 
+\begin_inset Formula $A$
+\end_inset
+
+ is symmetric, give an explicit formula for 
+\begin_inset Formula $\vec{x}^{(n)}$
+\end_inset
+
+ in terms of 
+\begin_inset Formula $\vec{b}$
+\end_inset
+
+ and 
+\begin_inset Formula $\vec{x}_{1},\vec{x}_{2},\ldots,\vec{x}_{8}$
+\end_inset
+
+ (with no unknown coefficients or unsolved linear systems).
+ (Hint: orthogonal basis.)
+\end_layout
+
+\end_deeper
+\begin_layout Subsection*
+Problem 2: Life on a torus
+\end_layout
+
+\begin_layout Standard
+In class, we considered the 1d Poisson equation 
+\begin_inset Formula $\frac{d^{2}}{dx^{2}}u(x)=f(x)$
+\end_inset
+
+ for the vector space of functions 
+\begin_inset Formula $u(x)$
+\end_inset
+
+ on 
+\begin_inset Formula $x\in[0,L]$
+\end_inset
+
+ with the 
+\begin_inset Quotes eld
+\end_inset
+
+Dirichlet
+\begin_inset Quotes erd
+\end_inset
+
+ boundary conditions 
+\begin_inset Formula $u(0)=u(L)=0$
+\end_inset
+
+, and solved it in terms of the eigenfunctions of 
+\begin_inset Formula $\frac{d^{2}}{dx^{2}}$
+\end_inset
+
+ (giving a Fourier sine series).
+ Here, we will consider a couple of small variations on this:
+\end_layout
+
+\begin_layout Enumerate
+Suppose that we we change the boundary conditions to the 
+\emph on
+periodic
+\emph default
+ boundary condition 
+\begin_inset Formula $u(0)=u(L)$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+What are the eigenfunctions of 
+\begin_inset Formula $\frac{d^{2}}{dx^{2}}$
+\end_inset
+
+ now?
+\end_layout
+
+\begin_layout Enumerate
+Will Poisson's equation have unique solutions? Why or why not?
+\end_layout
+
+\begin_layout Enumerate
+Under what conditions (if any) on 
+\begin_inset Formula $f(x)$
+\end_inset
+
+ would a solution exist? (You can restrict yourself to 
+\begin_inset Formula $f$
+\end_inset
+
+ with a convergent Fourier series.)
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+If we instead consider 
+\begin_inset Formula $\frac{d^{2}}{dx^{2}}v(x)=g(x)$
+\end_inset
+
+ for functions 
+\begin_inset Formula $v(x)$
+\end_inset
+
+ with the boundary conditions 
+\begin_inset Formula $v(0)=v(L)+1$
+\end_inset
+
+, do these functions form a vector space? Why or why not?
+\end_layout
+
+\begin_layout Enumerate
+Explain how we can transform the 
+\begin_inset Formula $v(x)$
+\end_inset
+
+ problem of the previous part back into the original 
+\begin_inset Formula $\frac{d^{2}}{dx^{2}}u(x)=f(x)$
+\end_inset
+
+ problem with 
+\begin_inset Formula $u(0)=u(L)$
+\end_inset
+
+, by writing 
+\begin_inset Formula $u(x)=v(x)+q(x)$
+\end_inset
+
+ and 
+\begin_inset Formula $f(x)=g(x)+r(x)$
+\end_inset
+
+ for some functions 
+\begin_inset Formula $q$
+\end_inset
+
+ and 
+\begin_inset Formula $r$
+\end_inset
+
+.
+ (Transforming a new problem into an old, solved one is always a useful
+ thing to do!)
+\end_layout
+
+\end_body
+\end_document
