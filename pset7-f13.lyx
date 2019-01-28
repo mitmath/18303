@@ -1,0 +1,459 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+
+\renewcommand{\vec}[1]{\mathbf{#1}}
+
+\renewcommand{\labelenumi}{(\alph{enumi})}
+\renewcommand{\labelenumii}{(\roman{enumii})}
+\newcommand{\rank}{\operatorname{rank}}
+\end_preamble
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_amsmath 2
+\use_esint 0
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 0.7in
+\topmargin 0.7in
+\rightmargin 0.7in
+\bottommargin 0.7in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section*
+18.303 Problem Set 7
+\end_layout
+
+\begin_layout Standard
+Due Wednesday, 30 October 2013.
+\end_layout
+
+\begin_layout Subsection*
+Problem 1: Born again
+\end_layout
+
+\begin_layout Standard
+In the class notes on 
+\begin_inset Quotes eld
+\end_inset
+
+Green's functions in inhomogeneous media,
+\begin_inset Quotes erd
+\end_inset
+
+ section 3, we applied the Born approximation to a small 
+\begin_inset Quotes eld
+\end_inset
+
+object
+\begin_inset Quotes erd
+\end_inset
+
+ far from both the source (
+\begin_inset Formula $\vec{x}_{0}$
+\end_inset
+
+) and the observer (
+\begin_inset Formula $\vec{x}$
+\end_inset
+
+).
+ A key step in the derivation was to approximate the integrand 
+\begin_inset Formula 
+\[
+g(\vec{x}')=\nabla'G_{0}(\vec{x},\vec{x}')\cdot\nabla'u_{0}(\vec{x}')
+\]
+
+\end_inset
+
+of 
+\begin_inset Formula $\hat{B}u_{0}$
+\end_inset
+
+ as a constant in 
+\begin_inset Formula $V$
+\end_inset
+
+ and to pull it out of the integral.
+ In this problem, you will carry out that process more carefully, as a Taylor
+ expansion of 
+\begin_inset Formula $g(\vec{x}')$
+\end_inset
+
+ around 
+\begin_inset Formula $\vec{x}_{1}$
+\end_inset
+
+: 
+\begin_inset Formula 
+\[
+g(\vec{x}')\approx g(\vec{x}_{1})+\left.\nabla'g\right|_{\vec{x}_{1}}\cdot(\vec{x}'-\vec{x}_{1})+(\vec{x}'-\vec{x}_{1})\cdot H\cdot(\vec{x}'-\vec{x}_{1})+\ldots
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $H$
+\end_inset
+
+ is the 
+\begin_inset Formula $3\times3$
+\end_inset
+
+ second-derivative (
+\begin_inset Quotes eld
+\end_inset
+
+Hessian
+\begin_inset Quotes erd
+\end_inset
+
+) matrix with entries 
+\begin_inset Formula $H_{ij}=\frac{\partial^{2}g}{\partial x'_{i}\partial x'_{j}}$
+\end_inset
+
+.
+ What we did in class was to simply keep only the 
+\emph on
+first
+\emph default
+ term in this expansion.
+\end_layout
+
+\begin_layout Enumerate
+Show that the 
+\emph on
+second
+\emph default
+ term in the Taylor expansion, 
+\begin_inset Formula $\left.\nabla'g\right|_{\vec{x}_{1}}\cdot(\vec{x}'-\vec{x}_{1})$
+\end_inset
+
+ , contributes 
+\emph on
+zero
+\emph default
+ to 
+\begin_inset Formula $\hat{B}u_{0}$
+\end_inset
+
+ if the point 
+\begin_inset Formula $\vec{x}_{1}$
+\end_inset
+
+ is chosen correctly.
+ Give a formula for the correct 
+\begin_inset Formula $\vec{x}_{1}$
+\end_inset
+
+.
+ (Do you recognize this formula?)
+\end_layout
+
+\begin_layout Enumerate
+Work out the 
+\emph on
+third
+\emph default
+ term (the 
+\begin_inset Formula $H$
+\end_inset
+
+ term) in the Taylor expansion.
+ This is called the 
+\begin_inset Quotes eld
+\end_inset
+
+quadrupole
+\begin_inset Quotes erd
+\end_inset
+
+ term.
+ How fast does this term's contribution to 
+\begin_inset Formula $u(\vec{x})$
+\end_inset
+
+ decay with 
+\begin_inset Formula $|\vec{x}-\vec{x}_{1}|$
+\end_inset
+
+ and 
+\begin_inset Formula $|\vec{x}_{0}-\vec{x}_{1}|$
+\end_inset
+
+? (In comparison, the 
+\begin_inset Quotes eld
+\end_inset
+
+dipole
+\begin_inset Quotes erd
+\end_inset
+
+ term we examined in class decayed as 
+\begin_inset Formula $\sim1/|\vec{x}-\vec{x}_{1}|^{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $\sim1/|\vec{x}_{0}-\vec{x}_{1}|^{2}$
+\end_inset
+
+.)
+\end_layout
+
+\begin_layout Subsection*
+Problem 2: Crank-Nicolson vs.
+ Leapfrog
+\end_layout
+
+\begin_layout Standard
+In class, we considered negative-definite discretizations 
+\begin_inset Formula $A=A^{*}<0$
+\end_inset
+
+ of 
+\begin_inset Formula $\frac{\partial u}{\partial t}=\hat{A}u$
+\end_inset
+
+ and showed that the Crank-Nicolson discretization 
+\begin_inset Formula 
+\[
+\frac{\vec{u}^{n+1}-\vec{u}^{n}}{\Delta t}=A\frac{\vec{u}^{n+1}+\vec{u}^{n}}{2}
+\]
+
+\end_inset
+
+is unconditionally stable, where the right-hand side was a way of approximating
+ 
+\begin_inset Formula $\vec{u}^{n+0.5}$
+\end_inset
+
+.
+ Here, we will instead consider using 
+\begin_inset Formula $\vec{u}^{n+0.5}$
+\end_inset
+
+ directly.
+ That is, we will imagine computing 
+\begin_inset Formula $\vec{u}$
+\end_inset
+
+ at timesteps 
+\begin_inset Formula $\vec{u}^{0},\vec{u}^{0.5},\vec{u}^{1},\vec{u}^{1.5},\ldots$
+\end_inset
+
+ where we update 
+\begin_inset Formula $\vec{u}$
+\end_inset
+
+ by the center-difference equations:
+\begin_inset Formula 
+\[
+\frac{\vec{u}^{n+1}-\vec{u}^{n}}{\Delta t}=A\vec{u}^{n+0.5},
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\frac{\vec{u}^{n+0.5}-\vec{u}^{n-0.5}}{\Delta t}=A\vec{u}^{n}.
+\]
+
+\end_inset
+
+This is called 
+\begin_inset Quotes eld
+\end_inset
+
+leapfrog
+\begin_inset Quotes erd
+\end_inset
+
+ scheme, for reasons that should become apparent (if you know the children's
+ game of leapfrog).
+\end_layout
+
+\begin_layout Enumerate
+Suppose we are given the initial condition 
+\begin_inset Formula $\vec{u}^{0}$
+\end_inset
+
+.
+ Outline an algorithm to update 
+\begin_inset Formula $\vec{u}$
+\end_inset
+
+ successively in order to compute 
+\begin_inset Formula $\vec{u}^{n}$
+\end_inset
+
+ and 
+\begin_inset Formula $\vec{u}^{n+0.5}$
+\end_inset
+
+ for as many 
+\begin_inset Formula $n>0$
+\end_inset
+
+ as desired, using the leapfrog scheme above.
+ (You may need to construct a different way to compute 
+\begin_inset Formula $\vec{u}^{0.5}$
+\end_inset
+
+.
+ Preserve second-order accuracy in time!)
+\end_layout
+
+\begin_layout Enumerate
+Consider 
+\begin_inset Formula $\frac{\vec{u}^{n+1}-\vec{u}^{n}}{\Delta t}-\frac{\vec{u}^{n}-\vec{u}^{n-1}}{\Delta t}$
+\end_inset
+
+ and show that you can get an equation in 
+\begin_inset Formula $\vec{u}^{n}$
+\end_inset
+
+ alone (no half-integer timesteps).
+ Relate this to the original PDE via 
+\begin_inset Formula $\frac{\partial^{2}u}{\partial t^{2}}=\cdots$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Suppose 
+\begin_inset Formula $\hat{A}=\frac{\partial^{2}}{\partial x^{2}}$
+\end_inset
+
+ and 
+\begin_inset Formula $A$
+\end_inset
+
+ is the usual center-difference approximation 
+\begin_inset Formula $u''_{m}=\frac{u_{m+1}-2u_{m}+u_{m-1}}{\Delta x^{2}}$
+\end_inset
+
+.
+ Perform a Von Neumann stability analysis by pluggin in 
+\begin_inset Formula $u_{m}^{n}=e^{ikm}G^{n}$
+\end_inset
+
+ and 
+\begin_inset Formula $u_{m}^{n+0.5}=e^{ikm}G^{n+0.5}a$
+\end_inset
+
+ for an unknown growth rate 
+\begin_inset Formula $G$
+\end_inset
+
+, an unknown relative amplitude 
+\begin_inset Formula $a$
+\end_inset
+
+ of 
+\begin_inset Formula $u_{m}^{n}$
+\end_inset
+
+ and 
+\begin_inset Formula $u_{m}^{n+0.5}$
+\end_inset
+
+, and arbitrary real 
+\begin_inset Formula $k$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Show that 
+\begin_inset Formula $a=\pm1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+If we can restrict ourselves to solutions with 
+\begin_inset Formula $a=+1$
+\end_inset
+
+ (i.e.
+ integer and half-integer timesteps have the same sign), find conditions
+ on 
+\begin_inset Formula $\Delta t$
+\end_inset
+
+ and 
+\begin_inset Formula $\Delta x$
+\end_inset
+
+ (if any) such that 
+\begin_inset Formula $|G|<1$
+\end_inset
+
+ for all real 
+\begin_inset Formula $k$
+\end_inset
+
+ (stability, since the original PDE is a diffusion equation with decaying
+ solutions).
+\end_layout
+
+\end_deeper
+\end_body
+\end_document

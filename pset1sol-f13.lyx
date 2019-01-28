@@ -1,0 +1,1058 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+
+\renewcommand{\vec}[1]{\mathbf{#1}}
+
+\renewcommand{\labelenumi}{(\alph{enumi})}
+\renewcommand{\labelenumii}{(\roman{enumii})}
+
+\usepackage{cancel}
+\end_preamble
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_amsmath 1
+\use_esint 0
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\topmargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section*
+18.303 Problem Set 1 Solutions
+\end_layout
+
+\begin_layout Subsection*
+Problem 1: (5+10+(5+5) points)
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $A=A^{T}$
+\end_inset
+
+ and 
+\begin_inset Formula $A^{-1}$
+\end_inset
+
+ (the 
+\emph on
+unique 
+\emph default
+matrix such that 
+\begin_inset Formula $A^{-1}A=AA^{-1}=I$
+\end_inset
+
+)
+\emph on
+ 
+\emph default
+exists.
+ Then 
+\begin_inset Formula $I=I^{T}=(AA^{-1})^{T}=(A^{-1})^{T}A^{T}=(A^{-1})^{T}A$
+\end_inset
+
+ and, since 
+\begin_inset Formula $(A^{-1})^{T}A=I$
+\end_inset
+
+, we have 
+\begin_inset Formula $(A^{-1})^{T}=A^{-1}$
+\end_inset
+
+.
+ Q.E.D.
+\end_layout
+
+\begin_layout Enumerate
+In order to show that the eigenvalues are real, we must first allow the
+ eigenvectors and eigenvalues to be complex and then 
+\emph on
+prove
+\emph default
+ that they are real.
+ For complex vectors, the inner product must be generalized to 
+\begin_inset Formula $\langle\vec{x},\vec{y}\rangle_{B}=\vec{x}^{*}B\vec{y}$
+\end_inset
+
+.
+ Then, given a (possibly complex) eigenvector 
+\begin_inset Formula $\vec{x}$
+\end_inset
+
+ (
+\begin_inset Formula $\neq0$
+\end_inset
+
+) satisfying 
+\begin_inset Formula $B^{-1}A\vec{x}=\lambda\vec{x}$
+\end_inset
+
+, we can take the 
+\begin_inset Formula $\langle\vec{x},\cdots\rangle_{B}$
+\end_inset
+
+ inner product with both sides (i.e.
+ multiply both sides by 
+\begin_inset Formula $\vec{x}^{*}B$
+\end_inset
+
+) to get 
+\begin_inset Formula 
+\begin{eqnarray*}
+\vec{x}^{*}BB^{-1}A\vec{x} & = & \lambda\vec{x}^{*}Bx\\
+\vec{x}^{*}A\vec{x}=(A\vec{x})^{*}\vec{x} & = & \qquad\mbox{(since \ensuremath{A} is real-symmetric)}\\
+(BB^{-1}A\vec{x})^{*}\vec{x}=(\lambda B\vec{x})^{*}\vec{x} & =\\
+\bar{\lambda}\vec{x}^{*}B\vec{x} & = & \qquad\mbox{(since \ensuremath{B} is real-symmetric)}.
+\end{eqnarray*}
+
+\end_inset
+
+Then, since 
+\begin_inset Formula $B$
+\end_inset
+
+ is positive-definite and 
+\begin_inset Formula $\vec{x}\neq0$
+\end_inset
+
+, we know that 
+\begin_inset Formula $\vec{x}^{*}B\vec{x}>0$
+\end_inset
+
+ and we can cancel it from both sides to show that 
+\begin_inset Formula $\lambda=\bar{\lambda}$
+\end_inset
+
+, hence 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ is real.
+ (We can then trivially show that 
+\begin_inset Formula $\vec{x}$
+\end_inset
+
+ can be chosen real, though I didn't ask you to do this: given a complex
+ 
+\begin_inset Formula $\vec{x}$
+\end_inset
+
+, simply take the real or imaginary parts of both sides of 
+\begin_inset Formula $B^{-1}A\vec{x}=\lambda\vec{x}$
+\end_inset
+
+ to show that both the real and imaginary parts of 
+\begin_inset Formula $\vec{x}$
+\end_inset
+
+ are also eigenvectors.)
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+To show that they are orthogonal, we consider two eigenvectors satisfying
+ 
+\begin_inset Formula $B^{-1}A\vec{x}_{1,2}=\lambda_{1,2}\vec{x}_{1,2}$
+\end_inset
+
+ for distinct eigenvalues 
+\begin_inset Formula $\lambda_{1}\neq\lambda_{2}$
+\end_inset
+
+, and take the inner product of the 
+\begin_inset Formula $\vec{x}_{2}$
+\end_inset
+
+ equation with 
+\begin_inset Formula $\vec{x}_{1}$
+\end_inset
+
+: 
+\begin_inset Formula 
+\begin{eqnarray*}
+\vec{x}_{1}^{*}\cancel{BB^{-1}}A\vec{x}_{2} & = & \lambda_{2}\vec{x}_{1}^{*}B\vec{x}_{2}\\
+(BB^{-1}A\vec{x}_{1})^{*}\vec{x}_{2} & =\\
+\lambda_{1}\vec{x}_{1}^{*}B\vec{x}_{2} & =
+\end{eqnarray*}
+
+\end_inset
+
+ similar to above.
+ Hence 
+\begin_inset Formula $(\lambda_{1}-\lambda_{2})\vec{x}_{1}^{*}B\vec{x}_{2}=0$
+\end_inset
+
+, and since 
+\begin_inset Formula $\lambda_{1}-\lambda_{2}\neq0$
+\end_inset
+
+ we have 
+\begin_inset Formula $\vec{x}_{1}^{*}B\vec{x}_{2}=\langle\vec{x}_{1},\vec{x}_{2}\rangle_{B}=0$
+\end_inset
+
+.
+ Q.E.D.
+ 
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $A$
+\end_inset
+
+ is a real-symmetric 
+\begin_inset Formula $4\times4$
+\end_inset
+
+ matrix with eigenvalues 
+\begin_inset Formula $-1,-4,-9,-25$
+\end_inset
+
+ and corresponding eigenvectors 
+\begin_inset Formula $\vec{x}_{1},\vec{x}_{2},\ldots,\vec{x}_{4}$
+\end_inset
+
+, respectively.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+We solved a problem very similar to 
+\begin_inset Formula $\frac{d^{2}}{dt^{2}}\vec{x}=A\vec{x}$
+\end_inset
+
+ in class for the 
+\emph on
+infinite
+\emph default
+-dimensional case (sine series).
+ Since 
+\begin_inset Formula $A$
+\end_inset
+
+ is necessarily diagonalizable and we can expand 
+\begin_inset Formula $\vec{x}(t)$
+\end_inset
+
+ in this basis at every 
+\begin_inset Formula $t$
+\end_inset
+
+: 
+\begin_inset Formula $\vec{x}(t)=\sum_{k}c_{k}(t)\vec{x}_{k}$
+\end_inset
+
+.
+ Plugging this into 
+\begin_inset Formula $\frac{d^{2}}{dt^{2}}\vec{x}=A\vec{x}$
+\end_inset
+
+, we get 
+\begin_inset Formula $\sum_{k}\ddot{c}_{k}\vec{x}_{k}=\sum_{k}\lambda_{k}c_{k}\vec{x}_{k}$
+\end_inset
+
+.
+ Since 
+\begin_inset Formula $A$
+\end_inset
+
+ is real-symmetric, the eigenvectors are orthogonal, so we can take the
+ dot product of both sides with 
+\begin_inset Formula $\vec{x}_{n}$
+\end_inset
+
+ to get
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Actually, we don't need to use orthogonality here; this would work even
+ for a nonsymmetric 
+\begin_inset Formula $A$
+\end_inset
+
+.
+ We can write 
+\begin_inset Formula $\vec{x}(t)=X\vec{c}$
+\end_inset
+
+ where 
+\begin_inset Formula $X$
+\end_inset
+
+ is the matrix whose columns are eigenvectors and 
+\begin_inset Formula $\vec{c}$
+\end_inset
+
+ is the vector of the coefficients 
+\begin_inset Formula $c_{k}$
+\end_inset
+
+, and then the ODE gives 
+\begin_inset Formula $X\ddot{\vec{c}}=X\Lambda\vec{c}$
+\end_inset
+
+ where 
+\begin_inset Formula $\Lambda$
+\end_inset
+
+ is the diagonal matrix of eigenvalues (from 
+\begin_inset Formula $AX=X\Lambda$
+\end_inset
+
+).
+ Then, since 
+\begin_inset Formula $A$
+\end_inset
+
+ is diagonalizable (even if it is nonsymmetric, it still has 4 distinct
+ eigenvalues), 
+\begin_inset Formula $X$
+\end_inset
+
+ is invertible; multiplying both sides by 
+\begin_inset Formula $X^{-1}$
+\end_inset
+
+ on the left gives 
+\begin_inset Formula $\ddot{\vec{c}}=\Lambda\vec{c}$
+\end_inset
+
+, and the 
+\begin_inset Formula $n$
+\end_inset
+
+-th row of this gives 
+\begin_inset Formula $\ddot{c}_{n}=\lambda_{n}c_{n}$
+\end_inset
+
+ as desired.
+\end_layout
+
+\end_inset
+
+ an ODE for 
+\begin_inset Formula $c_{n}$
+\end_inset
+
+: 
+\begin_inset Formula $\ddot{c}_{n}=\lambda_{n}c_{n}$
+\end_inset
+
+.
+ The solutions of this are sines and cosines (or exponentials), and we immediate
+ly find 
+\begin_inset Formula $c_{n}=\alpha_{n}\cos(t\sqrt{-\lambda_{n}})+\beta_{n}\sin(t\sqrt{-\lambda_{n}})$
+\end_inset
+
+ for some coefficients 
+\begin_inset Formula $\alpha_{n}$
+\end_inset
+
+ and 
+\begin_inset Formula $\beta_{n}$
+\end_inset
+
+ to be determined.
+ Notice that 
+\begin_inset Formula $-\lambda_{n}$
+\end_inset
+
+ is positive so the square roots are 
+\emph on
+real
+\emph default
+, so we have oscillating 
+\begin_inset Quotes eld
+\end_inset
+
+normal modes:
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+\vec{x}(t)=\sum_{k=1}^{4}\left[\alpha_{k}\cos(t\sqrt{-\lambda_{k}})+\beta_{k}\sin(t\sqrt{-\lambda_{k}})\right]\vec{x}_{k}.
+\]
+
+\end_inset
+
+To get the coefficients, we use the initial conditions as in class: 
+\begin_inset Formula $\vec{x}(0)=\vec{a}_{0}=\sum_{k}\alpha_{k}\vec{x}_{k}$
+\end_inset
+
+ and 
+\begin_inset Formula $\dot{\vec{x}}(0)=\vec{b}_{0}=\sum_{k}\beta_{k}\sqrt{-\lambda_{k}}\vec{x}_{k}$
+\end_inset
+
+, and taking the inner product of both sides with 
+\begin_inset Formula $\vec{x}_{n}$
+\end_inset
+
+ (using orthogonality again, gives): 
+\begin_inset Formula 
+\[
+\alpha_{n}=\frac{\vec{x}_{n}^{*}\vec{a}_{0}}{\Vert\vec{x}_{n}\Vert^{2}},
+\]
+
+\end_inset
+
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula 
+\[
+\beta_{n}=\frac{\vec{x}_{n}^{*}\vec{b}_{0}}{\Vert\vec{x}_{n}\Vert^{2}\sqrt{-\lambda_{n}}},
+\]
+
+\end_inset
+
+which completes our closed-form solution.
+ (Note that you were 
+\family default
+\series default
+\shape default
+\size default
+\emph on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+not
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ given that 
+\begin_inset Formula $\Vert\vec{x}_{n}\Vert=1$
+\end_inset
+
+, although of course we could 
+\family default
+\series default
+\shape default
+\size default
+\emph on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+choose
+\emph default
+ that normalization.
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+)
+\end_layout
+
+\begin_layout Enumerate
+From above, 
+\begin_inset Formula $\frac{d^{2}}{dt^{2}}\vec{x}=A\vec{x}$
+\end_inset
+
+ has 
+\emph on
+oscillating
+\emph default
+ solutions, and none of the eigenvectors ever dominates in general (unless
+ it dominated in the initial conditions).
+ In contrast, 
+\begin_inset Formula $\frac{d}{dt}\vec{x}=A\vec{x}$
+\end_inset
+
+ has solutions 
+\begin_inset Formula $e^{At}\vec{x}(0)=\sum_{k}e^{\lambda_{k}t}\vec{x}_{k}\frac{\vec{x}_{k}^{*}\vec{x}(0)}{\Vert\vec{x}_{k}\Vert^{2}},$
+\end_inset
+
+ which are 
+\emph on
+exponentially decaying
+\emph default
+ and are eventually dominated by the 
+\begin_inset Formula $\vec{x}_{1}$
+\end_inset
+
+ solution (since it has the largest 
+\begin_inset Formula $\lambda$
+\end_inset
+
+) regardless of the initial conditions (unless they are orthogonal to 
+\begin_inset Formula $\vec{x}_{1}$
+\end_inset
+
+).
+\end_layout
+
+\end_deeper
+\begin_layout Subsection*
+Problem 2: ((10+5)+5+10 points)
+\end_layout
+
+\begin_layout Standard
+In class, we considered the 1d Poisson equation 
+\begin_inset Formula $\frac{d^{2}}{dx^{2}}u(x)=f(x)$
+\end_inset
+
+ for the vector space of functions 
+\begin_inset Formula $u(x)$
+\end_inset
+
+ on 
+\begin_inset Formula $x\in[0,L]$
+\end_inset
+
+ with the 
+\begin_inset Quotes eld
+\end_inset
+
+Dirichlet
+\begin_inset Quotes erd
+\end_inset
+
+ boundary conditions 
+\begin_inset Formula $u(0)=u(L)=0$
+\end_inset
+
+, and solved it in terms of the eigenfunctions of 
+\begin_inset Formula $\frac{d^{2}}{dx^{2}}$
+\end_inset
+
+ (giving a Fourier sine series).
+ Here, we will consider a couple of small variations on this:
+\end_layout
+
+\begin_layout Enumerate
+Suppose that we we change the boundary conditions 
+\begin_inset Formula $u(0)=0$
+\end_inset
+
+, 
+\begin_inset Formula $u'(L)=u(L)/L$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+As in class, solving 
+\begin_inset Formula $u''=\lambda u$
+\end_inset
+
+ gives sine, cosine, or exponential solutions (at least for 
+\begin_inset Formula $\lambda\neq0$
+\end_inset
+
+).
+ 
+\begin_inset Formula $u(0)=0$
+\end_inset
+
+ means that the solutions must be 
+\begin_inset Formula $\sin(kx)$
+\end_inset
+
+ for some 
+\begin_inset Formula $k$
+\end_inset
+
+, with eigenvalue 
+\begin_inset Formula $\lambda=-k^{2}$
+\end_inset
+
+.
+ 
+\begin_inset Formula $u'(L)=u(L)/L$
+\end_inset
+
+ means that 
+\begin_inset Formula $k\cos(kL)=\sin(kL)/L$
+\end_inset
+
+, or 
+\begin_inset Formula 
+\[
+kL=\tan(kL),
+\]
+
+\end_inset
+
+which is a transcendental equation for 
+\begin_inset Formula $k$
+\end_inset
+
+.
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pset1-f13-p2ai.pdf
+	width 70text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:p2ai"
+
+\end_inset
+
+Plot of the left- and right-hand sides of the transcendental equation 
+\begin_inset Formula $kL=\tan(kL)$
+\end_inset
+
+, along with the solutions (dots).
+ Note that the vertical red lines are not part of the 
+\begin_inset Formula $\tan(kL)$
+\end_inset
+
+ curve, they are only the vertical asymptotes where the function changes
+ sign.
+ Note also that there is no solution in the 
+\begin_inset Formula $[0,\pi/2]$
+\end_inset
+
+ interval, because 
+\begin_inset Formula $kL$
+\end_inset
+
+ and 
+\begin_inset Formula $\tan(kL)$
+\end_inset
+
+ start out tangent and then the latter curves up, so they never intersect
+ in that interval except at 
+\begin_inset Formula $kL=0$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+ The left- and right-hand sides of this equation are plotted in Fig\SpecialChar \@.
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:p2ai"
+
+\end_inset
+
+.
+ Because the tangent function has an infinite number of vertical asymptotes
+ at odd multiples of 
+\begin_inset Formula $\pi/2$
+\end_inset
+
+, there are an infinite number of intersections and hence an infinite number
+ of solutions.
+ Note, however, that there is no solution in the 
+\begin_inset Formula $[0,\pi/2]$
+\end_inset
+
+ interval, because 
+\begin_inset Formula $kL$
+\end_inset
+
+ and 
+\begin_inset Formula $\tan(kL)$
+\end_inset
+
+ start out tangent and then the latter curves up, so they never intersect
+ in that interval except at 
+\begin_inset Formula $kL=0$
+\end_inset
+
+.
+ We don't count 
+\begin_inset Formula $kL=0$
+\end_inset
+
+ as a solution, because that would give 
+\begin_inset Formula $\sin(kx)=0$
+\end_inset
+
+, which is not a valid eigenfunction.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+To solve the equation, you can do so graphically, but it is better to use
+ Newton's method on 
+\begin_inset Formula $z-\tan(z)$
+\end_inset
+
+.
+ Given an initial guess 
+\begin_inset Formula $z$
+\end_inset
+
+ for 
+\begin_inset Formula $kL$
+\end_inset
+
+, one simply iterates 
+\begin_inset Formula $z\leftarrow z-\frac{z-\tan(z)}{1-\sec^{2}(z)}$
+\end_inset
+
+.
+ Note, however, that Newton's method may not converge unless you give a
+ good enough initial guess, but 
+\begin_inset Formula $n\pi/2-0.1$
+\end_inset
+
+ seems good enough (for 
+\begin_inset Formula $n=3,5,7,\ldots$
+\end_inset
+
+).
+ This can be automated in Julia or other programs, or you can do it yourself
+ on a calculator.
+ Given a root 
+\begin_inset Formula $z$
+\end_inset
+
+, the eigenvalues are then 
+\begin_inset Formula $-k^{2}=-z^{2}/L^{2}$
+\end_inset
+
+.
+ The result for the first few eigenvalues, to many significant digits, is:
+ 
+\begin_inset Formula 
+\begin{eqnarray*}
+\lambda_{1} & = & -20.190728556426645/L^{2},\\
+\lambda_{2} & = & -59.6795159441095/L^{2},\\
+\lambda_{3} & = & -118.89986916362645/L^{2}.
+\end{eqnarray*}
+
+\end_inset
+
+ An IJulia notebook illustrating these calculations is posted on the web
+ site with the solutions.
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+However, this is missing a solution.
+ As in class, if we solve for the null space 
+\begin_inset Formula $u''=0$
+\end_inset
+
+, the solutions are straight lines.
+ To satisfy the left boundary condition we have 
+\begin_inset Formula $u(x)=\alpha x$
+\end_inset
+
+ (the line must go through the origin), in which case the right boundary
+ condition 
+\begin_inset Formula $u'(L)=\alpha=u(L)/L=\alpha L/L$
+\end_inset
+
+ is automatically satisfied for all 
+\begin_inset Formula $\alpha$
+\end_inset
+
+! So, another eigenfunction is 
+\begin_inset Formula $u(x)=x$
+\end_inset
+
+ (all other 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ are simply multiples of this and hence are not linearly independent), with
+ eigenvalue 
+\begin_inset Formula 
+\[
+\lambda_{0}=0.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+No, we do not expect the solutions to be unique, because there is a nontrivial
+ nullspace spanned by 
+\begin_inset Formula $u_{0}(x)=x$
+\end_inset
+
+, or equivalently there is an eigenvalue of zero.
+ Hence, to any solution 
+\begin_inset Formula $u(x)$
+\end_inset
+
+ of 
+\begin_inset Formula $\hat{A}u=f$
+\end_inset
+
+ we can add any multiple of 
+\begin_inset Formula $x$
+\end_inset
+
+ and get another solution satisfying the same boundary conditions.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+If you forgot the zero eigenvalue in the last part, you should have noticed
+ it here when you checked for the presence of a nontrivial nullspace 
+\begin_inset Formula $u''=0$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+No, the boundary condition 
+\begin_inset Formula $v'(L)=v(L)/L+1$
+\end_inset
+
+ cannot be satisfied by a vector space.
+ For example, 
+\begin_inset Formula $v(x)=0$
+\end_inset
+
+ does not satisfy it, and any vector space must contain 
+\begin_inset Formula $0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+We have 
+\begin_inset Formula $v'(L)=v(L)/L+1$
+\end_inset
+
+, we write 
+\begin_inset Formula $u(x)=v(x)+q(x)$
+\end_inset
+
+, and we want 
+\begin_inset Formula $u'(L)=u(L)/L$
+\end_inset
+
+.
+ Hence 
+\begin_inset Formula $u'(L)=v'(L)+q'(L)=v(L)/L+1+q'(L)=[v(L)+q(L)]/L$
+\end_inset
+
+, yielding 
+\begin_inset Formula $\boxed{q'(L)=q(L)/L-1}$
+\end_inset
+
+.
+ We must also have 
+\begin_inset Formula $u(0)=0$
+\end_inset
+
+, and since 
+\begin_inset Formula $v(0)=0$
+\end_inset
+
+ this implies 
+\begin_inset Formula $\boxed{q(0)=0}$
+\end_inset
+
+.
+ Now we can try a few simple guesses to find such a 
+\begin_inset Formula $q(x)$
+\end_inset
+
+.
+ The simplest would be polynomials (with no constant term so that 
+\begin_inset Formula $q(0)=0$
+\end_inset
+
+).
+ Plugging them in and trying quickly shows that 
+\begin_inset Formula $q(x)=\alpha x$
+\end_inset
+
+ or 
+\begin_inset Formula $q(x)=\alpha x^{2}+\beta x$
+\end_inset
+
+ cannot work.
+ The next try is 
+\begin_inset Formula $q(x)=\alpha x^{3}+\beta x^{2}+\gamma x$
+\end_inset
+
+, which gives 
+\begin_inset Formula $q'(L)=3\alpha L^{2}+2\beta L+\gamma=q(L)/L-1=\alpha L^{2}+\beta L+\gamma-1$
+\end_inset
+
+, and hence 
+\begin_inset Formula $\beta L=-2\alpha L^{2}-1$
+\end_inset
+
+ works (regardless of 
+\begin_inset Formula $\gamma$
+\end_inset
+
+).
+ For example, we can set 
+\begin_inset Formula $\gamma=0$
+\end_inset
+
+ and 
+\begin_inset Formula $\alpha=1$
+\end_inset
+
+ to get 
+\begin_inset Formula 
+\[
+q(x)=x^{3}-\frac{2L^{2}+1}{L}x^{2}.
+\]
+
+\end_inset
+
+Of course, there are infinitely many other possible solutions.
+ Regardless of what 
+\begin_inset Formula $q(x)$
+\end_inset
+
+ you use, you should plug it into 
+\begin_inset Formula $v''=g=(u-q)''\implies u''=g+q''=f$
+\end_inset
+
+, hence 
+\begin_inset Formula 
+\[
+f(x)=q''(x)=6x-2\frac{2L^{2}+1}{L}
+\]
+
+\end_inset
+
+where we have plugged in our choice of 
+\begin_inset Formula $q(x)$
+\end_inset
+
+.
+\end_layout
+
+\end_body
+\end_document
