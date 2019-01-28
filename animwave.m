@@ -26,7 +26,7 @@ function [u,v,x] = animwave(f, M, L, ct, cdtdx)
     axis([0,L,umin,umax]);
     legend(sprintf('ct = %g', (i-1)*cdtdx*dx));
     drawnow;
-    v = v + cdtdx * [diff(u); u(1)-u(M)];
-    u = u + cdtdx * [v(1)-v(M); diff(v)];
+    v = v + cdtdx * [diff(u); u(1)-u(n)];
+    u = u + cdtdx * [v(1)-v(n); diff(v)];
   end
 

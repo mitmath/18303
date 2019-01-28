@@ -1,0 +1,327 @@
+#LyX 1.6.9 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+
+\renewcommand{\vec}[1]{\mathbf{#1}}
+
+\renewcommand{\labelenumi}{(\alph{enumi})}
+\renewcommand{\labelenumii}{(\roman{enumii})}
+\newcommand{\rank}{\operatorname{rank}}
+\end_preamble
+\use_default_options false
+\language english
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_amsmath 2
+\use_esint 0
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\leftmargin 0.7in
+\topmargin 0.7in
+\rightmargin 0.7in
+\bottommargin 0.7in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Section*
+18.303 Problem Set 
+\end_layout
+
+\begin_layout Standard
+Due Wednesday, 24 November 2010.
+\end_layout
+
+\begin_layout Subsection*
+Problem 1: Stability
+\end_layout
+
+\begin_layout Standard
+Suppose that you are discretizing the 1d Schrodinger wave equation (nondimension
+alized and with zero potential): 
+\begin_inset Formula \[
+\frac{\partial u}{\partial t}=i\frac{\partial^{2}u}{\partial x^{2}}.\]
+
+\end_inset
+
+Suppose that we discretize in space at intervals 
+\begin_inset Formula $\Delta x$
+\end_inset
+
+ and in time with some timestep 
+\begin_inset Formula $\Delta t$
+\end_inset
+
+, denoting 
+\begin_inset Formula $u(m\Delta x,n\Delta t)\approx u_{m}^{n}$
+\end_inset
+
+ as in class.
+ We will discretized 
+\begin_inset Formula $\partial^{2}/\partial x^{2}$
+\end_inset
+
+ with the usual center-difference approximation 
+\begin_inset Formula $\frac{u_{m+1}-2u_{m}+u_{m-1}}{\Delta x^{2}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Using Von Neumann analysis for infinite domains, analyze the stability of
+ the following four possibilities for the 
+\begin_inset Formula $\partial/\partial t$
+\end_inset
+
+ discretization (either showing unconditional stability or giving a condition
+ for stability):
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Forward difference
+\end_layout
+
+\begin_layout Enumerate
+Backward difference
+\end_layout
+
+\begin_layout Enumerate
+Center-difference, implicit
+\end_layout
+
+\begin_layout Enumerate
+Center-difference, explicit
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Modify the animwave.m file from class (see the web site) to implement one
+ of your schemes, for Dirichlet boundary conditions 
+\begin_inset Formula $u(0)=u(L)=0$
+\end_inset
+
+, and plot 
+\begin_inset Formula $|u(x,t)|^{2}$
+\end_inset
+
+ for several representative times 
+\begin_inset Formula $t$
+\end_inset
+
+ given the initial condition 
+\begin_inset Formula $u(x,0)=\delta(x-L/2)$
+\end_inset
+
+ [implement by setting 
+\begin_inset Formula $u_{m}$
+\end_inset
+
+ at one position to 
+\begin_inset Formula $1/\Delta x$
+\end_inset
+
+ and to 0 for other 
+\begin_inset Formula $m$
+\end_inset
+
+'s].
+\end_layout
+
+\begin_layout Subsection*
+Problem 2: Waveguide modes
+\end_layout
+
+\begin_layout Standard
+Suppose we have a 3d wave equation 
+\begin_inset Formula $\hat{A}u=\frac{\partial^{2}u}{\partial t^{2}}$
+\end_inset
+
+, with 
+\begin_inset Formula $\hat{A}=\hat{A}^{*}$
+\end_inset
+
+ negative-semidefinite, that is invariant in 
+\begin_inset Formula $z$
+\end_inset
+
+.
+ As in class, we can then look for separable waveguide modes of the form
+ 
+\begin_inset Formula $u_{k}(x,y)e^{i(kz-\omega t)}$
+\end_inset
+
+, solving the 
+\begin_inset Formula $z$
+\end_inset
+
+-independent 
+\begin_inset Quotes eld
+\end_inset
+
+reduced
+\begin_inset Quotes erd
+\end_inset
+
+ equation: 
+\begin_inset Formula \[
+\hat{A}_{k}u_{k}=-\omega(k)^{2}u_{k}\]
+
+\end_inset
+
+for the eigenfrequencies 
+\begin_inset Formula $\omega_{n}(k)\geq0$
+\end_inset
+
+ and 
+\begin_inset Formula $ $
+\end_inset
+
+waveguide modes 
+\begin_inset Formula $u_{k,n}(x,y)$
+\end_inset
+
+ for all real 
+\begin_inset Formula $k$
+\end_inset
+
+, where 
+\begin_inset Formula $\hat{A}_{k}=e^{-ikz}\hat{A}e^{ikz}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Suppose that at time 
+\begin_inset Formula $t=0$
+\end_inset
+
+ we have initial 
+\begin_inset Formula $u$
+\end_inset
+
+ and 
+\begin_inset Formula $\partial u/\partial t$
+\end_inset
+
+ given by: 
+\begin_inset Formula \[
+u(x,y,z,0)=f(x,y,z)\]
+
+\end_inset
+
+
+\begin_inset Formula \[
+\dot{u}(x,y,z,0)=g(x,y,z)\]
+
+\end_inset
+
+ for some 
+\begin_inset Formula $f$
+\end_inset
+
+ and 
+\begin_inset Formula $g$
+\end_inset
+
+.
+ Write the solution 
+\begin_inset Formula $u(x,y,z,t)$
+\end_inset
+
+ for all 
+\begin_inset Formula $t$
+\end_inset
+
+ as a superposition of waveguide modes 
+\begin_inset Formula $u_{k,n}(x,y)e^{i[kz\pm\omega_{n}(k)t]}$
+\end_inset
+
+ for all 
+\begin_inset Formula $n$
+\end_inset
+
+ and 
+\begin_inset Formula $k$
+\end_inset
+
+ (assuming these form a complete basis for any 
+\begin_inset Formula $f$
+\end_inset
+
+ and 
+\begin_inset Formula $g$
+\end_inset
+
+ of interest), giving explicit formulas for the coefficients of this superpositi
+on in terms of 
+\begin_inset Formula $f$
+\end_inset
+
+ and 
+\begin_inset Formula $g$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Suppose that 
+\begin_inset Formula $u(x,y,z,t)$
+\end_inset
+
+ forms some wavepacket whose envelope stays the same shape (or changes only
+ very slowly) and moves at a speed 
+\begin_inset Formula $v$
+\end_inset
+
+ in the 
+\begin_inset Formula $+z$
+\end_inset
+
+ direction.
+ What can you conclude about the initial conditions 
+\begin_inset Formula $f$
+\end_inset
+
+ and 
+\begin_inset Formula $g$
+\end_inset
+
+ (or your superposition) from the previous part?
+\end_layout
+
+\end_body
+\end_document

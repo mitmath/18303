@@ -1,0 +1,1517 @@
+#LyX 1.6.9 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+
+\renewcommand{\vec}[1]{\mathbf{#1}}
+
+\renewcommand{\labelenumi}{(\alph{enumi})}
+\renewcommand{\labelenumii}{(\roman{enumii})}
+
+\usepackage{cancel}
+\end_preamble
+\use_default_options false
+\language english
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_amsmath 1
+\use_esint 0
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\topmargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Section*
+18.303 Problem Set 2 Solutions
+\end_layout
+
+\begin_layout Subsection*
+Problem 1: (10+10)
+\end_layout
+
+\begin_layout Enumerate
+Since we want to compute 
+\begin_inset Formula $u'(x)$
+\end_inset
+
+, we should Taylor expand around 
+\begin_inset Formula $x$
+\end_inset
+
+, obtaining: 
+\begin_inset Formula \[
+u'(x)\approx\frac{a\left[u+2\Delta xu'+\frac{4\Delta x^{2}}{2}u''+\frac{8\Delta x^{3}}{6}u'''\right]+b\left[u+\Delta xu'+\frac{\Delta x^{2}}{2}u''+\frac{\Delta x^{3}}{6}u'''\right]-u}{c\Delta x},\]
+
+\end_inset
+
+where all the 
+\begin_inset Formula $u$
+\end_inset
+
+ terms on the right are evaluated at 
+\begin_inset Formula $x$
+\end_inset
+
+.
+ We want this to give 
+\begin_inset Formula $u'$
+\end_inset
+
+ plus something proportional to 
+\begin_inset Formula $\Delta x^{2}$
+\end_inset
+
+, so the 
+\begin_inset Formula $u$
+\end_inset
+
+ and 
+\begin_inset Formula $u''$
+\end_inset
+
+ terms must cancel while the 
+\begin_inset Formula $u'$
+\end_inset
+
+ terms must have a coefficient of 1.
+ Writing down the equations for the 
+\begin_inset Formula $u$
+\end_inset
+
+, 
+\begin_inset Formula $u'$
+\end_inset
+
+, and 
+\begin_inset Formula $u''$
+\end_inset
+
+ coefficients, we get: 
+\begin_inset Formula \begin{alignat*}{1}
+0 & =a+b-1\\
+c & =2a+b\\
+0 & =4a+b,\end{alignat*}
+
+\end_inset
+
+which is 3 equations in 3 unknowns.
+ This is easily solved to obtain 
+\begin_inset Formula $\boxed{a=-1/3,\ b=4/3,\ c=2/3}.$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+You were not required to do this, but we can also get an error estimate
+ by looking at the 
+\begin_inset Formula $u'''$
+\end_inset
+
+ term: the error is 
+\begin_inset Formula $\approx(8a+b)\frac{\Delta x^{2}}{6c}u'''(x)=-\frac{\Delta x^{2}}{3}u'''(x)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Similar to the handout from class, we can check the accuracy of this for
+ 
+\begin_inset Formula $u(x)=\sin(x)$
+\end_inset
+
+ at 
+\begin_inset Formula $u'(1)=\cos(1)$
+\end_inset
+
+ by the Matlab code below.
+ For convenience, I also plot the error estimate 
+\begin_inset Formula $\frac{\Delta x^{2}}{3}\cos(1)$
+\end_inset
+
+ so that we can check that the errors are 
+\begin_inset Formula $\sim\Delta x^{2}$
+\end_inset
+
+, but it would suffice for you to plot any line 
+\begin_inset Formula $\sim\Delta x^{2}$
+\end_inset
+
+ in order to check the slope of the calculated errors.
+ The resulting plot is shown in Fig.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:difference"
+
+\end_inset
+
+, and demonstrates the predicted error convergence (until the error becomes
+ so small that it is limited by roundoff errors due to the computer's finite
+ precision).
+\end_layout
+
+\begin_layout LyX-Code
+x=1;
+\end_layout
+
+\begin_layout LyX-Code
+dx = logspace(-8,-1,50);
+\end_layout
+
+\begin_layout LyX-Code
+a = -1/3; b = 4/3; c = 2/3;
+\end_layout
+
+\begin_layout LyX-Code
+deriv = (a * sin(x+2*dx) + b * sin(x+dx) - sin(x)) ./ (c * dx);
+\end_layout
+
+\begin_layout LyX-Code
+loglog(dx, abs(cos(x) - deriv), 'o', dx, abs(cos(x) * dx.^2 / 3), 'k-')
+\end_layout
+
+\begin_layout LyX-Code
+xlabel('{
+\backslash
+Delta}x')
+\end_layout
+
+\begin_layout LyX-Code
+ylabel('|error| in derivative')
+\end_layout
+
+\begin_layout LyX-Code
+legend('computed |error|', 'estimated |error|')
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename f11-difference.eps
+	width 70col%
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:difference"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Computed and estimated errors in approximate derivative 
+\begin_inset Formula $u'(1)$
+\end_inset
+
+ of 
+\begin_inset Formula $u(x)=\sin(x)$
+\end_inset
+
+, for a second-order forward-difference approximation.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Problem 2: (10+10)
+\end_layout
+
+\begin_layout Standard
+Here, we consider inner products 
+\begin_inset Formula $\langle u,v\rangle$
+\end_inset
+
+ on some vector space 
+\begin_inset Formula $V$
+\end_inset
+
+ of real-valued functions and the corresponding adjoint 
+\begin_inset Formula $\hat{A}^{*}$
+\end_inset
+
+ of real-valued operators 
+\begin_inset Formula $\hat{A}$
+\end_inset
+
+, where the transpose is defined, as in class, by whatever satisfies 
+\begin_inset Formula $\langle u,\hat{A}v\rangle=\langle\hat{A}^{*}u,v\rangle$
+\end_inset
+
+ for all 
+\begin_inset Formula $u$
+\end_inset
+
+ and 
+\begin_inset Formula $v$
+\end_inset
+
+ in the vector space (usually, 
+\begin_inset Formula $\hat{A}^{*}$
+\end_inset
+
+ is obtained from 
+\begin_inset Formula $\hat{A}$
+\end_inset
+
+ by some kind of integration by parts).
+ 
+\end_layout
+
+\begin_layout Enumerate
+The proof of self-adjointness is almost exactly as in class.
+ Integrating by parts: 
+\begin_inset Formula \begin{eqnarray*}
+\langle u,\hat{A}v\rangle & = & -\int_{0}^{L}uv''dx=\cancel{\left.-uv'\right|_{0}^{L}}+\int_{0}^{L}u'v'dx\\
+ & = & \cancel{\left.u'v\right|_{0}^{L}}-\int_{0}^{L}u''v\, dx=\langle\hat{A}u,v\rangle,\end{eqnarray*}
+
+\end_inset
+
+where the boundary terms cancel on the left because either 
+\begin_inset Formula $u(0)$
+\end_inset
+
+ or 
+\begin_inset Formula $v(0)$
+\end_inset
+
+ is zero, and cancel on the right because either 
+\begin_inset Formula $u'(L)$
+\end_inset
+
+ or 
+\begin_inset Formula $v'(L)$
+\end_inset
+
+ is zero.
+ Furthermore, if we examine the middle step, we see that 
+\begin_inset Formula $\langle u,\hat{A}u\rangle=\int_{0}^{L}|u'|^{2}dx$
+\end_inset
+
+, which is 
+\begin_inset Formula $>0$
+\end_inset
+
+ for any 
+\begin_inset Formula $u\neq0$
+\end_inset
+
+, since the only way 
+\begin_inset Formula $u'=0$
+\end_inset
+
+ is if 
+\begin_inset Formula $u$
+\end_inset
+
+ is a constant, and the left boundary condition means that the only constant
+ 
+\begin_inset Formula $u$
+\end_inset
+
+ can be is zero.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+This implies that 
+\begin_inset Formula $-\hat{A}=d^{2}/dx^{2}$
+\end_inset
+
+ is also self-adjoint and is negative-definite.
+ Therefore 
+\begin_inset Formula $d^{2}/dx^{2}$
+\end_inset
+
+ on this 
+\begin_inset Formula $V$
+\end_inset
+
+ has orthogonal eigenfunctions, which is what we found in pset 1 when we
+ explicitly computed 
+\begin_inset Formula $u_{n}=\sin[(n+0.5)\pi x/L]$
+\end_inset
+
+.
+ Furthermore, inspection of these 
+\begin_inset Formula $u_{n}$
+\end_inset
+
+ from pset
+\begin_inset space ~
+\end_inset
+
+1 reveals eigenvalues 
+\begin_inset Formula $\lambda_{n}=-[(n+0.5)\pi/L]^{2}$
+\end_inset
+
+, which are real and negative as one would predict from a negative-definite
+ self-adjoint operator.
+ Hence, this is consistent with what we found in pset
+\begin_inset space ~
+\end_inset
+
+1, but much more powerful in that we didn't have to solve the eigenproblem
+ explicitly.
+\end_layout
+
+\begin_layout Enumerate
+Since 
+\begin_inset Formula $\langle u,qv\rangle=\int_{0}^{L}uqv\, dx=\int_{0}^{L}quv\, dx=\langle qu,v\rangle$
+\end_inset
+
+, the operator 
+\begin_inset Formula $q(x)$
+\end_inset
+
+ is self-adjoint, and we already showed above that 
+\begin_inset Formula $-d^{2}/dx^{2}$
+\end_inset
+
+ is self-adjoint, so their sum is self-adjoint.
+ More explicitly: 
+\begin_inset Formula $\langle u,\hat{A}v\rangle=\langle u,-v''+qv\rangle=\langle u,-v''\rangle+\langle u,qv\rangle=\langle-u'',v\rangle+\langle qu,v\rangle=\langle-u''+qu,v\rangle=\langle\hat{A}u,v\rangle$
+\end_inset
+
+.
+ (By the same argument, the sum of any two self-adjoint operators is self-adjoin
+t.)
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Following the hint, we show that 
+\begin_inset Formula $\hat{A}-q_{0}$
+\end_inset
+
+ is positive definite: 
+\begin_inset Formula $\langle u,(\hat{A}-q_{0})u\rangle=\langle u,-u''\rangle+\langle u,(q-q_{0})u\rangle=\int_{0}^{L}\left[|u'|^{2}+(q-q_{0})|u|^{2}\right]dx>0$
+\end_inset
+
+ for 
+\begin_inset Formula $u\neq0$
+\end_inset
+
+, since the first (
+\begin_inset Formula $|u'|^{2}$
+\end_inset
+
+) term is 
+\begin_inset Formula $>0$
+\end_inset
+
+ from above, and the second term is 
+\begin_inset Formula $\geq0$
+\end_inset
+
+ since 
+\begin_inset Formula $q\geq q_{0}$
+\end_inset
+
+.
+ Now, suppose 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ is an eigenvalue of 
+\begin_inset Formula $\hat{A}$
+\end_inset
+
+, i.e.
+ 
+\begin_inset Formula $\hat{A}u=\lambda u$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula $(\hat{A}-q_{0})u=(\lambda-q_{0})u$
+\end_inset
+
+, so 
+\begin_inset Formula $\lambda-q_{0}$
+\end_inset
+
+ is an eigenvalue of 
+\begin_inset Formula $\hat{A}-q_{0}$
+\end_inset
+
+.
+ But 
+\begin_inset Formula $\hat{A}-q_{0}$
+\end_inset
+
+ is positive definite, so its eigenvalues 
+\begin_inset Formula $\lambda-q_{0}$
+\end_inset
+
+ are 
+\begin_inset Formula $>0$
+\end_inset
+
+, so 
+\begin_inset Formula $\lambda>q_{0}$
+\end_inset
+
+.
+ Q.E.D.
+\end_layout
+
+\begin_layout Subsection*
+Problem 3: (10+5+5)
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename f11-3a.eps
+	width 50col%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename f11-3b.eps
+	width 50col%
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:3"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+
+\series bold
+Left:
+\series default
+ Eigenvalues 
+\begin_inset Formula $\lambda_{k}$
+\end_inset
+
+ of the discretized 
+\begin_inset Formula $-\frac{d^{2}}{dx^{2}}+q$
+\end_inset
+
+ and 
+\begin_inset Formula $-\frac{d^{2}}{dx^{2}}$
+\end_inset
+
+ operators, plotted as 
+\begin_inset Formula $\lambda_{k}+100$
+\end_inset
+
+ (since we expect 
+\begin_inset Formula $\lambda_{k}>-100$
+\end_inset
+
+) versus 
+\begin_inset Formula $k$
+\end_inset
+
+ on a log--log scale.
+ Also plotted are the exact eigenvalues 
+\begin_inset Formula $(k\pi/L)^{2}$
+\end_inset
+
+ (plus 100) of 
+\begin_inset Formula $-\frac{d^{2}}{dx^{2}}$
+\end_inset
+
+ .
+ 
+\series bold
+Right:
+\series default
+ Eigenfunctions for smallest three eigenvalues of 
+\begin_inset Formula $-\frac{d^{2}}{dx^{2}}+q$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+I found it clearest to plot the 
+\begin_inset Formula $\mbox{eigenvalues}+100$
+\end_inset
+
+ on a log--log scale: we want to use a vertical log scale since the eigenvalues
+ differ by many orders of magnitude, but have to add 100 so that we are
+ taking the logs of positive numbers, while a horizontal log scale seems
+ helpful to 
+\begin_inset Quotes eld
+\end_inset
+
+spread out
+\begin_inset Quotes erd
+\end_inset
+
+ the smallest few eigenvalues (the most interesting ones because they differ
+ the most between 
+\begin_inset Formula $-\frac{d^{2}}{dx^{2}}+q$
+\end_inset
+
+ and 
+\begin_inset Formula $-\frac{d^{2}}{dx^{2}}$
+\end_inset
+
+).
+ I also found it interesting to plot the exact eigenvalues 
+\begin_inset Formula $(k\pi/L)^{2}$
+\end_inset
+
+ of 
+\begin_inset Formula $-d^{2}/dx^{2}$
+\end_inset
+
+.
+ The plotting code is given below, and the result is shown in Fig.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:3"
+
+\end_inset
+
+(left).
+ There are several points to observe:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+First, the eigenvalues of 
+\begin_inset Formula $\hat{A}$
+\end_inset
+
+ are clearly 
+\begin_inset Formula $>-100$
+\end_inset
+
+, as otherwise there would be missing dots (negative values wouldn't plot
+ on a log scale).
+ We could also check this explicitly in Matlab by typing 
+\family typewriter
+all(diag(S) > -100)
+\family default
+, which checks whether all the eigenvalues (the diagonals of 
+\begin_inset Formula $S$
+\end_inset
+
+) are 
+\begin_inset Formula $>-100$
+\end_inset
+
+, returning 1 if true and 0 if false: this prints 
+\family typewriter
+ans = 1 
+\family default
+as desired.
+ Alternatively, you can check this by printing out 
+\family typewriter
+diag(S)
+\family default
+ and inspecting them.
+ In the same way, you can check that they are all real, or alternatively
+ you can type 
+\family typewriter
+all(imag(diag(S)) == 0)
+\family default
+ and see that it prints 
+\family typewriter
+ans = 1
+\family default
+.
+\end_layout
+
+\begin_layout Enumerate
+The eigenvalues of 
+\begin_inset Formula $\hat{A}$
+\end_inset
+
+ only differ slightly from the eigenvalues of 
+\begin_inset Formula $-d^{2}/dx^{2}$
+\end_inset
+
+ , except for the first few eigenvalues.
+ The basic reason for this is that 
+\begin_inset Formula $q(x)$
+\end_inset
+
+ changes the eigenvalues by at most 
+\begin_inset Formula $\sim100$
+\end_inset
+
+, which is significant for small eigenvalues but is insignificant for the
+ large eigenvalues 
+\begin_inset Formula $\sim10^{4}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+The eigenvalues of both 
+\begin_inset Formula $\hat{A}$
+\end_inset
+
+ and 
+\begin_inset Formula $-d^{2}/dx^{2}$
+\end_inset
+
+ from the discrete approximations differ from the exact 
+\begin_inset Formula $(k\pi/L)^{2}$
+\end_inset
+
+ for large 
+\begin_inset Formula $k$
+\end_inset
+
+.
+ The reason for this, as discussed in class, is that the largest eigenvalues
+ correspond to eigenfunctions that oscillate almost as fast as the discretizatio
+n 
+\begin_inset Formula $\Delta x$
+\end_inset
+
+, and in for these functions the finite-difference approximation is not
+ accurate.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+The eigenfunctions are plotted in Fig.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:3"
+
+\end_inset
+
+(right).
+ They vaguely resemble 
+\begin_inset Formula $\sin(n\pi x/L)$
+\end_inset
+
+, and certainly have the 
+\emph on
+same number of sign oscillations
+\emph default
+ (as they must in order to be orthogonal!), but are 
+\emph on
+more 
+\begin_inset Quotes eld
+\end_inset
+
+bunched
+\begin_inset Quotes erd
+\end_inset
+
+ in the center.
+
+\emph default
+ (Later in 18.303, we will be able to see that this is because 
+\begin_inset Formula $q(x)$
+\end_inset
+
+ is smallest there, because we will show that the eigenfunctions want to
+ concentrate in the small 
+\begin_inset Formula $q$
+\end_inset
+
+ regions.)
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+One thing that is 
+\emph on
+not
+\emph default
+ a significant difference (you will have points taken off if you say it
+ is), is the eigenfunctions go down from 
+\begin_inset Formula $x=0$
+\end_inset
+
+ rather than up.
+ For example, the first eigenfunction is negative, but 
+\begin_inset Formula $\sin(\pi x/L)$
+\end_inset
+
+ from class is positive.
+ Remember that you can multiply eigenfunctions by any constant and they
+ are still eigenfunctions, so multiplication by 
+\begin_inset Formula $-1$
+\end_inset
+
+ is just an arbitrary normalization/sign choice.
+\end_layout
+
+\begin_layout Enumerate
+These dot products give values with magnitudes 
+\begin_inset Formula $<10^{-15}$
+\end_inset
+
+, which are effectively zero up to the accuracy limitations of computer
+ arithmetic.
+\end_layout
+
+\begin_layout LyX-Code
+% Part (a)
+\end_layout
+
+\begin_layout LyX-Code
+k = [1:100];
+\end_layout
+
+\begin_layout LyX-Code
+loglog(k, sort(diag(S))+100, 'bo', k, sort(eig(D'*D/dx^2))+100, 'r*', k,
+ (k*pi/L).^2 + 100, 'k--');
+\end_layout
+
+\begin_layout LyX-Code
+xlabel('k (k=1,2,...
+ is index of 
+\backslash
+lambda_k)')
+\end_layout
+
+\begin_layout LyX-Code
+ylabel('eigenvalues 
+\backslash
+lambda_k + 100')
+\end_layout
+
+\begin_layout LyX-Code
+legend('-d^2/dx^2 + q(x)', '-d^2/dx^2', '(k
+\backslash
+pi/L)^2 + 100', 'Location', 'NorthWest')
+\end_layout
+
+\begin_layout Subsection*
+Problem 4: (10+5+5+10)
+\end_layout
+
+\begin_layout Standard
+For 
+\begin_inset Formula $\hat{A}=\frac{d^{2}}{dx^{2}}$
+\end_inset
+
+ on functions 
+\begin_inset Formula $u(x)$
+\end_inset
+
+ with Dirichlet boundary conditions 
+\begin_inset Formula $u(0)=u(L)=0$
+\end_inset
+
+ on the domain 
+\begin_inset Formula $\Omega=[0,L]$
+\end_inset
+
+, we discretized it in class, with center-difference approximations, to
+ obtain the approximate 
+\begin_inset Quotes eld
+\end_inset
+
+discrete Laplacian
+\begin_inset Quotes erd
+\end_inset
+
+ matrix 
+\begin_inset Formula $A$
+\end_inset
+
+: 
+\begin_inset Formula \[
+A=\frac{1}{\Delta x^{2}}\left(\begin{array}{ccccc}
+2 & -1\\
+-1 & 2 & -1\\
+ & \ddots & \ddots & \ddots\\
+ &  & -1 & 2 & -1\\
+ &  &  & -1 & 2\end{array}\right)\]
+
+\end_inset
+
+ operating on vectors of 
+\begin_inset Formula $M$
+\end_inset
+
+ points 
+\begin_inset Formula $u_{1},\ldots,u_{M}$
+\end_inset
+
+, where 
+\begin_inset Formula $\Delta x=L/(M+1)$
+\end_inset
+
+ and 
+\begin_inset Formula $u(m\Delta x)\approx u_{m}$
+\end_inset
+
+.
+ Let's say 
+\begin_inset Formula $M=11$
+\end_inset
+
+ and 
+\begin_inset Formula $L=12$
+\end_inset
+
+ (so that 
+\begin_inset Formula $\Delta x=1$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+Now, we will restrict our vector space even further.
+ We will consider only 
+\emph on
+mirror-symmetric
+\emph default
+ functions 
+\begin_inset Formula $u(x)$
+\end_inset
+
+ with 
+\begin_inset Formula $u(L-x)=u(x)$
+\end_inset
+
+.
+ That is, 
+\begin_inset Formula $u(x)$
+\end_inset
+
+ is even-symmetric around 
+\begin_inset Formula $x=L/2$
+\end_inset
+
+.
+ This will throw out half of our eigenfunctions 
+\begin_inset Formula $\sin(n\pi x/L)$
+\end_inset
+
+ of 
+\begin_inset Formula $\hat{A}$
+\end_inset
+
+, leaving us only with the 
+\emph on
+odd
+\emph default
+ 
+\begin_inset Formula $n=1,3,5,\ldots$
+\end_inset
+
+ eigensolutions (which are mirror-symmetric).
+ You will now consider the finite-difference matrix version of this symmetry.
+\end_layout
+
+\begin_layout Enumerate
+The center-difference rule from which each row of 
+\begin_inset Formula $A$
+\end_inset
+
+ is derived is 
+\begin_inset Formula $-u_{m}''=\frac{-u_{m+1}+2u_{m}-u_{m-1}}{\Delta x^{2}}$
+\end_inset
+
+.
+ When applied to a symmetric vector 
+\begin_inset Formula $\vec{u}=(u_{1},u_{2},u_{3},u_{4},u_{5},u_{6},u_{5},u_{4},u_{3},u_{2},u_{1})^{T}$
+\end_inset
+
+ this is unchanged for the first five rows (
+\begin_inset Formula $-u_{1}''$
+\end_inset
+
+ through 
+\begin_inset Formula $-u_{5}''$
+\end_inset
+
+), but is modified for the sixth row (
+\begin_inset Formula $-u_{6}''$
+\end_inset
+
+) since we set 
+\begin_inset Formula $u_{7}=u_{5}$
+\end_inset
+
+.
+ That is, 
+\begin_inset Formula $-u_{6}''=\frac{-2u_{5}+2u_{6}}{\Delta x^{2}}$
+\end_inset
+
+.
+ Notice also that 
+\begin_inset Formula $A$
+\end_inset
+
+ multipled by a symmetric 
+\begin_inset Formula $\vec{u}$
+\end_inset
+
+ gives a symmetric 
+\begin_inset Formula $A\vec{u}$
+\end_inset
+
+; the matrix 
+\begin_inset Formula $A$
+\end_inset
+
+ does not break the symmetry.
+ In matrix form, this gives
+\begin_inset Formula \[
+\boxed{A_{\mbox{sym}}=\left(\begin{array}{cccccc}
+2 & -1\\
+-1 & 2 & -1\\
+ & -1 & 2 & -1\\
+ &  & -1 & 2 & -1\\
+ &  &  & -1 & 2 & -1\\
+ &  &  &  & -2 & 2\end{array}\right)}.\]
+
+\end_inset
+
+[More technically, our symmetric 
+\begin_inset Formula $\vec{u}$
+\end_inset
+
+ vectors live in a subspace of the original vector space, and 
+\begin_inset Formula $A$
+\end_inset
+
+ preserves this subspace.
+ Our 
+\begin_inset Formula $A_{\mbox{sym}}$
+\end_inset
+
+ matrix is just the matrix form of the linear operator 
+\begin_inset Formula $A$
+\end_inset
+
+ acting on the subspace of symmetric 
+\begin_inset Formula $\vec{u}$
+\end_inset
+
+'s.] 
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $A_{\mbox{sym}}$
+\end_inset
+
+ is obviously not equal to its transpose (in the usual sense of swapping
+ rows and columns), because the 
+\begin_inset Formula $-2$
+\end_inset
+
+ in the last row does not match the 
+\begin_inset Formula $-1$
+\end_inset
+
+ in the last column.
+ We can construct 
+\begin_inset Formula $A$
+\end_inset
+
+ in Matlab by the command given, and construct 
+\begin_inset Formula $A_{\mbox{sym}}$
+\end_inset
+
+ by (for example):
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\family typewriter
+Asym = diag([2 2 2 2 2 2]) - diag([1 1 1 1 1], 1) - diag([1 1 1 1 2], -1)
+\family default
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Now, computing the eigenvalues by 
+\family typewriter
+eig(Asym)
+\family default
+, we find that they are 
+\begin_inset Formula $\lambda_{\mbox{sym}}\approx3.931852,\,3.414214,\,2.517638,\,1.482362,\,0.585786,\,0.068148$
+\end_inset
+
+, which by comparison with 
+\family typewriter
+eig(A)
+\family default
+ are indeed real (and positive), and are indeed 6 of the eigenvalues of
+ 
+\begin_inset Formula $A$
+\end_inset
+
+.
+ In fact, they are 
+\emph on
+every other eigenvalue
+\emph default
+ of 
+\begin_inset Formula $A$
+\end_inset
+
+ as we might expect from 
+\begin_inset Quotes eld
+\end_inset
+
+skipping
+\begin_inset Quotes erd
+\end_inset
+
+ the odd eigenfunctions!
+\end_layout
+
+\begin_layout Enumerate
+If we had two symmetric vectors 
+\begin_inset Formula $\vec{u}=(u_{1},u_{2},u_{3},u_{4},u_{5},u_{6},u_{5},u_{4},u_{3},u_{2},u_{1})^{T}$
+\end_inset
+
+ and 
+\begin_inset Formula $\vec{v}=(v_{1},v_{2},v_{3},v_{4},v_{5},v_{6},v_{5},v_{4},v_{3},v_{2},v_{1})^{T}$
+\end_inset
+
+, their ordinary inner product would be 
+\begin_inset Formula $\vec{u}^{T}\vec{v}=2(u_{1}v_{1}+u_{2}v_{2}+u_{3}v_{3}+u_{4}v_{4}+u_{5}v_{5})+u_{6}v_{6}$
+\end_inset
+
+: the symmetry would cause each of the first five elements, but not the
+ sixth element, to be counted twice.
+ The corresponding inner product on our 6-component vectors is simply: 
+\begin_inset Formula \begin{eqnarray*}
+\langle\vec{u}_{\mbox{sym}},\vec{v}_{\mbox{sym}}\rangle & = & 2(u_{1}v_{1}+u_{2}v_{2}+u_{3}v_{3}+u_{4}v_{4}+u_{5}v_{5})+u_{6}v_{6}\\
+ & = & \vec{u}_{\mbox{sym}}^{T}\left(\begin{array}{cccccc}
+2\\
+ & 2\\
+ &  & 2\\
+ &  &  & 2\\
+ &  &  &  & 2\\
+ &  &  &  &  & 1\end{array}\right)\vec{v}_{\mbox{sym}}=\vec{u}_{\mbox{sym}}^{T}W\vec{v}_{\mbox{sym}},\end{eqnarray*}
+
+\end_inset
+
+defining a diagonal 
+\begin_inset Quotes eld
+\end_inset
+
+weight
+\begin_inset Quotes erd
+\end_inset
+
+ matrix 
+\begin_inset Formula $W$
+\end_inset
+
+.
+ Note that, by inspection, this still satisfies the three key properties
+ of inner products (positivity, symmetry, and bilinearity), and in particular
+ the positivity property (
+\begin_inset Formula $\langle\vec{u}_{\mbox{sym}},\vec{u}_{\mbox{sym}}\rangle>0$
+\end_inset
+
+ for 
+\begin_inset Formula $\vec{u}_{\mbox{sym}}\neq0$
+\end_inset
+
+) relies on the fact that 
+\begin_inset Formula $W$
+\end_inset
+
+ is (obviously) positive-definite.
+ [In Matlab, 
+\family typewriter
+W = diag([2 2 2 2 2 1])
+\family default
+.]
+\end_layout
+
+\begin_layout Enumerate
+To be self-adjoint, we must have 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+
+\begin_inset Formula $\langle\vec{u}_{\mbox{sym}},A_{\mbox{sym}}\vec{v}_{\mbox{sym}}\rangle=\vec{u}_{\mbox{sym}}^{T}WA_{\mbox{sym}}\vec{v}_{\mbox{sym}}=\langle A_{\mbox{sym}}\vec{u}_{\mbox{sym}},\vec{v}_{\mbox{sym}}\rangle=\vec{u}_{\mbox{sym}}^{T}A_{\mbox{sym}}^{T}W\vec{v}_{\mbox{sym}}$
+\end_inset
+
+ for all vectors 
+\begin_inset Formula $\vec{u}_{\mbox{sym}},\vec{v}_{\mbox{sym}}$
+\end_inset
+
+.
+ Therefore, we must have 
+\begin_inset Formula $\boxed{WA_{\mbox{sym}}=A_{\mbox{sym}}^{T}W}$
+\end_inset
+
+.
+ We can check this explicitly, either by hand or in Matlab (in Matlab, compute
+ 
+\family typewriter
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+W*Asym
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+ and 
+\family typewriter
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+Asym'*W
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+): 
+\begin_inset Formula \[
+WA_{\mbox{sym}}=\left(\begin{array}{cccccc}
+4 & -2\\
+-2 & 4 & -2\\
+ & -2 & 4 & -2\\
+ &  & -2 & 4 & -2\\
+ &  &  & -2 & 4 & -2\\
+ &  &  &  & -2 & 2\end{array}\right)=\left(WA_{\mbox{sym}}\right)^{T}=A_{\mbox{sym}}^{T}W^{T}=A_{\mbox{sym}}^{T}W,\]
+
+\end_inset
+
+where we can save some work by noticing (once we compute it) that 
+\begin_inset Formula $WA_{\mbox{sym}}$
+\end_inset
+
+ is symmetric.
+ (Recall that multipling by a diagonal matrix on the 
+\family default
+\series default
+\shape default
+\size default
+\emph on
+\bar default
+\noun default
+\color inherit
+left
+\emph default
+ multiplies each 
+\emph on
+row
+\emph default
+ by the corresponding diagonal, and multiplying by a diagonal matrix on
+ the 
+\emph on
+right
+\emph default
+ multiplies each 
+\emph on
+column
+\emph default
+.)
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Here is an alternative approach: the adjoint 
+\begin_inset Formula $A_{\mbox{sym}}^{*}$
+\end_inset
+
+ under this inner product (
+\emph on
+not
+\emph default
+ the conjugate-transpose) must be defined so that 
+\begin_inset Formula $\langle\vec{u}_{\mbox{sym}},A_{\mbox{sym}}\vec{v}_{\mbox{sym}}\rangle=\vec{u}_{\mbox{sym}}^{T}WA_{\mbox{sym}}\vec{v}_{\mbox{sym}}=\langle A_{\mbox{sym}}^{*}\vec{u}_{\mbox{sym}},\vec{v}_{\mbox{sym}}\rangle=\vec{u}_{\mbox{sym}}^{T}\left(A_{\mbox{sym}}^{*}\right)^{T}W\vec{v}_{\mbox{sym}}$
+\end_inset
+
+.
+ Hence, we must have 
+\begin_inset Formula $WA_{\mbox{sym}}=\left(A_{\mbox{sym}}^{*}\right)^{T}W$
+\end_inset
+
+, or 
+\begin_inset Formula $\left(A_{\mbox{sym}}^{*}\right)^{T}=WA_{\mbox{sym}}W^{-1}$
+\end_inset
+
+, or 
+\begin_inset Formula $A_{\mbox{sym}}^{*}=\left(WA_{\mbox{sym}}W^{-1}\right)^{T}$
+\end_inset
+
+ and hence 
+\begin_inset Formula $\boxed{A_{\mbox{sym}}^{*}=W^{-1}A_{\mbox{sym}}^{T}W}$
+\end_inset
+
+ (since 
+\begin_inset Formula $W=W^{T}$
+\end_inset
+
+).
+ By explicit computation:
+\begin_inset Formula \begin{alignat*}{1}
+A_{\mbox{sym}}^{*} & =W^{-1}A_{\mbox{sym}}^{T}W\\
+ & =\left(\begin{array}{cccccc}
+\nicefrac{1}{2}\\
+ & \nicefrac{1}{2}\\
+ &  & \nicefrac{1}{2}\\
+ &  &  & \nicefrac{1}{2}\\
+ &  &  &  & \nicefrac{1}{2}\\
+ &  &  &  &  & 1\end{array}\right)\left(\begin{array}{cccccc}
+2 & -1\\
+-1 & 2 & -1\\
+ & -1 & 2 & -1\\
+ &  & -1 & 2 & -1\\
+ &  &  & -1 & 2 & -2\\
+ &  &  &  & -1 & 2\end{array}\right)\left(\begin{array}{cccccc}
+2\\
+ & 2\\
+ &  & 2\\
+ &  &  & 2\\
+ &  &  &  & 2\\
+ &  &  &  &  & 1\end{array}\right)\\
+ & =\left(\begin{array}{cccccc}
+2 & -1\\
+-1 & 2 & -1\\
+ & -1 & 2 & -1\\
+ &  & -1 & 2 & -1\\
+ &  &  & -1 & 2 & -1\\
+ &  &  &  & -2 & 2\end{array}\right)=A_{\mbox{sym}},\end{alignat*}
+
+\end_inset
+
+since the 
+\begin_inset Formula $2$
+\end_inset
+
+ and 
+\begin_inset Formula $\nicefrac{1}{2}$
+\end_inset
+
+ factors cancel out 
+\emph on
+except
+\emph default
+ in the last row and the last column where they are needed.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Thus, by picking the right inner product, we get a 
+\emph on
+new
+\emph default
+ definition of the 
+\begin_inset Quotes eld
+\end_inset
+
+transpose
+\begin_inset Quotes erd
+\end_inset
+
+ (adjoint) of a matrix.
+ In this new definition, we see that 
+\begin_inset Formula $A_{\mbox{sym}}$
+\end_inset
+
+ 
+\emph on
+is
+\emph default
+ self-adjoint.
+ This explains why it has real eigenvalues.
+ (With a little more work we could show it is positive-definite under this
+ inner product too.) Furthermore, it must be diagonalizable and the eigenvectors
+ must be orthogonal, but orthogonal under the 
+\emph on
+new
+\emph default
+ inner product.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+Moral:
+\series default
+ 
+\begin_inset Quotes eld
+\end_inset
+
+swapping rows and columns
+\begin_inset Quotes erd
+\end_inset
+
+ is 
+\emph on
+not
+\emph default
+ the be-all and end-all of transposition.
+ It is the 
+\emph on
+consequence
+\emph default
+ of a 
+\emph on
+particular
+\emph default
+ choice of inner products, and that particular choice 
+\emph on
+is not always the right choice
+\emph default
+.
+ A different choice of inner products gives a different 
+\begin_inset Quotes eld
+\end_inset
+
+transpose
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\end_body
+\end_document

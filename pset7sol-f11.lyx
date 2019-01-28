@@ -1,0 +1,826 @@
+#LyX 1.6.9 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+
+\renewcommand{\vec}[1]{\mathbf{#1}}
+
+\renewcommand{\labelenumi}{(\alph{enumi})}
+\renewcommand{\labelenumii}{(\roman{enumii})}
+\newcommand{\rank}{\operatorname{rank}}
+
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
+
+\usepackage{cancel}
+\end_preamble
+\use_default_options false
+\language english
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_amsmath 2
+\use_esint 2
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\leftmargin 0.7in
+\topmargin 0.7in
+\rightmargin 0.7in
+\bottommargin 0.7in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Section*
+18.303 Problem Set 7 Solutions
+\end_layout
+
+\begin_layout Subsection*
+Problem 1: ((10+10)+2)
+\end_layout
+
+\begin_layout Enumerate
+We solve for 
+\begin_inset Formula $g(r)$
+\end_inset
+
+ in 3d as follows:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+For 
+\begin_inset Formula $r>0$
+\end_inset
+
+, 
+\begin_inset Formula $-\nabla^{2}g+\kappa^{2}g=0$
+\end_inset
+
+ and hence 
+\begin_inset Formula $\kappa^{2}g=\nabla^{2}g=\frac{1}{r}(rg)''\implies h''=\kappa^{2}h$
+\end_inset
+
+ where 
+\begin_inset Formula $h(r)=rg(r)$
+\end_inset
+
+.
+ The solution to this is 
+\begin_inset Formula $h(r)=ce^{-\kappa r}+de^{+\kappa r}$
+\end_inset
+
+ for some constants 
+\begin_inset Formula $c$
+\end_inset
+
+ and 
+\begin_inset Formula $d$
+\end_inset
+
+.
+ However, since 
+\begin_inset Formula $g(r)\to0$
+\end_inset
+
+ as 
+\begin_inset Formula $r\to\infty$
+\end_inset
+
+, we must have 
+\begin_inset Formula $d=0$
+\end_inset
+
+ as otherwise the 
+\begin_inset Formula $e^{\kappa r}/r$
+\end_inset
+
+ term diverges.
+ Hence we can write: 
+\begin_inset Formula \[
+g(r)=\lim_{\epsilon\to0^{+}}\begin{cases}
+0 & r\leq\epsilon\\
+\frac{ce^{-\kappa r}}{r} & r>\epsilon\end{cases}\]
+
+\end_inset
+
+to solve the PDE for all 
+\begin_inset Formula $r>0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Given an arbitrary test function 
+\begin_inset Formula $q(\vec{x}),$
+\end_inset
+
+ we now evaluate 
+\begin_inset Formula \begin{align*}
+(\hat{A}g)\{q\} & =g\{\hat{A}q\}=\int g\hat{A}q\\
+ & =\int_{\epsilon}^{\infty}r^{2}dr\int_{0}^{2\pi}d\phi\int_{0}^{\pi}\sin\theta\, d\theta\,\left[\kappa^{2}gq-\frac{g}{r}\frac{\partial^{2}}{\partial r^{2}}(rq)+\underbrace{\cancel{\left(\theta,\phi\mbox{ derivatives of }q\right)}}_{\mbox{integrate to 0, from class}}\right]\\
+ & =\iint\sin\theta\, d\theta\, d\phi\left[\int_{0}^{\infty}c\left(\kappa^{2}rqe^{-\kappa r}-\underbrace{e^{-\kappa r}\frac{\partial^{2}}{\partial r^{2}}[rq]}_{\mbox{int. by parts}}\right)dr\right]\\
+ & =\iint\sin\theta\, d\theta\, d\phi\left[\left.-ce^{-\kappa r}\frac{\partial}{\partial r}[rq]\right|_{0}^{\infty}+c\int_{0}^{\infty}\left(\kappa^{2}rqe^{-\kappa r}-\underbrace{\kappa e^{-\kappa r}\frac{\partial}{\partial r}[rq]}_{\mbox{int. by parts}}\right)dr\right]\\
+ & =\iint\sin\theta\, d\theta\, d\phi\left[cq(0)-\cancel{\left.c\kappa e^{-\kappa r}[rq]\right|_{0}^{\infty}}+c\int_{0}^{\infty}\left(\cancel{\kappa^{2}rqe^{-\kappa r}-\kappa^{2}e^{-\kappa r}[rq]}\right)dr\right]\\
+ & =4\pi cq(0),\end{align*}
+
+\end_inset
+
+and hence 
+\begin_inset Formula $\boxed{c=1/4\pi}$
+\end_inset
+
+.
+ Thus 
+\begin_inset Formula \[
+G(\vec{x},\vec{x}')=\frac{e^{-\kappa|\vec{x}-\vec{x}'|}}{4\pi|\vec{x}-\vec{x}'|}\]
+
+\end_inset
+
+(with the value at 
+\begin_inset Formula $\vec{x}=\vec{x}'$
+\end_inset
+
+ being irrelevant in the distribution sense, e.g.
+ we can assign it to zero, since this is a regular distribution with a finite
+ integral, similar to what we showed in class).
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+The 
+\begin_inset Formula $\kappa\to0^{+}$
+\end_inset
+
+ limit gives 
+\begin_inset Formula $1/4\pi|\vec{x}-\vec{x}'|$
+\end_inset
+
+ as in class, by inspection.
+\end_layout
+
+\begin_layout Standard
+(I was thinking of assigning the 2d case, but the solution involves a modified
+ Bessel function and seemed a bit much for homework.
+ However, the 2d case with 
+\begin_inset Formula $\kappa=0$
+\end_inset
+
+ is quite doable --- I assigned it in last year's pset
+\begin_inset space ~
+\end_inset
+
+6, which you can look at online.)
+\end_layout
+
+\begin_layout Subsection*
+Problem 2: (10+10)
+\end_layout
+
+\begin_layout Enumerate
+The first derivative gives the regular distribution: 
+\begin_inset Formula \[
+\delta_{\Delta x}'(x)=\frac{1}{(\Delta x)^{2}}\begin{cases}
+-1 & 0<x<\Delta x\\
++1 & -\Delta x<x\leq0\\
+0 & |x|>\Delta x\end{cases},\]
+
+\end_inset
+
+(with the values at the jumps irrelevant in the distribution sense).
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+If we wanted to write this out more explicityly in terms of the distributional
+ derivative definition, we would do 
+\begin_inset Formula $\delta'_{\Delta x}\{\phi\}=\delta_{\Delta x}\{-\phi'\}=\frac{1}{(\Delta x)^{2}}\left[-\int_{-\Delta x}^{0}(\Delta x+x)\phi'dx-\int_{0}^{\Delta x}(\Delta x-x)\phi'dx\right]=\frac{1}{(\Delta x)^{2}}\left[\left.(\Delta x+x)\phi\right|_{-\Delta x}^{0}+\left.(\Delta x-x)\phi\right|_{0}^{\Delta x}+\int_{-\Delta x}^{0}\phi dx-\int_{0}^{\Delta x}\phi dx\right]=\frac{1}{(\Delta x)^{2}}\left[\cancel{\Delta x\,\phi(0)-\Delta x\,\phi(0)}+\int_{-\Delta x}^{0}\phi dx-\int_{0}^{\Delta x}\phi dx\right],$
+\end_inset
+
+which is the same as the 
+\begin_inset Formula $\delta'_{\Delta x}$
+\end_inset
+
+ distribution given above.
+\end_layout
+
+\end_inset
+
+ The second derivative gives delta functions at the jumps: 
+\begin_inset Formula \[
+\delta''_{\Delta x}(x)=\frac{\delta(x+\Delta x)-2\delta(x)+\delta(x-\Delta x)}{(\Delta x)^{2}},\]
+
+\end_inset
+
+where the delta functions have amplitudes 1, 
+\begin_inset Formula $-2$
+\end_inset
+
+, and 1 as the value jumps from 0 to 
+\begin_inset Formula $+1$
+\end_inset
+
+ at 
+\begin_inset Formula $x=-\Delta x$
+\end_inset
+
+, from 
+\begin_inset Formula $+1$
+\end_inset
+
+ to 
+\begin_inset Formula $-1$
+\end_inset
+
+ at 
+\begin_inset Formula $x=0$
+\end_inset
+
+, and from 
+\begin_inset Formula $-1$
+\end_inset
+
+ to 
+\begin_inset Formula $0$
+\end_inset
+
+ at 
+\begin_inset Formula $x=+\Delta x$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+The derivative 
+\begin_inset Formula $\delta''(x)$
+\end_inset
+
+ corresponds to 
+\begin_inset Formula $\delta''\{\phi\}=\delta'\{-\phi'\}=\delta\{\phi''\}=\phi''(0)$
+\end_inset
+
+ for a test function 
+\begin_inset Formula $\phi(x)$
+\end_inset
+
+.
+ Correspondingly, 
+\begin_inset Formula \[
+\delta''_{\Delta x}\{\phi\}=\frac{\phi(-\Delta x)-2\phi(0)+\phi(+\Delta x)}{(\Delta x)^{2}},\]
+
+\end_inset
+
+which is precisely a center-difference approximation that converges to 
+\begin_inset Formula $\phi''(0)$
+\end_inset
+
+ as 
+\begin_inset Formula $\Delta x\to0$
+\end_inset
+
+.
+ Hence 
+\begin_inset Formula $\lim_{\Delta x\to0^{+}}\delta_{\Delta x}''=\delta''$
+\end_inset
+
+ as expected.
+\end_layout
+
+\begin_layout Enumerate
+In terms of 
+\begin_inset Formula $p$
+\end_inset
+
+, 
+\begin_inset Formula \[
+\rho(x)=p\frac{\delta(x-d/2)-\delta(x+d/2)}{d},\]
+
+\end_inset
+
+and hence for any test function 
+\begin_inset Formula $\phi$
+\end_inset
+
+ we obtain: 
+\begin_inset Formula \[
+\rho\{\phi\}=p\frac{\phi(d/2)-\phi(-d/2)}{d}\to p\phi'(0)=-p\delta'\{\phi\}\]
+
+\end_inset
+
+ as 
+\begin_inset Formula $d\to0$
+\end_inset
+
+ (this is just a center-difference approximation).
+ Hence 
+\begin_inset Formula $\boxed{\rho\to-p\delta'}$
+\end_inset
+
+: a point dipole is exactly a delta-function derivative.
+\end_layout
+
+\begin_layout Subsection*
+Problem 3: (10+5+10)
+\end_layout
+
+\begin_layout Standard
+In the class notes on Green's functions in inhomogeneous media, section
+ 3.1, the solution of a 
+\begin_inset Quotes eld
+\end_inset
+
+dipole
+\begin_inset Quotes erd
+\end_inset
+
+ source 
+\begin_inset Formula $\vec{p}$
+\end_inset
+
+ (e.g.
+ the potential an electrostatic point dipole 
+\begin_inset Formula $\vec{p}$
+\end_inset
+
+) is given as 
+\begin_inset Formula $D_{\vec{p}}(\vec{x},\vec{x}')=\vec{p}\cdot\nabla'G_{0}(\vec{x},\vec{x}')=\vec{p}\cdot\frac{\vec{x}-\vec{x}'}{4\pi|\vec{x}-\vec{x}'|^{3}}$
+\end_inset
+
+.
+ This is the solution 
+\begin_inset Formula $u_{0}(\vec{x})=D_{\vec{p}}(\vec{x},\vec{x}_{0})$
+\end_inset
+
+ from a point dipole at 
+\begin_inset Formula $\vec{x}_{0}$
+\end_inset
+
+, i.e.
+ 
+\begin_inset Formula $-\nabla^{2}u_{0}=-\vec{p}\cdot\nabla\delta(\vec{x}-\vec{x}_{0})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+We know from the notes that the 1st-Born solution 
+\begin_inset Formula $u_{1}$
+\end_inset
+
+ to a delta-function source, 
+\begin_inset Formula $-\nabla\cdot(c\nabla u_{1})=\delta(\vec{x}-\vec{x}_{0})$
+\end_inset
+
+, is 
+\begin_inset Formula \[
+u_{1}(\vec{x})=\frac{1}{4\pi|\vec{x}-\vec{x}_{0}|}+\ln(1/c_{1})\frac{(\vec{x}_{1}-\vec{x})}{4\pi|\vec{x}_{1}-\vec{x}|^{3}}\cdot\frac{(\vec{x}_{1}-\vec{x}_{0})}{4\pi|\vec{x}_{1}-\vec{x}_{0}|^{3}}V.\]
+
+\end_inset
+
+Now, just as in the notes for 
+\begin_inset Formula $D_{\vec{p}}$
+\end_inset
+
+, to find the first-Born solution 
+\begin_inset Formula $u$
+\end_inset
+
+ for 
+\begin_inset Formula $-\nabla\cdot(c\nabla u)=-\vec{p}\cdot\nabla\delta(\vec{x}-\vec{x}_{0})=\vec{p}\cdot\nabla_{0}\delta(\vec{x}-\vec{x}_{0})$
+\end_inset
+
+, we can just write 
+\begin_inset Formula $u=\vec{p}\cdot\nabla_{0}u_{1}$
+\end_inset
+
+, where 
+\begin_inset Formula $\nabla_{0}$
+\end_inset
+
+ denotes the gradient with respect to 
+\begin_inset Formula $\vec{x}_{0}$
+\end_inset
+
+.
+ We thereby obtain: 
+\begin_inset Formula \[
+u(\vec{x})=D_{\vec{p}}(\vec{x},\vec{x}_{0})-\frac{(\vec{x}_{1}-\vec{x})}{4\pi|\vec{x}_{1}-\vec{x}|^{3}}\cdot\left[-\frac{\vec{p}}{4\pi|\vec{x}_{1}-\vec{x}_{0}|^{3}}+(\vec{x}_{1}-\vec{x}_{0})\frac{3\vec{p}\cdot(\vec{x}_{1}-\vec{x}_{0})}{4\pi|\vec{x}_{1}-\vec{x}_{0}|^{5}}\right]V\ln(c_{1}).\]
+
+\end_inset
+
+This could be written as 
+\begin_inset Formula \[
+u(\vec{x})=D_{\vec{p}}(\vec{x},\vec{x}_{0})+D_{\vec{q}}(\vec{x},\vec{x}_{1})\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\vec{q}$
+\end_inset
+
+ is an effective dipole located at 
+\begin_inset Formula $\vec{x}_{1}$
+\end_inset
+
+ with strength 
+\begin_inset Formula \[
+\vec{q}=\left[-\frac{\vec{p}}{4\pi|\vec{x}_{1}-\vec{x}_{0}|^{3}}+(\vec{x}_{1}-\vec{x}_{0})\frac{3\vec{p}\cdot(\vec{x}_{1}-\vec{x}_{0})}{4\pi|\vec{x}_{1}-\vec{x}_{0}|^{5}}\right]V\ln c_{1}=\left[-\nabla_{1}D_{\vec{p}}(\vec{x}_{1},\vec{x}_{0})\right]V\ln c_{1},\]
+
+\end_inset
+
+where the 
+\begin_inset Formula $[\cdots]$
+\end_inset
+
+ term, the gradient of 
+\begin_inset Formula $D_{\vec{p}}$
+\end_inset
+
+, could in electrostatics be interpreted as the 
+\begin_inset Quotes eld
+\end_inset
+
+electric field
+\begin_inset Quotes erd
+\end_inset
+
+ of the dipole 
+\begin_inset Formula $\vec{p}$
+\end_inset
+
+ at 
+\begin_inset Formula $\vec{x}_{1}$
+\end_inset
+
+, which 
+\begin_inset Quotes eld
+\end_inset
+
+polarizes
+\begin_inset Quotes erd
+\end_inset
+
+ the inhomogeneity 
+\begin_inset Formula $V$
+\end_inset
+
+, where 
+\begin_inset Formula $\nabla_{1}$
+\end_inset
+
+ denotes the gradient with respect to 
+\begin_inset Formula $\vec{x}_{1}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+In the notation above, the change in 
+\begin_inset Formula $\vec{u}$
+\end_inset
+
+ from 
+\begin_inset Formula $V$
+\end_inset
+
+ is the 
+\begin_inset Formula $D_{\vec{q}}$
+\end_inset
+
+ term, so the interaction energy 
+\begin_inset Formula $U$
+\end_inset
+
+ is:
+\begin_inset Formula \[
+U=\vec{p}\cdot\left.\nabla D_{\vec{q}}\right|_{\vec{x}=\vec{x}_{0}}=\vec{p}\cdot\left[\frac{\vec{q}}{4\pi|\vec{x}_{0}-\vec{x}_{1}|^{3}}-(\vec{x}_{0}-\vec{x}_{1})\frac{3\vec{q}\cdot(\vec{x}_{0}-\vec{x}_{1})}{4\pi|\vec{x}_{0}-\vec{x}_{1}|^{5}}\right],\]
+
+\end_inset
+
+where the derivative is exactly the same as the 
+\begin_inset Formula $\nabla_{1}D_{\vec{p}}$
+\end_inset
+
+ above (with 
+\begin_inset Formula $\vec{p}\to\vec{q}$
+\end_inset
+
+ and 
+\begin_inset Formula $\vec{x}_{1}-\vec{x}_{0}\to\vec{x}_{0}-\vec{x}_{1}$
+\end_inset
+
+).
+ Note that we are evaluating the electric field 
+\emph on
+at
+\emph default
+ the location of 
+\begin_inset Formula $\vec{p}$
+\end_inset
+
+, i.e.
+ at 
+\begin_inset Formula $\vec{x}=\vec{x}_{0}$
+\end_inset
+
+.
+ We leave it in terms of 
+\begin_inset Formula $\vec{q}$
+\end_inset
+
+ from above to keep things simple for now, and substitute 
+\begin_inset Formula $\vec{q}$
+\end_inset
+
+ below.
+\end_layout
+
+\begin_layout Enumerate
+First, we can simplify a bit.
+ If we look at the products of 
+\begin_inset Formula $\vec{p}$
+\end_inset
+
+ and 
+\begin_inset Formula $\vec{q}$
+\end_inset
+
+ (proportional to 
+\begin_inset Formula $\vec{p}$
+\end_inset
+
+) in 
+\begin_inset Formula $U$
+\end_inset
+
+, we will get a bunch of terms 
+\begin_inset Formula $p_{i}p_{j}$
+\end_inset
+
+ for various components 
+\begin_inset Formula $i$
+\end_inset
+
+ and 
+\begin_inset Formula $j$
+\end_inset
+
+ of 
+\begin_inset Formula $\vec{p}$
+\end_inset
+
+.
+ For a polarization rotating/fluctuating randomly in time with zero mean,
+ however, is is reasonable to suppose that the mean 
+\begin_inset Formula $p_{i}p_{j}=0$
+\end_inset
+
+ for 
+\begin_inset Formula $i\neq j$
+\end_inset
+
+: the various components of 
+\begin_inset Formula $\vec{p}$
+\end_inset
+
+ must be 
+\emph on
+uncorrelated
+\emph default
+ if the orientation is random.
+ That means we can focus on the 
+\begin_inset Formula $p_{i}^{2}$
+\end_inset
+
+ terms, which have nonzero mean, one by one, thinking of them as dipoles
+ oriented along one direction at a time.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Without loss of generality, 
+\series bold
+we can take 
+\begin_inset Formula $(\vec{x}_{1}-\vec{x}_{0})$
+\end_inset
+
+ to lie along the 
+\begin_inset Formula $x$
+\end_inset
+
+ direction
+\series default
+ (this is just a choice of coordinate systems).
+ Then there are two cases: 
+\begin_inset Formula $p_{x}^{2}$
+\end_inset
+
+ terms corresponding to fluctuations when 
+\begin_inset Formula $\vec{p}\Vert(\vec{x}_{1}-\vec{x}_{0})$
+\end_inset
+
+, and 
+\begin_inset Formula $p_{y}^{2}$
+\end_inset
+
+ or 
+\begin_inset Formula $p_{z}^{2}$
+\end_inset
+
+ terms corresponding to fluctuations 
+\begin_inset Formula $\vec{p}\perp(\vec{x}_{1}-\vec{x}_{0})$
+\end_inset
+
+.
+ Everything else is a linear combination of these terms.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+When 
+\begin_inset Formula $\vec{p}\Vert(\vec{x}_{1}-\vec{x}_{0})$
+\end_inset
+
+, then 
+\begin_inset Formula $3(\vec{x}_{1}-\vec{x}_{0})\vec{p}\cdot(\vec{x}_{1}-\vec{x}_{0})=3\vec{p}|\vec{x}_{1}-\vec{x}_{0}|^{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $\vec{q}$
+\end_inset
+
+ simplifies to: 
+\begin_inset Formula \[
+\vec{q}_{\Vert}=2\frac{\vec{p}}{4\pi|\vec{x}_{1}-\vec{x}_{0}|^{3}},\]
+
+\end_inset
+
+and similarly for the 
+\begin_inset Formula $\vec{q}\Vert(\vec{x}_{1}-\vec{x}_{0})$
+\end_inset
+
+ terms in 
+\begin_inset Formula $U$
+\end_inset
+
+.
+ Hence we obtain
+\begin_inset Formula \[
+U_{\Vert}=-\frac{p_{x}^{2}}{4\pi^{2}|\vec{x}_{1}-\vec{x}_{0}|^{6}}V\ln(c_{1}).\]
+
+\end_inset
+
+When 
+\begin_inset Formula $\vec{p}\perp(\vec{x}_{1}-\vec{x}_{0}),$
+\end_inset
+
+ the 
+\begin_inset Formula $\vec{p}\cdot(\vec{x}_{1}-\vec{x}_{0})$
+\end_inset
+
+ term vanishes and 
+\begin_inset Formula $\vec{q}$
+\end_inset
+
+ simplifies to: 
+\begin_inset Formula \[
+\vec{q}_{\perp}=-\frac{\vec{p}}{4\pi|\vec{x}_{1}-\vec{x}_{0}|^{3}},\]
+
+\end_inset
+
+and similalry for the 
+\begin_inset Formula $\vec{q}$
+\end_inset
+
+ terims in 
+\begin_inset Formula $U$
+\end_inset
+
+.
+ Hence we obtain: 
+\begin_inset Formula \[
+U_{\perp}=-\frac{p_{y}^{2}+p_{z}^{2}}{16\pi^{2}|\vec{x}_{1}-\vec{x}_{0}|^{6}}V\ln(c_{1}).\]
+
+\end_inset
+
+ Therefore, the total interaction energy is 
+\begin_inset Formula \[
+U=-\frac{1}{4\pi^{2}|\vec{x}_{1}-\vec{x}_{0}|^{6}}\left(p_{x}^{2}+\frac{p_{y}^{2}+p_{z}^{2}}{4}\right)V\ln(c_{1})\]
+
+\end_inset
+
+where the 
+\begin_inset Formula $p_{i}^{2}$
+\end_inset
+
+ terms represent the 
+\emph on
+mean-square
+\emph default
+ components of 
+\begin_inset Formula $\vec{p}$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Thus, when 
+\begin_inset Formula $c_{1}>1$
+\end_inset
+
+ and 
+\begin_inset Formula $\ln c_{1}>0$
+\end_inset
+
+, we have 
+\begin_inset Formula $U\sim-\frac{1}{d^{6}}$
+\end_inset
+
+ where 
+\begin_inset Formula $d=|\vec{x}_{1}-\vec{x}_{0}|$
+\end_inset
+
+.
+ Thus, 
+\begin_inset Formula $U$
+\end_inset
+
+ is smaller (more negative) for smaller 
+\begin_inset Formula $d$
+\end_inset
+
+ and the force is 
+\series bold
+attractive
+\series default
+.
+ Equivalently, the force in the radial (
+\begin_inset Formula $d$
+\end_inset
+
+) direction is 
+\begin_inset Formula $F_{d}=-\partial U/\partial d\sim-1/d^{7}$
+\end_inset
+
+, which is 
+\begin_inset Formula $<0$
+\end_inset
+
+ and hence attractive.
+ This is the well-known 
+\begin_inset Formula $\boxed{1/d^{7}}$
+\end_inset
+
+ scaling of the van der Waals force (more specifically, the London dispersion
+ force).
+\end_layout
+
+\end_body
+\end_document
