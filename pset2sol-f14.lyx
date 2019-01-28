@@ -1,0 +1,1274 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+
+\renewcommand{\vec}[1]{\mathbf{#1}}
+
+\renewcommand{\labelenumi}{(\alph{enumi})}
+\renewcommand{\labelenumii}{(\roman{enumii})}
+
+\usepackage{cancel}
+\end_preamble
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_amsmath 1
+\use_esint 0
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\topmargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section*
+18.303 Problem Set 2 Solutions
+\end_layout
+
+\begin_layout Subsection*
+Problem 1 (5+5+5 points)
+\end_layout
+
+\begin_layout Enumerate
+We have 
+\begin_inset Formula $\langle x,x\rangle=x^{*}Bx>0$
+\end_inset
+
+ for 
+\begin_inset Formula $x\neq0$
+\end_inset
+
+ by definition of positive-definiteness.
+ We have 
+\begin_inset Formula $\langle x,y\rangle=x^{*}By=(B^{*}x)^{*}y=(Bx)^{*}y=\overline{y^{*}(Bx)}=\overline{\langle y,x\rangle}$
+\end_inset
+
+ by 
+\begin_inset Formula $B=B^{*}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\langle x,My\rangle=x^{*}BMy=\langle M^{\dagger}x,y\rangle=x^{*}M^{\dagger*}By$
+\end_inset
+
+ for all 
+\begin_inset Formula $x,y$
+\end_inset
+
+, and hence we must have 
+\begin_inset Formula $BM=M^{\dagger*}B$
+\end_inset
+
+, or 
+\begin_inset Formula $M^{\dagger*}=BMB^{-1}\implies M^{\dagger}=(BMB^{-1})^{*}=(B^{-1})^{*}M^{*}B^{*}$
+\end_inset
+
+ .
+ Using the fact that 
+\begin_inset Formula $B^{*}=B$
+\end_inset
+
+ (and hence 
+\begin_inset Formula $(B^{-1})^{*}=B^{-1}$
+\end_inset
+
+), we have 
+\begin_inset Formula $\boxed{M^{\dagger}=B^{-1}M^{*}B}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+If 
+\begin_inset Formula $M=B^{-1}A$
+\end_inset
+
+ where 
+\begin_inset Formula $A=A^{*}$
+\end_inset
+
+, then 
+\begin_inset Formula $M^{\dagger}=B^{-1}AB^{-1}B=B^{-1}A=M$
+\end_inset
+
+.
+ Q.E.D.
+\end_layout
+
+\begin_layout Subsection*
+Problem 2: (5+5+(3+3+3)+5 points)
+\end_layout
+
+\begin_layout Enumerate
+As in class, let 
+\begin_inset Formula $u'([m+0.5]\Delta x)\approx u'_{m+0.5}=\frac{u_{m+1}-u_{m}}{\Delta x}$
+\end_inset
+
+.
+ Define 
+\begin_inset Formula $c_{m+0.5}=c([m+0.5]\Delta x)$
+\end_inset
+
+.
+ Now we want to take the derivative of 
+\begin_inset Formula $c_{m+0.5}u'_{m+0.5}$
+\end_inset
+
+ in order to approximate 
+\begin_inset Formula $\hat{A}u$
+\end_inset
+
+ at 
+\begin_inset Formula $m$
+\end_inset
+
+ by a center difference: 
+\begin_inset Formula 
+\[
+\left.\hat{A}u\right|_{m\Delta x}\approx\frac{c_{m+0.5}\left(\frac{u_{m+1}-u_{m}}{\Delta x}\right)-c_{m-0.5}\left(\frac{u_{m}-u_{m-1}}{\Delta x}\right)}{\Delta x}.
+\]
+
+\end_inset
+
+There are other ways to solve this problem of course, that are also second-order
+ accurate.
+\end_layout
+
+\begin_layout Enumerate
+In order to approximate 
+\begin_inset Formula $\hat{A}u$
+\end_inset
+
+, we did three things: compute 
+\begin_inset Formula $u'$
+\end_inset
+
+ by a center-difference as in class, multiply by 
+\begin_inset Formula $c_{m+0.5}$
+\end_inset
+
+ at each point 
+\begin_inset Formula $m+0.5$
+\end_inset
+
+, then compute the derivative by another center-difference.
+ The first and last steps are exactly the same center-difference steps as
+ in class, so they correspond as in class to multiplying by 
+\begin_inset Formula $D$
+\end_inset
+
+ and 
+\begin_inset Formula $-D^{T}$
+\end_inset
+
+, respectively, where 
+\begin_inset Formula $D$
+\end_inset
+
+ is the 
+\begin_inset Formula $(M+1)\times M$
+\end_inset
+
+ matrix 
+\begin_inset Formula 
+\[
+D=\frac{1}{\Delta x}\left(\begin{array}{ccccc}
+1\\
+-1 & 1\\
+ & -1 & 1\\
+ &  & \ddots & \ddots\\
+ &  &  & -1 & 1\\
+ &  &  &  & -1
+\end{array}\right).
+\]
+
+\end_inset
+
+The middle step, multiplying the 
+\begin_inset Formula $(M+1)$
+\end_inset
+
+-component vector 
+\begin_inset Formula $\vec{u}'$
+\end_inset
+
+ by 
+\begin_inset Formula $c_{m+0.5}$
+\end_inset
+
+ at each point is just multiplication by a diagonal 
+\begin_inset Formula $(M+1)\times(M+1)$
+\end_inset
+
+ matrix 
+\begin_inset Formula 
+\[
+C=\left(\begin{array}{cccc}
+c_{0.5}\\
+ & c_{1.5}\\
+ &  & \ddots\\
+ &  &  & c_{M+0.5}
+\end{array}\right).
+\]
+
+\end_inset
+
+Putting these steps together in sequence, from right to left, means that
+ 
+\begin_inset Formula $A=-D^{T}CD$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+In Julia, the 
+\family typewriter
+diagm(c)
+\family default
+ command will create a diagonal matrix from a vector 
+\family typewriter
+c
+\family default
+.
+ The function
+\begin_inset Newline newline
+\end_inset
+
+
+\family typewriter
+diff1(M) = [ [1.0 zeros(1,M-1)]; diagm(ones(M-1),1) - eye(M) ]
+\family default
+
+\begin_inset Newline newline
+\end_inset
+
+will allow you to create the 
+\begin_inset Formula $(M+1)\times M$
+\end_inset
+
+ matrix 
+\begin_inset Formula $D$
+\end_inset
+
+ from class via 
+\family typewriter
+D = diff1(M)
+\family default
+ for any given value of 
+\begin_inset Formula $M$
+\end_inset
+
+.
+ Using these two commands, we construct the matrix 
+\begin_inset Formula $A$
+\end_inset
+
+ from part (d) for 
+\begin_inset Formula $M=100$
+\end_inset
+
+ and 
+\begin_inset Formula $L=1$
+\end_inset
+
+ and 
+\begin_inset Formula $c(x)=e^{3x}$
+\end_inset
+
+ via
+\family typewriter
+
+\begin_inset Newline newline
+\end_inset
+
+L = 1
+\begin_inset Newline newline
+\end_inset
+
+M = 100
+\begin_inset Newline newline
+\end_inset
+
+D = diff1(M)
+\begin_inset Newline newline
+\end_inset
+
+dx = L / (M+1)
+\begin_inset Newline newline
+\end_inset
+
+x = dx*0.5:dx:L # sequence of x values from 0.5*dx to <= L in steps of dx
+\begin_inset Newline newline
+\end_inset
+
+c(x) = exp(3x)
+\begin_inset Newline newline
+\end_inset
+
+C = diagm(c(x))
+\begin_inset Newline newline
+\end_inset
+
+A = -D' * C * D
+\family default
+ / dx^2
+\begin_inset Newline newline
+\end_inset
+
+You can now get the eigenvalues and eigenvectors by 
+\family typewriter
+
+\begin_inset Formula $\lambda$
+\end_inset
+
+, U = eig(A)
+\family default
+, where 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ is an array of eigenvalues and 
+\begin_inset Formula $U$
+\end_inset
+
+ is a matrix whose columns are the corresponding eigenvectors (notice that
+ all the 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ are 
+\begin_inset Formula $<0$
+\end_inset
+
+ since 
+\begin_inset Formula $A$
+\end_inset
+
+ is negative-definite).
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+The plot is shown in Figure
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:p1f"
+
+\end_inset
+
+.
+ The eigenfunctions look vaguely 
+\begin_inset Quotes eld
+\end_inset
+
+sine-like
+\begin_inset Quotes erd
+\end_inset
+
+---they have the same number of oscillations as 
+\begin_inset Formula $\sin(n\pi x/L)$
+\end_inset
+
+ for 
+\begin_inset Formula $n=1,2,3,4$
+\end_inset
+
+---but are 
+\begin_inset Quotes eld
+\end_inset
+
+squeezed
+\begin_inset Quotes erd
+\end_inset
+
+ to the left-hand side.
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pset2-f13-p1f.pdf
+	width 70col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:p1f"
+
+\end_inset
+
+Smallest-
+\begin_inset Formula $|\lambda|$
+\end_inset
+
+ eigenfunctions of 
+\begin_inset Formula $\hat{A}=\frac{d}{dx}\left[c(x)\frac{d}{dx}\right]$
+\end_inset
+
+ for 
+\begin_inset Formula $c(x)=e^{3x}$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+We find that the dot product is 
+\begin_inset Formula $\approx4.3\times10^{-16}$
+\end_inset
+
+, which is zero up to roundoff errors (your exact value may differ, but
+ should be of the same order of magnitude).
+\end_layout
+
+\begin_layout Enumerate
+In the posted IJulia notebook for the solutions, we show a plot of 
+\begin_inset Formula $|\lambda_{2M}-\lambda_{M}|$
+\end_inset
+
+ as a function of 
+\begin_inset Formula $M$
+\end_inset
+
+ on a log--log scale, and verify that it indeed decreases 
+\begin_inset Formula $\sim1/M^{2}$
+\end_inset
+
+.
+ You can also just look at the numbers instead of plotting, and we find
+ that this difference decreases by a factor of 
+\begin_inset Formula $\approx3.95$
+\end_inset
+
+ from 
+\begin_inset Formula $M=100$
+\end_inset
+
+ to 
+\begin_inset Formula $M=200$
+\end_inset
+
+ and by a factor of 
+\begin_inset Formula $\approx3.98$
+\end_inset
+
+ from 
+\begin_inset Formula $M=200$
+\end_inset
+
+ to 
+\begin_inset Formula $M=400,$
+\end_inset
+
+ almost exactly the expected factor of 4.
+ (For fun, in the solutions I went to 
+\begin_inset Formula $M=1600$
+\end_inset
+
+, but you only needed to go to 
+\begin_inset Formula $M=800$
+\end_inset
+
+.)
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+In general, the eigenfunctions have the same number of nodes (sign oscillations)
+ as 
+\begin_inset Formula $\sin(n\pi x/L)$
+\end_inset
+
+, but the oscillations pushed towards the region of high 
+\begin_inset Formula $c(x)$
+\end_inset
+
+.
+ This is even more dramatic if we increase the 
+\begin_inset Formula $c(x)$
+\end_inset
+
+ contrast.
+ In Figure
+\begin_inset space ~
+\end_inset
+
+xxx, we show two examples.
+ First, 
+\begin_inset Formula $c(x)=e^{20x}$
+\end_inset
+
+, in which all of the functions are squished to the left where 
+\begin_inset Formula $c$
+\end_inset
+
+ is small.
+ Second 
+\begin_inset Formula $c(x)=1$
+\end_inset
+
+ for 
+\begin_inset Formula $x<0.3$
+\end_inset
+
+ and 
+\begin_inset Formula $100$
+\end_inset
+
+ otherwise---in this case, the oscillations are at the left 1/3 where 
+\begin_inset Formula $c$
+\end_inset
+
+ is small, but the function is not zero in the right 2/3.
+ Instead, the function is nearly constant where 
+\begin_inset Formula $c$
+\end_inset
+
+ is large.
+ The reason for this has to do with the continuity of 
+\begin_inset Formula $u$
+\end_inset
+
+: it is easy to see from the operator that 
+\begin_inset Formula $cu'$
+\end_inset
+
+ must be continuous for 
+\begin_inset Formula $(cu')'$
+\end_inset
+
+ to exist, and hence the slope 
+\begin_inset Formula $u'$
+\end_inset
+
+ must decrease by a factor of 100 for 
+\begin_inset Formula $x>0.3$
+\end_inset
+
+, leading to a 
+\begin_inset Formula $u$
+\end_inset
+
+ that is nearly constant.
+ (We will explore some of these issues further later in the semester.)
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pset2-p2d-f13.pdf
+	width 100col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+First four eigenfunctions of 
+\begin_inset Formula $\hat{A}u=(cu')'$
+\end_inset
+
+ for two different choices of 
+\begin_inset Formula $c(x)$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Problem 3: (5+5+5+5+5+5 points)
+\end_layout
+
+\begin_layout Enumerate
+The heat capacity equation tells us that 
+\begin_inset Formula $\frac{dT_{n}}{dt}=\frac{1}{c\rho a\Delta x}\frac{dQ_{n}}{dt}$
+\end_inset
+
+, where 
+\begin_inset Formula $dQ_{n}/dt$
+\end_inset
+
+ is the rate of change of the heat in the 
+\begin_inset Formula $n$
+\end_inset
+
+-th piece.
+ The thermal conductivity equation tells us that 
+\begin_inset Formula $dQ_{n}/dt$
+\end_inset
+
+, in turn, is equal to the sum of the rates 
+\begin_inset Formula $q$
+\end_inset
+
+ at which heat flows from 
+\begin_inset Formula $n+1$
+\end_inset
+
+ and 
+\begin_inset Formula $n-1$
+\end_inset
+
+ into 
+\begin_inset Formula $n$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\frac{dT_{n}}{dt}=\frac{1}{c\rho a\Delta x}\frac{dQ_{n}}{dt}=\frac{1}{c\rho a\Delta x}\frac{\kappa a}{\Delta x}\left[(T_{n+1}-T_{n})+(T_{n-1}-T_{n})\right]=\alpha(T_{n+1}-T_{n})+\alpha(T_{n-1}-T_{n})
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\boxed{\alpha=\frac{\kappa}{c\rho(\Delta x)^{2}}}$
+\end_inset
+
+.
+ The only difference for 
+\begin_inset Formula $T_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $T_{N}$
+\end_inset
+
+ is that they have no heat flow 
+\begin_inset Formula $n-1$
+\end_inset
+
+ and 
+\begin_inset Formula $n+1$
+\end_inset
+
+, respectively, since the ends are insulated: 
+\begin_inset Formula $\frac{dT_{1}}{dt}=\alpha(T_{2}-T_{1})$
+\end_inset
+
+ and 
+\begin_inset Formula $\frac{dT_{N}}{dt}=\alpha(T_{N-1}-T_{N})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+We can obtain 
+\begin_inset Formula $A$
+\end_inset
+
+ in two ways.
+ First, we can simply look directly at our equations above, which give 
+\begin_inset Formula $\frac{dT_{n}}{dt}=\alpha(T_{n+1}-2T_{n}+T_{n-1})$
+\end_inset
+
+ for every 
+\begin_inset Formula $n$
+\end_inset
+
+ except 
+\begin_inset Formula $T_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $T_{N}$
+\end_inset
+
+, and read off the corresponding rows of the matrix 
+\begin_inset Formula 
+\[
+\boxed{A=\alpha\left(\begin{array}{ccccc}
+-1 & 1\\
+1 & -2 & 1\\
+ & \ddots & \ddots & \ddots\\
+ &  & 1 & -2 & 1\\
+ &  &  & 1 & -1
+\end{array}\right)}.
+\]
+
+\end_inset
+
+Alternatively, we can write each of the above steps---differentiating 
+\begin_inset Formula $T$
+\end_inset
+
+ to get the rate of heat flow 
+\begin_inset Formula $q$
+\end_inset
+
+ to the left at each of the 
+\begin_inset Formula $N-1$
+\end_inset
+
+ interfaces between the pieces, then taking the difference of the 
+\begin_inset Formula $q$
+\end_inset
+
+'s to get 
+\begin_inset Formula $dT/dt$
+\end_inset
+
+, in matrix form, to write: 
+\begin_inset Formula 
+\[
+A=\frac{1}{c\rho a}\underset{D:\, N\times(N-1)}{\underbrace{\frac{1}{\Delta x}\left(\begin{array}{ccccc}
+1\\
+-1 & 1\\
+ & -1 & 1\\
+ &  & \ddots & \ddots\\
+ &  &  & -1 & 1\\
+ &  &  &  & -1
+\end{array}\right)}}\kappa a\underset{-D^{T}:\,(N-1)\times N}{\underbrace{\frac{1}{\Delta x}\left(\begin{array}{cccccc}
+-1 & 1\\
+ & -1 & 1\\
+ &  & \ddots & \ddots\\
+ &  &  & -1 & 1\\
+ &  &  &  & -1 & 1
+\end{array}\right)}}=-\frac{\kappa}{c\rho}DD^{T},
+\]
+
+\end_inset
+
+in terms of the 
+\begin_inset Formula $D$
+\end_inset
+
+ matrix from class (except with 
+\begin_inset Formula $N$
+\end_inset
+
+ reduced by 1), which gives the same 
+\begin_inset Formula $A$
+\end_inset
+
+ as above.
+ As we will see in the parts below, this is indeed a second-derivative approxima
+tion, but with different boundary conditions---Neumann conditions---than
+ the Dirichlet conditions in class.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+By the way, it is interesting to consider 
+\begin_inset Formula $-DD^{T}$
+\end_inset
+
+, compared to the 
+\begin_inset Formula $-D^{T}D$
+\end_inset
+
+ we had in class.
+ Clearly, 
+\begin_inset Formula $-DD^{T}$
+\end_inset
+
+ is real-symmetric and negative semidefinite.
+ It is 
+\emph on
+not
+\emph default
+, however, negative definite, since 
+\begin_inset Formula $D^{T}$
+\end_inset
+
+ does not (and cannot) have full column rank (its rank must be 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+
+\begin_inset Formula $\leq$
+\end_inset
+
+ the number of rows
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+ 
+\begin_inset Formula $N-1$
+\end_inset
+
+, and in fact in class we showed that it has rank 
+\begin_inset Formula $N-1$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Enumerate
+Ignoring the ends for the moment, for all the interior points we have 
+\begin_inset Formula $\frac{dT_{n}}{dt}=\frac{\kappa}{c\rho}\frac{T_{n+1}-2T_{n}+T_{n-1}}{\Delta x^{2}}$
+\end_inset
+
+, which is exactly our familiar center-difference approximation for 
+\begin_inset Formula $\frac{\kappa}{c\rho}\frac{\partial^{2}T}{\partial x^{2}}$
+\end_inset
+
+ at the point 
+\begin_inset Formula $n$
+\end_inset
+
+ (
+\begin_inset Formula $x=[n-0.5]\Delta x$
+\end_inset
+
+).
+ Hence, everywhere in the interior our equations converge to 
+\begin_inset Formula $\frac{\partial T}{\partial T}=\frac{\kappa}{c\rho}\frac{\partial^{2}T}{\partial x^{2}}$
+\end_inset
+
+, and thus 
+\begin_inset Formula $\boxed{\hat{A}=\frac{\kappa}{c\rho}\frac{\partial^{2}}{\partial x^{2}}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+The boundary conditions are 
+\begin_inset Formula $\boxed{\frac{\partial T}{\partial x}=0}$
+\end_inset
+
+ at 
+\begin_inset Formula $x=0,L$
+\end_inset
+
+.
+ The easiest way to see this is to observe that our heat flow 
+\begin_inset Formula $q$
+\end_inset
+
+ is really a first derivative, and zero heat flow at the ends means zero
+ derivatives.
+ That is, 
+\begin_inset Formula $q_{n+0.5}=\kappa a\frac{T_{n+1}-T_{n}}{\Delta x}$
+\end_inset
+
+ is really an approximate derivative: 
+\begin_inset Formula $q_{n+0.5}\approx\kappa a\left.\frac{\partial T}{\partial x}\right|_{n+0.5}=\kappa a\left.\frac{\partial T}{\partial x}\right|_{n\Delta x}$
+\end_inset
+
+, while the flows 
+\begin_inset Formula $q_{0.5}$
+\end_inset
+
+ and 
+\begin_inset Formula $q_{N+0.5}$
+\end_inset
+
+ to/from 
+\begin_inset Formula $n=0$
+\end_inset
+
+ and 
+\begin_inset Formula $n=N+1$
+\end_inset
+
+ is zero, and hence 
+\begin_inset Formula $q_{0.5}=q_{N+0.5}=0\approx\kappa a\left.\frac{\partial T}{\partial x}\right|_{0,L}$
+\end_inset
+
+ .
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Working backwards, consider 
+\begin_inset Formula $\hat{A}T=\frac{\partial^{2}T}{\partial x^{2}}=T''$
+\end_inset
+
+ (setting 
+\begin_inset Formula $\frac{\kappa}{c\rho}=1$
+\end_inset
+
+ for convenience) with these boundary conditions and center-difference approxima
+tions.
+ We are given 
+\begin_inset Formula $T_{n}=T([n-0.5]\Delta x,t)$
+\end_inset
+
+ for 
+\begin_inset Formula $n=1,\ldots,N$
+\end_inset
+
+.
+ First, we compute 
+\begin_inset Formula $\left.\frac{\partial T}{\partial x}\right|_{n\Delta x}\approx T'_{n+0.5}=\frac{T_{n+1}-T_{n}}{\Delta x}$
+\end_inset
+
+ for 
+\begin_inset Formula $n=1,\ldots,N-1$
+\end_inset
+
+ (
+\begin_inset Formula $-D^{T}\vec{T}$
+\end_inset
+
+ using the 
+\begin_inset Formula $D$
+\end_inset
+
+ above).
+ Unlike the Dirichlet case in class, we 
+\emph on
+don't
+\emph default
+ compute 
+\begin_inset Formula $T'_{0.5}$
+\end_inset
+
+ and 
+\begin_inset Formula $T'_{N+0.5}$
+\end_inset
+
+, since these correspond to 
+\begin_inset Formula $\partial T/\partial x$
+\end_inset
+
+ at 
+\begin_inset Formula $x=0,L$
+\end_inset
+
+, which are zero by the boundary conditions.
+ Then, we compute our approximate 2nd derivatives 
+\begin_inset Formula $T''_{n}=\frac{T'_{n+0.5}-T'_{n-0.5}}{\Delta x}$
+\end_inset
+
+ for 
+\begin_inset Formula $n=1,\ldots,N$
+\end_inset
+
+, where we let 
+\begin_inset Formula $T'_{0.5}=T'_{N+0.5}=0$
+\end_inset
+
+ (
+\begin_inset Formula $D\vec{T}'$
+\end_inset
+
+ using the 
+\begin_inset Formula $D$
+\end_inset
+
+ from above).
+ This gives 
+\begin_inset Formula $T''_{1}=\frac{T'_{1.5}-0}{\Delta x}=\frac{T_{2}-T_{1}}{\Delta x^{2}}$
+\end_inset
+
+, 
+\begin_inset Formula $T_{N}''=\frac{0-T_{N-0.5}'}{\Delta x}=\frac{-T_{N}+T_{N-1}}{\Delta x^{2}}$
+\end_inset
+
+ at the endpoints, and 
+\begin_inset Formula $T_{n}''=\frac{(T_{n+1}-T_{n})-(T_{n}-T_{n-1})}{\Delta x^{2}}=\frac{T_{n+1}-2T_{n}+T_{n-1}}{\Delta x^{2}}$
+\end_inset
+
+ for 
+\begin_inset Formula $1<n<N$
+\end_inset
+
+, which are precisely the rows of our 
+\begin_inset Formula $A$
+\end_inset
+
+ matrix above.
+\end_layout
+
+\begin_layout Enumerate
+If 
+\begin_inset Formula $\kappa(x)$
+\end_inset
+
+, then we get a different 
+\begin_inset Formula $\kappa$
+\end_inset
+
+ and 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ factor for each 
+\begin_inset Formula $T_{n+1}-T_{n}$
+\end_inset
+
+ difference: 
+\begin_inset Formula 
+\[
+\frac{dT_{n}}{dt}=\alpha_{n+1/2}(T_{n+1}-T_{n})+\alpha_{n-1/2}(T_{n-1}-T_{n}),
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\alpha_{n+1/2}=\frac{\kappa_{n+1/2}}{c\rho(\Delta x)^{2}}$
+\end_inset
+
+ and 
+\begin_inset Formula $\kappa_{n+1/2}=\kappa([n+1/2]\Delta x)$
+\end_inset
+
+.
+ In the 
+\begin_inset Formula $N\to\infty$
+\end_inset
+
+ limit, this gives 
+\begin_inset Formula $\boxed{\hat{A}=\frac{1}{c\rho}\frac{\partial}{\partial x}\kappa\frac{\partial}{\partial x}}$
+\end_inset
+
+: we differentiated, multiplied by 
+\begin_inset Formula $\kappa$
+\end_inset
+
+, differentiated again, and then divided by 
+\begin_inset Formula $c\rho$
+\end_inset
+
+.
+ (You weren't asked to handle the case where 
+\begin_inset Formula $c\rho$
+\end_inset
+
+ is not a constant, so it's okay if you commuted 
+\begin_inset Formula $c\rho$
+\end_inset
+
+ with the derivatives.)
+\end_layout
+
+\begin_layout Enumerate
+If we discretize to 
+\begin_inset Formula $T_{m,n}=T(m\Delta x,n\Delta y)$
+\end_inset
+
+, the steps are basically the same except that we have to consider the heat
+ flow in both the 
+\begin_inset Formula $x$
+\end_inset
+
+ and 
+\begin_inset Formula $y$
+\end_inset
+
+ directions, and hence we have to take differences in both 
+\begin_inset Formula $x$
+\end_inset
+
+ and 
+\begin_inset Formula $y$
+\end_inset
+
+.
+ In particular, suppose the thickness of the block is 
+\begin_inset Formula $h$
+\end_inset
+
+.
+ In this case, heat will flow from 
+\begin_inset Formula $T_{m,n}$
+\end_inset
+
+ to 
+\begin_inset Formula $T_{m+1,n}$
+\end_inset
+
+ at a rate 
+\begin_inset Formula $\frac{\kappa h\Delta y}{\Delta x}(T_{m,n}-T_{m+1,n})$
+\end_inset
+
+ where 
+\begin_inset Formula $h\Delta y$
+\end_inset
+
+ is the area of the interface between the two blocks.
+ Then, to convert into a rate of temperature change, we will divide by 
+\begin_inset Formula $c\rho h\Delta x\Delta y$
+\end_inset
+
+, where 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $h\Delta x\Delta y$
+\end_inset
+
+ is the volume of the block.
+ Putting this all together, we obtain:
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ 
+\begin_inset Formula 
+\[
+\frac{dT_{m,n}}{dt}=\frac{\kappa}{c\rho}\left[\frac{T_{m+1,n}-2T_{m,n}+T_{m-1,n}}{\Delta x^{2}}+\frac{T_{m,n+1}-2T_{m,n}+T_{m,n+1}}{\Delta y^{2}}\right],
+\]
+
+\end_inset
+
+where the thing in 
+\begin_inset Formula $[\cdots]$
+\end_inset
+
+ is precisely the five-point stencil approximation for 
+\begin_inset Formula $\nabla^{2}$
+\end_inset
+
+ from class.
+ Hence, we obtain 
+\begin_inset Formula 
+\[
+\hat{A}=\frac{1}{c\rho}\nabla\cdot\kappa\nabla,
+\]
+
+\end_inset
+
+where for fun I have put the 
+\begin_inset Formula $\kappa$
+\end_inset
+
+ in the middle, which is the right place if 
+\begin_inset Formula $\kappa$
+\end_inset
+
+ is not a constant (you were not required to do this).
+\end_layout
+
+\end_body
+\end_document

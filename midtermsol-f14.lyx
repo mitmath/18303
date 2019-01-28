@@ -1,0 +1,461 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+
+\renewcommand{\vec}[1]{\mathbf{#1}}
+
+\renewcommand{\labelenumi}{(\alph{enumi})}
+\renewcommand{\labelenumii}{(\roman{enumii})}
+\newcommand{\rank}{\operatorname{rank}}
+
+\usepackage{cancel}
+
+\renewcommand{\Re}{\operatorname{Re}}
+\end_preamble
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_amsmath 2
+\use_esint 0
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 0.7in
+\topmargin 0.7in
+\rightmargin 0.7in
+\bottommargin 0.7in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section*
+18.303 Midterm Solutions, Fall 2014
+\end_layout
+
+\begin_layout Subsection*
+Problem 1: 
+\end_layout
+
+\begin_layout Standard
+Define the inner product 
+\begin_inset Formula $\langle u,v\rangle_{c}=\int_{\Omega}c\bar{u}v=\int_{\Omega}\overline{cu}v=\langle cu,v\rangle$
+\end_inset
+
+ where 
+\begin_inset Formula $\langle u,v\rangle=\int_{\Omega}\bar{u}v$
+\end_inset
+
+ .
+ Then 
+\begin_inset Formula $\langle u,\hat{A}v\rangle_{c}=\langle cu,(cv)''\rangle=\langle(cu)'',cv\rangle=\langle c\hat{A}u,v\rangle=\langle\hat{A}u,v\rangle_{c}$
+\end_inset
+
+, where we have used the self-adjointness of 
+\begin_inset Formula $d^{2}/dx^{2}$
+\end_inset
+
+ under 
+\begin_inset Formula $\langle\cdot,\cdot\rangle$
+\end_inset
+
+ from class.
+ Therefore, 
+\begin_inset Formula $\hat{A}=\hat{A}^{*}$
+\end_inset
+
+ under the 
+\begin_inset Formula $\langle u,v\rangle_{c}$
+\end_inset
+
+ inner product (which is a proper inner product for real 
+\begin_inset Formula $c>0$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Subsection*
+Problem 2: 
+\end_layout
+
+\begin_layout Standard
+We need 
+\begin_inset Formula $-\nabla^{2}g=\delta(\vec{x})$
+\end_inset
+
+, and we determine this by evaluating both sides with an arbitrary test
+ function 
+\begin_inset Formula $\psi$
+\end_inset
+
+, using the distributional derivative 
+\begin_inset Formula $(-\nabla^{2}g)\{\psi\}=g\{-\nabla^{2}\psi\}$
+\end_inset
+
+ as in class.
+ In cylindrical coordinates: 
+\begin_inset Formula 
+\begin{align*}
+g\{-\nabla^{2}\psi\} & =-\lim_{\epsilon\to0^{+}}\int_{\epsilon}^{\infty}r\, dr\int_{0}^{2\pi}d\phi\, c\ln r\left[\frac{1}{r}\frac{\partial}{\partial r}\left(r\frac{\partial\psi}{\partial r}\right)+\frac{1}{r^{2}}\frac{\partial^{2}\psi}{\partial\phi^{2}}\right]\\
+ & =-c\int_{0}^{2\pi}d\phi\lim_{\epsilon\to0^{+}}\int_{\epsilon}^{\infty}dr\,\ln r\frac{\partial}{\partial r}\left(r\frac{\partial\psi}{\partial r}\right)-\lim_{\epsilon\to0^{+}}\int_{\epsilon}^{\infty}\frac{c\ln r}{r}\, dr\cancel{\left.\frac{\partial\psi}{\partial\phi}\right|_{0}^{2\pi}}\\
+ & =-c\int_{0}^{2\pi}d\phi\lim_{\epsilon\to0^{+}}\left[\cancel{\left.r\ln r\frac{\partial\psi}{\partial r}\right|_{\epsilon}^{\infty}}-\int_{\epsilon}^{\infty}dr\,\cancel{\frac{\partial(\ln r)}{\partial r}}\left(\cancel{r}\frac{\partial\psi}{\partial r}\right)\right]\\
+ & =c\int_{0}^{2\pi}d\phi\lim_{\epsilon\to0^{+}}\left.\psi\right|_{r=\epsilon}^{r=\infty}=-2\pi c\psi(\vec{0}).
+\end{align*}
+
+\end_inset
+
+To get 
+\begin_inset Formula $\delta{\psi}=\psi(\vec{0})$
+\end_inset
+
+, therefore, we need 
+\begin_inset Formula $\boxed{c=-1/2\pi}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection*
+Problem 3:
+\end_layout
+
+\begin_layout Standard
+It is convenient to write 
+\begin_inset Formula $\hat{D}_{\sigma}=\hat{D}-\sigma I$
+\end_inset
+
+, where 
+\begin_inset Formula $I$
+\end_inset
+
+ is the 
+\begin_inset Formula $2\times2$
+\end_inset
+
+ identity matrix.
+ Then it follows from 
+\begin_inset Formula $\hat{D}^{*}=-\hat{D}$
+\end_inset
+
+ and 
+\begin_inset Formula $(\sigma I)^{*}=\sigma I$
+\end_inset
+
+ (since 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ is a real scalar and 
+\begin_inset Formula $I$
+\end_inset
+
+ is obviously self-adjoint) under the usual inner product 
+\begin_inset Formula $\langle\vec{w},\vec{w}'\rangle=\int_{\Omega}\vec{w}^{*}\vec{w}'$
+\end_inset
+
+ that we have 
+\begin_inset Formula $\hat{D}_{\sigma}^{*}=-\hat{D}-\sigma I$
+\end_inset
+
+ and 
+\begin_inset Formula $\hat{D}_{\sigma}+\hat{D}_{\sigma}^{*}=-2\sigma I$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+For a solution 
+\begin_inset Formula $\vec{w}$
+\end_inset
+
+ of 
+\begin_inset Formula $\hat{D}_{\sigma}\vec{w}=\partial\vec{w}/\partial t$
+\end_inset
+
+ , we have 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula 
+\begin{align*}
+\partial\langle\vec{w},\vec{w}\rangle/\partial t & =\langle\partial\vec{w}/\partial t,\vec{w}\rangle+\langle\vec{w},\partial\vec{w}/\partial t\rangle\\
+ & =\langle\hat{D}_{\sigma}\vec{w},\vec{w}\rangle+\langle\vec{w},\hat{D}_{\sigma}\vec{w}\rangle\\
+ & =\langle\vec{w},\hat{D}_{\sigma}^{*}\vec{w}\rangle+\langle\vec{w},\hat{D}_{\sigma}\vec{w}\rangle=\langle\vec{w},\left(\hat{D}_{\sigma}^{*}+\hat{D}_{\sigma}\right)\vec{w}\rangle\\
+ & =-2\langle\vec{w},\sigma\vec{w}\rangle=-2\int\sigma(x)\Vert\vec{w}(x)\Vert^{2}<0
+\end{align*}
+
+\end_inset
+
+and hence 
+\begin_inset Formula $\Vert\vec{w}\Vert^{2}=\langle\vec{w},\vec{w}\rangle$
+\end_inset
+
+ is 
+\family default
+\series bold
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+decreasing
+\series default
+ in time.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+If 
+\begin_inset Formula $\sigma(x)\geq\sigma_{0}>0$
+\end_inset
+
+ for some 
+\begin_inset Formula $\sigma_{0}$
+\end_inset
+
+, then we can go further and say that 
+\begin_inset Formula $E(t)=\Vert\vec{w}\Vert^{2}$
+\end_inset
+
+ is decaying at least exponentially fast in time, since in that case 
+\begin_inset Formula $dE/dt\leq-2\sigma_{0}E$
+\end_inset
+
+ and from this one can show that 
+\begin_inset Formula $E(t)\leq E(0)e^{-2\sigma_{0}t}$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Given an eigensolution 
+\begin_inset Formula $\hat{D}_{\sigma}\vec{w}_{n}=\lambda_{n}\vec{w}_{n}$
+\end_inset
+
+ , we can consider 
+\begin_inset Formula 
+\begin{align*}
+\langle\vec{w}_{n},(\hat{D}_{\sigma}+\hat{D}_{\sigma}^{*})\vec{w}_{n}\rangle & =-2\langle\vec{w}_{n},\sigma\vec{w}_{n}\rangle\\
+ & =\langle\vec{w}_{n},\hat{D}_{\sigma}\vec{w}_{n}\rangle+\langle\hat{D}_{\sigma}\vec{w}_{n},\vec{w}_{n}\rangle\\
+ & =\langle\vec{w}_{n},\lambda_{n}\vec{w}_{n}\rangle+\langle\lambda_{n}\vec{w}_{n},\vec{w}_{n}\rangle\\
+ & =\left(\lambda_{n}+\overline{\lambda_{n}}\right)\langle\vec{w}_{n},\vec{w}_{n}\rangle=\langle\vec{w}_{n},\vec{w}_{n}\rangle2\Re\lambda_{n}.
+\end{align*}
+
+\end_inset
+
+Note that we moved 
+\begin_inset Formula $\hat{D}_{\sigma}^{*}$
+\end_inset
+
+ to act on the left via its adjoint.
+ It is 
+\emph on
+not in general true
+\emph default
+ that 
+\begin_inset Formula $\hat{D}_{\sigma}^{*}\vec{w}_{n}=\overline{\lambda_{n}}\vec{w}_{n}$
+\end_inset
+
+.
+ Then we have: 
+\begin_inset Formula 
+\[
+\Re\lambda_{n}=-\frac{\langle\vec{w}_{n},\sigma\vec{w}_{n}\rangle}{\langle\vec{w}_{n},\vec{w}_{n}\rangle}<0
+\]
+
+\end_inset
+
+since 
+\begin_inset Formula $\sigma>0$
+\end_inset
+
+.
+ Hence the eigensolutions are 
+\series bold
+decaying exponentially
+\series default
+ in time (while they oscillate via the imaginary part of 
+\begin_inset Formula $\lambda_{n}$
+\end_inset
+
+), from their time dependence 
+\begin_inset Formula $e^{\lambda_{n}t}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Subsection*
+Problem 4:
+\end_layout
+
+\begin_layout Standard
+We will have 
+\begin_inset Formula $\partial u/\partial t=\partial v/\partial x-\sigma u$
+\end_inset
+
+ and 
+\begin_inset Formula $\partial v/\partial t=\partial u/\partial x-\sigma v$
+\end_inset
+
+, so the only new terms are the 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ terms.
+ In the discretized 
+\begin_inset Formula $\partial u/\partial t$
+\end_inset
+
+ equation, the left-hand side is evaluated at point 
+\begin_inset Formula $m$
+\end_inset
+
+ and time 
+\begin_inset Formula $n+0.5,$
+\end_inset
+
+ so we have to get 
+\begin_inset Formula $u_{m}^{n+0.5}=\frac{u_{m}^{n}+u_{m}^{n+1}}{2}+O(\Delta t^{2})$
+\end_inset
+
+ by averaging (similarly to how we handled the Crank-Nicolson discretization
+ in class).
+ Similarly for the 
+\begin_inset Formula $\partial v/\partial t$
+\end_inset
+
+ equation.
+ Hence, we obtain:
+\begin_inset Formula 
+\[
+\frac{u_{m}^{n+1}-u_{m}^{n}}{\Delta t}=\frac{v_{m+0.5}^{n+0.5}-v_{m-0.5}^{n+0.5}}{\Delta x}-\sigma\frac{u_{m}^{n+1}+u_{m}^{n}}{2},
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\frac{v_{m+0.5}^{n+0.5}-v_{m+0.5}^{n-0.5}}{\Delta t}=\frac{u_{m+1}^{n}-u_{m}^{n}}{\Delta x}-\sigma\frac{v_{m+0.5}^{n+0.5}+v_{m+0.5}^{n-0.5}}{2}.
+\]
+
+\end_inset
+
+ Solving for 
+\begin_inset Formula $u_{m}^{n+1}$
+\end_inset
+
+ and 
+\begin_inset Formula $v_{m+0.5}^{n+0.5}$
+\end_inset
+
+, we obtain the 
+\begin_inset Quotes eld
+\end_inset
+
+leap-frog
+\begin_inset Quotes erd
+\end_inset
+
+ equations:
+\begin_inset Formula 
+\[
+u_{m}^{n+1}=\left(1+\frac{\sigma\Delta t}{2}\right)^{-1}\left[\left(1-\frac{\sigma\Delta t}{2}\right)u_{m}^{n}+\frac{\Delta t}{\Delta x}\left(v_{m+0.5}^{n+0.5}-v_{m-0.5}^{n+0.5}\right)\right],
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+v_{m+0.5}^{n+0.5}=\left(1+\frac{\sigma\Delta t}{2}\right)^{-1}\left[\left(1-\frac{\sigma\Delta t}{2}\right)v_{m+0.5}^{n-0.5}+\frac{\Delta t}{\Delta x}\left(u_{m+1}^{n}-u_{m}^{n}\right)\right].
+\]
+
+\end_inset
+
+ Note that 
+\begin_inset Formula $\sigma>0,$
+\end_inset
+
+ so we are never dividing by zero in 
+\begin_inset Formula $1+\sigma\Delta t/2$
+\end_inset
+
+, regardless of 
+\begin_inset Formula $\Delta t$
+\end_inset
+
+, which is comforting.
+\end_layout
+
+\end_body
+\end_document

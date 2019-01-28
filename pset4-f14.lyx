@@ -1,0 +1,705 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+
+\renewcommand{\vec}[1]{\mathbf{#1}}
+
+\renewcommand{\labelenumi}{(\alph{enumi})}
+\renewcommand{\labelenumii}{(\roman{enumii})}
+\newcommand{\rank}{\operatorname{rank}}
+\end_preamble
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_amsmath 2
+\use_esint 0
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\topmargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section*
+18.303 Problem Set 4
+\end_layout
+
+\begin_layout Standard
+Due Wednesday, 15 October 2014.
+\end_layout
+
+\begin_layout Subsection*
+Problem 1:
+\end_layout
+
+\begin_layout Standard
+Consider the operator 
+\begin_inset Formula $\hat{A}=-c(\vec{x})\nabla^{2}$
+\end_inset
+
+ in some 2d region 
+\begin_inset Formula $\Omega\subseteq\mathbb{R}^{2}$
+\end_inset
+
+ with Dirichlet boundaries (
+\begin_inset Formula $u|_{\partial\Omega}=0$
+\end_inset
+
+), where 
+\begin_inset Formula $c(\vec{x})>0$
+\end_inset
+
+.
+ Suppose the eigenfunctions of 
+\begin_inset Formula $\hat{A}$
+\end_inset
+
+ are 
+\begin_inset Formula $u_{n}(\vec{x})$
+\end_inset
+
+ with eigenvalues 
+\begin_inset Formula $\lambda_{n}$
+\end_inset
+
+ [that is, 
+\begin_inset Formula $\hat{A}u_{n}=\lambda_{n}u_{n}$
+\end_inset
+
+] for 
+\begin_inset Formula $n=1,2,\ldots$
+\end_inset
+
+, numbered in order 
+\begin_inset Formula $\lambda_{1}<\lambda_{2}<\lambda_{3}<\cdots$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $G(\vec{x},\vec{x}')$
+\end_inset
+
+ be the Green's function of 
+\begin_inset Formula $\hat{A}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+If 
+\begin_inset Formula $f(\vec{x})=\sum_{n}\alpha_{n}u_{n}(\vec{x})$
+\end_inset
+
+ for some coefficients 
+\begin_inset Formula $\alpha_{n}=$
+\end_inset
+
+_________________ (expression in terms of 
+\begin_inset Formula $f$
+\end_inset
+
+ and 
+\begin_inset Formula $u_{n}$
+\end_inset
+
+), then 
+\begin_inset Formula $\int_{\Omega}G(\vec{x},\vec{x}')f(\vec{x}')d^{2}\vec{x}'=$
+\end_inset
+
+__________________ (in terms of 
+\begin_inset Formula $\alpha_{n}$
+\end_inset
+
+ and 
+\begin_inset Formula $u_{n}$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Enumerate
+The maximum possible value of 
+\begin_inset Formula 
+\[
+\frac{\int_{\Omega}\int_{\Omega}\frac{1}{c(\vec{x})}\overline{u(\vec{x})}G(\vec{x},\vec{x}')u(\vec{x}')\, d^{2}\vec{x}\, d^{2}\vec{x}'}{\int_{\Omega}\frac{|u(\vec{x}'')|^{2}}{c(\vec{x}'')}d^{2}\vec{x}''},
+\]
+
+\end_inset
+
+for any possible 
+\begin_inset Formula $u(\vec{x})$
+\end_inset
+
+, is _____________________ (in terms of quantities mentioned above).
+ [Hint: min--max.
+ Use the fact, from the handout, that if 
+\begin_inset Formula $\hat{A}$
+\end_inset
+
+ is self-adjoint then 
+\begin_inset Formula $\hat{A}^{-1}$
+\end_inset
+
+ is also self-adjoint.]
+\end_layout
+
+\begin_layout Subsection*
+Problem 2: 
+\end_layout
+
+\begin_layout Standard
+In this problem, we will solve the Laplacian eigenproblem 
+\begin_inset Formula $-\nabla^{2}u=\lambda u$
+\end_inset
+
+ in a 2d radius-1 cylinder 
+\begin_inset Formula $r\leq1$
+\end_inset
+
+ with Dirichlet boundary conditions 
+\begin_inset Formula $u|_{r=1\Omega}=0$
+\end_inset
+
+ by 
+\begin_inset Quotes eld
+\end_inset
+
+brute force
+\begin_inset Quotes erd
+\end_inset
+
+ in Julia with a 2d finite-difference discretization, and compare to the
+ analytical Bessel solutions.
+ You will find the IJulia notebooks posted on the 18.303 website for Lecture
+ 9 and Lecture 11 extremely useful! (Note: when you open the notebook, you
+ can choose 
+\begin_inset Quotes eld
+\end_inset
+
+Run All
+\begin_inset Quotes erd
+\end_inset
+
+ from the Cell menu to load all the commands in it.)
+\end_layout
+
+\begin_layout Enumerate
+Using the notebook for a 
+\begin_inset Formula $100\times100$
+\end_inset
+
+ grid, compute the 6 smallest-magnitude eigenvalues and eigenfunctions of
+ 
+\begin_inset Formula $A$
+\end_inset
+
+ with 
+\family typewriter
+λi, Ui=eigs(Ai,nev=6,which=
+\begin_inset Quotes erd
+\end_inset
+
+SM
+\begin_inset Quotes erd
+\end_inset
+
+)
+\family default
+.
+ The eigenvalues are given by 
+\family typewriter
+λi
+\family default
+.
+ The notebook also shows how to compute the exact eigenvalue from the square
+ of the root of the Bessel function.
+ Compared with the high-accuracy 
+\begin_inset Formula $\lambda_{1}$
+\end_inset
+
+ value, compute the error 
+\begin_inset Formula $\Delta\lambda_{1}$
+\end_inset
+
+ in the corresponding finite-difference eigenvalue from the previous part.
+ Also compute 
+\begin_inset Formula $\Delta\lambda_{1}$
+\end_inset
+
+ for 
+\begin_inset Formula $N_{x}=N_{y}=200$
+\end_inset
+
+ and 
+\begin_inset Formula $400$
+\end_inset
+
+.
+ How fast is the convergence rate with 
+\begin_inset Formula $\Delta x$
+\end_inset
+
+? Can you explain your results, in light of the fact that the center-difference
+ approximation we are using has an error that is supposed to be 
+\begin_inset Formula $\sim\Delta x^{2}$
+\end_inset
+
+? (Hint: think about how accurately the boundary condition on 
+\begin_inset Formula $\partial\Omega$
+\end_inset
+
+ is described in this finite-difference approximation.)
+\end_layout
+
+\begin_layout Enumerate
+Modify the above code to instead discretize 
+\begin_inset Formula $\nabla\cdot c\nabla$
+\end_inset
+
+, by writing 
+\begin_inset Formula $A_{0}$
+\end_inset
+
+ as 
+\begin_inset Formula $-G^{T}C_{g}G$
+\end_inset
+
+ for some 
+\begin_inset Formula $G$
+\end_inset
+
+ matrix that implements 
+\begin_inset Formula $\nabla$
+\end_inset
+
+ and for some 
+\begin_inset Formula $C_{g}$
+\end_inset
+
+ matrix that multiplies the gradient by 
+\begin_inset Formula $c(r)=r^{2}+1$
+\end_inset
+
+.
+ Draw a sketch of the grid points at which the components of 
+\begin_inset Formula $\nabla$
+\end_inset
+
+ are discretized---these will 
+\emph on
+not
+\emph default
+ be the same as the 
+\begin_inset Formula $(n_{x},n_{y})$
+\end_inset
+
+ where 
+\begin_inset Formula $u$
+\end_inset
+
+ is discretized, because of the centered differences.
+ Be careful that you need to evaluate 
+\begin_inset Formula $c$
+\end_inset
+
+ at the 
+\begin_inset Formula $\nabla$
+\end_inset
+
+ grid points now! Hint: you can make the matrix 
+\begin_inset Formula $\left(\begin{array}{c}
+M_{1}\\
+M_{2}
+\end{array}\right)$
+\end_inset
+
+ in Julia by the syntax 
+\family typewriter
+[M1;M2]
+\family default
+.
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Hint: Notice in the IJulia notebook from Lecture 11 how a matrix 
+\family typewriter
+r
+\family default
+ is created from a column-vector of 
+\family typewriter
+x
+\family default
+ values and a row-vector of 
+\family typewriter
+y
+\family default
+ values.
+ You will need to modify these 
+\family typewriter
+x
+\family default
+ and/or 
+\family typewriter
+y
+\family default
+ values to evaluate r on a new grid(s).
+ Given the 
+\begin_inset Formula $r$
+\end_inset
+
+ matrix 
+\family typewriter
+rc
+\family default
+ on this new grid, you can evaluate 
+\begin_inset Formula $c(r)$
+\end_inset
+
+ on the grid by 
+\family typewriter
+c = rc.^2 + 1
+\family default
+, and then make a diagonal sparse matrix of these values by 
+\family typewriter
+spdiagm(reshape(c, prod(size(c))))
+\family default
+.
+\end_layout
+
+\begin_layout Enumerate
+Using this 
+\begin_inset Formula $A\approx\nabla\cdot c\nabla$
+\end_inset
+
+, compute the smallest-
+\begin_inset Formula $|\lambda|$
+\end_inset
+
+ eigensolution and plot it.
+ Given the eigenfunction converted to a 2d 
+\begin_inset Formula $N_{x}\times N_{y}$
+\end_inset
+
+ array 
+\family typewriter
+u
+\family default
+, as in the Lecture 11 notebook, plot 
+\begin_inset Formula $u(r)$
+\end_inset
+
+ as a function of 
+\begin_inset Formula $r$
+\end_inset
+
+, along with a plot of the exact Bessel eigenfunction 
+\begin_inset Formula $J_{0}(k_{0}r)$
+\end_inset
+
+ from the 
+\begin_inset Formula $c=1$
+\end_inset
+
+ case for comparison.
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\family typewriter
+plot(r[Nx/2:end,Ny/2], u[Nx/2:end,Ny/2])
+\begin_inset Newline newline
+\end_inset
+
+k0 = so.newton(x -> besselj(0,x), 2.0)
+\begin_inset Newline newline
+\end_inset
+
+plot(0:0.01:1, besselj(0, k0 * (0:0.01:1))/50)
+\family default
+
+\begin_inset Newline newline
+\end_inset
+
+Here, I scaled 
+\begin_inset Formula $J_{0}(k_{0}r)$
+\end_inset
+
+ by 
+\begin_inset Formula $1/50$
+\end_inset
+
+, but you should change this scale factor as needed to make the plots of
+ comparable magnitudes.
+ Note also that the r array here is the radius evaluated on the original
+ 
+\begin_inset Formula $u$
+\end_inset
+
+ grid, as in the Lecture 11 notebook.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Can you qualitatively explain the differences?
+\end_layout
+
+\begin_layout Subsection*
+Problem 3: 
+\end_layout
+
+\begin_layout Standard
+Recall that the displacement 
+\begin_inset Formula $u(x,t)$
+\end_inset
+
+ of a stretched string [with fixed ends: 
+\begin_inset Formula $u(0,t)=u(L,t)=0$
+\end_inset
+
+] satisfies the wave equation 
+\begin_inset Formula $\frac{\partial^{2}u}{\partial x^{2}}+f(x,t)=\frac{\partial^{2}u}{\partial t^{2}}$
+\end_inset
+
+, where 
+\begin_inset Formula $f(x,t)$
+\end_inset
+
+ is an external force density (pressure) on the string.
+\end_layout
+
+\begin_layout Enumerate
+Suppose that 
+\begin_inset Formula $f(x,t)=\Re[g(x)e^{-i\omega t}]$
+\end_inset
+
+, an oscillating force with a frequency 
+\begin_inset Formula $\omega$
+\end_inset
+
+.
+ Show that, instead of solving the wave equation with this 
+\begin_inset Formula $f(x,t)$
+\end_inset
+
+, we can instead use a complex force 
+\begin_inset Formula $\tilde{f}(x,t)=g(x)e^{-i\omega t}$
+\end_inset
+
+, solve for a complex 
+\begin_inset Formula $\tilde{u}(x,t)$
+\end_inset
+
+, and then take 
+\begin_inset Formula $u=\Re\tilde{u}$
+\end_inset
+
+ to obtain the solution for the original 
+\begin_inset Formula $f(x,t)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Suppose that 
+\begin_inset Formula $f(x,t)=g(x)e^{-i\omega t}$
+\end_inset
+
+, and we want to find a 
+\emph on
+steady-state
+\emph default
+ solution 
+\begin_inset Formula $u(x,t)=v(x)e^{-i\omega t}$
+\end_inset
+
+ that is oscillating everywhere at the same frequency as the input force.
+ (This will be the solution after a long time if there is any dissipation
+ in the system to allow the initial transients to die away.) Write an equation
+ 
+\begin_inset Formula $\hat{A}v=g$
+\end_inset
+
+ that 
+\begin_inset Formula $v$
+\end_inset
+
+ solves.
+ Is 
+\begin_inset Formula $\hat{A}$
+\end_inset
+
+ self-adjoint? Positive/negative definite/semidefinite?
+\end_layout
+
+\begin_layout Enumerate
+Solve for the Green's function 
+\begin_inset Formula $G(x,x')$
+\end_inset
+
+ of this 
+\begin_inset Formula $\hat{A}$
+\end_inset
+
+, assuming that 
+\begin_inset Formula $\omega\neq n\pi/L$
+\end_inset
+
+ for any integer 
+\begin_inset Formula $n$
+\end_inset
+
+ (i.e.
+ assume 
+\begin_inset Formula $\omega$
+\end_inset
+
+ is not an eigenfrequency [why?]).
+ [Write down the continuity conditions that 
+\begin_inset Formula $G$
+\end_inset
+
+ must satisfy at 
+\begin_inset Formula $x=x'$
+\end_inset
+
+, solve for 
+\begin_inset Formula $x\neq x'$
+\end_inset
+
+, and then use the continuity conditions to eliminate unknowns.]
+\end_layout
+
+\begin_layout Enumerate
+Form a finite-difference approximation 
+\begin_inset Formula $A$
+\end_inset
+
+ of your 
+\begin_inset Formula $\hat{A}$
+\end_inset
+
+.
+ Compute an approximate 
+\begin_inset Formula $G(x,x')$
+\end_inset
+
+ in Matlab by 
+\family typewriter
+A 
+\backslash
+ dk
+\family default
+, where 
+\begin_inset Formula $\vec{d}_{k}$
+\end_inset
+
+ is the unit vector of all 0's except for one 
+\begin_inset Formula $1/\Delta x$
+\end_inset
+
+ at index 
+\begin_inset Formula $k=x'/\Delta x$
+\end_inset
+
+, and compare (by plotting both) to your analytical solution from the previous
+ part for a couple values of 
+\begin_inset Formula $x'$
+\end_inset
+
+ and a couple of different frequencies 
+\begin_inset Formula $\omega$
+\end_inset
+
+ (one 
+\begin_inset Formula $<\pi/L$
+\end_inset
+
+ and one 
+\begin_inset Formula $>\pi/L$
+\end_inset
+
+) with 
+\begin_inset Formula $L=1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Show the limit 
+\begin_inset Formula $\omega\to0$
+\end_inset
+
+ of your 
+\begin_inset Formula $G$
+\end_inset
+
+ relates in some expected way to the Green's function of 
+\begin_inset Formula $-\frac{d^{2}}{dx^{2}}$
+\end_inset
+
+ from class.
+\end_layout
+
+\end_body
+\end_document

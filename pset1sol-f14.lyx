@@ -1,0 +1,1290 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+
+\renewcommand{\vec}[1]{\mathbf{#1}}
+
+\renewcommand{\labelenumi}{(\alph{enumi})}
+\renewcommand{\labelenumii}{(\roman{enumii})}
+\end_preamble
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\topmargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section*
+18.303 Problem Set 1 Solutions
+\end_layout
+
+\begin_layout Subsection*
+Problem 1: (5+(2+2+2+2+2)+(10+5) points)
+\end_layout
+
+\begin_layout Standard
+Note that I don't expect you to rederive basic linear-algebra facts.
+ You can use things derived in 18.06, like the existence of an orthonormal
+ diagonalization of Hermitian matrices.
+\end_layout
+
+\begin_layout Enumerate
+Since it is Hermitian, 
+\begin_inset Formula $B$
+\end_inset
+
+ can be diagonalized: 
+\begin_inset Formula $B=Q\Lambda Q^{*}$
+\end_inset
+
+, where 
+\begin_inset Formula $Q$
+\end_inset
+
+ is the matrix whose columns are the eigenvectors (chosen orthonormal so
+ that 
+\begin_inset Formula $Q^{-1}=Q^{*}$
+\end_inset
+
+) and 
+\begin_inset Formula $\Lambda$
+\end_inset
+
+ is the diagonal matrix of eigenvalues.
+ Define 
+\begin_inset Formula $\sqrt{\Lambda}$
+\end_inset
+
+ as the diagonal matrix of the (positive) square roots of the eigenvalues,
+ which is possible because the eigenvalues are 
+\begin_inset Formula $>0$
+\end_inset
+
+ (since 
+\begin_inset Formula $B$
+\end_inset
+
+ is positive-definite).
+ Then define 
+\begin_inset Formula $\sqrt{B}=Q\sqrt{\Lambda}Q^{*}$
+\end_inset
+
+ , and by inspection we obtain 
+\begin_inset Formula $(\sqrt{B})^{2}=B$
+\end_inset
+
+.
+ By construction, 
+\begin_inset Formula $\sqrt{B}$
+\end_inset
+
+ is positive-definite and Hermitian.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+It is easy to see that this 
+\begin_inset Formula $\sqrt{B}$
+\end_inset
+
+ is unique, even though the eigenvectors 
+\begin_inset Formula $X$
+\end_inset
+
+ are not unique, because any acceptable transformation of 
+\begin_inset Formula $Q$
+\end_inset
+
+ must commute with 
+\begin_inset Formula $\Lambda$
+\end_inset
+
+ and hence with 
+\begin_inset Formula $\sqrt{\Lambda}$
+\end_inset
+
+.
+ Consider for simplicity the case of distinct eigenvalues: in this case,
+ we can only scale the eigenvectors by (nonzero) constants, corresponding
+ to multiplying 
+\begin_inset Formula $Q$
+\end_inset
+
+ on the right by a diagonal (nonsingular) matrix 
+\begin_inset Formula $D$
+\end_inset
+
+.
+ This gives the same 
+\begin_inset Formula $B$
+\end_inset
+
+ for any 
+\begin_inset Formula $D$
+\end_inset
+
+, since 
+\begin_inset Formula $QD\Lambda(QD)^{-1}=Q\Lambda DD^{-1}Q^{-1}=Q\Lambda Q^{-1}$
+\end_inset
+
+ (diagonal matrices commute), and for the same reason it gives the same
+ 
+\begin_inset Formula $\sqrt{B}$
+\end_inset
+
+.
+ For repeated eigenvalues 
+\begin_inset Formula $\lambda$
+\end_inset
+
+, 
+\begin_inset Formula $D$
+\end_inset
+
+ can have off-diagonal elements that mix eigenvectors of the same eigenvalue,
+ but 
+\begin_inset Formula $D$
+\end_inset
+
+ still commutes with 
+\begin_inset Formula $\Lambda$
+\end_inset
+
+ because these off-diagonal elements only appear in blocks where 
+\begin_inset Formula $\Lambda$
+\end_inset
+
+ is a multiple 
+\begin_inset Formula $\lambda I$
+\end_inset
+
+ of the identity (which commutes with anything).
+\end_layout
+
+\begin_layout Enumerate
+Solutions:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+From 18.06, 
+\begin_inset Formula $B^{-1}A$
+\end_inset
+
+ is similar to 
+\begin_inset Formula $C=MB^{-1}AM^{-1}$
+\end_inset
+
+ for any invertible 
+\begin_inset Formula $M$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $M=B^{1/2}$
+\end_inset
+
+ from above.
+ Then 
+\begin_inset Formula $C=B^{-1/2}AB^{-1/2}$
+\end_inset
+
+, which is clearly Hermitian since 
+\begin_inset Formula $A$
+\end_inset
+
+ and 
+\begin_inset Formula $B^{-1/2}$
+\end_inset
+
+ are Hermitian.
+ (Why is 
+\begin_inset Formula $B^{-1/2}$
+\end_inset
+
+ Hermitian? Because 
+\begin_inset Formula $B^{1/2}$
+\end_inset
+
+ is Hermitian from above, and the inverse of a Hermitian matrix is Hermitian.)
+\end_layout
+
+\begin_layout Enumerate
+From 18.06, similarity means that 
+\begin_inset Formula $B^{-1}A$
+\end_inset
+
+ has the same eigenvalues as 
+\begin_inset Formula $C$
+\end_inset
+
+, and since 
+\begin_inset Formula $C$
+\end_inset
+
+ is Hermitian these eigenvalues are real.
+\end_layout
+
+\begin_layout Enumerate
+No, they are not (in general) orthogonal.
+ The eigenvectors 
+\begin_inset Formula $Q$
+\end_inset
+
+ of 
+\begin_inset Formula $C$
+\end_inset
+
+ are (or can be chosen) to be orthonormal (
+\begin_inset Formula $Q^{*}Q=I$
+\end_inset
+
+), but the eigenvectors of 
+\begin_inset Formula $B^{-1}A$
+\end_inset
+
+ are 
+\begin_inset Formula $X=M^{-1}Q=B^{-1/2}Q$
+\end_inset
+
+, and hence 
+\begin_inset Formula $X^{*}X=Q^{*}B^{-1}Q\neq I$
+\end_inset
+
+ unless 
+\begin_inset Formula $B=I$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Note that there was a typo in the pset.
+ The 
+\family typewriter
+eigvals
+\family default
+ function returns only the eigenvalues; you should use the 
+\family typewriter
+eig
+\family default
+ function instead to get both eigenvalues and eigenvectors, as explained
+ in the Julia handout.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+The array 
+\family typewriter
+lambda
+\family default
+ that you obtain in Julia should be purely real, as expected.
+ (You might notice that the eigenvalues are in somewhat random order, e.g.
+ I got -8.11,3.73,1.65,-1.502,0.443.
+ This is a side effect of how eigenvalues of non-symmetric matrices are
+ computed in standard linear-algebra libraries like LAPACK.) You can check
+ orthogonality by computing 
+\begin_inset Formula $X^{*}X$
+\end_inset
+
+ via 
+\family typewriter
+X'*X
+\family default
+, and the result is not a diagonal matrix (or even close to one), hence
+ the vectors are not orthogonal.
+\end_layout
+
+\begin_layout Enumerate
+When you compute 
+\begin_inset Formula $C=X^{*}BX$
+\end_inset
+
+ via 
+\family typewriter
+C=X'*B*X
+\family default
+, you should find that 
+\begin_inset Formula $C$
+\end_inset
+
+ is nearly diagonal: the off-diagonal entries are all very close to zero
+ (around 
+\begin_inset Formula $10^{-15}$
+\end_inset
+
+ or less).
+ They would be 
+\emph on
+exactly
+\emph default
+ zero except for roundoff errors (as mentioned in class, computers keep
+ only around 15 significant digits).
+ From the definition of matrix multiplication, the entry 
+\begin_inset Formula $C_{ij}$
+\end_inset
+
+ is given by the 
+\begin_inset Formula $i$
+\end_inset
+
+-th row of 
+\begin_inset Formula $X^{*}$
+\end_inset
+
+ multiplied by 
+\begin_inset Formula $B$
+\end_inset
+
+, multiplied by the 
+\begin_inset Formula $j$
+\end_inset
+
+-th column of 
+\begin_inset Formula $X$
+\end_inset
+
+.
+ But the 
+\begin_inset Formula $j$
+\end_inset
+
+-th column 
+\begin_inset Formula $X$
+\end_inset
+
+ is the 
+\begin_inset Formula $j$
+\end_inset
+
+-th eigenvector 
+\begin_inset Formula $\vec{x}_{j}$
+\end_inset
+
+, and the 
+\begin_inset Formula $i$
+\end_inset
+
+-th row of 
+\begin_inset Formula $X^{*}$
+\end_inset
+
+ is 
+\begin_inset Formula $\vec{x}_{i}^{*}$
+\end_inset
+
+.
+ Hence 
+\begin_inset Formula $C_{ij}=\vec{x}_{i}^{*}B\vec{x_{j}}$
+\end_inset
+
+, which looks like a dot product but with 
+\begin_inset Formula $B$
+\end_inset
+
+ in the middle.
+ The fact that 
+\begin_inset Formula $C$
+\end_inset
+
+ is diagonal means that 
+\begin_inset Formula $\vec{x}_{i}^{*}B\vec{x_{j}}=0$
+\end_inset
+
+ for 
+\begin_inset Formula $i\ne j$
+\end_inset
+
+, which is a kind of orthogonality relation.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+[In fact, if we define the inner product 
+\begin_inset Formula $\langle\vec{x},\vec{y}\rangle=\vec{x}^{*}B\vec{y},$
+\end_inset
+
+ this is a perfectly good inner product (it satisifies all the inner-product
+ criteria because 
+\begin_inset Formula $B$
+\end_inset
+
+ is positive-definite), and we will see in the next pset that 
+\begin_inset Formula $B^{-1}A$
+\end_inset
+
+ is actually self-adjoint under this inner product.
+ Hence it is no surprise that we get real eigenvalues and orthogonal eigenvector
+s with respect to this inner product.]
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Solutions:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+If we write 
+\begin_inset Formula $\vec{x}(t)=\sum_{n=1}^{4}c_{n}(t)\vec{x}_{n}$
+\end_inset
+
+, then plugging it into the ODE and using the eigenvalue equation yields
+ 
+\begin_inset Formula 
+\[
+\sum_{n=1}^{4}\left[\ddot{c}_{n}-2\dot{c}_{n}-\lambda_{n}c\right]\vec{x}_{n}=0.
+\]
+
+\end_inset
+
+Using the fact that the 
+\begin_inset Formula $\vec{x}_{n}$
+\end_inset
+
+ are necessarily 
+\series bold
+orthogonal
+\series default
+ (they are eigenvectors of a Hermitian matrix for distinct eigenvalues),
+ we can take the dot product of both sides with 
+\begin_inset Formula $\vec{x}_{m}$
+\end_inset
+
+ to find that 
+\begin_inset Formula $\ddot{c}_{n}-2\dot{c}_{n}-\lambda_{n}c=0$
+\end_inset
+
+ for each 
+\begin_inset Formula $n$
+\end_inset
+
+, and hence 
+\begin_inset Formula 
+\[
+c_{n}(t)=\alpha_{n}e^{(1+\sqrt{1+\lambda_{n}})t}+\beta_{n}e^{(1-\sqrt{1+\lambda_{n}})t}
+\]
+
+\end_inset
+
+ for constants 
+\begin_inset Formula $\alpha_{n}$
+\end_inset
+
+ and 
+\begin_inset Formula $\beta_{n}$
+\end_inset
+
+ to be determined from the initial conditions.
+ Plugging in the initial conditions 
+\begin_inset Formula $\vec{x}(0)=\vec{a}_{0}$
+\end_inset
+
+ and 
+\begin_inset Formula $\vec{x}'(0)=\vec{b}_{0}$
+\end_inset
+
+, we obtain the equations: 
+\begin_inset Formula 
+\[
+\sum_{n=1}^{4}(\alpha_{n}+\beta_{n})\vec{x}_{n}=\vec{a}_{0},
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\sum_{n=1}^{4}([\alpha_{n}+\beta_{n}]+\sqrt{1+\lambda_{n}}[\alpha_{n}-\beta_{n}])\vec{x}_{n}=\vec{b}_{0}.
+\]
+
+\end_inset
+
+Again using orthogonality to pull out the 
+\begin_inset Formula $n$
+\end_inset
+
+-th term, we find 
+\begin_inset Formula 
+\[
+\alpha_{n}+\beta_{n}=\frac{\vec{x}_{n}^{*}\vec{a}_{0}}{\Vert\vec{x}_{n}\Vert^{2}}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+[\alpha_{n}+\beta_{n}]+\sqrt{1+\lambda_{n}}[\alpha_{n}-\beta_{n}]=\frac{\vec{x}_{n}^{*}\vec{b}_{0}}{\Vert\vec{x}_{n}\Vert^{2}}\implies\alpha_{n}-\beta_{n}=\frac{\vec{x}_{n}^{*}(\vec{b}_{0}-\vec{a}_{0})}{\Vert\vec{x}_{n}\Vert^{2}\sqrt{1+\lambda_{n}}}
+\]
+
+\end_inset
+
+(note that we were 
+\emph on
+not 
+\emph default
+given that 
+\begin_inset Formula $\vec{x}_{n}$
+\end_inset
+
+ were normalized to unit length, and this is 
+\emph on
+not 
+\emph default
+automatic) and hence we can solve for 
+\begin_inset Formula $\alpha_{n}$
+\end_inset
+
+ and 
+\begin_inset Formula $\beta_{n}$
+\end_inset
+
+ to obtain: 
+\begin_inset Formula 
+\[
+\vec{x}(t)=\sum_{n=1}^{4}\left(\left[\vec{x}_{n}^{*}\vec{a}_{0}+\frac{\vec{x}_{n}^{*}(\vec{b}_{0}-\vec{a}_{0})}{\sqrt{1+\lambda_{n}}}\right]e^{(1+\sqrt{1+\lambda_{n}})t}+\left[\vec{x}_{n}^{*}\vec{a}_{0}+\frac{\vec{x}_{n}^{*}(\vec{b}_{0}-\vec{a}_{0})}{\sqrt{1+\lambda_{n}}}\right]e^{(1-\sqrt{1+\lambda_{n}})t}\right)\frac{\vec{x}_{n}}{2\Vert\vec{x}_{n}\Vert^{2}}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+After a long time, this expression will be dominated by the fastest growing
+ term, which is the 
+\begin_inset Formula $e^{(1+\sqrt{1+\lambda_{n}})t}$
+\end_inset
+
+ term for 
+\begin_inset Formula $\lambda_{4}=24$
+\end_inset
+
+, hence: 
+\begin_inset Formula 
+\[
+\vec{x}(t)\approx\left[\vec{x}_{4}^{*}\vec{a}_{0}+\frac{\vec{x}_{4}^{*}(\vec{b}_{0}-\vec{a}_{0})}{5}\right]e^{6t}\frac{\vec{x}_{4}}{2\Vert\vec{x}_{4}\Vert^{2}}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Subsection*
+Problem 2: ((5+5+10)+5+5 points)
+\end_layout
+
+\begin_layout Enumerate
+Suppose that we we change the boundary conditions to the 
+\emph on
+periodic
+\emph default
+ boundary condition 
+\begin_inset Formula $u(0)=u(L)$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+As in class, the eigenfunctions are sines, cosines, and exponentials, and
+ it only remains to apply the boundary conditions.
+ 
+\begin_inset Formula $\sin(kx)$
+\end_inset
+
+ is periodic if 
+\begin_inset Formula $k=\frac{2\pi n}{L}$
+\end_inset
+
+ for 
+\begin_inset Formula $n=1,2,\ldots$
+\end_inset
+
+ (excluding 
+\begin_inset Formula $n=0$
+\end_inset
+
+ because we do not allow zero eigenfunctions and excluding 
+\begin_inset Formula $n<0$
+\end_inset
+
+ because they are not linearly independent), and 
+\begin_inset Formula $\cos(kx)$
+\end_inset
+
+ is periodic if 
+\begin_inset Formula $n=0,1,2,\ldots$
+\end_inset
+
+ (excluding 
+\begin_inset Formula $n<0$
+\end_inset
+
+ since they are the same functions).
+ The eigenvalues are 
+\begin_inset Formula $-k^{2}=-(2\pi n/L)^{2}$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $e^{kx}$
+\end_inset
+
+ is periodic only for imaginary 
+\begin_inset Formula $k=i\frac{2\pi n}{L}$
+\end_inset
+
+, but in this case we obtain 
+\begin_inset Formula $e^{i\frac{2\pi n}{L}x}=\cos(2\pi nx/L)+i\sin(2\pi nx/L)$
+\end_inset
+
+, which is 
+\emph on
+not linearly independent
+\emph default
+ of the 
+\begin_inset Formula $\sin$
+\end_inset
+
+ and 
+\begin_inset Formula $\cos$
+\end_inset
+
+ eigenfunctions above.
+ Recall from 18.06 that the eigenvectors for a given eigenvalue form a vector
+ space (the null space of 
+\begin_inset Formula $A-\lambda I$
+\end_inset
+
+), and when asked for eigenvectors we only want a 
+\emph on
+basis
+\emph default
+ of this vector space.
+ Alternatively, it is acceptable to start with exponentials and call our
+ eigenfunctions 
+\begin_inset Formula $e^{i\frac{2\pi n}{L}x}$
+\end_inset
+
+ for all integers 
+\begin_inset Formula $n$
+\end_inset
+
+, in which case we wouldn't give 
+\begin_inset Formula $\sin$
+\end_inset
+
+ and 
+\begin_inset Formula $\cos$
+\end_inset
+
+ eigenfunctions separately.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Similarly, 
+\begin_inset Formula $\sin(\phi+2\pi nx/L)$
+\end_inset
+
+ is periodic for any 
+\begin_inset Formula $\phi$
+\end_inset
+
+, but this is not linearly independent since 
+\begin_inset Formula $\sin(\phi+2\pi nx/L)=\sin\phi\cos(2\pi nx/L)+\cos\phi\sin(2\pi nx/L)$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+[Several of you were tempted to also allow 
+\begin_inset Formula $\sin(m\pi x/L)$
+\end_inset
+
+ for 
+\series bold
+odd
+\series default
+ 
+\begin_inset Formula $m$
+\end_inset
+
+ (not just the even 
+\begin_inset Formula $m$
+\end_inset
+
+ considered above).
+ At first glance, this seems like it satisfies the PDE and also has 
+\begin_inset Formula $u(0)=u(L)$
+\end_inset
+
+ 
+\begin_inset Formula $(=0$
+\end_inset
+
+).
+ Consider, for example, 
+\begin_inset Formula $m=1$
+\end_inset
+
+, i.e.
+ 
+\begin_inset Formula $\sin(\pi x/L)$
+\end_inset
+
+ solutions.
+ This can't be right, however; e.g.
+ it is not orthogonal to 
+\begin_inset Formula $1=\cos(0x)$
+\end_inset
+
+, as required for self-adjoint problems.
+ The basic problem here is that if you consider the periodic extension of
+ 
+\begin_inset Formula $\sin(\pi x/L)$
+\end_inset
+
+, then it doesn't actually satisfy the PDE, because it has a slope discontinuity
+ at the endpoints.
+ Another way of thinking about it is that periodic boundary conditions arise
+ because we have a PDE defined on a torus, e.g.
+ diffusion around a circular tube, and in this case the choice of endpoints
+ is not unique---we can easily redefine our endpoints so that 
+\begin_inset Formula $x=0$
+\end_inset
+
+ is in the 
+\begin_inset Quotes eld
+\end_inset
+
+middle
+\begin_inset Quotes erd
+\end_inset
+
+ of the domain, making it clearer that we can't have a kink there.
+ (This is one of those cases where to be completely rigorous we would need
+ to be a bit more careful about defining the domain of our operator.)]
+\end_layout
+
+\begin_layout Enumerate
+No, any solution will not be unique, because we now have a nonzero nullspace
+ spanned by the constant function 
+\begin_inset Formula $u(x)=1$
+\end_inset
+
+ (which is periodic): 
+\begin_inset Formula $\frac{d^{2}}{dx^{2}}1=0$
+\end_inset
+
+.
+ Equivalently, we have a 0 eigenvalue corresponding to 
+\begin_inset Formula $\cos(2\pi nx/L)$
+\end_inset
+
+ for 
+\begin_inset Formula $n=0$
+\end_inset
+
+ above.
+\end_layout
+
+\begin_layout Enumerate
+As suggested, let us restrict ourselves to 
+\begin_inset Formula $f(x)$
+\end_inset
+
+ with a convergent Fourier series.
+ That is, as in class, we are expanding 
+\begin_inset Formula $f(x)$
+\end_inset
+
+ in terms of the eigenfunctions: 
+\begin_inset Formula 
+\[
+f(x)=\sum_{n=-\infty}^{\infty}c_{n}e^{i\frac{2\pi n}{L}x}.
+\]
+
+\end_inset
+
+(You could also write out the Fourier series in terms of sines and cosines,
+ but the complex-exponential form is more compact so I will use it here.)
+ Here, the coefficients 
+\begin_inset Formula $c_{n}$
+\end_inset
+
+, by the usual orthogonality properties of the Fourier series, or equivalently
+ by self-adjointness of 
+\begin_inset Formula $\hat{A}$
+\end_inset
+
+, are 
+\begin_inset Formula $c_{n}=\frac{1}{L}\int_{0}^{L}e^{-\frac{2\pi n}{L}x}f(x)dx$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+In order to solve 
+\begin_inset Formula $\frac{d^{2}u}{dx^{2}}=f$
+\end_inset
+
+, as in class we would divide each term by its eigenvalue 
+\begin_inset Formula $-(2\pi n/L)^{2}$
+\end_inset
+
+, but we can only do this for 
+\begin_inset Formula $n\neq0$
+\end_inset
+
+.
+ Hence, we can only solve the equation if the 
+\begin_inset Formula $n=0$
+\end_inset
+
+ term is absent, i.e.
+ 
+\begin_inset Formula $c_{0}=0.$
+\end_inset
+
+ Appling the explicit formula for 
+\begin_inset Formula $c_{0}$
+\end_inset
+
+, the equation is solvable (for 
+\begin_inset Formula $f$
+\end_inset
+
+ with a Fourier series) if and only if: 
+\begin_inset Formula 
+\[
+\boxed{\int_{0}^{L}f(x)dx=0}.
+\]
+
+\end_inset
+
+There are other ways to come to the same conclusion.
+ For example, we could expand 
+\begin_inset Formula $u(x)$
+\end_inset
+
+ in a Fourier series (i.e.
+ in the eigenfunction basis), apply 
+\begin_inset Formula $d^{2}/dx^{2}$
+\end_inset
+
+, and ask 
+\emph on
+what is the column space
+\emph default
+ of 
+\begin_inset Formula $d^{2}/dx^{2}?$
+\end_inset
+
+ Again, we would find that upon taking the second derivative the 
+\begin_inset Formula $n=0$
+\end_inset
+
+ (constant) term vanishes, and so the column space consist of Fourier series
+ missing a constant term.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+The same reasoning works if you write out the Fourier series in terms of
+ 
+\begin_inset Formula $\sin$
+\end_inset
+
+ and 
+\begin_inset Formula $\cos$
+\end_inset
+
+ sums separately, in which case you find that 
+\begin_inset Formula $f$
+\end_inset
+
+ must be missing the 
+\begin_inset Formula $n=0$
+\end_inset
+
+ cosine term, giving the same result.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+No.
+ For example, the function 
+\begin_inset Formula $0$
+\end_inset
+
+ (which must be in any vector space) does not satisy those boundary conditions.
+ (Also adding functions doesn't work, scaling them by constants, etcetera.)
+\end_layout
+
+\begin_layout Enumerate
+We merely pick any twice-differentiable function 
+\begin_inset Formula $q(x)$
+\end_inset
+
+ with 
+\begin_inset Formula $q(L)-q(0)=-1$
+\end_inset
+
+, in which case 
+\begin_inset Formula $u(L)-u(0)=[v(L)-v(0)]+[q(L)-q(0)]=1-1=0$
+\end_inset
+
+ and 
+\begin_inset Formula $u$
+\end_inset
+
+ is periodic.
+ Then, plugging 
+\begin_inset Formula $v=u-q$
+\end_inset
+
+ into 
+\begin_inset Formula $\frac{d^{2}}{dx^{2}}v(x)=f(x)$
+\end_inset
+
+, we obtain 
+\begin_inset Formula 
+\[
+\frac{d^{2}}{dx^{2}}u(x)=f(x)+\frac{d^{2}q}{dx^{2}},
+\]
+
+\end_inset
+
+which is the (periodic-
+\begin_inset Formula $u$
+\end_inset
+
+) Poisson equation for 
+\begin_inset Formula $u$
+\end_inset
+
+ with a (possibly) modified right-hand side.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+For example, the simplest such 
+\begin_inset Formula $q$
+\end_inset
+
+ is probably 
+\begin_inset Formula $q(x)=x/L$
+\end_inset
+
+, in which case 
+\begin_inset Formula $d^{2}q/dx^{2}=0$
+\end_inset
+
+ and 
+\begin_inset Formula $u$
+\end_inset
+
+ solves the Poisson equation with an 
+\emph on
+unmodified
+\emph default
+ right-hand side.
+\end_layout
+
+\begin_layout Subsection*
+Problem 3: (10+10 points)
+\end_layout
+
+\begin_layout Standard
+We are using a difference approximation of the form: 
+\begin_inset Formula 
+\[
+u'(x)\approx\frac{-u(x+2\Delta x)+c\cdot u(x+\Delta x)-c\cdot u(x-\Delta x)+u(x-2\Delta x)}{d\cdot\Delta x}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+First, we Taylor expand: 
+\begin_inset Formula 
+\[
+u(x+\Delta x)=\sum_{n=0}^{\infty}\frac{u^{(n)}(x)}{n!}\Delta x^{n}.
+\]
+
+\end_inset
+
+The numerator of the difference formula flips sign if 
+\begin_inset Formula $\Delta x\to-\Delta x$
+\end_inset
+
+, which means that when you plug in the Taylor series all of the even powers
+ of 
+\begin_inset Formula $\Delta x$
+\end_inset
+
+ must cancel! To get 4th-order accuracy, the 
+\begin_inset Formula $\Delta x^{3}$
+\end_inset
+
+ term in the numerator (which would give an error 
+\begin_inset Formula $\sim\Delta x^{2}$
+\end_inset
+
+) must cancel as well, and this determines our choice of 
+\begin_inset Formula $c$
+\end_inset
+
+: the 
+\begin_inset Formula $\Delta x^{3}$
+\end_inset
+
+ term in the numerator is 
+\begin_inset Formula 
+\[
+\frac{u'''(x)}{3!}\Delta x^{3}\left[-2^{3}+c+c-2^{3}\right],
+\]
+
+\end_inset
+
+and hence we must have 
+\begin_inset Formula $\boxed{c=2^{3}=8}$
+\end_inset
+
+.
+ The remaining terms in the numerator are the 
+\begin_inset Formula $\Delta x$
+\end_inset
+
+ term and the 
+\begin_inset Formula $\Delta x^{5}$
+\end_inset
+
+ term: 
+\begin_inset Formula 
+\[
+u'(x)\Delta x\left[-2+c+c-2\right]+\frac{u^{(5)}(x)}{5!}\Delta x^{5}\left[-2^{5}+c+c-2^{5}\right]=12u'(x)\Delta x-\frac{2}{5}u^{(5)}(x)\Delta x^{5}+\cdots.
+\]
+
+\end_inset
+
+Clearly, to get the correct 
+\begin_inset Formula $u'(x)$
+\end_inset
+
+ as 
+\begin_inset Formula $\Delta x\to0$
+\end_inset
+
+, we must have 
+\begin_inset Formula $\boxed{d=12}$
+\end_inset
+
+.
+ Hence, the error is approximately 
+\begin_inset Formula $-\frac{1}{30}u^{(5)}(x)\Delta x^{4}$
+\end_inset
+
+, which is 
+\begin_inset Formula $\sim\Delta x^{4}$
+\end_inset
+
+ as desired.
+\end_layout
+
+\begin_layout Enumerate
+The Julia code is the same as in the handout, except now we compute our
+ difference approximation by the command: d = 
+\family typewriter
+(-sin(x+2*dx) + 8*sin(x+dx) - 8*sin(x+dx) + sin(x-2*dx)) ./ (12 * dx)
+\family default
+; the result is plotted in Fig.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:pset2-difference"
+
+\end_inset
+
+.
+ Note that the error falls as a straight line (a power law), until it reaches
+ 
+\begin_inset Formula $\sim10^{-15}$
+\end_inset
+
+, when it starts becoming dominated by roundoff errors (and actually gets
+ worse).
+ To verify the order of accuracy, it would be sufficient to check the slope
+ of the straight-line region, but it is more fun to plot the actual predicted
+ error from the previous part, where 
+\begin_inset Formula $\frac{d^{5}}{dx^{5}}\sin(x)=-\cos(x)$
+\end_inset
+
+.
+ Clearly the predicted error is almost exactly right (until roundoff errors
+ take over).
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pset2-difference.eps
+	width 60col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:pset2-difference"
+
+\end_inset
+
+Actual vs.
+ predicted error for problem 1(b), using fourth-order difference approximation
+ for 
+\begin_inset Formula $u'(x)$
+\end_inset
+
+ with 
+\begin_inset Formula $u(x)=\sin(x)$
+\end_inset
+
+, at 
+\begin_inset Formula $x=1$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

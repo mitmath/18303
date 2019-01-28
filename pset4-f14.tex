@@ -1,0 +1,155 @@
+%% LyX 2.0.3 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[twoside,english]{article}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage{geometry}
+\geometry{verbose,tmargin=1in}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\makeatletter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+\DeclareRobustCommand{\greektext}{%
+  \fontencoding{LGR}\selectfont\def\encodingdefault{LGR}}
+\DeclareRobustCommand{\textgreek}[1]{\leavevmode{\greektext #1}}
+\DeclareFontEncoding{LGR}{}{}
+\DeclareTextSymbol{\~}{LGR}{126}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+
+\renewcommand{\vec}[1]{\mathbf{#1}}
+
+\renewcommand{\labelenumi}{(\alph{enumi})}
+\renewcommand{\labelenumii}{(\roman{enumii})}
+\newcommand{\rank}{\operatorname{rank}}
+
+\makeatother
+
+\usepackage{babel}
+\begin{document}
+
+\section*{18.303 Problem Set 4}
+
+Due Wednesday, 15 October 2014.
+
+
+\subsection*{Problem 1:}
+
+Consider the operator $\hat{A}=-c(\vec{x})\nabla^{2}$ in some 2d
+region $\Omega\subseteq\mathbb{R}^{2}$ with Dirichlet boundaries
+($u|_{\partial\Omega}=0$), where $c(\vec{x})>0$. Suppose the eigenfunctions
+of $\hat{A}$ are $u_{n}(\vec{x})$ with eigenvalues $\lambda_{n}$
+{[}that is, $\hat{A}u_{n}=\lambda_{n}u_{n}${]} for $n=1,2,\ldots$,
+numbered in order $\lambda_{1}<\lambda_{2}<\lambda_{3}<\cdots$. Let
+$G(\vec{x},\vec{x}')$ be the Green's function of $\hat{A}$.
+\begin{enumerate}
+\item If $f(\vec{x})=\sum_{n}\alpha_{n}u_{n}(\vec{x})$ for some coefficients
+$\alpha_{n}=$\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ (expression in terms
+of $f$ and $u_{n}$), then $\int_{\Omega}G(\vec{x},\vec{x}')f(\vec{x}')d^{2}\vec{x}'=$\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+(in terms of $\alpha_{n}$ and $u_{n}$).
+\item The maximum possible value of 
+\[
+\frac{\int_{\Omega}\int_{\Omega}\frac{1}{c(\vec{x})}\overline{u(\vec{x})}G(\vec{x},\vec{x}')u(\vec{x}')\, d^{2}\vec{x}\, d^{2}\vec{x}'}{\int_{\Omega}\frac{|u(\vec{x}'')|^{2}}{c(\vec{x}'')}d^{2}\vec{x}''},
+\]
+for any possible $u(\vec{x})$, is \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+(in terms of quantities mentioned above). {[}Hint: min--max. Use the
+fact, from the handout, that if $\hat{A}$ is self-adjoint then $\hat{A}^{-1}$
+is also self-adjoint.{]}
+\end{enumerate}
+
+\subsection*{Problem 2: }
+
+In this problem, we will solve the Laplacian eigenproblem $-\nabla^{2}u=\lambda u$
+in a 2d radius-1 cylinder $r\leq1$ with Dirichlet boundary conditions
+$u|_{r=1\Omega}=0$ by ``brute force'' in Julia with a 2d finite-difference
+discretization, and compare to the analytical Bessel solutions. You
+will find the IJulia notebooks posted on the 18.303 website for Lecture
+9 and Lecture 11 extremely useful! (Note: when you open the notebook,
+you can choose ``Run All'' from the Cell menu to load all the commands
+in it.)
+\begin{enumerate}
+\item Using the notebook for a $100\times100$ grid, compute the 6 smallest-magnitude
+eigenvalues and eigenfunctions of $A$ with \texttt{\textgreek{l}i,
+Ui=eigs(Ai,nev=6,which=''SM'')}. The eigenvalues are given by \texttt{\textgreek{l}i}.
+The notebook also shows how to compute the exact eigenvalue from the
+square of the root of the Bessel function. Compared with the high-accuracy
+$\lambda_{1}$ value, compute the error $\Delta\lambda_{1}$ in the
+corresponding finite-difference eigenvalue from the previous part.
+Also compute $\Delta\lambda_{1}$ for $N_{x}=N_{y}=200$ and $400$.
+How fast is the convergence rate with $\Delta x$? Can you explain
+your results, in light of the fact that the center-difference approximation
+we are using has an error that is supposed to be $\sim\Delta x^{2}$?
+(Hint: think about how accurately the boundary condition on $\partial\Omega$
+is described in this finite-difference approximation.)
+\item Modify the above code to instead discretize $\nabla\cdot c\nabla$,
+by writing $A_{0}$ as $-G^{T}C_{g}G$ for some $G$ matrix that implements
+$\nabla$ and for some $C_{g}$ matrix that multiplies the gradient
+by $c(r)=r^{2}+1$. Draw a sketch of the grid points at which the
+components of $\nabla$ are discretized---these will \emph{not} be
+the same as the $(n_{x},n_{y})$ where $u$ is discretized, because
+of the centered differences. Be careful that you need to evaluate
+$c$ at the $\nabla$ grid points now! Hint: you can make the matrix
+$\left(\begin{array}{c}
+M_{1}\\
+M_{2}
+\end{array}\right)$ in Julia by the syntax \texttt{{[}M1;M2{]}}. \\
+\\
+Hint: Notice in the IJulia notebook from Lecture 11 how a matrix \texttt{r}
+is created from a column-vector of \texttt{x} values and a row-vector
+of \texttt{y} values. You will need to modify these \texttt{x} and/or
+\texttt{y} values to evaluate r on a new grid(s). Given the $r$ matrix
+\texttt{rc} on this new grid, you can evaluate $c(r)$ on the grid
+by \texttt{c = rc.\textasciicircum{}2 + 1}, and then make a diagonal
+sparse matrix of these values by \texttt{spdiagm(reshape(c, prod(size(c))))}.
+\item Using this $A\approx\nabla\cdot c\nabla$, compute the smallest-$|\lambda|$
+eigensolution and plot it. Given the eigenfunction converted to a
+2d $N_{x}\times N_{y}$ array \texttt{u}, as in the Lecture 11 notebook,
+plot $u(r)$ as a function of $r$, along with a plot of the exact
+Bessel eigenfunction $J_{0}(k_{0}r)$ from the $c=1$ case for comparison.
+\\
+\texttt{plot(r{[}Nx/2:end,Ny/2{]}, u{[}Nx/2:end,Ny/2{]})}~\\
+\texttt{k0 = so.newton(x -> besselj(0,x), 2.0)}~\\
+\texttt{plot(0:0.01:1, besselj(0, k0 {*} (0:0.01:1))/50)}\\
+Here, I scaled $J_{0}(k_{0}r)$ by $1/50$, but you should change
+this scale factor as needed to make the plots of comparable magnitudes.
+Note also that the r array here is the radius evaluated on the original
+$u$ grid, as in the Lecture 11 notebook.\\
+\\
+Can you qualitatively explain the differences?
+\end{enumerate}
+
+\subsection*{Problem 3: }
+
+Recall that the displacement $u(x,t)$ of a stretched string {[}with
+fixed ends: $u(0,t)=u(L,t)=0${]} satisfies the wave equation $\frac{\partial^{2}u}{\partial x^{2}}+f(x,t)=\frac{\partial^{2}u}{\partial t^{2}}$,
+where $f(x,t)$ is an external force density (pressure) on the string.
+\begin{enumerate}
+\item Suppose that $f(x,t)=\Re[g(x)e^{-i\omega t}]$, an oscillating force
+with a frequency $\omega$. Show that, instead of solving the wave
+equation with this $f(x,t)$, we can instead use a complex force $\tilde{f}(x,t)=g(x)e^{-i\omega t}$,
+solve for a complex $\tilde{u}(x,t)$, and then take $u=\Re\tilde{u}$
+to obtain the solution for the original $f(x,t)$.
+\item Suppose that $f(x,t)=g(x)e^{-i\omega t}$, and we want to find a \emph{steady-state}
+solution $u(x,t)=v(x)e^{-i\omega t}$ that is oscillating everywhere
+at the same frequency as the input force. (This will be the solution
+after a long time if there is any dissipation in the system to allow
+the initial transients to die away.) Write an equation $\hat{A}v=g$
+that $v$ solves. Is $\hat{A}$ self-adjoint? Positive/negative definite/semidefinite?
+\item Solve for the Green's function $G(x,x')$ of this $\hat{A}$, assuming
+that $\omega\neq n\pi/L$ for any integer $n$ (i.e. assume $\omega$
+is not an eigenfrequency {[}why?{]}). {[}Write down the continuity
+conditions that $G$ must satisfy at $x=x'$, solve for $x\neq x'$,
+and then use the continuity conditions to eliminate unknowns.{]}
+\item Form a finite-difference approximation $A$ of your $\hat{A}$. Compute
+an approximate $G(x,x')$ in Matlab by \texttt{A \textbackslash{}
+dk}, where $\vec{d}_{k}$ is the unit vector of all 0's except for
+one $1/\Delta x$ at index $k=x'/\Delta x$, and compare (by plotting
+both) to your analytical solution from the previous part for a couple
+values of $x'$ and a couple of different frequencies $\omega$ (one
+$<\pi/L$ and one $>\pi/L$) with $L=1$.
+\item Show the limit $\omega\to0$ of your $G$ relates in some expected
+way to the Green's function of $-\frac{d^{2}}{dx^{2}}$ from class.\end{enumerate}
+
+\end{document}

@@ -1,0 +1,453 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+
+\renewcommand{\vec}[1]{\mathbf{#1}}
+
+\renewcommand{\labelenumi}{(\alph{enumi})}
+\renewcommand{\labelenumii}{(\roman{enumii})}
+\newcommand{\rank}{\operatorname{rank}}
+\end_preamble
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_amsmath 2
+\use_esint 0
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 0.7in
+\topmargin 0.7in
+\rightmargin 0.7in
+\bottommargin 0.7in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section*
+18.303 Midterm, Fall 2014
+\end_layout
+
+\begin_layout Standard
+Each problem has 
+\series bold
+equal weight
+\series default
+.
+ You have 55 minutes.
+\end_layout
+
+\begin_layout Subsection*
+Problem 1: Adjoints (25 points)
+\end_layout
+
+\begin_layout Standard
+Consider the operator 
+\begin_inset Formula $\hat{A}u=\frac{d^{2}}{dx^{2}}(cu)$
+\end_inset
+
+ on the domain 
+\begin_inset Formula $\Omega=[0,L]$
+\end_inset
+
+ with Dirichlet boundaries 
+\begin_inset Formula $u|_{\partial\Omega}=0$
+\end_inset
+
+, where 
+\begin_inset Formula $c(x)>0$
+\end_inset
+
+.
+ 
+\series bold
+Show
+\series default
+ that 
+\begin_inset Formula $\hat{A}=\hat{A}^{*}$
+\end_inset
+
+ for an appropriate choice of inner product 
+\begin_inset Formula $\langle u,v\rangle$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection*
+Problem 2: Green (25 points)
+\end_layout
+
+\begin_layout Standard
+Consider the operator 
+\begin_inset Formula $\hat{A}=-\nabla^{2}$
+\end_inset
+
+ in 2d, where the domain is the entire 
+\begin_inset Formula $x,y$
+\end_inset
+
+ plane.
+ In cylindrical 
+\begin_inset Formula $(r,\phi)$
+\end_inset
+
+ coordinates, we can write 
+\begin_inset Formula 
+\[
+\nabla^{2}u=\frac{1}{r}\frac{\partial}{\partial r}\left(r\frac{\partial u}{\partial r}\right)+\frac{1}{r^{2}}\frac{\partial^{2}u}{\partial\phi^{2}}.
+\]
+
+\end_inset
+
+We want to solve for the Green's function 
+\begin_inset Formula $G(\vec{x},\vec{x}')=g(|\vec{x}-\vec{x}'|)$
+\end_inset
+
+ of 
+\begin_inset Formula $\hat{A}$
+\end_inset
+
+, reduced to a function 
+\begin_inset Formula $g(r)$
+\end_inset
+
+ by the symmetry of the problem.
+ By looking at 
+\begin_inset Formula $r>0$
+\end_inset
+
+, one can quickly show that 
+\begin_inset Formula $g(r)=c\ln r$
+\end_inset
+
+ for some unknown constant 
+\begin_inset Formula $c$
+\end_inset
+
+.
+ This 
+\begin_inset Formula $g$
+\end_inset
+
+ defines a regular distribution, if we just set 
+\begin_inset Formula $g(0)=0$
+\end_inset
+
+, despite the fact that 
+\begin_inset Formula $\ln$
+\end_inset
+
+ blows up [it is an 
+\begin_inset Quotes eld
+\end_inset
+
+integrable
+\begin_inset Quotes erd
+\end_inset
+
+ singularity in 2d: the integral exists for any test function 
+\begin_inset Formula $\psi(x,y)$
+\end_inset
+
+].
+ 
+\series bold
+Find
+\series default
+ 
+\begin_inset Formula $c$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection*
+Problem 3: Waves (25 points)
+\end_layout
+
+\begin_layout Standard
+In class, we re-wrote the wave equation 
+\begin_inset Formula $u''=\ddot{u}$
+\end_inset
+
+ in the form 
+\begin_inset Formula $\hat{D}\vec{w}=\partial\vec{w}/\partial t$
+\end_inset
+
+, where 
+\begin_inset Formula $\vec{w}=\left(\begin{array}{c}
+u\\
+v
+\end{array}\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $\hat{D}=\left(\begin{array}{cc}
+ & \partial/\partial x\\
+\partial/\partial x
+\end{array}\right)$
+\end_inset
+
+.
+ We showed that 
+\begin_inset Formula $\hat{D}^{*}=-\hat{D}$
+\end_inset
+
+ (anti-Hermitian) for appropriate boundary conditions (let's say 
+\begin_inset Formula $u=0$
+\end_inset
+
+ on the boundaries) for the obvious inner product 
+\begin_inset Formula $\langle\vec{w},\vec{w}'\rangle=\int_{\Omega}\vec{w}^{*}\vec{w}'$
+\end_inset
+
+, and hence 
+\begin_inset Formula $\hat{D}$
+\end_inset
+
+ has purely imaginary eigenvalues 
+\begin_inset Formula $\lambda=-i\omega$
+\end_inset
+
+ (oscillating solutions), and 
+\begin_inset Formula $\Vert\vec{w}\Vert^{2}=\langle\vec{w},\vec{w}\rangle$
+\end_inset
+
+ was a conserved 
+\begin_inset Quotes eld
+\end_inset
+
+energy.
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Consider a new operator: 
+\begin_inset Formula 
+\[
+\hat{D}_{\sigma}=\left(\begin{array}{cc}
+-\sigma & \partial/\partial x\\
+\partial/\partial x & -\sigma
+\end{array}\right)
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\sigma(x)>0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Show
+\series default
+ that 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\Vert\vec{w}\Vert^{2}$
+\end_inset
+
+ is 
+\family default
+\series default
+\shape default
+\size default
+\emph on
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+not
+\emph default
+ conserved; it is _______ in time.
+ Hint: consider 
+\begin_inset Formula $\partial\langle\vec{w},\vec{w}\rangle/\partial t$
+\end_inset
+
+ as in class.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Show
+\series default
+ that if 
+\begin_inset Formula $\vec{w}_{n}$
+\end_inset
+
+ is an eigenfunction, i.e.
+ 
+\begin_inset Formula $\hat{D}_{\sigma}\vec{w}_{n}=\lambda_{n}\vec{w}_{n}$
+\end_inset
+
+, then the 
+\emph on
+real
+\emph default
+ part of 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ is negative (hence the eigensolutions are ________ in time).
+ Hint: consider 
+\begin_inset Formula $\langle\vec{w}_{n},(\hat{D}_{\sigma}+\hat{D}_{\sigma}^{*})\vec{w}_{n}\rangle$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection*
+Problem 4: Discrete Waves (25 points)
+\end_layout
+
+\begin_layout Standard
+Consider the operator 
+\begin_inset Formula 
+\[
+\hat{D}_{\sigma}=\left(\begin{array}{cc}
+-\sigma & \partial/\partial x\\
+\partial/\partial x & -\sigma
+\end{array}\right)
+\]
+
+\end_inset
+
+from the previous problem, acting on 
+\begin_inset Formula $\vec{w}=\left(\begin{array}{c}
+u\\
+v
+\end{array}\right)$
+\end_inset
+
+.
+ For 
+\begin_inset Formula $\sigma=0$
+\end_inset
+
+, we discretized this in class via 
+\begin_inset Formula $u_{m}^{n}\approx u(m\Delta x,n\Delta t)$
+\end_inset
+
+ and 
+\begin_inset Formula $v_{m+0.5}^{n+0.5}$
+\end_inset
+
+ (a staggered grid in space and time):
+\begin_inset Formula 
+\[
+\frac{u_{m}^{n+1}-u_{m}^{n}}{\Delta t}=\frac{v_{m+0.5}^{n+0.5}-v_{m-0.5}^{n+0.5}}{\Delta x},
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\frac{v_{m+0.5}^{n+0.5}-v_{m+0.5}^{n-0.5}}{\Delta t}=\frac{u_{m+1}^{n}-u_{m}^{n}}{\Delta x}.
+\]
+
+\end_inset
+
+
+\series bold
+Write
+\series default
+ down a center-difference (second-order accurate) scheme for 
+\begin_inset Formula $\partial\vec{w}/\partial t=\hat{D}_{\sigma}\vec{w}.$
+\end_inset
+
+ For simplicity, take 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ to be a constant (independent of 
+\begin_inset Formula $x$
+\end_inset
+
+ or 
+\begin_inset Formula $t$
+\end_inset
+
+), and solve for: 
+\begin_inset Formula 
+\begin{align*}
+u_{m}^{n+1} & =?\\
+v_{m+0.5}^{n+0.5} & =?
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

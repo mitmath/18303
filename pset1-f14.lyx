@@ -1,0 +1,588 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+
+\renewcommand{\vec}[1]{\mathbf{#1}}
+
+\renewcommand{\labelenumi}{(\alph{enumi})}
+\renewcommand{\labelenumii}{(\roman{enumii})}
+\end_preamble
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_amsmath 1
+\use_esint 0
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\topmargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section*
+18.303 Problem Set 1
+\end_layout
+
+\begin_layout Standard
+Due Friday, 12 September 2014.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Note
+\series default
+: For computational (Julia-based) homework problems in 18.303, turn in with
+ your solutions a printout of any commands used and their results (please
+ edit out extraneous/irrelevant stuff), and a printout of any graphs requested;
+ alternatively, you can 
+\series bold
+email your notebook (.ipynb) file
+\series default
+ to the grader cjfan@math.mit.edu.
+ 
+\series bold
+Always label
+\series default
+ the axes of your graphs (with the 
+\family typewriter
+xlabel
+\family default
+ and 
+\family typewriter
+ylabel
+\family default
+ commands), add a title with the 
+\family typewriter
+title
+\family default
+ command, and add a legend (if there are multiple curves) with the 
+\family typewriter
+legend
+\family default
+ command.
+ (Labelling graphs is a good habit to acquire.) Because IJulia notebooks
+ let you combine code, plots, headings, and formatted text, it should be
+ straighforward to turn in well-documented solutions.
+\end_layout
+
+\begin_layout Subsection*
+Problem 1: 18.06 warmup
+\end_layout
+
+\begin_layout Standard
+Here are a few questions that you should be able to answer based only on
+ 18.06:
+\end_layout
+
+\begin_layout Enumerate
+Suppose that 
+\begin_inset Formula $B$
+\end_inset
+
+ is a Hermitian positive-definite matrix.
+ Show that there is a unique matrix 
+\begin_inset Formula $\sqrt{B}$
+\end_inset
+
+ which is Hermitian positive-definite and has the property 
+\begin_inset Formula $(\sqrt{B})^{2}=B$
+\end_inset
+
+.
+ (Hint: use the diagonalization of 
+\begin_inset Formula $B$
+\end_inset
+
+.)
+\end_layout
+
+\begin_layout Enumerate
+Suppose that 
+\begin_inset Formula $A$
+\end_inset
+
+ and 
+\begin_inset Formula $B$
+\end_inset
+
+ are Hermitian matrices and that 
+\begin_inset Formula $B$
+\end_inset
+
+ is positive-definite.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Show that 
+\begin_inset Formula $B^{-1}A$
+\end_inset
+
+ is 
+\emph on
+similar
+\emph default
+ (in the 18.06 sense) to a Hermitian matrix.
+ (Hint: use your answer from above.) 
+\end_layout
+
+\begin_layout Enumerate
+What does this tell you about the eigenvalues 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ of 
+\begin_inset Formula $B^{-1}A$
+\end_inset
+
+ , i.e.
+ the solutions of 
+\begin_inset Formula $B^{-1}A\vec{x}=\lambda\vec{x}$
+\end_inset
+
+?
+\end_layout
+
+\begin_layout Enumerate
+Are the eigenvectors 
+\begin_inset Formula $\vec{x}$
+\end_inset
+
+ orthogonal?
+\end_layout
+
+\begin_layout Enumerate
+In Julia, make a random 
+\begin_inset Formula $5\times5$
+\end_inset
+
+ real-symmetric matrix via 
+\family typewriter
+A=rand(5,5); A = A+A'
+\family default
+ and a random 
+\begin_inset Formula $5\times5$
+\end_inset
+
+ positive-definite matrix via 
+\family typewriter
+B = rand(5,5); B = B'*B
+\family default
+ ...
+ then check that the eigenvalues of 
+\begin_inset Formula $B^{-1}A$
+\end_inset
+
+ match your expectations from above via 
+\family typewriter
+lambda,X = eigvals(B
+\backslash
+A)
+\family default
+ (this will give an array 
+\family typewriter
+lambda
+\family default
+ of the eigenvalues and a matrix 
+\family typewriter
+X
+\family default
+ whose columns are the eigenvectors).
+\end_layout
+
+\begin_layout Enumerate
+Using your Julia result, what happens if you compute 
+\begin_inset Formula $C=X^{T}BX$
+\end_inset
+
+ via 
+\family typewriter
+C=X'*B*X
+\family default
+? You should notice that the matrix 
+\begin_inset Formula $C$
+\end_inset
+
+ is very special in some way.
+ Show that the elements 
+\begin_inset Formula $C_{ij}$
+\end_inset
+
+ of 
+\begin_inset Formula $C$
+\end_inset
+
+ are a kind of 
+\begin_inset Quotes eld
+\end_inset
+
+dot product
+\begin_inset Quotes erd
+\end_inset
+
+ of the eigenvectors 
+\begin_inset Formula $i$
+\end_inset
+
+ and 
+\begin_inset Formula $j$
+\end_inset
+
+, but with a factor of 
+\begin_inset Formula $B$
+\end_inset
+
+ in the middle of the dot product.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+The solutions 
+\begin_inset Formula $y(t)$
+\end_inset
+
+ of the ODE 
+\begin_inset Formula $y''-2y'-cy=0$
+\end_inset
+
+ are of the form 
+\begin_inset Formula $y(t)=C_{1}e^{(1+\sqrt{1+c})t}+C_{2}e^{(1-\sqrt{1+c})t}$
+\end_inset
+
+ for some constants 
+\begin_inset Formula $C_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $C_{2}$
+\end_inset
+
+ determined by the initial conditions.
+ Suppose that 
+\begin_inset Formula $A$
+\end_inset
+
+ is a real-symmetric 
+\begin_inset Formula $4\times4$
+\end_inset
+
+ matrix with eigenvalues 
+\begin_inset Formula $3,8,15,24$
+\end_inset
+
+ and corresponding eigenvectors 
+\begin_inset Formula $\vec{x}_{1},\vec{x}_{2},\ldots,\vec{x}_{4}$
+\end_inset
+
+, respectively.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+If 
+\begin_inset Formula $\vec{x}(t)$
+\end_inset
+
+ solves the system of ODEs 
+\begin_inset Formula $\frac{d^{2}}{dt^{2}}\vec{x}-2\frac{d}{dt}\vec{x}=A\vec{x}$
+\end_inset
+
+ with initial conditions 
+\begin_inset Formula $\vec{x}(0)=\vec{a}_{0}$
+\end_inset
+
+ and 
+\begin_inset Formula $\vec{x}'(0)=\vec{b}_{0}$
+\end_inset
+
+, write down the solution 
+\begin_inset Formula $\vec{x}(t)$
+\end_inset
+
+ as a closed-form expression (no matrix inverses or exponentials) in terms
+ of the eigenvectors 
+\begin_inset Formula $\vec{x}_{1},\vec{x}_{2},\ldots,\vec{x}_{4}$
+\end_inset
+
+ and 
+\begin_inset Formula $\vec{a}_{0}$
+\end_inset
+
+ and 
+\begin_inset Formula $\vec{b}_{0}$
+\end_inset
+
+.
+ [Hint: expand 
+\begin_inset Formula $\vec{x}(t)$
+\end_inset
+
+ in the basis of the eigenvectors with unknown coefficients 
+\begin_inset Formula $c_{1}(t),\ldots,c_{4}(t)$
+\end_inset
+
+, then plug into the ODE and solve for each coefficient using the fact that
+ the eigenvectors are _________.]
+\end_layout
+
+\begin_layout Enumerate
+After a long time 
+\begin_inset Formula $t\gg0$
+\end_inset
+
+, what do you expect the approximate form of the solution to be?
+\end_layout
+
+\end_deeper
+\begin_layout Subsection*
+Problem 2: Les Poisson, les Poisson
+\end_layout
+
+\begin_layout Standard
+In class, we considered the 1d Poisson equation 
+\begin_inset Formula $\frac{d^{2}}{dx^{2}}u(x)=f(x)$
+\end_inset
+
+ for the vector space of functions 
+\begin_inset Formula $u(x)$
+\end_inset
+
+ on 
+\begin_inset Formula $x\in[0,L]$
+\end_inset
+
+ with the 
+\begin_inset Quotes eld
+\end_inset
+
+Dirichlet
+\begin_inset Quotes erd
+\end_inset
+
+ boundary conditions 
+\begin_inset Formula $u(0)=u(L)=0$
+\end_inset
+
+, and solved it in terms of the eigenfunctions of 
+\begin_inset Formula $\frac{d^{2}}{dx^{2}}$
+\end_inset
+
+ (giving a Fourier sine series).
+ Here, we will consider a couple of small variations on this:
+\end_layout
+
+\begin_layout Enumerate
+Suppose that we we change the boundary conditions to the 
+\emph on
+periodic
+\emph default
+ boundary condition 
+\begin_inset Formula $u(0)=u(L)$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+What are the eigenfunctions of 
+\begin_inset Formula $\frac{d^{2}}{dx^{2}}$
+\end_inset
+
+ now?
+\end_layout
+
+\begin_layout Enumerate
+Will Poisson's equation have unique solutions? Why or why not?
+\end_layout
+
+\begin_layout Enumerate
+Under what conditions (if any) on 
+\begin_inset Formula $f(x)$
+\end_inset
+
+ would a solution exist? (You can restrict yourself to 
+\begin_inset Formula $f$
+\end_inset
+
+ with a convergent Fourier series.)
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+If we instead consider 
+\begin_inset Formula $\frac{d^{2}}{dx^{2}}v(x)=g(x)$
+\end_inset
+
+ for functions 
+\begin_inset Formula $v(x)$
+\end_inset
+
+ with the boundary conditions 
+\begin_inset Formula $v(0)=v(L)+1$
+\end_inset
+
+, do these functions form a vector space? Why or why not?
+\end_layout
+
+\begin_layout Enumerate
+Explain how we can transform the 
+\begin_inset Formula $v(x)$
+\end_inset
+
+ problem of the previous part back into the original 
+\begin_inset Formula $\frac{d^{2}}{dx^{2}}u(x)=f(x)$
+\end_inset
+
+ problem with 
+\begin_inset Formula $u(0)=u(L)$
+\end_inset
+
+, by writing 
+\begin_inset Formula $u(x)=v(x)+q(x)$
+\end_inset
+
+ and 
+\begin_inset Formula $f(x)=g(x)+r(x)$
+\end_inset
+
+ for some functions 
+\begin_inset Formula $q$
+\end_inset
+
+ and 
+\begin_inset Formula $r$
+\end_inset
+
+.
+ (Transforming a new problem into an old, solved one is always a useful
+ thing to do!)
+\end_layout
+
+\begin_layout Subsection*
+Problem 3: Finite-difference approximations
+\end_layout
+
+\begin_layout Standard
+For this question, you may find it helpful to refer to the notes and reading
+ from lecture 3.
+ Consider a finite-difference approximation of the form: 
+\begin_inset Formula 
+\[
+u'(x)\approx\frac{-u(x+2\Delta x)+c\cdot u(x+\Delta x)-c\cdot u(x-\Delta x)+u(x-2\Delta x)}{d\cdot\Delta x}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Substituting the Taylor series for 
+\begin_inset Formula $u(x+\Delta x)$
+\end_inset
+
+ etcetera (assuming 
+\begin_inset Formula $u$
+\end_inset
+
+ is a smooth function with a convergent Taylor series, blah blah), show
+ that by an appropriate choice of the constants 
+\begin_inset Formula $c$
+\end_inset
+
+ and 
+\begin_inset Formula $d$
+\end_inset
+
+ you can make this approximation 
+\emph on
+fourth-order accurate
+\emph default
+: that is, the errors are proportional to 
+\begin_inset Formula $(\Delta x)^{4}$
+\end_inset
+
+ for small 
+\begin_inset Formula $\Delta x$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Check your answer to the previous part by numerically computing 
+\begin_inset Formula $u'(1)$
+\end_inset
+
+ for 
+\begin_inset Formula $u(x)=\sin(x)$
+\end_inset
+
+, as a function of 
+\begin_inset Formula $\Delta x$
+\end_inset
+
+, exactly as in the handout from class (refer to the notebook posted in
+ lecture 3 for the relevant Julia commands, and adapt them as needed).
+ Verify from your log-log plot of the |errors| versus 
+\begin_inset Formula $\Delta x$
+\end_inset
+
+ that you obtained the expected fourth-order accuracy.
+\end_layout
+
+\end_body
+\end_document

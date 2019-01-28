@@ -1,11 +1,11 @@
 # 18.303: Linear Partial Differential Equations: Analysis and Numerics
 
-Fall 2013, Prof. [Steven G. Johnson](http://math.mit.edu/~stevenj/), Dept. of Mathematics.
+Fall 2014, Prof. [Steven G. Johnson](http://math.mit.edu/~stevenj/), Dept. of Mathematics.
 
 Overview
 --------
 
-This is the home page for the 18.303 course at MIT in Fall 2013, where the syllabus, lecture materials, problem sets, and other miscellanea are posted.
+This is the home page for the 18.303 course at MIT in Fall 2014, where the syllabus, lecture materials, problem sets, and other miscellanea are posted.
 
 You can also download the course announcement [flyer one](poster.pdf) or [two](poster2.pdf). Another version of 18.303 was previously offered as [18.303 by Prof. Freedman](http://math.mit.edu/classes/18.303/) (also [on OpenCourseWare](http://ocw.mit.edu/OcwWeb/Mathematics/18-303Fall-2006/CourseHome/index.htm)), but the content and focus of the previous 18.303 differs substantially from Prof. Johnson's syllabus.
 
@@ -18,9 +18,9 @@ You can also download the course announcement [flyer one](poster.pdf) or [two](p
 Syllabus
 --------
 
-**Lectures**: MWF 1–2pm (4-159). **Office Hours:** Tues. 4–5pm (E17-416).
+**Lectures**: MWF 1–2pm (4-159). **Office Hours:** Thurs. 4–5pm (E17-416).
 
-**Grading**: 45% homework, 25% mid-term (Nov. 1), 30% final project (due the last day of class). Problem sets are **due in class** on the due date, no excuses, but your lowest pset score will be dropped at the end of the term.
+**Grading**: 45% homework, 25% mid-term (Nov. 7), 30% final project (due the last day of class). Problem sets are **due in class** on the due date, no excuses, but your lowest pset score will be dropped at the end of the term. **Grader:** Chenjie Fan (cjfan ατ math.mit.edu)
 
 **Collaboration policy**: Talk to anyone you want to and read anything you want to, with two exceptions: First, make a solid effort to solve a problem on your own before discussing it with classmates or googling. Second, no matter whom you talk to or what you read, write up the solution on your own, without having their answer in front of you.
 
@@ -30,18 +30,18 @@ Syllabus
 
 *   _Review:_ why is this PDE/method important, what is its history, and what are the important publications and references? (A comprehensive bibliography is expected: not just the sources you happened to consult, but a complete set of sources you would recommend that a reader consult to learn a fuller picture.)
 *   _Analysis:_ what are the important general analytical properties? e.g. conservation laws, algebraic structure, nature of solutions (oscillatory, decaying, etcetera). Analytical solution of a simple problem.
-*   _Numerics:_ what numerical method do you use, and what are its convergence properties (and stability, for timestepping)? Implement the method (e.g. in Matlab) and demonstrate results for some test problems. Validate your solution (show that it converges in some known case).
+*   _Numerics:_ what numerical method do you use, and what are its convergence properties (and stability, for timestepping)? Implement the method (e.g. in Julia, Python, or Matlab) and demonstrate results for some test problems. Validate your solution (show that it converges in some known case).
 
-You must submit a **one-page proposal** of your intended final-project topic, summarizing what you intend to do, by **Monday, October 28**. Some suggestions of possible projects will be given before then.
+You must submit a **one-page proposal** of your intended final-project topic, summarizing what you intend to do, by **Monday, Nov. 3**. Some suggestions of possible projects will be given before then.
 
 * * *
 
 Lecture Summaries and Handouts
 ------------------------------
 
-### Lecture 1 (Sep 4)
+### Lecture 1 (Sep 3)
 
-**Handouts:** syllabus (this web page), [Lecture 1 notes](Lecture1.pdf), [pset 1](pset1-f13.pdf) (due Wed. Sep. 11)
+**Handouts:** syllabus (this web page), [Lecture 1 notes](Lecture1.pdf)
 
 General overview of what a PDE is and why they are important. Discussed examples of some typical and important PDEs (see handout, page 1). With non-constant coefficients (the most common case in real-world physics and engineering), even the simplest PDEs are rarely solvable by hand; even with constant coefficients, only a relative handful of cases are solvable, usually high-symmetry cases (spheres, cylinders, etc.) solvable. Therefore, although we will solve a few simple cases by hand in 18.303, the emphasis will instead be on two things: learning to _think_ about PDEs by recognizing how their _structure_ relates to concepts from finite-dimensional linear algebra (matrices), and learning to _approximate_ PDEs by actual matrices in order to solve them on computers.
 
@@ -49,9 +49,9 @@ Went through 2nd page of handout, comparing a number of concepts in finite-dimen
 
 Covered the concept of **nondimensionalization**: rescaling the units so that dimensionful constants and other odd numbers disappear, making as many things "1" as possible. Gave an example of a heat equation κ∇2T = ∂T/∂t in an L×L box in SI units, where we have a thermal conductivity κ in m2/s. By rescaling the spatial coordinates to x/L and y/L, and rescaling the time coordinate to κt/L2, we obtained a simplified equation of the form ∇2T = ∂T/∂t in a 1×1 box. Not only does this simplify the equations, but it can also improve our understanding: by rescaling with _characteristic times and distances_, we are left with distance and time units where 1 is the characteristic time and distance, and so in these units it is immediately obvious what we should consider "big" and "small". For example, in the rescaled time units, 0.01 is a small time in which probably not much happens, while 100 is a big time in which the solution has probably changed a lot. In the original SI units we would have had to explicitly compare to the characteristic time L2/κ.
 
-### Lecture 2 (Sep 6)
+### Lecture 2 (Sep 5)
 
-**Handouts:** [Fourier sine series examples](http://web.mit.edu/18.06/www/Spring09/sines.pdf)
+**Handouts:** [Fourier sine series examples](http://web.mit.edu/18.06/www/Spring09/sines.pdf), [sine-series Julia notebook](http://nbviewer.ipython.org/url/math.mit.edu/~stevenj/18.303/fall14/lecture-2.ipynb); [pset 1](pset1-f14.pdf) (due Friday 9/12)
 
 Started with a very simple vector space V of functions: functions u(x) on \[0,L\] with u(0)=u(L)=0 (Dirichlet boundary conditions), and with one of the simplest operators: the 1d Laplacian Â=d2/dx2. Explained how this describes some simple problems like a stretched string, 1d electrostatic problems, and heat flow between two reservoirs.
 
@@ -63,15 +63,35 @@ As a preview of things to come later, by a simple change to the time-dependence 
 
 **Further reading:** Section 4.1 of the Strang book (Fourier series and solutions to the heat equation).
 
-### Julia Tutorial (Sep 9)
+### Lecture 3 (Sep 8)
+
+**Handouts:** [notes on difference approximations](difference-approx.pdf); [IJulia notebook](http://nbviewer.ipython.org/url/math.mit.edu/~stevenj/18.303/fall14/lecture-3.ipynb) from the in-class demo
+
+Now, we will go back to the happy land of finite-ness for a while, by learning to approximate a PDE by a matrix. This will not only give us a way to compute things we cannot solve by hand, but it will also give us a different perspective on certain properties of the solutions that may make certain abstract concepts of the PDE clearer. We begin with one of the simplest numerical methods: we replace the continuous space by a grid, the function by the values on a grid, and derivatives by differences on the grid. This is called a **finite-difference method**.
+
+Went over the basic concepts and accuracy of approximating derivatives by differences; see handout.
+
+Armed with center differences (see handout), went about approximating the 1d Laplacian operator d2/dx2 by a matrix, resulting in a famous tridiagonal matrix known as a _discrete Laplacian_. The properties of this matrix will mirror many properties of the underlying PDE, but in a more familiar context. We already see by inspection that it is real-symmetric, and hence we must have real eigenvalues, diagonalizability, and orthogonal eigenvectors—much as we observed for the d2/dx2 operator—and in the next lecture we will show that the eigenvalues are negative, i.e. that the matrix is negative-definite.
+
+The negative eigenvalues mean that the discrete Laplacian is negative definite, and also suggest that it can be written in the form -DTD for some D. Reviewed the proof that this means the matrix is negative definite, which also relies on D being full column rank.
+
+**Further reading:** [notes on finite-difference approximations from 18.330](http://homerreid.dyndns.org/teaching/18.330/Notes/NumericalDifferentiation.pdf). See the matrix K section 1.1 ("Four special matrices") of the Strang book, and in general chapter 1 of that book.
+
+### _Optional_ Julia Tutorial (Sep 9 _evening_): 5:30pm, 32-155
 
 **Handout:** [Julia cheat-sheet](https://github.com/mitmath/julia-mit/blob/master/Julia-cheatsheet.pdf)
 
-On Monday, 9 September, at 6pm in 32-123, I will give an (attendance-optional!) Julia tutorial, introducing the [Julia programming language and environment](http://julialang.org/) that we will use this term. I'll be posting some [tutorial notes online](https://github.com/mitmath/julia-mit/blob/master/README.md) as well (currently in draft form).
+For our computational work in 18.303 this semester, we’ll be using a free/open-source scientific-computing language called [Julia](http://julialang.org). If you are familiar with languages like Python or Matlab, picking up Julia should be pretty easy for you. If not, don’t worry—I won’t be requiring any heavy duty programming, just simple scripts, and in early psets I’ll mostly tell you what to type.
 
-Feel free to bring your laptops; try to download Julia first, and I will try to help answer installation questions as well.
+I will be holding an **optional** tutorial session on **Tuesday** evening starting at 5:30. I’ll talk for a while, and then answer questions and help with installation—**bring your laptops**. MIT students can use Julia online at www.juliabox.org, but it is also pretty easy to install yourself. Suggestion: before coming, please look through the following instructions, and maybe try installing Julia on your laptop:
 
-### Lecture 3 (Sep 9)
+*   [Julia Tutorial](https://github.com/mitmath/julia-mit/)
+
+(Several of the faculty are moving away from Python and Matlab in our technical-computing courses, primarily because we are moving away from those languages in our own work. This is occurring for a variety of reasons, but the simplest to understand is that Python and Matlab are slow—for heavy duty computing, they are only usable if you rely on large chunks of code written in C or Fortran—whereas Julia achieves C-like speed with Matlab/Python-like usability.)
+
+Students from 18.06 and other classes using Julia are also welcome to attend.
+
+### Lecture 3 (Sep 8)
 
 **Handouts:** [notes on difference approximations](difference-approx.pdf)
 
@@ -81,26 +101,23 @@ Went over the basic concepts and accuracy of approximating derivatives by differ
 
 Armed with center differences (see handout), went about approximating the 1d Laplacian operator d2/dx2 by a matrix, resulting in a famous tridiagonal matrix known as a _discrete Laplacian_. The properties of this matrix will mirror many properties of the underlying PDE, but in a more familiar context. We already see by inspection that it is real-symmetric, and hence we must have real eigenvalues, diagonalizability, and orthogonal eigenvectors—much as we observed for the d2/dx2 operator—and in the next lecture we will show that the eigenvalues are negative, i.e. that the matrix is negative-definite.
 
-The negative eigenvalues mean that the discrete Laplacian is negative definite, and also suggest that it can be written in the form -DTD for some D. Reviewed the proof that this means the matrix is negative definite, which also relies on D being full column rank. Began to show that our A indeed has this form: we derived the discrete Laplacian by turning two derivatives into differences, one by one, and now by writing the first step as a matrix we get D, while writing the second step as a matrix shows that it is -DT. To get a negative _definite_ matrix (as opposed to just negative semidefinite), we additionally require that D be full column rank; showed that this is easy to see from DT since it is upper-triangular.
+The negative eigenvalues mean that the discrete Laplacian is negative definite, and also suggest that it can be written in the form -DTD for some D. Reviewed the proof that this means the matrix is negative definite, which also relies on D being full column rank.
 
-**Further reading:** [notes on finite-difference approximations from 18.330](http://homerreid.ath.cx/teaching/18.330/Notes/NumericalDifferentiation.pdf)
+**Further reading:** [notes on finite-difference approximations from 18.330](http://homerreid.dyndns.org/teaching/18.330/Notes/NumericalDifferentiation.pdf)
 
-### Lecture 4 (Sep 11)
+### Lecture 4 (Sep 9)
 
-**Handouts:** [pset 2](pset2-f13.pdf) (due next Wed.), [pset1 solutions](pset1sol-f13.pdf) (see also IJulia [notebook](pset1sol-f13.ipynb); in [html](pset1sol-f13.html))
+Showed that our A indeed has this -DTD form and hence is negative-definite: we derived the discrete Laplacian by turning two derivatives into differences, one by one, and now by writing the first step as a matrix we get D, while writing the second step as a matrix shows that it is -DT. To get a negative _definite_ matrix (as opposed to just negative semidefinite), we additionally require that D be full column rank; showed that this is easy to see from DT since it is upper-triangular.
 
 To do a similar analysis of the actual Laplacian, we first have to have a dot product, or **inner product**. Defined an abstract ⟨u,v⟩ notation (a map from _functions_ u and v to _scalars_ ⟨u,v⟩) for inner products, as well as three key properties. First, ⟨u,v⟩ = complex conjugate of ⟨v,u⟩. Second, |u|2\=⟨u,u⟩ must be nonnegative, and zero only if u=0. Third, it must be linear: ⟨u,αv+βw⟩=α⟨u,v⟩+β⟨u,w⟩. (Note: some textbooks, especially in functional analysis, put the conjugation on the second argument instead of the first.) For functions, the most common inner product (though _not the only choice_ and not always the _best_ choice, as we will see next time) is a simple integral ∫uv (conjugating u for complex functions); we will look at this more next time.
 
-Reviewed inner products of functions. A vector space with an inner product (plus a technical criterion called "completeness" that is always satisfied in practice) is called a **Hilbert space**. Note that we include only functions with finite norm ⟨u,u⟩ in the Hilbert space (i.e. we consider only [square-integrable](Square-integrable
-function) functions), which throws out a lot of divergent functions and means that everything has a convergent Fourier series. (Another omitted technicality: we have to ignore finite discrepancies at isolated points, or otherwise you can have ⟨u,u⟩=0 for u(x) nonzero; there is a rigorous way to do this, which we will come back to later.)
+Reviewed inner products of functions. A vector space with an inner product (plus a technical criterion called "completeness" that is almost always satisfied in practice) is called a **Hilbert space**. Note that we include only functions with finite norm ⟨u,u⟩ in the Hilbert space (i.e. we consider only [square-integrable](https://en.wikipedia.org/wiki/Square-integrable_function) functions), which throws out a lot of divergent functions and means that everything has a convergent Fourier series. (Another omitted technicality: we have to ignore finite discrepancies at isolated points, or otherwise you can have ⟨u,u⟩=0 for u(x) nonzero; there is a rigorous way to do this, which we will come back to later.)
 
 Defined the **adjoint** Â\* of a linear operator: whatever we have to do to move it from one side of the inner product to the other, i.e. whatever Â\* satisfies ⟨u,Âv⟩=⟨Â\*u,v⟩ for all u,v. (Omitted techicality: we must further restrict ourselves to functions that are sufficiently differentiable that ⟨u,Âu⟩ is finite, which is called a **Sobolev space** for this Â, a subset of the Hilbert space.) For matrices and ordinary vector dot products, this is equivalent to the "swap rows and columns" definition. For differential operators, it corresponds to integration by parts, and depends on the boundary conditions as well as on the operator and on the inner product.
 
-Showed that with u(0)=u(L)=0 boundary conditions and this inner product. (d/dx)T\=-(d/dx)...very closely analogous to what we found with the finite-difference derivative matrix D. The "transpose of a derivative" is minus a derivative!
+Showed that with u(0)=u(L)=0 boundary conditions and this inner product, (d2/dx2)T is real-symmetric (also called "Hermitian" or "self-adjoint"). \[There is an omitted technicality here: technically, we have only showed that the operator is symmetric. To show that it is Hermitian, we must also show that the adjoint has the same [domain](http://en.wikipedia.org/wiki/Domain_of_a_function) in the Hilbert space. Mostly we can avoid this technical distinction in real applications; it doesn't arise explicitly in the proofs here.\]
 
-Furthermore, showed that (d2/dx2)T is real-symmetric (also called "Hermitian" or "self-adjoint").
-
-Not only that, but showed that d2/dx2 is negative-definite on this space, since ⟨u,u''⟩=-∫|u'|2, and u'=0 only if u=constant=0 with these boundary conditions.
+Not only that, but next time we will show that d2/dx2 is negative-definite on this space, since ⟨u,u''⟩=-∫|u'|2, and u'=0 only if u=constant=0 with these boundary conditions.
 
 Showed that the proof of real eigenvalues from 18.06 carries over without modification for Hermitian operators; similarly for the proof of orthogonal eigenvectors, hence the orthogonality of the Fourier sine series. Similarly for the proof of negative eigenvalues.
 
@@ -108,9 +125,15 @@ So, many of the key properties of d2/dx2 follow "by inspection" once you learn h
 
 **Further reading:** [Notes on function spaces, Hermitian operators, and Fourier series](http://web.mit.edu/18.06/www/Fall07/operators.pdf) that I once wrote for 18.06 (slightly different notation). Textbook, section 3.1: transpose of a derivative. The general topic of linear algebra for functions leads to a subject called _functional analysis_; a rigorous introduction to functional analysis can be found in, for example, the book _Basic Classes of Linear Operators_ by Gohberg et al. There are some technicalities that I omit: a differential operator is only called "self-adjoint" if it is equal to its adjoint and is "densely defined", and showing that an operator equals its adjoint furthermore requires an extra step of showing that Â and Â\* act on the same domains.
 
-### Lecture 5 (Sep. 13)
+### Lecture 5 (Sep. 12)
 
-Discussed diagonalizability of infinite-dimensional Hermitian operators. Unlike the proof of real eigenvalues, etcetera, we cannot simply repeat the proof from the matrix case (where one can proceed by induction on the dimension). In practice, however, real-symmetric operators arising from physical systems are almost always diagonalizable; the precise conditions for this lead to the "spectral theorem" of functional analysis.) In 18.303, we will typically just assume that that all functions of interest lie in the span of the eigenfunctions, and focus on the consequences of this assumption. Diagonalizability and spectral theorems. Self-adjointness of more operators. Need for modified inner products. From discrete systems to PDEs.
+**Handouts** [pset 1 solutions](pset1sol-f14.pdf)
+
+Finished negative-definiteness proof from previous lecture.
+
+Discussed diagonalizability of infinite-dimensional Hermitian operators. Unlike the proof of real eigenvalues, etcetera, we cannot simply repeat the proof from the matrix case (where one can proceed by induction on the dimension). In practice, however, real-symmetric operators arising from physical systems are almost always diagonalizable; the precise conditions for this lead to the "spectral theorem" of functional analysis.) (One hand-wavy argument: all physical PDEs can apparently be simulated by a sufficiently powerful computer to any desired accuracy, in principle. Since the discrete approximation is diagonalizable, and converges to the continuous solution, it would be surprising if the eigenfunctions of the continous problem "missed" some solution. In fact, all the counter-examples of self-adjoint operators that lack a spectral theorem seem to involve unphysical solutions that oscillate infinitely fast as they approach some point, and hence cannot be captured by any discrete approximation no matter how fine.) In 18.303, we will typically just assume that that all functions of interest lie in the span of the eigenfunctions, and focus on the consequences of this assumption.
+
+Showed how this immediately tells us key properties of the solutions, if we assume the spectral theorem: Poisson's equation has a unique solution, the diffusion equation has decaying solutions (with larger eigenvalues = faster oscillations = decaying faster, making the solution smoother over time), and the wave equation has oscillating solutions.
 
 Not only do we now understand d2/dx2 at a much deeper level, but you can obtain the same insights for many operators that _cannot_ be solved analytically. For example, showed that the operator d/dx \[c(x) d/dx\], which is the 1d Laplacian operator for a non-uniform "medium", is also real-symmetric positive definite if c(x)>0, given the same u(0)=u(L)=0 boundary conditions.
 
@@ -118,7 +141,9 @@ As another example, considered the operator c(x)d2/dx2 for real c(x)>0. This is 
 
 Fortunately, it's usually pretty obvious how to change the inner product, typically some simple weighting factor that falls out of the definition of Â. (In fact, for matrices, it turns out that _every_ diagonalizable matrix with real eigenvalues is Hermitian under some modified inner product. I didn't prove this, however.)
 
-**Handout:** [handwritten notes](lecture-5.5.pdf)
+### Lecture 6 (Sep. 15)
+
+**Handout:** [handwritten notes](lecture-5.5.pdf), [pset 2](pset2-f14.pdf) (due next Monday)
 
 Previously, we started with the continuous PDE equations and derived a discrete/matrix version as an approximation. Now we will do the reverse: we will _start_ with a truly discrete (finite-dimensional) system, and then derive the continuum PDE model as a limit or approximation. This is one of the common ways by which PDE models are derived in the first place, will give yet another perspective on similar mathematics, and will also shed some light on the origin of the variable c(x) coefficients from the last lecture.
 
@@ -126,31 +151,21 @@ In particular, we look at the 8.01 (or 8.03) system of a set of N masses m slidi
 
 If the displacements of each mass are given by a vector **u**, we show that d2**u**/dt2\=A**u** where A = (k/m) (-DTDT) Δx2, with D being _exactly_ our "first derivative" matrix from previous lectures. Thus, up to a scale factor, our discrete Laplacian A from previous lectures is not only an approximation for d2/dx2, but it is also _exactly_ the matrix describing this coupled-spring system!
 
-(In the next lecture, we will cover the remainder of the notes.)
-
-**Further reading:** Same as previous lecture. Sections 2.1 and 2.2 in the Strang book cover very similar material on discrete vibration problems.
-
-### Lecture 6 (Sep. 16)
-
-Continued with lecture 5.5 notes from last lecture...
-
 By inspection, A is real-symmetric negative-definite as before, and hence we have N real eigenvalues λn<0 and orthonormal eigenvectors **u**n. By expanding the solution **u**(t) in terms of these eigenvectors, we see that we obtain oscillating solutions: a set of (orthogonal) _normal modes_ with real "eigenfrequencies" ωn\=√-λn. The negative-definiteness is critical to have oscillation, as otherwise we would get complex ωn and exponential growth! Showed a few examples for N=1,2,3 to get an intuition for these modes.
 
 Took the N→∞ limit keeping the total length L fixed, which corresponds to Δx→0 (breaking the system into smaller and smaller pieces). Correspondingly, we decrease the masses proportional to Δx, so that m=ρΔx where ρ is a density. On the other hand, reminded ourselves that cutting springs in half _increases_ the spring constant, so we should let k=c/Δx for some constant c. With these definitions, our matrix A is precisely (c/ρ) (-DTD), where -DTD is our approximate (center-difference) d2/dx2 from before, and hence this limit gives precisely the scalar wave equation ∂2u/∂t2\=(c/ρ) ∂2u/∂x2, with the boundary conditions u(0,t)=u(L,t)=0 (fixed ends). As before, this operator is self-adjoint negative definite and so we get real λn<0 etcetera. Exactly as in the finite-dimensional case above, we therefore get oscillating "normal mode" solutions, just with an infinite series of eigenfunctions instead of a finite sum.
 
 Finally, considered the "inhomogeneous medium" case where we allow all the masses and spring constants to be different. Showed that this corresponds to inserting some diagonal matrices into the above expressions, and in the continuum limit gives ∂2u/∂t2\=(1/ρ) ∂/∂x (c ∂u/∂x)=Âu where ρ(x) and c(x) are positive functions. As in the previous lecture, we can see that this Â is indeed self-adjoint negative-definite, and hence we get _oscillating normal-mode solutions_, if we define the modified inner product ⟨u,v⟩=∫ρuv. And we can see this even though we probably cannot solve this PDE by hand except for very special cases of ρ and c!
 
-**Handout:** [handwritten notes](lecture-6.pdf)
+**Further reading:** Same as previous lecture. Sections 2.1 and 2.2 in the Strang book cover very similar material on discrete vibration problems.
+
+### Lecture 7 (Sep. 17)
+
+**Handouts:** [notes on elliptic operators](lecture-6.pdf)
 
 Now that we have seen several specific examples, we are equipped to consider more general problems, ones that are even harder to solve analytically.
 
-Started in 1d with the "Sturm-Liouville operator" w(x)\-1 \[ - d/dx (c(x) d/dx) + p(x) \], with Dirichlet (0) boundaryies on Ω=\[0,L\]. Showed that it is self-adjoint under the weighted inner product ⟨u,v⟩=∫wuv, assuming w is real and positive and c and p are real. If we further assume that c≥0 and p>0, the operator is positive-definite, a so-called **elliptic operator** (although the technical definition of elliptic operators is slightly more restrictive in order to exclude pathological cases of the coefficient functions).
-
-**Further reading:** sections 2.1 and 2.2 in the Strang book cover very similar material on the ball/spring system. Much of the theory of these kinds of 1d operators is traditionally called "Sturm-Liouville theory", and can be found under that name in many books (e.g. _Methods of Applied Mathematics_ by Hildebrand, _Methods of Mathematical Physics_ by Courant & Hilbert, and many similar titles). Even Wikipedia has a [decent article](http://en.wikipedia.org/wiki/Sturm%E2%80%93Liouville_theory) on the topic under that name.
-
-### Lecture 7 (Sep. 18)
-
-**Handouts:** [notes on elliptic operators](lecture-6.pdf) (from last time), [notes on separation of variables](separation.pdf), [pset 2 solutions](pset2sol-f13.pdf) (see also [IJulia notebook](pset2-f13.ipynb); [html format](pset2-f13.html)), [pset 3](pset3-f13.pdf) (due Sep 25)
+Started in 1d with the "Sturm-Liouville operator" w(x)\-1 \[ - d/dx (c(x) d/dx) + p(x) \], with Dirichlet (0) boundaryies on Ω=\[0,L\]. Showed that it is self-adjoint under the weighted inner product ⟨u,v⟩=∫wuv, assuming w is real and positive and c and p are real. If we further assume that c≥0 and p>0, the operator is positive-definite, a so-called **elliptic operator** (although the technical definition of elliptic operators is slightly more restrictive in order to exclude pathological cases of the coefficient functions etc.).
 
 Generalized Sturm-Liouville operators to multiple dimensions: Â=w(**x**)\-1 \[ - ∇⋅(c(**x**)∇) + p(**x**) \], with Dirichlet (0) boundaryies on some finite domain Ω, and again we will show that this is self-adjoint for real coefficients and w>0, and positive-definite (elliptic) for c≥0 and p>0. The key to the proof is the divergence theorem, which generalizes "integration by parts" to multiple dimensions.
 
@@ -162,9 +177,13 @@ We can now analyze three important cases, and give them their conventional histo
 
 (I won't spend any times on the analogies between these equations and those of parabolas, ellipses, and hyperbolas. That only works well in simple cases with scalar functions u, and I find it much clearer and more general just to talk about the definiteness and self-adjointness of Â.)
 
-For fun, spent a couple of minutes on the Schrödinger wave equation, which is a different scalar wave equation that we will come back to later.
+**Further reading:** Much of the theory of these kinds of 1d operators is traditionally called "Sturm-Liouville theory", and can be found under that name in many books (e.g. _Methods of Applied Mathematics_ by Hildebrand, _Methods of Mathematical Physics_ by Courant & Hilbert, and many similar titles). Even Wikipedia has a [decent article](http://en.wikipedia.org/wiki/Sturm%E2%80%93Liouville_theory) on the topic under that name.
 
-### Lecture 8 (Sep. 23)
+### Lecture 8 (Sep. 22)
+
+**Handouts:** [18.303 and music](music.pdf), [music scales and intervals](scale-notes.pdf), [notes on separation of variables](separation.pdf)
+
+**Music and wave equations:** Spent a little time relating the 18.303 theory of the vibrating string to what you hear when you listen to a stringed instrument; scales, harmonics, transposition, timbre and the Fourier series, etcetera. (See [notes](music.pdf).) Performed a little demo on my Yamaha [guitalele](http://en.wikipedia.org/wiki/Guitalele). To obtain a chromatic scale, each fret on the guitalele (or guitar) shortens the strings by a factor of 21/12 (and this is why the frets get closer together as you go up the neck: they are equally spaced on a log scale).
 
 **New topic: Separation of variables:** (See [notes](separation.pdf).) This is a technique to _reduce the dimensionality_ of a PDE by representing the solution as a product of lower-dimensional functions. It _only works in a handful of cases_, usually as a consequence of _symmetry_, but those cases are common enough that it is important to know them. It also gives us our only analytically solvable PDE examples in more than 1d; otherwise we will have to use the computer.
 
@@ -174,15 +193,15 @@ For fun, spent a couple of minutes on the Schrödinger wave equation, which is a
 
 To start with, we looked at ∇2u=λu in a 2d Lx×Ly box with Dirichlet boundary conditions, and looked for separable solutions of the form X(x)Y(y). Plugging this in and dividing by XY (the standard techniques), we get 1d eigenproblems for X and Y, and these eigenproblems (X''=X×constant and Y''=Y×constant) just give us our familiar sine and cosine solutions. Adding in the boundary condition, we get sin(nxπx/Lx) sin(nyπx/Ly) eigenfunctions with eigenvalues λ=-(nxπ/Lx)2\-(nyπ/Ly)2. As expected, these are real and negative, and the eigenfunctions are orthogonal...giving us a 2d Fourier sine series. For example, this gives us the "normal modes" of a square drum surface.
 
+### Lecture 9 (Sep. 24)
+
+**Handouts:** [notes on Bessel functions and cylindrical problems](lecture-8.pdf); also [IJulia Bessel-function notebook](lecture-8.ipynb); [pset 2 solutions](pset2sol-f14.pdf); [pset 3](pset3-f14.pdf) (due next Wed.; office hours are next Tues. instead of this Thurs.)
+
 Finished consideration of separability of ∇2u=λu in a 2d box, from notes: discussed orthogonality of these eigenfunctions. Also showed that separability breaks down, in general, for non-constant coefficients in the box.
-
-### Lecture 9 (Sep 25)
-
-**Handouts:** [notes on separation of variables](separation.pdf) (from last time), [notes on Bessel functions and cylindrical problems](lecture-8.pdf), [pset 3 solutions](pset3sol-f13.pdf), [pset 4](pset4-f13.pdf) (due Oct 2); also [IJulia Bessel-function notebook](lecture-8.ipynb) (also in [html](lecture-8.html))
 
 More separation of variables: cylindrical case of a cylinder of radius R with Dirichlet boundary conditions. Show that the Laplace eigenequation here is indeed separable into a function of θ multiplied by a function of r, satisfying separate 1d ODEs. Show that the θ dependence is sin(mθ) or cos(mθ) (or any linear combination), where m is an integer (in order to be periodic in θ). The r dependence satisfies a more complicated 2nd-order ODE that we can't solve by hand (even if you have taken 18.03).
 
-At this point, it's more a historical question than a mathematical one: has someone solved this equation before, and if so is there a standard name (and normalization, etc) for the solutions? In fact, that is the case here (not surprisingly, since the Laplacian is so important): our r equation is an instance of **Bessel's equation**, and the solutions are called **Bessel functions**. The canonical two Bessel functions are Jm and Ym: there is a standard convention defining the normalization, etcetera, of these, but the important thing for our purposes is that J is finite at r=0 and Y blows up at the origin. In Matlab, these are supplied as the built-in functions [besselj](http://www.mathworks.com/help/techdoc/ref/besselj.html) and [bessely](http://www.mathworks.com/help/techdoc/ref/bessely.html), and we use Matlab to plot a few of them to get a feel for what they look like: basically, sinusoidal functions that are slowly decaying in r.
+At this point, it's more a historical question than a mathematical one: has someone solved this equation before, and if so is there a standard name (and normalization, etc) for the solutions? In fact, that is the case here (not surprisingly, since the Laplacian is so important): our r equation is an instance of **Bessel's equation**, and the solutions are called **Bessel functions**. The canonical two Bessel functions are Jm and Ym: there is a standard convention defining the normalization, etcetera, of these, but the important thing for our purposes is that J is finite at r=0 and Y blows up at the origin. In Julia, SciPy, Matlab, and similar packages, these are supplied as built-in functions (e.g. [besselj](http://www.mathworks.com/help/techdoc/ref/besselj.html) and [bessely](http://www.mathworks.com/help/techdoc/ref/bessely.html)), and we use Julia to plot a few of them to get a feel for what they look like: basically, sinusoidal functions that are slowly decaying in r.
 
 To get eigenfunctions, we have to impose boundary conditions. Finite-ness of the solution at r=0 means that we can only have Jm(kr) solutions, and vanishing at r=R means that kR must be a root of Jm. We have to find these roots numerically, but this is easy to do, and we obtain a discrete set of eigenfunctions and eigenvalues.
 
@@ -190,9 +209,13 @@ From the general orthogonality of the Laplacian eigenfunctions, we can derive an
 
 By looking at Bessel's equation asymptotically, we find that it reduces to sines and cosines for large r; more careful considerations show that it must actually reduce to sines and cosines multiplied by 1/√r, and we can verify this from the plot. Conversely, for small r we show that it goes as either rm (Jm) or 1/rm (Ym, except for m=1 where Y0 is proportional to log r); this is why we have one finite solution and one divergent one at r=0. (There are many, many more properties of Bessel functions that one can derive analytically, but that is not our major concern here.)
 
+By looking at Bessel's equation asymptotically, we find that it reduces to sines and cosines for large r; more careful considerations show that it must actually reduce to sines and cosines multiplied by 1/√r, and we can verify this from the plot. Conversely, for small r we show that it goes as either rm (Jm) or 1/rm (Ym, except for m=1 where Y0 is proportional to log r); this is why we have one finite solution and one divergent one at r=0. (There are many, many more properties of Bessel functions that one can derive analytically, but that is not our major concern here.)
+
 **Further reading:** The Wikipedia page on [Bessel functions](http://en.wikipedia.org/wiki/Bessel_function) has many plots, definitions, and properties, as well as links to standard reference works.
 
-### Lecture 10 (Sep 27)
+### Lecture 10 (Sep 26)
+
+(Finished asymptotics of Bessel functions from previous lecture notes.)
 
 Discussed **boundary conditions** more generally than we have done in the past. Up to now, we have mostly considered u=0 (Dirichlet) or **n**⋅∇u=0 (Neumann) on the boundary, and mostly the former.
 
@@ -218,11 +241,13 @@ One can also have _nonlocal_ boundary conditions, in which u at one point on ∂
 
 **Further reading:** The u=v+g trick is closely related to the standard proof of the uniqueness of solutions to Laplace's/Poisson's equation with general Dirichlet boundaries (google "Laplace uniqueness" or "Poisson uniqueness", e.g. [this page](http://www-solar.mcs.st-and.ac.uk/~andy/LectureNotes/Fundamentals1/node52.html)). The trick of moving boundary conditions over to the right-hand side is so obvious for finite-difference methods that it hardly has a name, but it is often commented on explicitly for finite-element methods where things are less obvious (e.g. section 3.6 of the book). There is a [review of immersed boundary methods](www.stanford.edu/group/uq/pdfs/journals/annurev_05.pdf) by Mittal and Iaccarino that is fairly readable, but oriented mainly towards fluid mechanics. Periodic domains arise in many cases, the most obvious being equations on a torus (e.g. waves on a membrane that loops back to itself, diffusion in a circular tube, or masses and springs connected into a ring). They also arise for systems that repeat periodically, e.g. a periodic crystal in solid-state physics, in which case you can write the solutions as [Bloch waves](http://en.wikipedia.org/wiki/Bloch_wave) of the form u(**x**)=u**k**(**x**)ei**k**⋅**x** where u**k** is a periodic function that solves a PDE with periodic boundary conditions (and plotting the eigenvalues as a function of **k** gives a [band structure](http://en.wikipedia.org/wiki/Electronic_band_structure)).
 
-### Lecture 11 (Sep 30)
+### Lecture 11 (Sep 29)
 
 **Handouts:** [handwritten notes](lecture-10.pdf)
 
-2d finite-difference discretizations: discretized the 2d Laplacian operator ∇2 in an Lx×Ly box with Nx×Ny points, for Dirichlet (0) boundaries, so that u(mΔx,nΔy) is approximated by NxNy degrees of freedom um,n. Showed that simply applying the 1d center-difference rule along x and y results in a (famous) "[5-point stencil](Five-point stencil)" approximation for -∇2 in which the Laplacian at (nx,ny) depends on u at (nx,ny) and the 4 nearest-neighbor points.
+(Finished discussion of Neumann from previous lecture: mass flux, conservation of mass in the diffusion equation, and other conservation laws.)
+
+2d finite-difference discretizations: discretized the 2d Laplacian operator ∇2 in an Lx×Ly box with Nx×Ny points, for Dirichlet (0) boundaries, so that u(mΔx,nΔy) is approximated by NxNy degrees of freedom um,n. Showed that simply applying the 1d center-difference rule along x and y results in a (famous) "[5-point stencil](https://en.wikipedia.org/wiki/Five-point_stencil)" approximation for -∇2 in which the Laplacian at (nx,ny) depends on u at (nx,ny) and the 4 nearest-neighbor points.
 
 In order to express this as a matrix A, however, we need to "flatten" the 2d grid of points unx,ny into a single column vector **u** with NxNy components. There are multiple ways to do this, but a standard and easy scheme is the "[column-major](http://en.wikipedia.org/wiki/Row-major_order)" approach in which **u** is formed from the contiguous columns (x) unx,: concatenated in sequence. (This is the approach used internally within Matlab to store matrices.)
 
@@ -230,7 +255,7 @@ Given this, we then see how to form ∂2/∂x2 by operating one Nx\-column at a 
 
 In order to have a convenient way to express this, we use the [Kronecker product](http://en.wikipedia.org/wiki/Kronecker_product) notation A⊗B \[[kron](http://www.mathworks.com/help/techdoc/ref/kron.html)(A,B) in Matlab\], which multiplies the _entries_ of A by the _matrix_ B to create a _matrix of matrices_. In this notation, A = Iy⊗Ax + Ay⊗Ix.
 
-Using this machinery, constructed A for Nx\=10 and Ny\=15 for Lx\=1 and Ly\=1.5 in Matlab. Visualized the pattern of nonzero entries with [spy](http://www.mathworks.com/help/techdoc/ref/spy.html). Solved for the eigenfunctions, and plotted a few; to convert a column vector **u** back into a 2d matrix, used [reshape](http://www.mathworks.com/help/techdoc/ref/reshape.html)(**u**,Nx,Ny), and plotted in 3d with the [surf](http://www.mathworks.com/help/techdoc/ref/surf.html) command. The first few eigenfunctions can be seen to roughly match the sin(nxπx/Lx) sin(nyπx/Ly) functions we expect from separation of variables. However, Nx\=10, Ny\=15 is rather coarse, too coarse a discretization to have a really nice (or accurate) picture of the solutions.
+Using this machinery, constructed A for Nx\=10 and Ny\=15 for Lx\=1 and Ly\=1.5 in Julia. Visualized the pattern of nonzero entries with [spy](http://www.mathworks.com/help/techdoc/ref/spy.html). Solved for the eigenfunctions, and plotted a few; to convert a column vector **u** back into a 2d matrix, used [reshape](http://www.mathworks.com/help/techdoc/ref/reshape.html)(**u**,Nx,Ny), and plotted in 3d with the [surf](http://www.mathworks.com/help/techdoc/ref/surf.html) command. The first few eigenfunctions can be seen to roughly match the sin(nxπx/Lx) sin(nyπx/Ly) functions we expect from separation of variables. However, Nx\=10, Ny\=15 is rather coarse, too coarse a discretization to have a really nice (or accurate) picture of the solutions.
 
 In order to increase Nx and Ny, however, we have a problem. If the problem has N=NxNy degrees of freedom, we need to store N2 numbers (8N2 bytes) just to store the matrix A, and even just solving Ax=b by Gaussian elimination takes about N3 arithmetic operations. Worked through a few numbers to see that even Nx\=Ny\=100 would have us waiting for 20 minutes and needing a GB of storage, while 3d grids (e.g. 100×100×100) seem completely out of reach. The saving grace, however, is [sparsity](http://en.wikipedia.org/wiki/Sparse_matrix): the matrix is mostly zero (and in fact the 5-point stencil A has < 5N nonzero entries). This means that, first, you can store only the nonzero entries, greatly reducing storage. Second, it turns out there are ways to exploit the sparsity to solve Ax=b much more quickly, and there are also quick ways to find a _few_ of the eigenvalues and eigenvectors.
 
@@ -238,15 +263,27 @@ In Julia, you exploit sparsity by using the `sparse` command and friends to crea
 
 Starting with the ∇2 operator on a square grid, showed how we can convert to any other Ω shape with Dirichlet boundaries just by taking a subset of the rows/cols (as in problem 2 of pset 5). Recovered the Bessel solutions for a circular domain. See the IJulia notebook:
 
-*   [lecture-10.ipynb](lecture-10.ipynb) (also in [HTML](lecture-10.html))
+*   [lecture-10.ipynb](lecture-10.ipynb)
 
 **Further reading**: Section 3.5 of the Strang book on 2d finite differences, section 7.1 on sparsity. See, for example [min-max theorem in Wikipedia](http://en.wikipedia.org/wiki/Min-max_theorem), although this presentation is rather formal. Unfortunately, most of the discussion you will find of this principle online and in textbooks is either (a) full of formal functional analysis or (b) specific to quantum mechanics \[where the operator is A=-∇2+V for some "potential-energy" function V(x)\]. You can find another [Laplacian demo here](http://facstaff.unca.edu/mcmcclur/class/LinearII/presentations/html/2.08.02.TwoDVibes.html).
 
-### Lecture 12: October 2
+### Lecture 12: October 1
 
-**Handouts:** [notes on the min–max theorem](minmax.pdf), [pset 5](pset5-f13.pdf), [pset 4 solutions](pset4sol-f13.pdf) and [notebook](pset4-f13.ipynb) (also [HTML](pset4-f13.html))
+**Handouts:** [lecture-10.ipynb](lecture-10.ipynb)
+
+Using this Kronecker-product machinery, constructed A for Nx\=10 and Ny\=15 for Lx\=1 and Ly\=1.5 in Julia. Visualized the pattern of nonzero entries with [spy](http://www.mathworks.com/help/techdoc/ref/spy.html). Solved for the eigenfunctions, and plotted a few; to convert a column vector **u** back into a 2d matrix, used [reshape](http://www.mathworks.com/help/techdoc/ref/reshape.html)(**u**,Nx,Ny), and plotted in 3d with the [surf](http://www.mathworks.com/help/techdoc/ref/surf.html) command. The first few eigenfunctions can be seen to roughly match the sin(nxπx/Lx) sin(nyπx/Ly) functions we expect from separation of variables. However, Nx\=10, Ny\=15 is rather coarse, too coarse a discretization to have a really nice (or accurate) picture of the solutions.
+
+In order to increase Nx and Ny, however, we have a problem. If the problem has N=NxNy degrees of freedom, we need to store N2 numbers (8N2 bytes) just to store the matrix A, and even just solving Ax=b by Gaussian elimination takes about N3 arithmetic operations. Worked through a few numbers to see that even Nx\=Ny\=100 would have us waiting for 20 minutes and needing a GB of storage, while 3d grids (e.g. 100×100×100) seem completely out of reach. The saving grace, however, is [sparsity](http://en.wikipedia.org/wiki/Sparse_matrix): the matrix is mostly zero (and in fact the 5-point stencil A has < 5N nonzero entries). This means that, first, you can store only the nonzero entries, greatly reducing storage. Second, it turns out there are ways to exploit the sparsity to solve Ax=b much more quickly, and there are also quick ways to find a _few_ of the eigenvalues and eigenvectors.
+
+In Julia, you exploit sparsity by using the `sparse` command and friends to create sparse matrice. Once you have a sparse matrix, Matlab automatically uses algorithms to exploit sparsity if you solve Ax=b by x=A\\b and use the `eigs` function to find a few eigenvalues (instead of `eig`).
+
+Starting with the ∇2 operator on a square grid, showed how we can convert to any other Ω shape with Dirichlet boundaries just by taking a subset of the rows/cols (as in problem 2 of pset 5). Recovered the Bessel solutions for a circular domain. See the IJulia notebook:
 
 Starting with the ∇2 operator on a square grid (from last lecture), showed how we can convert to any other Ω shape with Dirichlet boundaries just by taking a subset of the rows/cols. Looked at a couple of triangular domains, and recovered the Bessel solutions for a circular domain.
+
+### Lecture 13: October 3
+
+**Handout:** [notes on the min–max theorem](minmax.pdf)
 
 In order to get an intuitive feel for what the eigenfunctions should look like, a powerful tool is the **min–max theorem**. See handout for notes.
 
@@ -254,37 +291,35 @@ As a final example corresponding to the -c∇2 operator in the notes, considered
 
 **Further reading:** See, for example [min-max theorem in Wikipedia](http://en.wikipedia.org/wiki/Min-max_theorem), although this presentation is rather formal. Unfortunately, most of the discussion you will find of this principle online and in textbooks is either (a) full of formal functional analysis or (b) specific to quantum mechanics \[where the operator is A=-∇2+V for some "potential-energy" function V(x)\]. You can find another [Laplacian demo here](http://facstaff.unca.edu/mcmcclur/class/LinearII/presentations/html/2.08.02.TwoDVibes.html).
 
-### Lecture 13: October 4
+### Lecture 14: October 6
 
-**Handouts:** [introduction to Green's functions](green.pdf)
+**Handouts:** [introduction to Green's functions](green.pdf); [explicit check of 1d Green's function solution](Green-explicit.pdf)
 
 (See notes.) Introduced Green's functions by analogy with matrix inverses, and constructed Green's function of -d2/dx2 with Dirichlet boundaries as an example.
 
 We had to jump through some hoops to avoid a problematic-looking "delta function" that keeps appearing, a limit of a function whose area is "infinitely concentrated" at a "single point". This is possible, but becomes more and more painful as we go on, motivating us to find an alternate definition of "function" in the future, a **distribution**.
 
+For the 1d example, we can explicitly check that u(x)=∫G(x,x')f(x')dx' solves -u''=f. (See 2nd handout.)
+
 **Further reading:** Strang book, section 1.4. Many PDE books introduce Green's functions and delta functions in various ways; see, e.g. section 9.3.4 of _Elementary Applied Partial Differential Equations_ by Haberman.
 
-### Lecture 14: October 7
+### Lecture 15: October 8
 
-**Handouts:** [notes on reciprocity and positivity of Green's functions](reciprocity.pdf), [explicit check of 1d Green's function solution](Green-explicit.pdf), [notes on delta functio ns and distributions](delta-notes.pdf)
-
-Reviewed definition and construction of Green's function via limits of narrow "box" sources from last lecture.
-
-For the 1d example, we can explicitly check that u(x)=∫G(x,x')f(x')dx' solves -u''=f. (See 2nd handout.)
+**Handouts:** [notes on reciprocity and positiity of Green's functions](reciprocity.pdf), [notes on delta functions and distributions](delta-notes.pdf)v
 
 Went through [notes](reciprocity.pdf) on reciprocity and positivity of Green's functions.
 
-This is all extremely cumbersome though—we have to go through lots of contortions to avoid differentiating discontinuities and avoid delta functions. More generally, there are a number of difficulties that continually arise when we deal with classical functions (mapping numbers to numbers): went through section 1 of the distribution handout.
+The previous approach is all extremely cumbersome though—we have to go through lots of contortions to avoid differentiating discontinuities and avoid delta functions. More generally, there are a number of difficulties that continually arise when we deal with classical functions (mapping numbers to numbers): went through section 1 of the distribution handout.
 
-### Lecture 15: October 9
+### Lecture 16: October 10
+
+**Handout:** [pset 3 solutions](pset3sol-f14.pdf) and [notebook](http://nbviewer.ipython.org/url/math.mit.edu/~stevenj/18.303/fall14/pset3-f14.ipynb); [pset 4](pset4-f14.pdf) (due next Wed.)
 
 Delta functions and distributions: finished [notes](delta-notes.pdf) from previous lecture.
 
 **Further reading:** See the books _Generalized Functions_ by Gel'fand and Shilov and _A Guide to Distribution Theory and Fourier Transforms_ by Strichartz referenced at the end of the notes. Wikipedia has a decent article on [distributions](http://en.wikipedia.org/wiki/Distribution_%28mathematics%29). The idea that there are functions φ(x) which are infinitely differentiable but are zero outside of a finite region is a bit counterintuitive if you think about the interface between the zero and nonzero regions, but it is quite possible; see [bump function](http://en.wikipedia.org/wiki/Bump_function) on Wikipedia for an elaboration on the example I gave in class, and a proof that the derivatives are continuous [here](http://en.wikipedia.org/wiki/Non-analytic_smooth_function). In practice, however, we will almost never have to explicitly construct test functions to talk about distributions.
 
-### Lecture 16: October 11
-
-**Handouts:** [pset 5 solutions](pset5sol-f13.pdf) and [solutions notebook](pset5-f13.ipynb) (also in [HTML](pset5-f13.html)), [pset 6](pset6-f13.pdf) (due next Wed.)
+### Lecture 17: October 15
 
 Derived Green's function of ∇2 in 3d for infinite space (requiring solutions to → zero at infinity to get a unique solution), in three steps:
 
@@ -304,9 +339,7 @@ Reviewed method-of-images solution for half-space. There are a couple of other s
 
 **Further reading**: See e.g. sections 9.5.6–9.5.8 of _Elementary Applied Partial Differential Equations_ by Haberman for a traditional textbook treatment of Green's functions of ∇2 in empty space and the half-space. If you Google "method of images" you will find lots of links, mostly from the electrostatics viewpoint (see e.g. [these lecture notes](http://www.phys.ufl.edu/~dorsey/phy6346-00/lectures/lect04.pdf)); see also e.g. _Introduction to Electrodynamics_ by Griffiths for a standard textbook treatment; the only mathematical difference introduced by (vacuum) electrostatics is the multiplication by the [physical constant](http://en.wikipedia.org/wiki/Vacuum_permittivity) ε0 (and the identification of -∇V as the electric field).
 
-### Lecture 17: October 16
-
-**Handouts:** [pset 6 solutions](pset6sol-f13.pdf) and [notebook](pset6-f13.ipynb) (also in [HTML](pset6-f13.html)), [pset 7](pset7-f13.pdf) [notes on Green's functions in inhomogeneous media](inhomog-notes.pdf)
+### Lecture 18: October 17
 
 In the image method, the "extra source" is ostensibly not on the boundary, it is on the other side of the boundary. However, we can transform it to what we want by the following trick: consider the function u(**x**) in Ω=R3 that equals (1/|**x**\-**x**'| - 1/|**x**\-**x**''|)/4π \[the method-of-images solution\] for z>0 and u(**x**)=0 for z<0. What right-hand-side does -∇2u give? In z>0 -∇2u gives δ(**x**\-**x**') as before, and for z<0 -∇2u gives zero. _At_ z=0, however, there is a slope discontinuity in (1/|**x**\-**x**'| - 1/|**x**\-**x**''|)/4π, which means that -∇2u also gives a δ(z) term: δ(z) σ(x,y) for a σ(x,y) given by the amplitude of the slope discontinuity.
 
@@ -316,19 +349,23 @@ More generally, we can do this for _any_ interface dΩ: we can write the solutio
 
 SIE methods (most commonly the "boundary element method", BEM) are very powerful in several ways. Because they only have unknowns on the _boundaries_ (not everywhere in space like in a PDE method like finite differences), they can greatly reduce the number of unknowns: they handle the homogeneous regions analytically. They can handle infinite space (e.g. a cylinder surrounded by infinite space as in the pset) analytically, with no artificial truncation. Done properly, the matrices can have very nice properties. There are also some difficulties. SIE methods are not so efficient for problems that are not mostly homogeneous, especially continuously-varying media, and nonlinear or time-dependent problems are also difficult. Because the empty-space Green's function (1/4π|**x**\-**x**'| in 3d) blows up for nearby points, there are lots of tricky singularities that must be dealt with carefully in setting up SIE methods. Furthermore, because you have long-range interactions (every surface point interacts with every other point via the Green's function), the matrices are dense, not sparse. That means that developing fast solvers for large problems is tricky; remarkably, there are ways to do this (most famously the pioneering [fast multipole method](http://en.wikipedia.org/wiki/Fast_multipole_method) invented in 1985), but implementing them is not for the timid. Worse, the singularity-handling and fast-solver techniques depend heavily on the specific Green's function of empty space; for example, changing from 3d (1/|**x**\-**x**'|) to 2d (ln|**x**\-**x**'|) problems requires a completely different implementation, although the concepts are similar.
 
-(Finished notes through 2.2.1.)
-
 **Further reading:** There are many books on integral-equation methods, e.g. _Boundary Integral Equation Methods for Solids and Fluids_ by Bonnet is a reasonably general introduction.
 
-### Lecture 18: October 18
+### Lecture 19: October 20
 
-Finished notes from previous lecture.
+**Handouts:** [notes on Green's functions in inhomogeneous media](inhomog-notes.pdf)
 
-### Lecture 19: October 21
+Notes, sections 1 and 2.
+
+### Lecture 20: October 22
+
+**Handouts:** [pset 4 solutions](pset4sol-f14.pdf) and [notebook](http://nbviewer.ipython.org/url/math.mit.edu/~stevenj/18.303/fall14/pset4-f14.ipynb); [pset 5](pset5-f14.pdf), due next Monday
+
+Notes from previous lecture, section 3.
+
+### Lecture 21: October 24
 
 **Handouts:** this summary
-
-Handout from previous lecture, section 3.1.
 
 **New topic: Time-stepping and stability.** Before, we turned operator equations Âu=f into matrix equations A**u**\=**f** by discretizing in space. Now, we want to turn time-dependent operator equations Âu=f+∂u/∂t into discrete equations in both time and space. This will involve a new concern: **stability**.
 
@@ -358,7 +395,9 @@ On the other hand, for implicit timestepping with backward differences, Δt is i
 
 For conditionally stable schemes, we need the eigenvalues of A. Gave a crude argument that the biggest |λ| for ∇2 and similar operators is proportional to Δx2, based on the fact that the solution cannot oscillate faster than the grid. To do better than this, we need to consider simplified cases that we can analyze analytically.
 
-### Lecture 20: October 23
+### Lecture 22: October 27
+
+**Handouts:** [pset 5 solutions](pset5sol-f14)
 
 **Von Neumann analysis**. The idea of Von Neumann analysis is to analyze the eigenvalues of the space discretization, A, in a simple case that can be solved analytically: ∞ space and constant coefficients. In this case the eigensolutions will be sinusoids (Fourier modes), which are most conveniently written as complex exponentials.
 
@@ -378,11 +417,11 @@ Instead, we will look at the scalar wave equation ∇2u=∂2u/∂t2 in a new way
 
 **Further reading** See for example chapter 6 of the Strang book for a typical textbook treatment of Von Neumann analysis. Something I dislike about this and many textbooks is that it does Von Neumann analysis right away. I prefer considering the dependence of Δt on the eigenvalues of A in general first (where things are both simpler and more general than diving into a specific discretization), and only then finding the eigenvalues of A in the Von Neumann case where we can solve for them exactly.
 
-### Lecture 21: October 25
+### Lecture 23: October 29
 
 **Handout:** [notes on the algebraic structure of wave equations](http://math.mit.edu/~stevenj/18.369/wave-equations.pdf)
 
-Âefined the inner product ⟨**w**,**w**'⟩ in the obvious way as ∫(uu'+**v**⋅**v**') and showed that Â\*\=−Â, i.e. that it is anti-Hermitian, for either Dirichlet or Neumann boundary conditions. From this, reprised the proof of real eigenvalues for the Hermitian case to show that now the eigenvalues are purely imaginary. Alternatively, showed that iÂ is a Hermitian operator, so all of the properties of Hermitian operators carry over to Â except that the eigenvalues are multiplied by i.
+Defined the inner product ⟨**w**,**w**'⟩ in the obvious way as ∫(uu'+**v**⋅**v**') and showed that Â\*\=−Â, i.e. that it is anti-Hermitian, for either Dirichlet or Neumann boundary conditions. From this, reprised the proof of real eigenvalues for the Hermitian case to show that now the eigenvalues are purely imaginary. Alternatively, showed that iÂ is a Hermitian operator, so all of the properties of Hermitian operators carry over to Â except that the eigenvalues are multiplied by i.
 
 Showed that an anti-Hermitian operator Â is simply _i_ times a self-adjoint/Hermitian operator −_i_Â, and therefore it inherits the nice properties of self-adjoint operators with one difference: the eigenvalues are _imaginary_ instead of real. If we call the eigenvalues −_i_ω for a real ω, then it is clear that we obtain oscillating solutions with time dependence _e−iωt_. Furthermore, showed that ⟨w,w⟩ is conserved in time, which in the next lecture we will interpret as conservation of "energy".
 
@@ -394,19 +433,9 @@ Gave simple example of compression waves in a 1d system that is the limit of spr
 
 Example: pressure waves in a fluid or gas. In this case, u=P (pressure), **v** is a velocity, a=1/ρ (ρ is density), and b=K (bulk modulus: dP=-KdV/V, relating change in pressure dP to fractional change in volume dV/V). Again this gives a wave equation, with a conserved kinetic+potential energy ∫(ρ|**v**|2+P2/K).
 
-### Lecture 22: October 28
+Considered the case of Maxwell's equation in vacuum (which you already proved is anti-Hermitian in homework) and gave the corresponding energy density in the EM fields. Mentioned the case of Schrodinger's equation in quantum mechanics, where we only have one time derivative, and the conserved norm is interpreted as conservation of probability. The other cases in the notes are more complicated.
 
-Continued notes from last lecture: Considered the case of Maxwell's equation in vacuum (which you already proved is anti-Hermitian in homework) and gave the corresponding energy density in the EM fields. Mentioned the case of Schrodinger's equation in quantum mechanics, where we only have one time derivative, and the conserved norm is interpreted as conservation of probability. The other cases in the notes are more complicated.
-
-**Traveling waves: D'Alembert's solution**. Considered the 1d scalar wave equation c2∂2u/∂x2\=∂2u/∂t2 on an infinite domain with a constant coefficient c. Showed that any f(x) gives possible solutions u(x,t)=f(x±ct). This is called D'Alembert's solution, and describes the function f(x) "moving" to the left or right with speed c. That is, wave equations have travelling solutions, and the constant c can be interpreted as the speed of these solutions. Adding a hard wall (Dirichlet boundary) is equivalent to looking for an odd solution f(x±ct)−f(−x±ct), which gives an _inverted reflection_ off the wall. (Neumann boundary conditions correspond to even solutions and give non-inverted reflections.) If we have two Dirichlet boundaries, as in a finite stretched string, then we obtain an infinite sequence of inverted reflections which we can write as an infinite series.
-
-Given these solutions, it is attractive to try to write any solution u(x,t) as a superposition of D'Alembert solutions. We can do this if we pick a convenient basis of f(x) functions, and the most convenient basis will turn out to be f(x)=eikx for real k: this leads to [Fourier transforms](http://en.wikipedia.org/wiki/Fourier_transform), which we will return to later. In particlar, we then obtain **planewave** solutions ei(kx±ωt) where ω=±ck (the _dispersion relation_). 2π/k is a spatial wavelength λ, and ω/2π is a frequency f, and from this we find that λf=c, a relation you may have seen before.
-
-There is something suspiciously unphysical about D'Alembert solutions: they travel _without changing shape_, even if f(x) is a very non-smooth shape like a triangle wave. Real waves on strings, etcetera, don't seem to do this. The problem is that real wave equations incorporate a complication that we have not yet considered: the speed c, in reality _depends on ω_, an effect called [dispersion](http://en.wikipedia.org/wiki/Dispersion_%28disambiguation%29), so that different frequency components travel at different speeds and the solution will distort as it travels. Physically, it turns out that this comes down to the fact that materials do not respond instaneously to stimuli, which is mathematically expressed by the fact that the Fourier transformation of the frequency-domain equation ∂2u/∂x2\=-ω2c(&omega)−2u Fourier transform to ∂2u/∂x2\=∂2u/∂t2\*(some function of time) where "\*" is a [convolution](http://en.wikipedia.org/wiki/Convolution) operation. We will come back to this later.
-
-### Lecture 23: October 30
-
-**Handouts:** [pset 7 solutions](pset7sol-f13.pdf). [Notes on Fourier transforms, wave velocity, and dispersion](fourier-dispersion.pdf)
+### Lecture 24: October 31
 
 Discretization of the (1d scalar) wave equation: staggered grids and leap-frog schemes. Von Neumann and CFL analysis. Dispersion relation.
 
@@ -420,14 +449,139 @@ Alternatively, we can ues an explicit **leap-frog** scheme in which u is discret
 
 Went through Von Neumann stability analysis of this leap-frog scheme, and derived the **dispersion relation** ω(k) for **planewave** solutions eikΔx m - iωΔt n. Compared to dispersion relation ω(k)=±c|k| of the analytical equation: matches for small k, but a large mismatch as k approaches π/Δx.
 
-Went over handout, first two pages.
-
 **Further reading:** Strang book, section 6.4 on the leapfrog scheme for the wave equation.
 
-### Midterm: November 1
+### Lecture 25: November 3
 
-Midterm [exam](midterm-f13.pdf) and [solutions.](midtermsol-f13.pdf)
+**Handouts:** [Notes on Fourier transforms, wave velocity, and dispersion](fourier-dispersion.pdf)
 
-### Lecture 24: November 4
+**Traveling waves: D'Alembert's solution**. Considered the 1d scalar wave equation c2∂2u/∂x2\=∂2u/∂t2 on an infinite domain with a constant coefficient c. Showed that any f(x) gives possible solutions u(x,t)=f(x±ct). This is called D'Alembert's solution, and describes the function f(x) "moving" to the left or right with speed c. That is, wave equations have travelling solutions, and the constant c can be interpreted as the speed of these solutions. Adding a hard wall (Dirichlet boundary) is equivalent to looking for an odd solution f(x±ct)−f(−x±ct), which gives an _inverted reflection_ off the wall. (Neumann boundary conditions correspond to even solutions and give non-inverted reflections.) If we have two Dirichlet boundaries, as in a finite stretched string, then we obtain an infinite sequence of inverted reflections which we can write as an infinite series.
 
-Handout from last lecture, through group-velocity derivation.
+Given these solutions, it is attractive to try to write any solution u(x,t) as a superposition of D'Alembert solutions. We can do this if we pick a convenient basis of f(x) functions, and the most convenient basis will turn out to be f(x)=eikx for real k: this leads to [Fourier transforms](http://en.wikipedia.org/wiki/Fourier_transform), which we will return to later. In particlar, we then obtain **planewave** solutions ei(kx±ωt) where ω=±ck (the _dispersion relation_). 2π/k is a spatial wavelength λ, and ω/2π is a frequency f, and from this we find that λf=c, a relation you may have seen before.
+
+There is something suspiciously unphysical about D'Alembert solutions: they travel _without changing shape_, even if f(x) is a very non-smooth shape like a triangle wave. Real waves on strings, etcetera, don't seem to do this. The problem is that real wave equations incorporate a complication that we have not yet considered: the speed c, in reality _depends on ω_, an effect called [dispersion](http://en.wikipedia.org/wiki/Dispersion_%28disambiguation%29), so that different frequency components travel at different speeds and the solution will distort as it travels. Physically, it turns out that this comes down to the fact that materials do not respond instaneously to stimuli, which is mathematically expressed by the fact that the Fourier transformation of the frequency-domain equation ∂2u/∂x2\=-ω2c(&omega)−2u Fourier transform to ∂2u/∂x2\=∂2u/∂t2\*(some function of time) where "\*" is a [convolution](http://en.wikipedia.org/wiki/Convolution) operation. We will come back to this later.
+
+Went over handout, first five pages.
+
+### Lecture 26: November 5
+
+Handout from last lecture, through group-velocity derivation, and began on dispersion.
+
+### Midterm: November 7
+
+[midterm](midterm-f14.pdf) and [solutions](midtermsol-f14.pdf).
+
+### Lecture 27: November 12
+
+Finished notes from last lecture, including material dispersion and convolutions.
+
+### Lecture 28: November 14
+
+Began discussing general topic of waveguides. Defined waveguides: a wave-equation system that is _invariant_ (or periodic) in at least one direction (say y), and has some structure to _confine_ waves in one or more of the other "transverse" directions. A simple example of a waveguide (although not the only example) consists of waves confined in a hollow pipe (either sound waves or electromagnetic waves, where the latter are confined in metal pipe). Began with a simple 2d example: a waveguide for a scalar wave equation that is invariant in y and confines waves with "hard walls" (Dirichlet boundaries at x=0 and x=L) in the x direction. In such a wave equation, or _any wave equation that is invariant in y_, the solutions are separable in the invariant direction, and the eigenfunctions u(x,y)e\-iωt can be written in the form uk(x)ei(ky-ωt) for some function uk and some eigenvalues ω(k). In this case, plugged the separable form into the scalar wave equation and immediately obtained a 1d equation for uk: uk''-k2uk\=-ω2uk, which we solved to find uk\=sin(nπx/L) for ω2\=k2+(nπ/L)2. Plotted the dispersion relation ω(k) for a few _guided modes_ (different integers n), and discussed what the corresponding modes look like.
+
+Commented on the k goes to 0 and infinity limits where the group velocity goes to 0 and 1 (c), respectively. As k goes to zero, the group velocity goes to zero but the phase velocity diverges; discuss what this means.
+
+Discussed superposition of modes: explain that if we superimpose say the n=1 and n=2 modes at the same ω and nearby k, what we get is a "zig-zagging" asymmetrical solution that bounces back and forth between the walls at intervals π/Δk. This is what we might get if we add an off-center source term, for example.
+
+Discussed the existence of a low-ω _cutoff_ for each mode and its implications. As we increase the frequency of a source term, it excites more and more modes (a quantum analogue of this phenomenon is [quantized conductance](http://www.lorentz.leidenuniv.nl/beenakkr/mesoscopics/topics/qpc/physics_today/node2.html) in nanowires!). Moreover, by Taylor-expanding the dispersion relation near the cutoff as a quadratic function, we can solve for the solutions slightly _below_ cutoff, and see that they must have _imaginary k_ and hence be _exponentially decaying/growing_. These are called **evanescent modes** (as opposed to propagating modes for real k), and can only be excited by a localized source or some break or boundary in the waveguide (e.g. an endfacet); they are what you get if you try to vibrate a membrane below cutoff!
+
+**Waveguide movies:** for a 2d waveguide of width L, put an off-center source at one end that turns on around t=0 to a sinusoidal forcing of frequency f=ω⋅L/2πc, and showed some [movies of computer simulations](../waveguide-movies). First, considered a waveguide with hard ("metal") walls like the previous example; depending on how f relates to the mode cutoffs (at 0.5, 1.0, 1.5, ...), we get very different results. Then, considered a source in an infinite homogeneous (c=1) medium ("vacuum"), which just gives waves radiating outwards in every direction. Finally, considered a medium that is c=1 in a width L, and outside is c=2: this gives waveguiding by a very different mechanism, "total internal reflection".
+
+### Lecture 29: November 17
+
+**Handout:** [notes on propagating and evanescent modes in waveguides](waveguide-modes.pdf)
+
+Went through the 2d example from the previous lecture analytically; see handout for notes. In general, we need both propagating and evanescent waves in order to find the solution when we have something that breaks translational symmetry (such as a localized source).
+
+**Waveguide modes, in general**: In a waveguide, or any system that is invariant along one dimension (say z), we can always find _separable eigenfunctions_ of Âu=∂2u/∂t2. That is, we look for solutions of the form uk(x,y) ei(kz-ωt), which are eigenfunctions of Â with eigenvalue -ω2. These are solutions to the full problem, with _each value of k giving us different solutions_ uk and ω(k). We can then build any arbitrary solution u via a superposition of these (much like a Fourier transform, writing any z dependence as a sum of eikz sinusoids). For each k, the function uk(x,y) (which does not depend on y) satisfies Âeikzuk\=-ω(k)2eikzuk, from which we derive the **reduced eigenproblem** Âkuk\=-ω(k)2uk, where Âk\=e\-ikzÂeikz is an operator with no z derivatives and no z dependence: we have reduced the problem to one fewer spatial dimension.
+
+Showed that Âk is self-adjoint and definite if Â is.
+
+A **waveguide** is any system in at which at least _some_ of these modes uk are _localized_ (or _guided_): in particular, we usually require them to be at least square-integrable (finite-norm) over the reduced (x,y) domain (this is always true if the reduced domain is finite as for our "tube" waveguide examples). (In practice, guided modes usually decay at least exponentially fast in |(x,y)| outside of some compact region.)
+
+### Lecture 30: November 19
+
+Guidance, reflection, and refraction at interfaces between regions with different wave speeds c:
+
+Started with the solutions of the scalar wave equation in infinite space with a constant coefficient (speed) c: plane waves u(**x**,t)=ei(**k**⋅**x**\-ωt), satisfying ω=c|**k**|, where **k** is the _wavevector_ and indicates the propagation direction and the spatial wavelength 2π/|**k**|.
+
+Now, considere what happens when a plane wave in a region with speed c1 is incident upon an interface at x=0 to another region with speed c2. In general, we expect a transmitted wave and a reflected wave. At x=0, we will have some continuity conditions depending on the specifics of the wave equation (e.g. u continuous), and these continuity conditions must be _satisfied at all y and at all t_. The only way to satisfy the same continuity conditions at all y is for all of the waves to be oscillating at the same speed in the y direction at x=0, i.e. that they must all have the same ky, and the only way to satisfy the same continuity conditions at all t is for the waves to be oscillating at the same ω. Writing ky\=|**k**|sinθ=(ω/c)sinθ, we immediately obtain two results. First, the reflected angle is the same as the incident angle. Second, (1/c1)sinθ1\=(1/c2)sinθ2. In optics, these are known as the **Law of Equal Angles** and **Snell's Law** respectively, but they are generic to _all_ wave equations.
+
+If c1<c2, then showed that there are no real θ2 solutions for a sufficiently large angle θ1. In optics, you probably learned this as **total internal reflection**, but it is general to any wave equation. Then, if we have two interfaces, with c1<c2 sandwiched between two semi-infinite c2 regions, we can obtain _guided modes_ that are trapped mostly in c1, and can crudely be thought of as "rays" bouncing back and forth in c1, "totally internally reflected". More carefully, showed that "totally internally reflected" solutions correspond to **exponentially decaying solutions** in c2, which are called _evanescent waves_.
+
+To obtain a more general picture, we imagine writing down the dispersion relation ω(k) for such a waveguide, looking as usual for separable eigenfunctions uk(x)ei(ky-ωt). Far from the c1 region, the solutions must just be planewaves propagating in c2, with ω=c2|**k**|=c2k secθ, since k is just the y component of **k**, where θ is the angle with the y axis. Plotting all of these solutions forms a continuous **cone** covering ω(k)≥c2k (called the "light cone" in optics): this cone is _all the wave solutions that propagate in c2_. The light cone for the c1 region has a lower slope (c1), and hence the c1 region will introduce new _guided_ solutions below the c2 cone which are evanescent in c2. In the next lecture, I will argue that a finite-thickness c1 region leads to a finite number of guided modes below the c2 cone, and give numerical examples.
+
+**Further reading** You can find many explanations of Snell's law, total internal reflection, etcetera, online. For a treatment in the context of the scalar wave equation, see e.g. Haberman, _Elementary Applied Partial Differential Equations_ section 4.6. For a treatment in Maxwell's equations, see any elementary electromagnetism book; [our book](http://ab-initio.mit.edu/book) (chapter 3) has an abstract approach with a light cone etcetera mirroring the one here.
+
+### Lecture 31: November 21
+
+**Handouts:** [waveguide modes IJulia notebook](http://nbviewer.ipython.org/url/math.mit.edu/~stevenj/18.303/fall14/Waveguide-Modes.ipynb), [variational proof of slow-wave localization](slow-waveguides.pdf)
+
+Went through numerical examples of total internal reflection, i.e. guiding in a "slow" region; see IJulia notebook above.
+
+Went through analytical proof, based on the min–max theorem, that under very general conditions any regions with a smaller speed _c_ will lead to guided-wave (localized) solutions. See notes above.
+
+### Lecture 30: November 24
+
+**Handout:** [notes on perfectly matched layers](http://math.mit.edu/~stevenj/18.369/pml.pdf)
+
+Discussed how "absorbing boundaries" are implemented in the frequency domain via complex coordinate stretching, leading to the idea of **perfectly matched layers** (PML); see the notes. Showed some animations of wave propagation showing the effect of the boundaries and the impact of PML.
+
+### Lecture 31: November 26
+
+Perturbation theory: perturbations for self-adjoint eigenproblems, with application to computing losses in dissipative (slightly non-Hermitian) wave problems. Connection to Hellman-Feynman theorm. Showed that group velocity dω/dk can be evaluated via Hellman-Feynman, and yields a ratio of energy flux to energy density: an "energy velocity".
+
+### Lecture 32: December 1
+
+Began to introduce a new topic, **finite element methods**.
+
+Set up the two key components of finite element methods (FEM): the basis and the discretization of the equations. FEM generalizes finite difference methods to nonuniform meshes, meshes that can conform to boundaries/interfaces, and gives more freedom in having different equations/discretizations/bases in different regions. A typical 2d mesh is composed of triangles (possibly with curved edges), in 3d tetrahedra, and in 1d just line segments, although other polyhedra are also possible. The vertices of the triangles/tetrahedra/etc are called _nodes_ of the mesh.
+
+First, we write unknown functions u(x) (in some Sobolev space V) approximately as ũ(x) (in an N-dimensional space Ṽ) in terms of N basis functions bn(x) (spanning Ṽ) multiplied by unknown coefficients un, defined with respect to the mesh. Typically, the bn(x) are simple (low degree) polynomial functions defined piecewise in each element, with some continuity constraints.
+
+For example, gave the example of "tent" functions (1st order elements) where bn(x) is 1 at node n, 0 at other nodes, and linearly interpolated between node n and adjacent nodes. For this basis, un is just the value of ũ(x) at the nodes. In the 1d case this just corresponds to linearly interpolating ũ(x) between each pair of nodes.
+
+Given a basis, we need to construct a discretization of Âu=f, and the typical way to do this is a **Galerkin** method. Recall that, in the distributional/weak sense, the exact solution satisfies ⟨φ,Âu⟩=⟨φ,f⟩ for test functions φ. (Typically, we phrase the problem in terms of the **bilinear form** ⟨φ,u⟩A\=⟨φ,Âu⟩, where we usually integrate by parts so that half of the derivatives fall on φ. This avoids the need for explicit delta functions. e.g. for Â=-∇2 with Dirichlet boundaries we get ⟨φ,u⟩A\=⟨∇φ,∇u⟩.) Here, we need to get just N equations, so we will do this for only N test functions φ, and in particular the Galerkin approach is to choose φ=bm for m from 1 to N. Showed that this gives a matrix equation A**u**\=**f**, where the entries of **u** are the unknown coefficients un, with:
+
+*   The entries of **f** are fn\=⟨bn,f⟩
+*   The entries of A are Amn\=⟨bm,bn⟩A.
+
+For the integrals of Amn to exist, some continuity constraints must be imposed on the basis. For example, with Â=∇2 or similar 2nd-derivative operators, we only need bn to be continuous and piecewise differentiable.
+
+Another way of looking at the Galerkin approach is that we require the _residual_ Âũ-f to be orthogonal to bm (i.e. the residual is orthogonal to Ṽ). As we increase N, and the basis approaches a complete basis, the intuition is that this forces the error to go to zero (in the distributional/weak sense). Later, we will outline a more careful convergence proof.
+
+For Â self-adjoint and positive-definite, the bilinear form ⟨u,v⟩A is a proper inner product and ‖u‖A = ⟨u,u⟩A1/2 is a norm. From ⟨bm,ũ⟩A = ⟨bm,f⟩ = ⟨bm,u⟩A where u is the exact solution, we obtain ⟨bm,ũ-u⟩A\=0. That is, the error ũ-u is orthogonal to Ṽ in the ⟨⋅,⋅⟩A sense. It follows that ũ is the _orthogonal projection_ of u onto Ṽ: ũ minimizes ‖ũ-u‖A over all ũ in Ṽ. This is a key ingredient of convergence proofs.
+
+Showed that Galerkin discretizations preserve some nice properties of Â: if Â is self-adjoint, then A is Hermitian; if Â is positive-definite (or negative-definite, etcetera) then A is positive-definite (or negative-definite, etcetera).
+
+**Further reading:** Textbook, section 3.6. There are lots of books on finite-element methods. These [Finite Element Analysis Course Notes](http://www.cs.rpi.edu//~flaherje/feaframe.html) by Joseph E. Flaherty at RPI are pretty helpful.
+
+### Lecture 33: December 3
+
+Evaluated the Galerkin discretization of Â=d2/dx2 with tent basis functions. Showed that, for a uniform grid, we recover our center-difference finite-difference matrix. For a nonuniform grid, we get a generalization. Analyzed the accuracy to show that the generalization is still second-order accurate if the resolution is changing "continuously" (i.e. if it is approaching a continuously varying resolution as N increases), but is only first-order accurate if the resolution jumps. This means that grid-generation methods for finite elements try to produce meshes where the elements change in size smoothly.
+
+On the other hand, if we define accuracy in an "average" sense (e.g. the L2 norm of the error), then it turns out that we always have second-order accuracy even if there are jumps in resolution (although these may have large localized contributions to the error). For positive-definite operators Â, we will use the fact (from last lecture) that Galerkin methods minimize an Â-weighted norm of the error in ũ in order to flesh out a more careful convergence analysis.
+
+Discussed some of the general tradeoffs of complexity in finite-element vs. finite-difference methods: more sophistication is not always better, especially since computer time is usually much cheaper than programmer time.
+
+**Further reading:** See the [notes on finite-element methods](http://ocw.mit.edu/courses/aeronautics-and-astronautics/16-920j-numerical-methods-for-partial-differential-equations-sma-5212-spring-2003/lecture-notes/) from 16.920J/2.097J/6.339J. Some nice free/open-source software packages for finite-element calculations are [FEniCS](http://fenicsproject.org/), [deal.II](http://www.dealii.org/), and [libMesh](http://libmesh.sourceforge.net/).
+
+### Lecture 34: December 5
+
+Sketch of convergence proof for the finite-element method based on bounding the error ‖ũ-u‖: relate this error ‖ũ-u‖A via the min-max theorem for positive-definite Â (coercive bilinear forms). Then showed that the latter is minimized since ũ is an orthogonal projection, and finally bounded ‖ũ-u‖A above by ‖&vtilde;-u‖A where &vtilde; is a simple Lagrange interpolation of u. (Unfortunately, the error estimate produced by this procedure is a bit too conservative: for first-order elements, this gives a first-order upper bound, when in fact the error is typically second-order.)
+
+Boundary conditions and the finite-element method: essential vs. natural boundary conditions. Dirichlet is essential (imposed by the function space, or via explicit constraint equations), while Neumann is natural (imposed by the weak form in the absence of an essential boundary condition).
+
+**Further reading:** Lectures 2 and 7 of [these course notes](http://www.cs.rpi.edu//~flaherje/feaframe.html) by Joseph Flaherty at RPI were pretty readable regarding convergence (see, in particular, section 2.6 of lecture 2). The book [Understanding and Implementing the Finite Element Method](http://books.google.com/books/about/Understanding_and_Implementing_the_Finit.html?id=sP-Acc5d3Q4C) by Mark S. Gockenbach has a nice discussion of boundary conditions in chapter 2.
+
+### Lecture 35: December 8
+
+Discussed what finite-element software looks like nowadays, via some nice free/open-source software packages for finite-element calculations are [FEniCS](http://fenicsproject.org/), [Firedrake](http://www.firedrakeproject.org/), [deal.II](http://www.dealii.org/), and [libMesh](http://libmesh.sourceforge.net/). In particular, went through the FEniCS, Firedrake, and libmesh Poisson-equation tutorials (from their web sites).
+
+### Lecture 36: December 10
+
+Discussed the impact of a different kind of algebraic structure on the solution of linear PDEs: symmetry. Looked at the specific examples of mirror symmetries, the symmetries of a square, and translational symmetry. Showed that a symmetry corresponds to a symmetry operator that commutes with Â and preserves the boundary conditions, and allows us to find simultaneous eigenfunctions of Â and the symmetry operator. For mirror symmetries, this leads to even/odd solutions, and for translational symmetry this leads to separable solutions with exp(ikz) exponentials in the invariant directions.
+
+However, for more complicated symmetry groups with multiple "interacting" operations, looking for simultaneous eigenfunction tells us the truth but not the whole truth. To see how the symmetry operations relate to one another, we use group representation theory. Defined representations of a group and gave a few examples to suggest how they relate to eigenfunctions, although no proofs were given.
+
+**Further reading**: The general subject of symmetry and linear PDEs leads to group theory (for the symmetry group) and group representation theory (to generalize the symmetry "eigenfunctions" to non-commutative groups). For a simple introduction similar to the one in class but applied to Maxwell's equations, see e.g. [chapter 3 of our book](http://ab-initio.mit.edu/book). For a more complete treatment, see any book on the applications of group theory to physics; my favorite is [this book by Inui](http://www.amazon.com/Applications-Physics-Springer-Solid-State-Sciences/dp/3540604456) but it is out of print; a classic with cheap reprints is [this book by Tinkham](http://www.amazon.com/Theory-Quantum-Mechanics-Michael-Tinkham/dp/0486432475). See [this summary of the key definitions and theorems](http://math.mit.edu/~stevenj/18.369/representation-theory.pdf) in representation theory for understanding the consequences of representations for eigenfunctions and linear PDEs in general.
