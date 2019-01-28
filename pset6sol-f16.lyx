@@ -1,0 +1,667 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+
+\renewcommand{\vec}[1]{\mathbf{#1}}
+
+\renewcommand{\labelenumi}{(\alph{enumi})}
+\renewcommand{\labelenumii}{(\roman{enumii})}
+\newcommand{\rank}{\operatorname{rank}}
+
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
+\end_preamble
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 1
+\use_package esint 2
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 0.7in
+\topmargin 0.7in
+\rightmargin 0.7in
+\bottommargin 0.7in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section*
+18.303 Problem Set 6 Solutions
+\end_layout
+
+\begin_layout Subsection*
+Problem 1: (10+10 points)
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\hat{A}^{-1}$
+\end_inset
+
+ is Hermitian, i.e.,
+\begin_inset Formula $\langle u,\hat{A}^{-1}v\rangle=\langle\hat{A}^{-1}u,v\rangle$
+\end_inset
+
+.
+ Substituting 
+\begin_inset Formula $\hat{A}^{-1}u(\vec{x})=\int_{\Omega}G(\vec{x},\vec{x}')u(\vec{x}')d^{n}\vec{x}'$
+\end_inset
+
+, we must therefore have: 
+\begin_inset Formula 
+\begin{align*}
+\langle u,\hat{A}^{-1}v\rangle & =\iint_{\vec{x},\vec{x}'\in\Omega}\overline{u(\vec{x})}G(\vec{x},\vec{x}')v(\vec{x}')\\
+ & =\langle\hat{A}^{-1}u,v\rangle\\
+ & =\iint_{\vec{x},\vec{x}'\in\Omega}\overline{G(\vec{x},\vec{x}')u(\vec{x}')}v(\vec{x})=\iint_{\vec{x},\vec{x}'\in\Omega}\overline{u(\vec{x})}\overline{G(\vec{x}',\vec{x})}v(\vec{x}'),
+\end{align*}
+
+\end_inset
+
+where in the last step we have interchanged/relabeled 
+\begin_inset Formula $\vec{x}\leftrightarrow\vec{x}'$
+\end_inset
+
+.
+ Since this must be true for all 
+\begin_inset Formula $u$
+\end_inset
+
+ and 
+\begin_inset Formula $v$
+\end_inset
+
+, it follows that 
+\begin_inset Formula 
+\[
+\boxed{G(\vec{x},\vec{x}')=\overline{G(\vec{x}',\vec{x})}}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+A (time-independent) source term at 
+\begin_inset Formula $\vec{x}'$
+\end_inset
+
+ corresponds to 
+\begin_inset Formula $f(\vec{x})=\delta(\vec{x}-\vec{x}')$
+\end_inset
+
+ or some multiple thereof, in which case the steady-state solution (
+\begin_inset Formula $\partial u/\partial t=0$
+\end_inset
+
+) is 
+\begin_inset Formula $u(\vec{x})=G(\vec{x},\vec{x}')$
+\end_inset
+
+, where 
+\begin_inset Formula $G$
+\end_inset
+
+ is the Green's function of 
+\begin_inset Formula $-\nabla\cdot D\nabla$
+\end_inset
+
+.
+ If there is diffusion from 
+\begin_inset Formula $\vec{x}'$
+\end_inset
+
+ to 
+\begin_inset Formula $\vec{x}$
+\end_inset
+
+, that means that 
+\begin_inset Formula $u(\vec{x})=G(\vec{x},\vec{x}')\neq0$
+\end_inset
+
+ (i.e.
+ a source at 
+\begin_inset Formula $\vec{x}'$
+\end_inset
+
+ eventually produces a nonzero concentration at 
+\begin_inset Formula $\vec{x}$
+\end_inset
+
+).
+ By reciprocity, however, this means that 
+\begin_inset Formula $G(\vec{x}',\vec{x})=G(\vec{x},\vec{x}')\neq0$
+\end_inset
+
+ (
+\begin_inset Formula $G$
+\end_inset
+
+ is real since the operator is real), and this is precisely the concentration
+ at 
+\begin_inset Formula $\vec{x}$
+\end_inset
+
+ from a source at 
+\begin_inset Formula $\vec{x}'$
+\end_inset
+
+.
+ That is, reciprocity means that diffusion from 
+\begin_inset Formula $\vec{x}'$
+\end_inset
+
+ to 
+\begin_inset Formula $\vec{x}$
+\end_inset
+
+ is exactly the same (produces the same concentration) as diffusion from
+ 
+\begin_inset Formula $\vec{x}$
+\end_inset
+
+ to 
+\begin_inset Formula $\vec{x}'$
+\end_inset
+
+, so one-way diffusion (or even 
+\emph on
+slightly
+\emph default
+ asymmetrical diffusion) is not possible.
+\end_layout
+
+\begin_layout Subsection*
+Problem 2: (5+5+10 points)
+\end_layout
+
+\begin_layout Standard
+Recall that the displacement 
+\begin_inset Formula $u(x,t)$
+\end_inset
+
+ of a stretched string [with fixed ends: 
+\begin_inset Formula $u(0,t)=u(L,t)=0$
+\end_inset
+
+] satisfies the wave equation 
+\begin_inset Formula $\frac{\partial^{2}u}{\partial x^{2}}+f(x,t)=\frac{\partial^{2}u}{\partial t^{2}}$
+\end_inset
+
+, where 
+\begin_inset Formula $f(x,t)$
+\end_inset
+
+ is an external force density (pressure) on the string.
+\end_layout
+
+\begin_layout Enumerate
+Suppose that 
+\begin_inset Formula $\tilde{u}$
+\end_inset
+
+ solves 
+\begin_inset Formula $\frac{\partial^{2}\tilde{u}}{\partial x^{2}}+\tilde{f}(x,t)=\frac{\partial^{2}\tilde{u}}{\partial t^{2}}$
+\end_inset
+
+ and satisfies 
+\begin_inset Formula $\tilde{u}(0,t)=\tilde{u}(L,t)=0$
+\end_inset
+
+.
+ Now, consider 
+\begin_inset Formula $u=\Re\tilde{u}=\frac{\tilde{u}+\bar{\tilde{u}}}{2}$
+\end_inset
+
+.
+ Clearly, 
+\begin_inset Formula $u(0,t)=u(L,t)=0$
+\end_inset
+
+, so 
+\begin_inset Formula $u$
+\end_inset
+
+ satisfies the same boundary conditions.
+ It also satisfies the PDE: 
+\begin_inset Formula 
+\begin{align*}
+\frac{\partial^{2}u}{\partial t^{2}} & =\frac{1}{2}\left[\frac{\partial^{2}\tilde{u}}{\partial t^{2}}+\overline{\frac{\partial^{2}\tilde{u}}{\partial t^{2}}}\right]\\
+ & =\frac{1}{2}\left[\frac{\partial^{2}\tilde{u}}{\partial x^{2}}+\tilde{f}+\overline{\frac{\partial^{2}\tilde{u}}{\partial x^{2}}+\tilde{f}}\right]\\
+ & =\frac{\partial^{2}u}{\partial x^{2}}+f,
+\end{align*}
+
+\end_inset
+
+since 
+\begin_inset Formula $f=\frac{\tilde{f}+\bar{\tilde{f}}}{2}=\Re\tilde{f}$
+\end_inset
+
+.
+ The key factors that allowed us to do this are (i) 
+\emph on
+linearity
+\emph default
+, and (ii) the 
+\emph on
+real-ness
+\emph default
+ of the PDE (the PDE itself contains no 
+\begin_inset Formula $i$
+\end_inset
+
+ factors or other complex coefficients).
+\end_layout
+
+\begin_layout Enumerate
+Plugging 
+\begin_inset Formula $u(x,t)=v(x)e^{-i\omega t}$
+\end_inset
+
+ and 
+\begin_inset Formula $f(x,t)=g(x)e^{-i\omega t}$
+\end_inset
+
+ into the PDE, we obtain 
+\begin_inset Formula 
+\[
+\frac{\partial^{2}v}{\partial x^{2}}\cancel{e^{-i\omega t}}+g\cancel{e^{-i\omega t}}=-\omega^{2}v\cancel{e^{-i\omega t}},
+\]
+
+\end_inset
+
+and hence 
+\begin_inset Formula 
+\[
+\left(-\frac{\partial^{2}}{\partial x^{2}}-\omega^{2}\right)v=g
+\]
+
+\end_inset
+
+ and 
+\begin_inset Formula $\boxed{\hat{A}=-\frac{\partial^{2}}{\partial x^{2}}-\omega^{2}}$
+\end_inset
+
+.
+ The boundary conditions are 
+\begin_inset Formula $v(0)=v(L)=0$
+\end_inset
+
+, from the boundary conditions on 
+\begin_inset Formula $u$
+\end_inset
+
+.
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Since 
+\begin_inset Formula $\omega^{2}$
+\end_inset
+
+ is real, this is in the general Sturm-Liouville form that we showed in
+ class is 
+\series bold
+self-adjoint
+\series default
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Subtracting a constant from an operator just shifts all of the eigenvalues
+ by that constant, keeping the eigenfunctions the same.
+ Thus 
+\begin_inset Formula $\hat{A}$
+\end_inset
+
+ is still positive-definite if 
+\begin_inset Formula $\omega^{2}$
+\end_inset
+
+ is 
+\begin_inset Formula $<$
+\end_inset
+
+ the smallest eigenvalue of 
+\begin_inset Formula $-\partial^{2}/\partial x^{2}$
+\end_inset
+
+, and positive semidefinite if 
+\begin_inset Formula $\omega^{2}$
+\end_inset
+
+ = the smallest eigenvalue.
+ In this case, we know analytically that the eigenvalues of 
+\begin_inset Formula $-\partial^{2}/\partial x^{2}$
+\end_inset
+
+ with these boundary conditions are 
+\begin_inset Formula $(n\pi/L)^{2}$
+\end_inset
+
+ for 
+\begin_inset Formula $n=1,2,\ldots$
+\end_inset
+
+.
+ So 
+\begin_inset Formula $\hat{A}$
+\end_inset
+
+ is positive-definite if 
+\begin_inset Formula $\omega^{2}<(\pi/L)^{2}$
+\end_inset
+
+, it is positive-semidefinite if 
+\begin_inset Formula $\omega^{2}=(\pi/L)^{2}$
+\end_inset
+
+, and it is indefinite otherwise.
+\end_layout
+
+\begin_layout Enumerate
+We know that 
+\begin_inset Formula $\hat{A}G(x,x')=0$
+\end_inset
+
+ for 
+\begin_inset Formula $x\neq x'$
+\end_inset
+
+.
+ Also, just as in class and as in the notes, the fact that 
+\begin_inset Formula $\hat{A}G(x,x')=\delta(x-x')$
+\end_inset
+
+ meas that 
+\begin_inset Formula $G$
+\end_inset
+
+ must be continuous (otherwise there would be a 
+\begin_inset Formula $\delta'$
+\end_inset
+
+ factor) and 
+\begin_inset Formula $\partial G/\partial x$
+\end_inset
+
+ must have a jump discontinuity:
+\begin_inset Formula 
+\[
+\left.\frac{\partial G}{\partial x}\right|_{x=x'^{+}}-\left.\frac{\partial G}{\partial x}\right|_{x=x'^{-}}=-1
+\]
+
+\end_inset
+
+for 
+\begin_inset Formula $-\partial^{2}G/\partial x^{2}$
+\end_inset
+
+ to give 
+\begin_inset Formula $\delta(x-x')$
+\end_inset
+
+.
+ We could also show this more explicitly by integrating:
+\begin_inset Formula 
+\begin{align*}
+\int_{x'-0^{+}}^{x'+0^{+}}\hat{A}G\,dx & =\int_{x'-0^{+}}^{x'+0^{+}}\delta(x-x')\,dx=1\\
+ & =\left.-\frac{\partial G}{\partial x}\right|_{x'-0^{+}}^{x'+0^{+}}-\cancel{\int_{x'-0^{+}}^{x'+0^{+}}\omega^{2}G\,dx},
+\end{align*}
+
+\end_inset
+
+which gives the same result.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Now, similar to class, we will solve it separately for 
+\begin_inset Formula $x<x'$
+\end_inset
+
+ and for 
+\begin_inset Formula $x>x'$
+\end_inset
+
+, and then impose the continuity requirements at 
+\begin_inset Formula $x=x'$
+\end_inset
+
+ to find the unknown coefficients.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+For 
+\begin_inset Formula $x<x'$
+\end_inset
+
+, 
+\begin_inset Formula $\hat{A}G=0$
+\end_inset
+
+ means that 
+\begin_inset Formula $\frac{\partial^{2}G}{\partial x^{2}}=-\omega^{2}G$
+\end_inset
+
+, hence 
+\begin_inset Formula $G(x,x')$
+\end_inset
+
+ is some sine or cosine of 
+\begin_inset Formula $\omega x$
+\end_inset
+
+.
+ But since 
+\begin_inset Formula $G(0,x')=0$
+\end_inset
+
+, we must therefore have 
+\begin_inset Formula $G(x,x')=\alpha\sin(\omega x)$
+\end_inset
+
+ for some coefficient 
+\begin_inset Formula $\alpha$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Similarly, for 
+\begin_inset Formula $x>x'$
+\end_inset
+
+, we also have a sine or cosine of 
+\begin_inset Formula $\omega x$
+\end_inset
+
+.
+ To get 
+\begin_inset Formula $G(L,x')=0$
+\end_inset
+
+, the simplest way to do this is to use a sine with a phase shift: 
+\begin_inset Formula $G(x,x')=\beta\sin(\omega[L-x])$
+\end_inset
+
+ for some coefficient 
+\begin_inset Formula $\beta$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Continuity now gives two equations in the two unknowns 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ and 
+\begin_inset Formula $\beta$
+\end_inset
+
+: 
+\begin_inset Formula 
+\begin{align*}
+\alpha\sin(\omega x') & =\beta\sin(\omega[L-x'])\\
+\alpha\omega\cos(\omega x') & =-\beta\omega\cos(\omega[L-x'])+1,
+\end{align*}
+
+\end_inset
+
+which has the solution 
+\begin_inset Formula $\alpha=\frac{1}{\omega}\frac{\sin(\omega[L-x'])}{\cos(\omega x')\sin(\omega[L-x'])+\sin(\omega x')\cos(\omega[L-x'])}$
+\end_inset
+
+, 
+\begin_inset Formula $\beta=\frac{1}{\omega}\frac{\sin(\omega x')}{\cos(\omega x')\sin(\omega[L-x'])+\sin(\omega x')\cos(\omega[L-x'])}$
+\end_inset
+
+.
+ This simplifies a bit from the identity 
+\begin_inset Formula $\sin A\cos B+\cos B\sin A=\sin(A+B)$
+\end_inset
+
+, and hence
+\begin_inset Formula 
+\[
+\boxed{G(x,x')=\frac{1}{\omega\sin(\omega L)}\begin{cases}
+\sin(\omega x)\,\sin(\omega[L-x']) & x<x'\\
+\sin(\omega x')\,\sin(\omega[L-x]) & x\geq x'
+\end{cases}},
+\]
+
+\end_inset
+
+which obviously obeys reciprocity.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Note that if 
+\begin_inset Formula $\omega$
+\end_inset
+
+ is an eigenfrequency, i.e.
+ 
+\begin_inset Formula $\omega=n\pi/L$
+\end_inset
+
+ for some 
+\begin_inset Formula $n$
+\end_inset
+
+, then this 
+\begin_inset Formula $G$
+\end_inset
+
+ blows up.
+ The reason is that 
+\begin_inset Formula $\hat{A}$
+\end_inset
+
+ in that case is singular (the 
+\begin_inset Formula $n$
+\end_inset
+
+-th eigenvalue was shifted to zero), and defining 
+\begin_inset Formula $\hat{A}^{-1}$
+\end_inset
+
+ is more problematical.
+ (Physically, this corresponds to driving the oscillating string at a resonance
+ frequency, which generally leads to a diverging solution unless there is
+ dissipation in the system.)
+\end_layout
+
+\end_body
+\end_document

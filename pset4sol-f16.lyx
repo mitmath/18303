@@ -1,0 +1,1259 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+
+\renewcommand{\vec}[1]{\mathbf{#1}}
+
+\renewcommand{\labelenumi}{(\alph{enumi})}
+\renewcommand{\labelenumii}{(\roman{enumii})}
+\newcommand{\rank}{\operatorname{rank}}
+\end_preamble
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\topmargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section*
+18.303 Problem Set 4 Solutions
+\end_layout
+
+\begin_layout Subsection*
+Problem 1: (5+10+10 points)
+\end_layout
+
+\begin_layout Standard
+In class, we defined the 
+\emph on
+Kronecker product
+\emph default
+ 
+\begin_inset Formula $A\otimes B$
+\end_inset
+
+ of two matrices as the matri 
+\begin_inset Formula 
+\[
+A\otimes B=\left(\begin{array}{ccc}
+a_{11}B & a_{12}B & \cdots\\
+a_{21}B & a_{22}B & \cdots\\
+\vdots & \vdots & \ddots
+\end{array}\right),
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $a_{ij}$
+\end_inset
+
+ is the 
+\begin_inset Formula $(\mbox{row }i,\mbox{column }j)$
+\end_inset
+
+ entry of 
+\begin_inset Formula $A$
+\end_inset
+
+.
+ Derive the following properties of Kronecker products from this definition:
+\end_layout
+
+\begin_layout Enumerate
+We have 
+\begin_inset Formula 
+\[
+(A\otimes B)^{*}=\left(\begin{array}{ccc}
+\overline{a_{11}}B^{*} & \overline{a_{21}}B^{*} & \cdots\\
+\overline{a_{12}}B^{*} & \overline{a_{22}}B^{*} & \cdots\\
+\vdots & \vdots & \ddots
+\end{array}\right)
+\]
+
+\end_inset
+
+by swapping rows and columns of 
+\begin_inset Formula $A\otimes B$
+\end_inset
+
+ and conjugating.
+ By inspection, this is the same as 
+\begin_inset Formula $A^{*}\otimes B^{*}$
+\end_inset
+
+, since the entries of 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+ are
+\begin_inset Formula 
+\[
+A^{*}=\left(\begin{array}{ccc}
+\overline{a_{11}} & \overline{a_{21}} & \cdots\\
+\overline{a_{12}} & \overline{a_{22}} & \cdots\\
+\vdots & \vdots & \ddots
+\end{array}\right).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+We have 
+\begin_inset Formula 
+\[
+(A\otimes B)(C\otimes D)=\left(\begin{array}{ccc}
+a_{11}B & a_{12}B & \cdots\\
+a_{21}B & a_{22}B & \cdots\\
+\vdots & \vdots & \ddots
+\end{array}\right)\left(\begin{array}{ccc}
+c_{11}D & c_{12}D & \cdots\\
+c_{21}D & c_{22}D & \cdots\\
+\vdots & \vdots & \ddots
+\end{array}\right).
+\]
+
+\end_inset
+
+As shown in class, when we multiply the two 
+\begin_inset Quotes eld
+\end_inset
+
+block
+\begin_inset Quotes erd
+\end_inset
+
+ matrices like this, we can use the ordinary 
+\begin_inset Quotes eld
+\end_inset
+
+row times column
+\begin_inset Quotes erd
+\end_inset
+
+ matrix-multiplication formula where we multiply blocks and add them up,
+ i.e.
+ the product is
+\begin_inset Formula 
+\[
+\left(\begin{array}{ccc}
+\sum_{k=1}^{n}a_{1k}Bc_{k1}D & \sum_{k=1}^{n}a_{1k}Bc_{k2}D & \cdots\\
+\sum_{k=1}^{n}a_{2k}Bc_{k2}D & \sum_{k=1}^{n}a_{2k}Bc_{k2}D & \cdots\\
+\vdots & \vdots & \ddots
+\end{array}\right),
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $n$
+\end_inset
+
+ is the number of columns of 
+\begin_inset Formula $A$
+\end_inset
+
+ (and rows of 
+\begin_inset Formula $C$
+\end_inset
+
+).
+ That is, the 
+\begin_inset Formula $(i,j)$
+\end_inset
+
+-th block is 
+\begin_inset Formula 
+\[
+\sum_{k=1}^{n}a_{ik}Bc_{kj}D=\left(\sum_{k=1}^{n}a_{ik}c_{kj}\right)BD=(AC)_{ij}BD
+\]
+
+\end_inset
+
+where we have noticed that 
+\begin_inset Formula $\sum_{k=1}^{n}a_{ik}c_{kj}$
+\end_inset
+
+ is simply the formula for the 
+\begin_inset Formula $i,j$
+\end_inset
+
+ element of 
+\begin_inset Formula $AC$
+\end_inset
+
+.
+ But this means 
+\begin_inset Formula 
+\[
+(A\otimes B)(C\otimes D)=\left(\begin{array}{ccc}
+(AC)_{11}BD & (AC)_{12}BD & \cdots\\
+(AC)_{21}BD & (AC)_{22}BD & \cdots\\
+\vdots & \vdots & \ddots
+\end{array}\right)=(AC)\otimes(BD).
+\]
+
+\end_inset
+
+Q.E.D.
+\end_layout
+
+\begin_layout Enumerate
+Consider the vector 
+\begin_inset Formula $y_{n}\otimes x_{m}$
+\end_inset
+
+.
+ Applying linearity and the mixed-product formula from the previous part,
+ we have 
+\begin_inset Formula 
+\begin{align*}
+\left(I_{N}\otimes A+B\otimes I_{M}\right)\left(y_{n}\otimes x_{m}\right) & =(I_{N}y_{n})\otimes(Ax_{m})+(By_{n})\otimes(I_{M}x_{m})\\
+ & =y_{n}\otimes(\lambda_{m}x_{m})+(\mu_{n}y_{n})\otimes x_{m}\\
+ & =(\lambda_{m}+\mu_{n})y_{n}\otimes x_{m},
+\end{align*}
+
+\end_inset
+
+hence this is a 
+\begin_inset Quotes eld
+\end_inset
+
+separable
+\begin_inset Quotes erd
+\end_inset
+
+ eigenvector of 
+\begin_inset Formula $I_{N}\otimes A+B\otimes I_{M}$
+\end_inset
+
+ with eigenvalue 
+\begin_inset Formula $\lambda_{m}+\mu_{n}$
+\end_inset
+
+.
+ There are 
+\begin_inset Formula $MN$
+\end_inset
+
+ of these 
+\begin_inset Formula $y_{n}\otimes x_{m}$
+\end_inset
+
+ eigenvectors, and 
+\begin_inset Formula $I_{N}\otimes A+B\otimes I_{M}$
+\end_inset
+
+ is 
+\begin_inset Formula $MN\times MN$
+\end_inset
+
+, so that is all of the eigenvectors and eigenvalues.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+As discussed in class, an 
+\begin_inset Formula $MN$
+\end_inset
+
+-row column vector 
+\begin_inset Formula $y_{n}\otimes x_{m}$
+\end_inset
+
+ can be thought of as a 
+\begin_inset Quotes eld
+\end_inset
+
+two-dimensional 
+\begin_inset Formula $M\times N$
+\end_inset
+
+ array
+\begin_inset Quotes erd
+\end_inset
+
+ that has been written in column-major order, and the matrix 
+\begin_inset Formula $I_{N}\otimes A+B\otimes I_{M}$
+\end_inset
+
+ can be thought of as a 
+\begin_inset Quotes eld
+\end_inset
+
+two-dimensional
+\begin_inset Quotes erd
+\end_inset
+
+ operator that acts with 
+\begin_inset Formula $A$
+\end_inset
+
+ in the the 
+\begin_inset Formula $M$
+\end_inset
+
+ direction and 
+\begin_inset Formula $B$
+\end_inset
+
+ in the 
+\begin_inset Formula $N$
+\end_inset
+
+ direction.
+ If we reverse this 
+\begin_inset Quotes eld
+\end_inset
+
+one-dimensionalization
+\begin_inset Quotes erd
+\end_inset
+
+ process, 
+\begin_inset Formula $y_{n}\otimes x_{m}$
+\end_inset
+
+ corresponds to the 
+\begin_inset Quotes eld
+\end_inset
+
+two-dimensional array
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Formula $x_{m}y_{m}^{T}$
+\end_inset
+
+, which varies like 
+\begin_inset Formula $x_{m}$
+\end_inset
+
+ in the 
+\begin_inset Formula $M$
+\end_inset
+
+ direction and like 
+\begin_inset Formula $y_{m}$
+\end_inset
+
+ in the 
+\begin_inset Formula $N$
+\end_inset
+
+ direction.
+ This is exactly the analogue of a 2d separable PDE solution 
+\begin_inset Formula $X(x)Y(y)$
+\end_inset
+
+ that is a product of one-dimensional functions 
+\begin_inset Formula $X(x)$
+\end_inset
+
+ and 
+\begin_inset Formula $Y(y)$
+\end_inset
+
+ along each direction.
+\end_layout
+
+\begin_layout Subsection*
+Problem 2: (5+10+5+5+(5+5+5)+5 points)
+\end_layout
+
+\begin_layout Standard
+Often, separability of the solutions is a consequence of symmetry.
+ In this problem, you will show a related property for the case of discrete
+ translational symmetry: a PDE that is invariant under rotation by 
+\begin_inset Formula $2\pi/N$
+\end_inset
+
+.
+ In particular, suppose that we have the circular system of 
+\begin_inset Formula $N$
+\end_inset
+
+ springs and masses, with identical spring constants 
+\begin_inset Formula $k$
+\end_inset
+
+, depicted in Figure
+\begin_inset space ~
+\end_inset
+
+1.
+\begin_inset Float figure
+placement b
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename cyclic-springs.pdf
+	width 40col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Circular systems of 
+\begin_inset Formula $N$
+\end_inset
+
+ identical masses 
+\begin_inset Formula $m$
+\end_inset
+
+ and springs 
+\begin_inset Formula $\kappa$
+\end_inset
+
+.
+ 
+\begin_inset Formula $\phi_{n}$
+\end_inset
+
+ is the angular displacement of the 
+\begin_inset Formula $n$
+\end_inset
+
+-th mass (
+\begin_inset Formula $\phi_{m}=0$
+\end_inset
+
+ for all springs when they are at rest).
+ Imagine that the springs can move in the 
+\begin_inset Formula $\phi$
+\end_inset
+
+ direction, but cannot move in the radial direction (for example, if they
+ are sliding without friction on the surface of a cylinder of radius 
+\begin_inset Formula $R$
+\end_inset
+
+).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ Suppose that the equation of motion of the 
+\begin_inset Formula $n$
+\end_inset
+
+-th mass is 
+\begin_inset Formula 
+\[
+m\ddot{\phi}_{n}=\kappa(\phi_{n+1}-\phi_{n})-\kappa(\phi_{n}-\phi_{n-1}).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Since 
+\begin_inset Formula $\ddot{\phi}_{n}=\frac{\kappa}{m}(\phi_{n+1}-2\phi_{n}+\phi_{n-1})$
+\end_inset
+
+, we can write 
+\begin_inset Formula 
+\[
+A=\frac{\kappa}{m}\left(\begin{array}{ccccccc}
+-2 & 1 &  &  &  &  & 1\\
+1 & -2 & 1\\
+ & 1 & -2 & 1\\
+ &  & \ddots & \ddots & \ddots\\
+ &  &  & 1 & -2 & 1\\
+ &  &  &  & 1 & -2 & 1\\
+1 &  &  &  &  & 1 & -2
+\end{array}\right).
+\]
+
+\end_inset
+
+Note the first and last rows! This is a consequence of the periodicity of
+ the system, since we can identify 
+\begin_inset Formula $\phi_{0}=\phi_{N}$
+\end_inset
+
+ and 
+\begin_inset Formula $\phi_{N+1}=\phi_{1}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+To check definiteness, the easiest way is to factorize 
+\begin_inset Formula $A$
+\end_inset
+
+.
+ Similar to class, we write 
+\begin_inset Formula $\ddot{\phi}_{n}$
+\end_inset
+
+ in two steps: first we compute 
+\begin_inset Formula $\psi_{n+0.5}=\phi_{n+1}-\phi_{n}$
+\end_inset
+
+, then we compute 
+\begin_inset Formula $\ddot{\phi}_{n}=\frac{\kappa}{m}\left(\psi_{n+0.5}-\psi_{n-0.5}\right)$
+\end_inset
+
+.
+ Unlike the 1d case in class, however, there are only 
+\begin_inset Formula $N$
+\end_inset
+
+ values 
+\begin_inset Formula $\psi_{n+0.5}$
+\end_inset
+
+, equal to the number of springs! Hence, we obtain an 
+\begin_inset Formula $N\times N$
+\end_inset
+
+ matrix 
+\begin_inset Formula $D$
+\end_inset
+
+ given by: 
+\begin_inset Formula 
+\[
+\left(\begin{array}{c}
+\psi_{1.5}\\
+\psi_{2.5}\\
+\vdots\\
+\psi_{N-0.5}\\
+\psi_{N+0.5}
+\end{array}\right)=D\vec{x}=\left(\begin{array}{ccccc}
+-1 & 1\\
+ & -1 & 1\\
+ &  & \ddots & \ddots\\
+ &  &  & -1 & 1\\
+1 &  &  &  & -1
+\end{array}\right)\left(\begin{array}{c}
+\phi_{1}\\
+\phi_{2}\\
+\vdots\\
+\phi_{N-1}\\
+\phi_{N}
+\end{array}\right),
+\]
+
+\end_inset
+
+where we must be careful to get the periodicity right for the last row 
+\begin_inset Formula $\psi_{N+0.5}=\phi_{1}-\phi_{N}$
+\end_inset
+
+.
+ Similarly, noting that 
+\begin_inset Formula $\ddot{\phi}_{1}=\frac{\kappa}{m}(\psi_{1.5}-\psi_{N+0.5})$
+\end_inset
+
+, we have: 
+\begin_inset Formula 
+\[
+\ddot{\vec{x}}=\frac{\kappa}{m}\left(\begin{array}{ccccc}
+1 &  &  &  & -1\\
+-1 & 1\\
+ & \ddots & \ddots\\
+ &  & -1 & 1\\
+ &  &  & -1 & 1
+\end{array}\right)\left(\begin{array}{c}
+\psi_{1.5}\\
+\psi_{2.5}\\
+\vdots\\
+\psi_{N-0.5}\\
+\psi_{N+0.5}
+\end{array}\right)=-\frac{\kappa}{m}D^{T}D\vec{x},
+\]
+
+\end_inset
+
+where we have identified that the matrix to take the differences of the
+ 
+\begin_inset Formula $\psi_{n+0.5}$
+\end_inset
+
+ is precisely 
+\begin_inset Formula $-D^{T}$
+\end_inset
+
+.
+ Hence, 
+\begin_inset Formula $A=-\frac{\kappa}{m}D^{T}D$
+\end_inset
+
+, which by inspection is at least 
+\series bold
+negative semidefinite
+\series default
+ (from class).
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+It is 
+\series bold
+not
+\series default
+ negative-definite, however.
+ This can be checked in a variety of ways, most easily by noticing that
+ 
+\begin_inset Formula 
+\[
+D\left(\begin{array}{c}
+1\\
+1\\
+\vdots\\
+1\\
+1
+\end{array}\right)=0,
+\]
+
+\end_inset
+
+and hence 
+\begin_inset Formula $D$
+\end_inset
+
+ is not full-rank (and similarly for 
+\begin_inset Formula $A$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Enumerate
+Multiplying 
+\begin_inset Formula $RA$
+\end_inset
+
+ acts 
+\begin_inset Formula $R$
+\end_inset
+
+ on each of the 
+\emph on
+columns
+\emph default
+ of 
+\begin_inset Formula $A$
+\end_inset
+
+, i.e.
+ it permutes each column, giving: 
+\begin_inset Formula 
+\[
+RA=\frac{\kappa}{m}\left(\begin{array}{ccccccc}
+1 & -2 & 1\\
+ & 1 & -2 & 1\\
+ &  & \ddots & \ddots & \ddots\\
+ &  &  & 1 & -2 & 1\\
+ &  &  &  & 1 & -2 & 1\\
+1 &  &  &  &  & 1 & -2\\
+-2 & 1 &  &  &  &  & 1
+\end{array}\right).
+\]
+
+\end_inset
+
+Multiplying 
+\begin_inset Formula $AR=(R^{T}A^{T})^{T}=(R^{T}A)^{T}$
+\end_inset
+
+ is equivalent to permuting each 
+\emph on
+row
+\emph default
+ of 
+\begin_inset Formula $A$
+\end_inset
+
+ by 
+\begin_inset Formula $R^{T}$
+\end_inset
+
+ (i.e.
+ in the opposite direction), hence 
+\begin_inset Formula 
+\[
+R^{T}A=\frac{\kappa}{m}\left(\begin{array}{ccccccc}
+1 & -2 & 1\\
+ & 1 & -2 & 1\\
+ &  & \ddots & \ddots & \ddots\\
+ &  &  & 1 & -2 & 1\\
+ &  &  &  & 1 & -2 & 1\\
+1 &  &  &  &  & 1 & -2\\
+-2 & 1 &  &  &  &  & 1
+\end{array}\right),
+\]
+
+\end_inset
+
+which 
+\begin_inset Formula $=RA$
+\end_inset
+
+.
+ Q.E.D.
+\end_layout
+
+\begin_layout Enumerate
+Consider the vector 
+\begin_inset Formula $\vec{y}=R\vec{x}$
+\end_inset
+
+.
+ Using 
+\begin_inset Formula $RA=AR$
+\end_inset
+
+, we obtain: 
+\begin_inset Formula $A\vec{y}=AR\vec{x}=RA\vec{x}=\lambda R\vec{x}=\lambda\vec{y}$
+\end_inset
+
+.
+ Therefore, 
+\begin_inset Formula $\vec{y}$
+\end_inset
+
+ is an eigenvector of 
+\begin_inset Formula $A$
+\end_inset
+
+ with eigenvalue 
+\begin_inset Formula $\lambda$
+\end_inset
+
+.
+ But we were told that 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ has multiplicity
+\begin_inset space ~
+\end_inset
+
+1: this means that 
+\begin_inset Formula $\vec{y}$
+\end_inset
+
+ must be linearly dependent on 
+\begin_inset Formula $\vec{x}$
+\end_inset
+
+, i.e.
+ 
+\begin_inset Formula $\vec{y}=\alpha\vec{x}$
+\end_inset
+
+ for some scalar 
+\begin_inset Formula $\alpha$
+\end_inset
+
+.
+ Hence 
+\begin_inset Formula $\vec{y}=R\vec{x}=\alpha\vec{x}$
+\end_inset
+
+, and 
+\begin_inset Formula $\vec{x}$
+\end_inset
+
+ is an eigenvector of 
+\begin_inset Formula $R$
+\end_inset
+
+ with eigenvalue 
+\begin_inset Formula $\alpha$
+\end_inset
+
+.
+ Q.E.D
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+We just write out 
+\begin_inset Formula $R\vec{x}=e^{ik}\vec{x}$
+\end_inset
+
+: 
+\begin_inset Formula 
+\[
+R\left(\begin{array}{c}
+1\\
+x_{2}\\
+\vdots\\
+x_{N-1}\\
+x_{N}
+\end{array}\right)=\left(\begin{array}{c}
+x_{2}\\
+x_{3}\\
+\vdots\\
+x_{N}\\
+1
+\end{array}\right)=e^{ik}\left(\begin{array}{c}
+1\\
+x_{2}\\
+\vdots\\
+x_{N-1}\\
+x_{N}
+\end{array}\right)
+\]
+
+\end_inset
+
+and hence 
+\begin_inset Formula $x_{2}=e^{ik}$
+\end_inset
+
+, 
+\begin_inset Formula $x_{3}=e^{ik}x_{2}=e^{2ik}$
+\end_inset
+
+, and so on, or 
+\begin_inset Formula 
+\[
+\vec{x}=\left(\begin{array}{c}
+1\\
+e^{ik}\\
+\vdots\\
+e^{i(N-2)k}\\
+e^{i(N-1)k}
+\end{array}\right),
+\]
+
+\end_inset
+
+or more simply: 
+\begin_inset Formula 
+\[
+\boxed{x_{n}=e^{i(n-1)k}}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+On an eigenvector, 
+\begin_inset Formula $R^{N}\vec{x}=e^{iNk}\vec{x}=\vec{x},$
+\end_inset
+
+ and hence 
+\begin_inset Formula $e^{iNk}=1$
+\end_inset
+
+.
+ This means that 
+\begin_inset Formula $Nk$
+\end_inset
+
+ is an integer multiple of 
+\begin_inset Formula $2\pi$
+\end_inset
+
+, i.e.
+ 
+\begin_inset Formula $Nk=2\pi m$
+\end_inset
+
+ for 
+\begin_inset Formula $m=0,1,2,\ldots$
+\end_inset
+
+, giving eigenvalues 
+\begin_inset Formula 
+\[
+\boxed{\alpha_{m}=e^{i\frac{2\pi m}{N}}}.
+\]
+
+\end_inset
+
+A little more carefully, we notice that 
+\begin_inset Formula $\alpha_{N}=\alpha_{0}$
+\end_inset
+
+, so we have 
+\begin_inset Formula $N$
+\end_inset
+
+ distinct eigenvalues 
+\begin_inset Formula $\boxed{m=0,1,\ldots,N-1}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Now that we know the eigenvectors 
+\begin_inset Formula $x_{n}$
+\end_inset
+
+, we can plug it back into 
+\begin_inset Formula $A\vec{x}=\lambda\vec{x}$
+\end_inset
+
+.
+ Each row of this equation has the form 
+\begin_inset Formula 
+\[
+\frac{\kappa}{m}\left(x_{n+1}-2x_{n}+x_{n-1}\right)=\lambda x_{n}
+\]
+
+\end_inset
+
+and plugging in the form of 
+\begin_inset Formula $x_{n}=e^{ik(n-1)}=e^{ikn}e^{-ik}$
+\end_inset
+
+ and dividing both sides by 
+\begin_inset Formula $x_{n}$
+\end_inset
+
+ gives: 
+\begin_inset Formula 
+\[
+\frac{\kappa}{m}\left(e^{ik}-2+e^{ik}\right)=\lambda=\frac{\kappa}{m}\left[2\cos(k)-2\right].
+\]
+
+\end_inset
+
+Hence, plugging in the equation for 
+\begin_inset Formula $k$
+\end_inset
+
+ from above, we have: 
+\begin_inset Formula 
+\[
+\boxed{\lambda_{m}=\frac{2\kappa}{m}[\cos(2\pi m/N)-1]=-\frac{4\kappa}{m}\sin^{2}\left(\frac{\pi m}{N}\right)}
+\]
+
+\end_inset
+
+for 
+\begin_inset Formula $\boxed{m=0,1,\ldots,N-1}$
+\end_inset
+
+, where we have used the half-angle identity 
+\begin_inset Formula $1-\cos(k)=2\sin^{2}(k/2)$
+\end_inset
+
+ to simplify the final expression.
+ Note that the eigenvalues are real and 
+\begin_inset Formula $\leq0$
+\end_inset
+
+ as expected, with exactly one zero eigenvalue 
+\begin_inset Formula $\lambda_{0}=0$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+The angular difference between each mass is 
+\begin_inset Formula $\Delta\theta=\frac{2\pi}{N}$
+\end_inset
+
+, and hence 
+\begin_inset Formula $x_{n}=e^{i\Delta\theta m(n-1)}=e^{im\theta}$
+\end_inset
+
+ where we define the angle 
+\begin_inset Formula $\theta=(n-1)\Delta\theta$
+\end_inset
+
+.
+ Hence the eigenfunctions in the continuum limit are simply 
+\begin_inset Formula 
+\[
+\phi(\theta)=e^{im\theta}
+\]
+
+\end_inset
+
+for integers 
+\begin_inset Formula $m$
+\end_inset
+
+ (or any constant multiple thereof, of course).
+\end_layout
+
+\begin_layout Subsection*
+Problem 3: (5+5+10 points)
+\end_layout
+
+\begin_layout Enumerate
+Given the above identity, integration by parts is straightforwards: 
+\begin_inset Formula 
+\begin{alignat*}{1}
+\langle\vec{u},\nabla\times\vec{v}\rangle & =\int_{\Omega}\bar{\vec{u}}\cdot(\nabla\times\vec{v})=\int_{\Omega}\left[\nabla\cdot(\bar{\vec{u}}\times\vec{v})+\overline{\nabla\times\vec{u}}\cdot\vec{v}\right]\\
+ & =\oiint_{\partial\Omega}(\bar{\vec{u}}\times\vec{v})\cdot d\vec{S}+\langle\nabla\times\vec{u},\vec{v}\rangle,
+\end{alignat*}
+
+\end_inset
+
+applying the divergence theorem in the second line.
+ So, the surface term 
+\begin_inset Formula $\oiint_{\partial\Omega}\vec{w}\cdot d\vec{S}$
+\end_inset
+
+ is for 
+\begin_inset Formula $\boxed{\vec{w}=\bar{\vec{u}}\times\vec{v}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+If 
+\begin_inset Formula $\vec{u}\times\vec{n}=0$
+\end_inset
+
+ on 
+\begin_inset Formula $\partial\Omega$
+\end_inset
+
+, then 
+\begin_inset Formula $\vec{u}$
+\end_inset
+
+ is parallel to 
+\begin_inset Formula $\vec{n}$
+\end_inset
+
+ and hence 
+\begin_inset Formula $\bar{\vec{u}}\times\vec{v}$
+\end_inset
+
+ is perpendicular to 
+\begin_inset Formula $\vec{n}$
+\end_inset
+
+ and 
+\begin_inset Formula $d\text{\vec{S}}$
+\end_inset
+
+.
+ Hence the boundary term the integration by parts above vanishes, and 
+\begin_inset Formula $\langle\vec{u},\nabla\times\vec{v}\rangle=\langle\nabla\times\vec{u},\vec{v}\rangle$
+\end_inset
+
+, so 
+\begin_inset Formula $\nabla\times$
+\end_inset
+
+ is Hermitian.
+\end_layout
+
+\begin_layout Enumerate
+Taking the curl of both sides of Faraday's Law, we have 
+\begin_inset Formula 
+\[
+\nabla\times\nabla\times\vec{E}=-\nabla\times\frac{\partial\vec{B}}{\partial t}=-\frac{\partial\left(\nabla\times\vec{B}\right)}{\partial t}=-\frac{1}{c^{2}}\frac{\partial^{2}\vec{E}}{\partial t^{2}}.
+\]
+
+\end_inset
+
+Under the same inner product as above, we can just 
+\begin_inset Quotes eld
+\end_inset
+
+integrate by parts
+\begin_inset Quotes erd
+\end_inset
+
+ twice: 
+\begin_inset Formula 
+\begin{alignat*}{1}
+\langle\vec{u},\nabla\times\nabla\times\vec{v}\rangle & =\int_{\Omega}\bar{\vec{u}}\cdot(\nabla\times\nabla\times\vec{v})=\cancel{\oiint_{\partial\Omega}[\bar{\vec{u}}\times(\nabla\times\vec{v})]\cdot d\vec{S}}+\int_{\Omega}(\nabla\times\bar{\vec{u}})\cdot(\nabla\times\vec{v})\\
+ & =\cancel{\oiint_{\partial\Omega}[(\nabla\times\bar{\vec{u}})\times\vec{v}]\cdot d\vec{S}}+\int_{\Omega}(\nabla\times\nabla\times\bar{\vec{u}})\cdot\vec{v}=\langle\nabla\times\nabla\times\vec{u},\vec{v}\rangle,
+\end{alignat*}
+
+\end_inset
+
+where the boundary terms cancel as before under the boundary condition 
+\begin_inset Formula $\left.\vec{u}\times\vec{n}\right|_{\partial\Omega}=0$
+\end_inset
+
+.
+ Hence 
+\begin_inset Formula $\nabla\times\nabla\times$
+\end_inset
+
+ will have real eigenvalues 
+\begin_inset Formula $\lambda$
+\end_inset
+
+.
+ Furthermore, we can easily show that 
+\begin_inset Formula $\nabla\times\nabla\times$
+\end_inset
+
+ is positive semidefinite, since from above 
+\begin_inset Formula 
+\[
+\langle\vec{u},\nabla\times\nabla\times\vec{u}\rangle=\int_{\Omega}|\nabla\times\vec{u}|^{2}\geq0,
+\]
+
+\end_inset
+
+and hence 
+\begin_inset Formula $\lambda\geq0$
+\end_inset
+
+ for some real 
+\begin_inset Quotes eld
+\end_inset
+
+eigenfrequencies
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Formula $\omega$
+\end_inset
+
+.
+ Equivalently, we have 
+\begin_inset Formula 
+\[
+\hat{A}\vec{E}=\frac{\partial^{2}\vec{E}}{\partial t^{2}}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\hat{A}=-c^{2}\nabla\times\nabla\times{}$
+\end_inset
+
+ is Hermitian and negative semidefinite.
+ From class, this is a 
+\series bold
+hyperbolic
+\series default
+ equation with oscillating solutions (whose frequencies 
+\begin_inset Formula $\omega$
+\end_inset
+
+ come from the eigenvalues 
+\begin_inset Formula $-\omega^{2}$
+\end_inset
+
+ of 
+\begin_inset Formula $\hat{A}$
+\end_inset
+
+).tals have high conductivity, and such containers are called 
+\emph on
+microwave resonant cavities
+\emph default
+.)
+\end_layout
+
+\end_body
+\end_document

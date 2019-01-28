@@ -1,0 +1,2595 @@
+#LyX 1.6.9 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+\renewcommand{\vec}[1]{\mathbf{#1}}
+
+\usepackage{cancel}
+
+\setcounter{section}{-1}
+\end_preamble
+\use_default_options true
+\language english
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_amsmath 2
+\use_esint 2
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\leftmargin 1.5in
+\topmargin 1.5cm
+\rightmargin 1.5in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Title
+18.303: Introduction to Green's functions
+\begin_inset Newline newline
+\end_inset
+
+and operator inverses
+\end_layout
+
+\begin_layout Author
+S.
+ G.
+ Johnson
+\end_layout
+
+\begin_layout Abstract
+In analogy with the inverse 
+\begin_inset Formula $A^{-1}$
+\end_inset
+
+ of a matrix 
+\begin_inset Formula $A$
+\end_inset
+
+, we try to construct an analogous inverse 
+\begin_inset Formula $\hat{A}^{-1}$
+\end_inset
+
+ of differential operator 
+\begin_inset Formula $\hat{A}$
+\end_inset
+
+, and are led to the concept of a Green's function 
+\begin_inset Formula $G(\vec{x},\vec{x}')$
+\end_inset
+
+ [the 
+\begin_inset Formula $(\hat{A}^{-1})_{\vec{x},\vec{x}'}$
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+matrix element
+\begin_inset Quotes erd
+\end_inset
+
+ of 
+\begin_inset Formula $\hat{A}^{-1}$
+\end_inset
+
+].
+ Although 
+\begin_inset Formula $G$
+\end_inset
+
+ is a perfectly well-defined function, in trying to construct it and define
+ its properties we are drawn inexorably to something that appears less well
+ defined: 
+\begin_inset Formula $\hat{A}G$
+\end_inset
+
+ seems to be some kind of function that is 
+\begin_inset Quotes eld
+\end_inset
+
+infinitely concentrated at a point
+\begin_inset Quotes erd
+\end_inset
+
+, a 
+\begin_inset Quotes eld
+\end_inset
+
+delta function
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Formula $\delta(\vec{x}-\vec{x}')$
+\end_inset
+
+ that does not have a proper definition as an ordinary function.
+ In these notes, we show how to solve for 
+\begin_inset Formula $G$
+\end_inset
+
+ in an example
+\begin_inset space ~
+\end_inset
+
+1d problem without resorting to delta functions, by a somewhat awkward process
+ that involves taking a limit 
+\emph on
+after
+\emph default
+ solving the PDE.
+ In principle, we could always apply such contortions, but the inconvenience
+ of this approach will lead us in future lectures to a new definition of
+ 
+\begin_inset Quotes eld
+\end_inset
+
+function
+\begin_inset Quotes erd
+\end_inset
+
+ in which delta functions are well defined.
+\end_layout
+
+\begin_layout Section
+Review: Matrix inverses
+\end_layout
+
+\begin_layout Standard
+The inverse 
+\begin_inset Formula $A^{-1}$
+\end_inset
+
+ of a matrix 
+\begin_inset Formula $A$
+\end_inset
+
+ is already familiar to you from linear algebra, where 
+\begin_inset Formula $A^{-1}A=AA^{-1}=I$
+\end_inset
+
+.
+ Let's think about what this means.
+\end_layout
+
+\begin_layout Standard
+Each 
+\emph on
+column
+\emph default
+ 
+\begin_inset Formula $j$
+\end_inset
+
+ of 
+\begin_inset Formula $A^{-1}$
+\end_inset
+
+ has a special meaning: 
+\begin_inset Formula $AA^{-1}=I$
+\end_inset
+
+, so 
+\begin_inset Formula $A\cdot(\mbox{column }j\mbox{ of }A^{-1})=(\mbox{column }j\mbox{ of }I)=\vec{e}_{j}$
+\end_inset
+
+, where 
+\begin_inset Formula $\vec{e}_{j}$
+\end_inset
+
+ is the unit vector 
+\begin_inset Formula $(0,0,\ldots,0,1,0,\ldots,0)^{T}$
+\end_inset
+
+ which has a 
+\begin_inset Formula $1$
+\end_inset
+
+ in the 
+\begin_inset Formula $j$
+\end_inset
+
+-th row.
+ That is, 
+\begin_inset Formula $(\mbox{column }j\mbox{ of }A^{-1})=A^{-1}\vec{e}_{j}$
+\end_inset
+
+, the solution to 
+\begin_inset Formula $A\vec{u}=\vec{f}$
+\end_inset
+
+ with 
+\begin_inset Formula $\vec{e}_{j}$
+\end_inset
+
+ on the right-hand-side.
+ If we are solving 
+\begin_inset Formula $A\vec{u}=\vec{f}$
+\end_inset
+
+, the statement 
+\begin_inset Formula $\vec{u}=A^{-1}\vec{f}$
+\end_inset
+
+ can be written as a superposition of columns of 
+\begin_inset Formula $A^{-1}$
+\end_inset
+
+: 
+\begin_inset Formula \[
+\vec{u}=A^{-1}\vec{f}=\sum_{j}(\mbox{column }j\mbox{ of }A^{-1})f_{j}=A^{-1}\sum_{j}f_{j}\vec{e}_{j}.\]
+
+\end_inset
+
+ Since 
+\begin_inset Formula $\sum_{j}f_{j}\vec{e}_{j}=\vec{f}$
+\end_inset
+
+ is just writing 
+\begin_inset Formula $\vec{f}$
+\end_inset
+
+ in the basis of the 
+\begin_inset Formula $\vec{e}_{j}$
+\end_inset
+
+'s, we can interpret 
+\begin_inset Formula $A^{-1}\vec{f}$
+\end_inset
+
+ as 
+\emph on
+writing 
+\begin_inset Formula $\vec{f}$
+\end_inset
+
+ in the basis of the 
+\begin_inset Formula $\vec{e}_{j}$
+\end_inset
+
+ unit vectors and then summing (superimposing) the solutions for each 
+\begin_inset Formula $\vec{e}_{j}$
+\end_inset
+
+.
+
+\emph default
+ Going one step further, and writing:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula \[
+u_{i}=\left(A^{-1}\vec{f}\right)_{i}=\sum_{j}(A^{-1})_{i,j}f_{j},\]
+
+\end_inset
+
+we can now have a simple 
+\begin_inset Quotes eld
+\end_inset
+
+physical
+\begin_inset Quotes erd
+\end_inset
+
+ interpretation of the matrix elements of 
+\begin_inset Formula $A^{-1}$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+\begin_inset Formula $(A^{-1})_{i,j}$
+\end_inset
+
+ is the 
+\family default
+\series bold
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+
+\begin_inset Quotes eld
+\end_inset
+
+effect
+\begin_inset Quotes erd
+\end_inset
+
+ (solution) at 
+\begin_inset Formula $i$
+\end_inset
+
+ of a 
+\begin_inset Quotes eld
+\end_inset
+
+source
+\begin_inset Quotes erd
+\end_inset
+
+ at 
+\begin_inset Formula $j$
+\end_inset
+
+ 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+(a right-hand-side 
+\begin_inset Formula $\vec{e}_{j}$
+\end_inset
+
+),
+\begin_inset Newline newline
+\end_inset
+
+[and column 
+\begin_inset Formula $j$
+\end_inset
+
+ of 
+\begin_inset Formula $A^{-1}$
+\end_inset
+
+ is the effect (solution) 
+\family default
+\series default
+\shape default
+\size default
+\emph on
+\bar default
+\noun default
+\color inherit
+everywhere
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+ from the source at 
+\begin_inset Formula $j$
+\end_inset
+
+].
+\end_layout
+
+\begin_layout Standard
+Let us consider a couple of examples drawn from the finite-difference matrices
+ for a discretized 
+\begin_inset Formula $\nabla^{2}$
+\end_inset
+
+ with Dirichlet (0) boundary conditions.
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename Ainv-1d.eps
+	width 70col%
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Graphics
+	filename Ainv-square.eps
+	width 100col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Ainv"
+
+\end_inset
+
+Columns of 
+\begin_inset Formula $A^{-1}$
+\end_inset
+
+ where 
+\begin_inset Formula $A$
+\end_inset
+
+ is a discretized 
+\begin_inset Formula $\nabla^{2}$
+\end_inset
+
+ with Dirichlet boundary conditions.
+ 
+\emph on
+Top
+\emph default
+: several columns in 1d (
+\begin_inset Formula $\Omega=[0,L]=[0,1]$
+\end_inset
+
+).
+ 
+\emph on
+Bottom
+\emph default
+: two columns in 2d (
+\begin_inset Formula $\Omega=[-1,1]\times[-1,1]$
+\end_inset
+
+).
+ In both 1d and 2d, the location of the minimum corresponds to the index
+ of the column: this is the effect of a unit-vector 
+\begin_inset Quotes eld
+\end_inset
+
+source
+\begin_inset Quotes erd
+\end_inset
+
+ or 
+\begin_inset Quotes eld
+\end_inset
+
+force
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Formula $=1$
+\end_inset
+
+ at that position (and 
+\begin_inset Formula $=0$
+\end_inset
+
+ elsewhere).
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+ Recall that one interpretation of the problem 
+\begin_inset Formula $\nabla^{2}u=f$
+\end_inset
+
+ is that 
+\begin_inset Formula $u$
+\end_inset
+
+ is a displacement of a stretched string (1d) or membrane(2d) and that 
+\begin_inset Formula $-f$
+\end_inset
+
+ is a force density (pressure).
+ Figure
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Ainv"
+
+\end_inset
+
+(top) shows several columns of 
+\begin_inset Formula $A^{-1}$
+\end_inset
+
+ for 
+\begin_inset Formula $\frac{\partial^{2}}{\partial x^{2}}$
+\end_inset
+
+ in 1d, and it is very much like what you might intuitively expect if you
+ pressed on a string at 
+\begin_inset Quotes eld
+\end_inset
+
+one point.
+\begin_inset Quotes erd
+\end_inset
+
+ Figure
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Ainv"
+
+\end_inset
+
+(bottom) shows two column of 
+\begin_inset Formula $A^{-1}$
+\end_inset
+
+ for 
+\begin_inset Formula $\nabla^{2}$
+\end_inset
+
+ on a square 2d domain (e.g.
+ a stretched square drum head), and again matches the intuition for what
+ happens if you press at 
+\begin_inset Quotes eld
+\end_inset
+
+one point.
+\begin_inset Quotes erd
+\end_inset
+
+ In both cases, the columns are, as expected, the solution from a source
+ 
+\begin_inset Formula $\vec{e}_{j}$
+\end_inset
+
+ at one point 
+\begin_inset Formula $j$
+\end_inset
+
+ (and the minimum points in the plot are indeed the points 
+\begin_inset Formula $j$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Subsection
+Inverses in other bases
+\end_layout
+
+\begin_layout Standard
+This is not the only way to write down 
+\begin_inset Formula $A^{-1}$
+\end_inset
+
+, of course, because 
+\begin_inset Formula $\vec{e}_{j}$
+\end_inset
+
+ are only one possible choice of basis.
+ For example, suppose that 
+\begin_inset Formula $\vec{q}_{1},\ldots,\vec{q}_{m}$
+\end_inset
+
+ is 
+\emph on
+any
+\emph default
+ orthonormal basis for our vector space, and that 
+\begin_inset Formula $\vec{u}_{j}$
+\end_inset
+
+ solves 
+\begin_inset Formula $A\vec{u}_{j}=\vec{q}_{j}$
+\end_inset
+
+.
+ Then we can write any 
+\begin_inset Formula $\vec{f}=\sum_{j}\vec{q}_{j}(\vec{q}_{j}^{*}\vec{f})$
+\end_inset
+
+ and hence the solution 
+\begin_inset Formula $\vec{u}$
+\end_inset
+
+ to 
+\begin_inset Formula $A\vec{u}=\vec{f}$
+\end_inset
+
+ by 
+\begin_inset Formula $\vec{u}=A^{-1}\vec{f}=\sum_{j}\vec{u}_{j}(\vec{q}_{j}^{*}\vec{f})$
+\end_inset
+
+.
+ In other words, we are writing 
+\begin_inset Formula $A^{-1}=\sum_{j}\vec{u}_{j}\vec{q}_{j}^{*}=\sum_{j}(A^{-1}\vec{q}_{j})\vec{q}_{j}^{*}$
+\end_inset
+
+ in terms of this basis.
+ In matrix form, if 
+\begin_inset Formula $Q$
+\end_inset
+
+ is the (unitary) matrix whose columns are the 
+\begin_inset Formula $\vec{q}_{j}$
+\end_inset
+
+, then we are simply writing 
+\begin_inset Formula $A^{-1}=(A^{-1}Q)Q^{*}$
+\end_inset
+
+, since 
+\begin_inset Formula $QQ^{*}=I$
+\end_inset
+
+.
+ [Similarly, if the columns of 
+\begin_inset Formula $B$
+\end_inset
+
+ are any basis, not necessarily orthonormal, we can write 
+\begin_inset Formula $A^{-1}=(A^{-1}B)B^{-1}$
+\end_inset
+
+: we solve any right-hand-side 
+\begin_inset Formula $\vec{f}$
+\end_inset
+
+ by a superposition of the solutions for the columns of 
+\begin_inset Formula $B$
+\end_inset
+
+ with coefficients 
+\begin_inset Formula $B^{-1}\vec{f}$
+\end_inset
+
+.]
+\end_layout
+
+\begin_layout Standard
+For example, if 
+\begin_inset Formula $A$
+\end_inset
+
+ is Hermitian (
+\begin_inset Formula $A=A^{*}$
+\end_inset
+
+), then we can choose the 
+\begin_inset Formula $\vec{q}_{j}$
+\end_inset
+
+ to be orthonormal eigenvectors of 
+\begin_inset Formula $A$
+\end_inset
+
+ (
+\begin_inset Formula $A\vec{q}_{j}=\lambda_{j}\vec{q}_{j}$
+\end_inset
+
+), in which case 
+\begin_inset Formula $\vec{u}_{j}=\vec{q}_{j}/\lambda_{j}$
+\end_inset
+
+ and 
+\begin_inset Formula $\vec{u}=A^{-1}\vec{f}=\sum_{j}\vec{u}_{j}(\vec{q}_{j}^{*}\vec{f})=\sum_{j}\vec{q}_{j}(\vec{q}_{j}^{*}\vec{f})/\lambda_{j}$
+\end_inset
+
+.
+ But this is just writing 
+\begin_inset Formula $A^{-1}=Q\Lambda^{-1}Q^{*}$
+\end_inset
+
+ in terms of the (hopefully) familiar diagonalization 
+\begin_inset Formula $A=Q\Lambda Q^{*}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Section
+Operator inverses
+\end_layout
+
+\begin_layout Standard
+Now we would like to consider the inverse 
+\begin_inset Formula $\hat{A}^{-1}$
+\end_inset
+
+ of an operator 
+\begin_inset Formula $\hat{A}$
+\end_inset
+
+, if such a thing exists.
+ Suppose 
+\begin_inset Formula $N(\hat{A})=\{0\}$
+\end_inset
+
+ so that 
+\begin_inset Formula $\hat{A}u=f$
+\end_inset
+
+ has a unique solution 
+\begin_inset Formula $u$
+\end_inset
+
+ (for all 
+\begin_inset Formula $f$
+\end_inset
+
+ in some suitable space of functions).
+ 
+\begin_inset Formula $\hat{A}^{-1}$
+\end_inset
+
+ is then 
+\series bold
+whatever operator gives the solution
+\series default
+ 
+\begin_inset Formula $u=\hat{A}^{-1}f$
+\end_inset
+
+ from any 
+\begin_inset Formula $f$
+\end_inset
+
+.
+ This must clearly be a 
+\emph on
+linear
+\emph default
+ operator, since if 
+\begin_inset Formula $u_{1}$
+\end_inset
+
+ solves 
+\begin_inset Formula $\hat{A}u_{1}=f_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $u_{2}$
+\end_inset
+
+ solves 
+\begin_inset Formula $\hat{A}u_{2}=f_{2}$
+\end_inset
+
+ then 
+\begin_inset Formula $u=\alpha u_{1}+\beta u_{2}$
+\end_inset
+
+ solves 
+\begin_inset Formula $\hat{A}=\alpha f_{1}+\beta f_{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+In fact, we already know how to write down 
+\begin_inset Formula $\hat{A}^{-1}$
+\end_inset
+
+, for self-adjoint 
+\begin_inset Formula $\hat{A}$
+\end_inset
+
+, in terms of an orthonormal basis of eigenfunctions 
+\begin_inset Formula $u_{n}$
+\end_inset
+
+: 
+\begin_inset Formula $\hat{A}^{-1}f=\sum_{n}u_{n}\langle u_{n},f\rangle/\lambda_{n}$
+\end_inset
+
+.
+ But now we would like to write 
+\begin_inset Formula $\hat{A}^{-1}$
+\end_inset
+
+ in a different way: analogous to the entries 
+\begin_inset Formula $(A^{-1})_{ij}$
+\end_inset
+
+ above, we would like to write the solution 
+\begin_inset Formula $u(\vec{x})$
+\end_inset
+
+ as a superposition of 
+\series bold
+effects at 
+\begin_inset Formula $\vec{x}$
+\end_inset
+
+ from sources at 
+\begin_inset Formula $\vec{x}'$
+\end_inset
+
+
+\series default
+ for all 
+\begin_inset Formula $\vec{x}'$
+\end_inset
+
+ (where 
+\begin_inset Formula $'$
+\end_inset
+
+ just means another point, not a derivative): 
+\begin_inset Formula \begin{equation}
+\boxed{u(\vec{x})=\hat{A}^{-1}f=\int_{\Omega}d^{d}\vec{x}'G(\vec{x},\vec{x}')f(\vec{x}')},\label{eq:G}\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $G(\vec{x},\vec{x}')$
+\end_inset
+
+ is the 
+\series bold
+Green's function
+\series default
+ or the 
+\series bold
+fundamental solution
+\series default
+ to the PDE.
+ We need to figure out what 
+\begin_inset Formula $G$
+\end_inset
+
+ is (and whether it exists at all), and how to solve for it.
+ This equation is the direct analogue of 
+\begin_inset Formula $u_{i}=\sum_{j}(A^{-1})_{i,j}f_{j}$
+\end_inset
+
+ for the matrix case above, with sums turned into integrals, so this leads
+ us to interpret 
+\begin_inset Formula $G(\vec{x},\vec{x}')$
+\end_inset
+
+ as the 
+\begin_inset Quotes eld
+\end_inset
+
+matrix element
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Formula $(\hat{A}^{-1})_{\vec{x},\vec{x}'}$
+\end_inset
+
+.
+ So, in analogy to the matrix case, we hope that 
+\begin_inset Formula $G(\vec{x},\vec{x}')$
+\end_inset
+
+ 
+\series bold
+is the
+\series default
+ 
+\series bold
+effect at 
+\begin_inset Formula $\vec{x}$
+\end_inset
+
+ from a source 
+\begin_inset Quotes eld
+\end_inset
+
+at
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Formula $\vec{x}'$
+\end_inset
+
+.
+
+\series default
+ But what does this mean for a PDE?
+\end_layout
+
+\begin_layout Subsection
+\begin_inset Formula $\hat{A}G$
+\end_inset
+
+ and a 
+\begin_inset Quotes eld
+\end_inset
+
+delta function
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+If 
+\begin_inset Formula $G$
+\end_inset
+
+ exists, one way of getting at its properties is to consider what PDE 
+\begin_inset Formula $G(\vec{x},\vec{x}')$
+\end_inset
+
+ might satisfy (as opposed to the integral equation above).
+ In particular, we can try to apply the equation 
+\begin_inset Formula $\hat{A}u=f$
+\end_inset
+
+, noting that 
+\begin_inset Formula $\hat{A}$
+\end_inset
+
+ is an operator acting on 
+\begin_inset Formula $\vec{x}$
+\end_inset
+
+ and 
+\emph on
+not
+\emph default
+ on 
+\begin_inset Formula $\vec{x}'$
+\end_inset
+
+ so that it commutes with the 
+\begin_inset Formula $\int_{\Omega}d^{d}\vec{x}'$
+\end_inset
+
+ integral: 
+\begin_inset Formula \[
+\hat{A}u=\int_{\Omega}d^{d}\vec{x}'[\hat{A}G(\vec{x},\vec{x}')]f(\vec{x}')=f(\vec{x}).\]
+
+\end_inset
+
+This is telling us that 
+\begin_inset Formula $\hat{A}G(\vec{x},\vec{x}')$
+\end_inset
+
+ must be some function that, when integrated against 
+\begin_inset Quotes eld
+\end_inset
+
+any
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Formula $f(\vec{x}')$
+\end_inset
+
+, gives us 
+\begin_inset Formula $f(\vec{x})$
+\end_inset
+
+.
+ What must such an 
+\begin_inset Formula $\hat{A}G(\vec{x},\vec{x}')$
+\end_inset
+
+ look like? It must somehow be sharply peaked around 
+\begin_inset Formula $\vec{x}$
+\end_inset
+
+ so that all of the integral's contributions come from 
+\begin_inset Formula $f(\vec{x})$
+\end_inset
+
+, and in particular the integral must give some sort of 
+\series bold
+average of 
+\begin_inset Formula $f(\vec{x}')$
+\end_inset
+
+ in an infinitesimal neighborhood of 
+\begin_inset Formula $\vec{x}$
+\end_inset
+
+
+\series default
+.
+\end_layout
+
+\begin_layout Standard
+How could we get such an average? In one dimension for simplicity, consider
+ the function 
+\begin_inset Formula \begin{equation}
+\delta_{\Delta x}(x)=\begin{cases}
+\frac{1}{\Delta x} & 0\leq x<\Delta x\\
+0 & \mbox{otherwise}\end{cases}\label{eq:finite-delta}\end{equation}
+
+\end_inset
+
+as depicted in figure
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:delta"
+
+\end_inset
+
+(left): a box of width 
+\begin_inset Formula $\Delta x$
+\end_inset
+
+ and height 
+\begin_inset Formula $1/\Delta x$
+\end_inset
+
+, with area 
+\begin_inset Formula $1$
+\end_inset
+
+.
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename delta.eps
+	width 50col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+
+\emph on
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:delta"
+
+\end_inset
+
+
+\color red
+Left
+\emph default
+: 
+\color inherit
+A finite localized function 
+\begin_inset Formula $\delta_{\Delta x}(x)$
+\end_inset
+
+ from eq.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:finite-delta"
+
+\end_inset
+
+: a rectangle of area
+\begin_inset space ~
+\end_inset
+
+1 on 
+\begin_inset Formula $[0,\Delta x]$
+\end_inset
+
+.
+ 
+\emph on
+\color blue
+Right
+\emph default
+:
+\color inherit
+ We would like to take the 
+\begin_inset Formula $\Delta x\to0^{+}$
+\end_inset
+
+ limit to obtain a Dirac 
+\begin_inset Quotes eld
+\end_inset
+
+delta function
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Formula $\delta(x)$
+\end_inset
+
+, an infinitesimally wide and infinitely high 
+\begin_inset Quotes eld
+\end_inset
+
+spike
+\begin_inset Quotes erd
+\end_inset
+
+ of area
+\begin_inset space ~
+\end_inset
+
+1, but this is not well defined according to our ordinary understanding
+ of 
+\begin_inset Quotes eld
+\end_inset
+
+function
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+ The integral 
+\begin_inset Formula \[
+\int dx'\delta_{\Delta x}(x-x')f(x')=\frac{1}{\Delta x}\int_{x-\Delta x}^{x}f(x')dx\]
+
+\end_inset
+
+is just the average of 
+\begin_inset Formula $f(x')$
+\end_inset
+
+ in 
+\begin_inset Formula $[x,x+\Delta x]$
+\end_inset
+
+.
+ As 
+\begin_inset Formula $\Delta x\to0$
+\end_inset
+
+, this goes to 
+\begin_inset Formula $f(x)$
+\end_inset
+
+ (for continuous 
+\begin_inset Formula $f$
+\end_inset
+
+), which is precisely the sort of integral we want.
+ That is, we want 
+\begin_inset Formula \begin{equation}
+\hat{A}G(x,x')=\lim_{\Delta x\to0}\delta_{\Delta x}(x-x')=\delta(x-x'),\label{eq:AG-1d}\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $\delta(x)$
+\end_inset
+
+ is a 
+\begin_inset Quotes eld
+\end_inset
+
+Dirac delta function
+\begin_inset Quotes erd
+\end_inset
+
+ that is a box 
+\begin_inset Quotes eld
+\end_inset
+
+infinitely high
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+infinitesimally narrow
+\begin_inset Quotes erd
+\end_inset
+
+ with 
+\begin_inset Quotes eld
+\end_inset
+
+area 1
+\begin_inset Quotes erd
+\end_inset
+
+ around 
+\begin_inset Formula $x=0$
+\end_inset
+
+, as depicted in figure
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:delta"
+
+\end_inset
+
+(right).
+ Just one problem:
+\series bold
+ this is not a function
+\series default
+, at least as we currently understand 
+\begin_inset Quotes eld
+\end_inset
+
+function,
+\begin_inset Quotes erd
+\end_inset
+
+ and the 
+\begin_inset Quotes eld
+\end_inset
+
+definition
+\begin_inset Quotes erd
+\end_inset
+
+ of 
+\begin_inset Formula $\delta(x)$
+\end_inset
+
+ here doesn't actually make much rigorous sense.
+\end_layout
+
+\begin_layout Standard
+In fact, it is possible to define 
+\begin_inset Formula $\delta(x)$
+\end_inset
+
+, and even 
+\begin_inset Formula $\lim_{\Delta x\to0}\delta_{\Delta x}(x)$
+\end_inset
+
+, in a perfectly rigorous fashion, but it requires a new level of abstraction:
+ we will have to redefine our notion of what a 
+\begin_inset Quotes eld
+\end_inset
+
+function
+\begin_inset Quotes erd
+\end_inset
+
+ is, replacing it with something called a 
+\emph on
+distribution
+\emph default
+.
+ We aren't ready for that, yet, though---we should see how far we can get
+ with ordinary functions first.
+ In fact, we will see that it is perfectly possible to obtain 
+\begin_inset Formula $G$
+\end_inset
+
+ as an ordinary function, even though 
+\begin_inset Formula $\hat{A}G$
+\end_inset
+
+ will not exist in the ordinary sense (
+\begin_inset Formula $G$
+\end_inset
+
+ will have some discontinuity or singularity that prevents it from being
+ classically differentiable).
+ But the process is fairly indirect and painful: once we obtain 
+\begin_inset Formula $G$
+\end_inset
+
+ the hard way, we will appreciate how much nicer it will be to have 
+\begin_inset Formula $\delta(x)$
+\end_inset
+
+, even at the price of an extra layer of abstraction.
+\end_layout
+
+\begin_layout Subsection
+\begin_inset Formula $G$
+\end_inset
+
+ by a limit of superpositions
+\end_layout
+
+\begin_layout Standard
+Let's consider the same problem from another angle.
+ We saw for matrices that we could interpret the columns of 
+\begin_inset Formula $A^{-1}$
+\end_inset
+
+ as the response to unit vectors 
+\begin_inset Formula $\vec{e}_{j}$
+\end_inset
+
+, and 
+\begin_inset Formula $A^{-1}\vec{f}$
+\end_inset
+
+ as representing 
+\begin_inset Formula $\vec{f}$
+\end_inset
+
+ in the basis of unit vectors and then superimposing (summing) the solutions
+ for each 
+\begin_inset Formula $\vec{e}_{j}$
+\end_inset
+
+.
+ Let's try to do the same thing here, at least approximately.
+ Consider one dimension for simplicity, with a domain 
+\begin_inset Formula $\Omega=[0,L]$
+\end_inset
+
+.
+ Let's approximate 
+\begin_inset Formula $f(x)$
+\end_inset
+
+ by a piecewise-constant function as shown in figure
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:fN"
+
+\end_inset
+
+: a 
+\begin_inset Quotes eld
+\end_inset
+
+sum of 
+\begin_inset Formula $N+1$
+\end_inset
+
+ rectangles
+\begin_inset Quotes erd
+\end_inset
+
+ of width 
+\begin_inset Formula $\Delta x=L/(N+1)$
+\end_inset
+
+.
+ Algebraically, that could be written as a sum in terms of precisely the
+ 
+\begin_inset Formula $\delta_{\Delta x}(x)$
+\end_inset
+
+ functions from (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:finite-delta"
+
+\end_inset
+
+) above: 
+\begin_inset Formula \begin{equation}
+f(x)\approx f_{N}(x)=\sum_{n=0}^{N}f(n\Delta x)\delta_{\Delta x}(x-n\Delta x)\Delta x,\label{eq:fN}\end{equation}
+
+\end_inset
+
+since 
+\begin_inset Formula $\delta_{\Delta x}(x-n\Delta x)\Delta x$
+\end_inset
+
+ is just a box of height 
+\begin_inset Formula $1$
+\end_inset
+
+ on 
+\begin_inset Formula $[n\Delta x,(n+1)\Delta x]$
+\end_inset
+
+.
+ In the limit 
+\begin_inset Formula $N\to\infty$
+\end_inset
+
+ (
+\begin_inset Formula $\Delta x\to0$
+\end_inset
+
+), 
+\begin_inset Formula $f_{N}(x)$
+\end_inset
+
+ clearly goes to the exact 
+\begin_inset Formula $f(x)$
+\end_inset
+
+ (for continuous 
+\begin_inset Formula $f$
+\end_inset
+
+).
+ But we don't want to take that limit yet.
+ Instead, we will find the solution 
+\begin_inset Formula $u_{N}$
+\end_inset
+
+ to 
+\begin_inset Formula $\hat{A}u_{N}=f_{N}$
+\end_inset
+
+, and 
+\emph on
+then
+\emph default
+ take the 
+\begin_inset Formula $N\to\infty$
+\end_inset
+
+ limit.
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename fN.eps
+	width 70col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:fN"
+
+\end_inset
+
+A function 
+\begin_inset Formula $f(x)$
+\end_inset
+
+ 
+\color red
+(left)
+\color inherit
+ can be approximated by a piecewise-constant 
+\begin_inset Formula $f_{N}(x)$
+\end_inset
+
+ 
+\color blue
+(right)
+\color inherit
+ as in eq.
+\begin_inset space ~
+\end_inset
+
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:fN"
+
+\end_inset
+
+), where each segment 
+\begin_inset Formula $[n\Delta x,(n+1)\Delta x]$
+\end_inset
+
+ takes the value 
+\begin_inset Formula $f(n\Delta x)$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For 
+\emph on
+finite
+\emph default
+ 
+\begin_inset Formula $N$
+\end_inset
+
+, 
+\begin_inset Formula $f_{N}$
+\end_inset
+
+ is the superposition of a finite number of 
+\begin_inset Quotes eld
+\end_inset
+
+box
+\begin_inset Quotes erd
+\end_inset
+
+ functions that are 
+\begin_inset Quotes eld
+\end_inset
+
+localized sources.
+\begin_inset Quotes erd
+\end_inset
+
+ Our strategy, similar to the matrix case, will be to solve [analogous to
+\begin_inset space ~
+\end_inset
+
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:AG-1d"
+
+\end_inset
+
+)]
+\begin_inset Formula \begin{equation}
+\hat{A}g_{n}(x)=\delta_{\Delta x}(x-n\Delta x)\label{eq:AG-finite}\end{equation}
+
+\end_inset
+
+ for each of these right-hand sides to obtain solutions 
+\begin_inset Formula $g_{n}(x)$
+\end_inset
+
+, to write 
+\begin_inset Formula $u_{N}(x)=\sum_{n}f(n\Delta x)g_{n}(x)\Delta x$
+\end_inset
+
+, and then to take the limit 
+\begin_inset Formula $\Delta x\to0$
+\end_inset
+
+ to obtain an integral 
+\begin_inset Formula \[
+u(x)=\lim_{N\to\infty}u_{N}(x)=\lim_{\Delta x\to0}\sum_{n=0}^{L/\Delta x}f(n\Delta x)g_{n}(x)\Delta x=\int_{0}^{L}G(x,x')f(x')dx',\]
+
+\end_inset
+
+where 
+\begin_inset Formula \begin{equation}
+G(x,x')=\lim_{\Delta x\to0}g_{x'/\Delta x}(x).\label{eq:Green-limit}\end{equation}
+
+\end_inset
+
+We will find that, even though 
+\begin_inset Formula $\delta_{\Delta x}$
+\end_inset
+
+ does 
+\emph on
+not
+\emph default
+ have a well-defined 
+\begin_inset Formula $\Delta x\to0$
+\end_inset
+
+ limit (at least, not according to the familiar definition of 
+\begin_inset Quotes eld
+\end_inset
+
+function
+\begin_inset Quotes erd
+\end_inset
+
+), 
+\begin_inset Formula $g_{m}$
+\end_inset
+
+ 
+\emph on
+does
+\emph default
+ have a perfectly well-defined limit 
+\begin_inset Formula $G$
+\end_inset
+
+ as an ordinary function.
+ 
+\end_layout
+
+\begin_layout Section
+Example: Green's function of 
+\begin_inset Formula $-d^{2}/dx^{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+As an example, consider the familiar 
+\begin_inset Formula $\hat{A}=-\frac{d^{2}}{dx^{2}}$
+\end_inset
+
+ on 
+\begin_inset Formula $[0,L]$
+\end_inset
+
+ with Dirichlet boundaries 
+\begin_inset Formula $u(0)=u(L)=0$
+\end_inset
+
+.
+ Following the approach above, we want to solve equation
+\begin_inset space ~
+\end_inset
+
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:AG-finite"
+
+\end_inset
+
+) and then take the 
+\begin_inset Formula $\Delta x\to0$
+\end_inset
+
+ limit to obtain 
+\begin_inset Formula $G(x,x')$
+\end_inset
+
+.
+ That is, we want to solve 
+\begin_inset Formula \begin{equation}
+-g_{n}''(x)=\delta_{\Delta x}(x-n\Delta x)\label{eq:AG-finite-laplacian}\end{equation}
+
+\end_inset
+
+with the boundary conditions 
+\begin_inset Formula $g_{n}(0)=g_{n}(L)=0$
+\end_inset
+
+, and then take the limit
+\begin_inset space ~
+\end_inset
+
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:Green-limit"
+
+\end_inset
+
+) of 
+\begin_inset Formula $g_{n}$
+\end_inset
+
+ to get 
+\begin_inset Formula $G$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+As depicted in figure
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:delta-regions"
+
+\end_inset
+
+, we will solve this by breaking the solution up into three regions: (I)
+ 
+\begin_inset Formula $x\in[0,n\Delta x)$
+\end_inset
+
+; (II) 
+\begin_inset Formula $x\in[n\Delta x,(n+1)\Delta x)$
+\end_inset
+
+; and (III) 
+\begin_inset Formula $x\in[(n+1)\Delta x,L]$
+\end_inset
+
+.
+ In region II, 
+\begin_inset Formula $-g_{n}''=1/\Delta x$
+\end_inset
+
+, and the most general 
+\begin_inset Formula $g_{m}(x)$
+\end_inset
+
+ with this property is the quadratic function 
+\begin_inset Formula $-\frac{x^{2}}{2\Delta x}+\gamma x+\kappa$
+\end_inset
+
+ for some unknown constants 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ and 
+\begin_inset Formula $\kappa$
+\end_inset
+
+ to be determined.
+ In I and III, 
+\begin_inset Formula $g_{n}''=0$
+\end_inset
+
+, so the solutions must be straight lines; combined with the boundary conditions
+ at 
+\begin_inset Formula $0$
+\end_inset
+
+ and 
+\begin_inset Formula $L$
+\end_inset
+
+, this gives a solution of the form: 
+\begin_inset Formula \begin{equation}
+g_{n}(x)=\begin{cases}
+\alpha x & x<n\Delta x\\
+-\frac{x^{2}}{2\Delta x}+\gamma x+\kappa & x\in[n\Delta x,(n+1)\Delta x]\\
+\beta(L-x) & x>(n+1)\Delta x\end{cases},\label{eq:Green-finite-laplacian}\end{equation}
+
+\end_inset
+
+for constants 
+\begin_inset Formula $\alpha,\beta,\gamma,\kappa$
+\end_inset
+
+ to be determined.
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename delta-regions.eps
+	width 30col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:delta-regions"
+
+\end_inset
+
+When solving 
+\begin_inset Formula $-g_{n}''(x)=\delta_{\Delta x}(x-n\Delta x)$
+\end_inset
+
+, we will divide the solution into three regions: regions
+\begin_inset space ~
+\end_inset
+
+I and
+\begin_inset space ~
+\end_inset
+
+III, where the right-hand side is zero (and 
+\begin_inset Formula $g_{n}$
+\end_inset
+
+ is a line), and region
+\begin_inset space ~
+\end_inset
+
+II where the right-hand side is 
+\begin_inset Formula $1/\Delta x$
+\end_inset
+
+ (and 
+\begin_inset Formula $g_{n}$
+\end_inset
+
+ is a quadratic).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ These unknowns are determined by imposing 
+\emph on
+continuity conditions
+\emph default
+ at the interfaces between the regions, to make sure that the solutions
+ 
+\begin_inset Quotes eld
+\end_inset
+
+match up
+\begin_inset Quotes erd
+\end_inset
+
+ with one another.
+ Equation
+\begin_inset space ~
+\end_inset
+
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:AG-finite-laplacian"
+
+\end_inset
+
+) tells us that both 
+\begin_inset Formula $g_{n}$
+\end_inset
+
+ and 
+\begin_inset Formula $g_{n}'$
+\end_inset
+
+ must be continuous in order to obtain a finite piecewise-continuous 
+\begin_inset Formula $g_{n}''$
+\end_inset
+
+.
+ Thus, we obtain four equations for our four unknowns: 
+\begin_inset Formula \begin{align*}
+\alpha n\Delta x & =-n^{2}\frac{\Delta x}{2}+\gamma n\Delta x+\kappa,\\
+\alpha & =-n+\gamma,\\
+\beta(L-[n+1]\Delta x) & =-(n+1)^{2}\frac{\Delta x}{2}+\gamma(n+1)\Delta x+\kappa,\\
+-\beta & =-(n+1)+\gamma.\end{align*}
+
+\end_inset
+
+After straightforward but tedious algebra, letting 
+\begin_inset Formula $x'=n\Delta x$
+\end_inset
+
+, one can obtain the solutions:
+\begin_inset Formula \begin{align*}
+\beta & =\frac{x'+\frac{\Delta x}{2}}{L},\\
+\alpha & =1-\beta,\\
+\gamma & =\frac{x'}{\Delta x}+\alpha,\\
+\kappa & =\frac{-x'^{2}}{2\Delta x}.\end{align*}
+
+\end_inset
+
+The resulting function 
+\begin_inset Formula $g_{m}(x)$
+\end_inset
+
+ is plotted for three values of 
+\begin_inset Formula $x'$
+\end_inset
+
+ in figure
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Green-laplacian"
+
+\end_inset
+
+(left).
+ It looks much like what one might expect: linear functions in regions I
+ and III that are smoothly 
+\begin_inset Quotes eld
+\end_inset
+
+patched together
+\begin_inset Quotes erd
+\end_inset
+
+ by a quadratic-shaped kink in region II.
+ Physically, this can be interpreted as the shape of a stretched string
+ when you press on it with a localized pressure 
+\begin_inset Formula $\delta_{\Delta x}(x-x')$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+We are now in a position to take the 
+\begin_inset Formula $\Delta x\to0$
+\end_inset
+
+ limit, keeping 
+\begin_inset Formula $x'=n\Delta x$
+\end_inset
+
+ fixed.
+ Region II disappears, and we are left with 
+\begin_inset Formula $\beta\to\frac{x'}{L}$
+\end_inset
+
+ in region III and 
+\begin_inset Formula $\alpha\to1-\frac{x'}{L}$
+\end_inset
+
+ in region I: 
+\begin_inset Formula \[
+G(x,x')=\begin{cases}
+\left(1-\frac{x'}{L}\right)x & x<x'\\
+\frac{x'}{L}(L-x) & x\geq x'\end{cases}=\begin{cases}
+\left(1-\frac{x'}{L}\right)x & x<x'\\
+(1-\frac{x}{L})x' & x\geq x'\end{cases},\]
+
+\end_inset
+
+a pleasingly symmetrical function [whose symmetry 
+\begin_inset Formula $G(x,x')=G(x',x)$
+\end_inset
+
+ is called 
+\emph on
+reciprocity
+\emph default
+ and, we will eventually show, derives from the self-adjointness of 
+\begin_inset Formula $\hat{A}$
+\end_inset
+
+].
+ This function is plotted in figure
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Green-laplacian"
+
+\end_inset
+
+(right), and is continuous but with a discontinuity in its slope at 
+\begin_inset Formula $x=x'$
+\end_inset
+
+.
+ [Indeed, it looks just like what we got from the discrete Laplacian in
+ figure
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Ainv"
+
+\end_inset
+
+(top), except with a sign flip since we are looking at 
+\begin_inset Formula $-d^{2}/dx^{2}$
+\end_inset
+
+.] Physically, this intuitively corresponds to what happens when you press
+ on a stretched string at 
+\begin_inset Quotes eld
+\end_inset
+
+one point.
+\begin_inset Quotes erd
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename green1d-0.1.eps
+	width 50col%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename green1d-exact.eps
+	width 50col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Green-laplacian"
+
+\end_inset
+
+Green's function 
+\begin_inset Formula $G(x,x')$
+\end_inset
+
+ for 
+\begin_inset Formula $\hat{A}=-\partial^{2}/\partial x^{2}$
+\end_inset
+
+ on 
+\begin_inset Formula $[0,1]$
+\end_inset
+
+ with Dirichlet boundary conditions, for 
+\begin_inset Formula $x'=0.25$
+\end_inset
+
+, 0.5, and 
+\begin_inset Formula $0.75$
+\end_inset
+
+.
+ 
+\emph on
+Left:
+\emph default
+ approximate Green's function, using our finite-width 
+\begin_inset Formula $\delta_{\Delta x}(x)$
+\end_inset
+
+ as the right-hand-side.
+ 
+\emph on
+Right
+\emph default
+: exact Green's function, from 
+\begin_inset Formula $\Delta x\to0$
+\end_inset
+
+ limit.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Thus, we have obtained the Green's function 
+\begin_inset Formula $G(x,x')$
+\end_inset
+
+, which is indeed a perfectly well-defined, ordinary function.
+ As promised in the previous section, 
+\begin_inset Formula $\hat{A}G$
+\end_inset
+
+ does 
+\emph on
+not
+\emph default
+ exist according to our ordinary definition of derivative, not even piecewise,
+ since 
+\begin_inset Formula $\frac{\partial G}{\partial x}$
+\end_inset
+
+ is discontinuous: the second derivative is 
+\begin_inset Quotes eld
+\end_inset
+
+infinity
+\begin_inset Quotes erd
+\end_inset
+
+ at 
+\begin_inset Formula $x'$
+\end_inset
+
+.
+ Correspondingly, 
+\begin_inset Formula $\delta_{\Delta x}$
+\end_inset
+
+ does not have a well-defined limit as an ordinary function.
+ So, even though the right-hand side of 
+\begin_inset Formula $\hat{A}g_{n}=\delta_{\Delta x}(x-n\Delta x)$
+\end_inset
+
+ did not have a well-defined limit, the 
+\emph on
+solution
+\emph default
+ 
+\begin_inset Formula $g_{n}$
+\end_inset
+
+ did, and indeed we can then write the solution 
+\begin_inset Formula $u$
+\end_inset
+
+ for 
+\emph on
+any
+\emph default
+ 
+\begin_inset Formula $f$
+\end_inset
+
+ exactly by our integral
+\begin_inset space ~
+\end_inset
+
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:G"
+
+\end_inset
+
+) of 
+\begin_inset Formula $G$
+\end_inset
+
+.
+ If only there were an easier way to obtain 
+\begin_inset Formula $G$
+\end_inset
+
+…
+\end_layout
+
+\begin_layout Subsection
+Deriving the slope discontinuity of 
+\begin_inset Formula $G$
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Deriving-the-slope-discontinuity"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Why is 
+\begin_inset Formula $\partial G/\partial x$
+\end_inset
+
+ discontinuous at 
+\begin_inset Formula $x=x'$
+\end_inset
+
+? It is easy to see this just by integrating both sides of equation
+\begin_inset space ~
+\end_inset
+
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:AG-finite-laplacian"
+
+\end_inset
+
+) for 
+\begin_inset Formula $g_{n}(x)$
+\end_inset
+
+: 
+\begin_inset Formula \[
+-\int_{n\Delta x}^{(n+1)\Delta x}g_{n}''(x)\, dx=g_{n}'(n\Delta x)-g_{n}'(n\Delta x+\Delta x)=\int_{n\Delta x}^{(n+1)\Delta x}\delta_{\Delta x}(x)\, dx=1.\]
+
+\end_inset
+
+Thus, the slope 
+\begin_inset Formula $g'$
+\end_inset
+
+ drops by 1 when going from region
+\begin_inset space ~
+\end_inset
+
+I to region
+\begin_inset space ~
+\end_inset
+
+II.
+ The limit 
+\begin_inset Formula $\Delta x\to0^{+}$
+\end_inset
+
+ of these expressions (the 
+\emph on
+integrals
+\emph default
+) is perfectly well defined (even though the limit of the 
+\emph on
+integrands
+\emph default
+ is not), and gives
+\begin_inset Formula \[
+\left.\frac{\partial G}{\partial x}\right|_{x=x'^{-}}-\left.\frac{\partial G}{\partial x}\right|_{x=x'^{+}}=1,\]
+
+\end_inset
+
+so the slope 
+\begin_inset Formula $\partial G/\partial x$
+\end_inset
+
+ must drop discontinuously by 1 at 
+\begin_inset Formula $x=x'$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+In fact, we can use this to easily solve for 
+\begin_inset Formula $G(x,x')$
+\end_inset
+
+.
+ For 
+\begin_inset Formula $x<x'$
+\end_inset
+
+ (region
+\begin_inset space ~
+\end_inset
+
+I) and for 
+\begin_inset Formula $x>x'$
+\end_inset
+
+ (region
+\begin_inset space ~
+\end_inset
+
+III) we must have 
+\begin_inset Formula $\hat{A}G=0$
+\end_inset
+
+ and hence 
+\begin_inset Formula $G$
+\end_inset
+
+ is a line: 
+\begin_inset Formula $G(x,x')=\begin{cases}
+\alpha x & x<x'\\
+\beta(L-x) & x>x'\end{cases}$
+\end_inset
+
+.
+ We have two unknown constants 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ and 
+\begin_inset Formula $\beta$
+\end_inset
+
+, but we have two equations: continuity of 
+\begin_inset Formula $G$
+\end_inset
+
+, 
+\begin_inset Formula $\alpha x'=\beta(L-x')$
+\end_inset
+
+; and our slope condition 
+\begin_inset Formula $\alpha-(-\beta)=1$
+\end_inset
+
+.
+ Combining these, one can quickly find that 
+\begin_inset Formula $\alpha=1-\frac{x'}{L}$
+\end_inset
+
+ and 
+\begin_inset Formula $\beta=\frac{x'}{L}$
+\end_inset
+
+ as above!
+\end_layout
+
+\begin_layout Section
+To infinity…and beyond!
+\end_layout
+
+\begin_layout Standard
+It is perfectly possible to work with Green's functions and 
+\begin_inset Formula $\hat{A}^{-1}$
+\end_inset
+
+ in this way, putting finite 
+\begin_inset Formula $\delta_{\Delta x}$
+\end_inset
+
+-like sources on the right-hand sides and only taking the 
+\begin_inset Formula $\Delta x\to0^{+}$
+\end_inset
+
+ limit or its equivalent 
+\emph on
+after
+\emph default
+ solving the PDE.
+ Physically, this corresponds to putting in a source in a small but non-infinite
+simal region (e.g.
+ a force in a small region for a stretched string, or a small ball of charge
+ for electrostatics), and then taking the limit of the 
+\emph on
+solution
+\emph default
+ to obtain the limiting behavior as the source becomes 
+\begin_inset Quotes eld
+\end_inset
+
+infinitely concentrated at a point
+\begin_inset Quotes erd
+\end_inset
+
+ (e.g.
+ to obtain the displacement for a string pressed at one 
+\begin_inset Quotes eld
+\end_inset
+
+point
+\begin_inset Quotes erd
+\end_inset
+
+, or the potential for a 
+\begin_inset Quotes eld
+\end_inset
+
+point
+\begin_inset Quotes erd
+\end_inset
+
+ charge).
+ However, this is all terribly cumbersome and complicated.
+\end_layout
+
+\begin_layout Standard
+It would be so much simpler if we could have an 
+\begin_inset Quotes eld
+\end_inset
+
+infinitely concentrated
+\begin_inset Quotes erd
+\end_inset
+
+ source at a 
+\begin_inset Quotes eld
+\end_inset
+
+point
+\begin_inset Quotes erd
+\end_inset
+
+ to start with.
+ For example, when you study freshman mechanics or electromagnetism, you
+ start with 
+\begin_inset Quotes eld
+\end_inset
+
+point masses
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+point charges
+\begin_inset Quotes erd
+\end_inset
+
+ and only 
+\emph on
+later
+\emph default
+ do you consider extended distributions of mass or charge.
+ But to do that in a rigorous way seems problematic because 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Formula $\delta(x)=\lim_{\Delta x\to0}\delta_{\Delta x}(x)$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ apparently does not exist as a 
+\begin_inset Quotes eld
+\end_inset
+
+function
+\begin_inset Quotes erd
+\end_inset
+
+ in any sense that you have learned—it does not have a value for every 
+\begin_inset Formula $x$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+It turns out that the problem is not with 
+\begin_inset Formula $\delta(x)$
+\end_inset
+
+, the problem is with the definition of a function---surprisingly, classical
+ functions don't really correspond to what we want in many practical circumstanc
+es, and they are often not quite what we want to deal with for PDEs.
+ A clue is provided in section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Deriving-the-slope-discontinuity"
+
+\end_inset
+
+, where we saw that even though our 
+\emph on
+integrands
+\emph default
+ might not always have well-defined limits, our 
+\emph on
+integrals
+\emph default
+ did.
+ If we can only define a 
+\begin_inset Quotes eld
+\end_inset
+
+function
+\begin_inset Quotes erd
+\end_inset
+
+ in terms of its 
+\emph on
+integrals
+\emph default
+ rather than by its values at 
+\emph on
+points
+\emph default
+, that might fix our problems.
+ In fact, we can do something very much like this, which leads to the concept
+ of a 
+\series bold
+distribution
+\series default
+ (or 
+\emph on
+generalized function
+\emph default
+) or a 
+\series bold
+weak solution
+\series default
+.
+ At the cost of an increase in the level of abstraction, we can completely
+ eliminate the tortured contortions that were required above (and only get
+ worse in higher dimensions) to avoid delta functions.
+\end_layout
+
+\end_body
+\end_document

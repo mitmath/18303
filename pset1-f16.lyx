@@ -1,0 +1,488 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+
+\renewcommand{\vec}[1]{\mathbf{#1}}
+
+\renewcommand{\labelenumi}{(\alph{enumi})}
+\renewcommand{\labelenumii}{(\roman{enumii})}
+\end_preamble
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\topmargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section*
+18.303 Problem Set 1
+\end_layout
+
+\begin_layout Standard
+Due Friday, 16 September 2017.
+\end_layout
+
+\begin_layout Subsection*
+Problem 1: 18.06 warmup
+\end_layout
+
+\begin_layout Standard
+Here are a few questions that you should be able to answer based only on
+ 18.06:
+\end_layout
+
+\begin_layout Enumerate
+Show that if 
+\begin_inset Formula $A$
+\end_inset
+
+ is real-symmetric and invertible, then 
+\begin_inset Formula $A^{-1}$
+\end_inset
+
+ is real-symmetric too.
+\end_layout
+
+\begin_layout Enumerate
+In 18.06, you were shown a simple (2--3 line) proof that the eigenvalues
+ 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ of 
+\begin_inset Formula $A$
+\end_inset
+
+ (solutions of 
+\begin_inset Formula $A\vec{x}=\lambda\vec{x}$
+\end_inset
+
+) must be real numbers if 
+\begin_inset Formula $A$
+\end_inset
+
+ is real-symmetric (if you've forgot it, look it up), eigenvectors of distinct
+ 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ must be orthogonal.
+ Now consider the eigenproblem 
+\begin_inset Formula $B^{-1}A\vec{x}=\lambda\vec{x}$
+\end_inset
+
+ where 
+\begin_inset Formula $A$
+\end_inset
+
+ and 
+\begin_inset Formula $B$
+\end_inset
+
+ are both real-symmetric and 
+\begin_inset Formula $B$
+\end_inset
+
+ is positive-definite.
+ In this class, we denote 
+\begin_inset Quotes eld
+\end_inset
+
+dot products
+\begin_inset Quotes erd
+\end_inset
+
+ by 
+\begin_inset Formula $\langle\vec{x},\vec{y}\rangle$
+\end_inset
+
+, where the familiar dot product of column vectors is 
+\begin_inset Formula $\langle\vec{x},\vec{y}\rangle=\vec{x}^{*}\vec{y}$
+\end_inset
+
+ (recall that 
+\begin_inset Formula $*$
+\end_inset
+
+ denotes conjugate-transpose) .
+ Consider a modified 
+\begin_inset Quotes eld
+\end_inset
+
+dot product
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Formula $\langle\vec{x},\vec{y}\rangle_{B}=\vec{x}^{*}B\vec{y}$
+\end_inset
+
+ of vectors 
+\begin_inset Formula $\vec{x}$
+\end_inset
+
+ and 
+\begin_inset Formula $\vec{y}$
+\end_inset
+
+.
+ Using this new dot product, adapt your 18.06 proof to show that the eigenvalues
+ of 
+\begin_inset Formula $B^{-1}A$
+\end_inset
+
+ are also real, and its eigenvectors of distinct 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ are orthogonal under this new dot product.
+\end_layout
+
+\begin_layout Enumerate
+Suppose that a vector 
+\begin_inset Formula $y$
+\end_inset
+
+ is in the left nullspace of 
+\begin_inset Formula $A$
+\end_inset
+
+, i.e.
+ 
+\begin_inset Formula $A^{*}y=0$
+\end_inset
+
+.
+ Show that, for any solution 
+\begin_inset Formula $x(t)$
+\end_inset
+
+ to 
+\begin_inset Formula $\frac{dx}{dt}=Ax$
+\end_inset
+
+, the quantity 
+\begin_inset Formula $y^{*}x$
+\end_inset
+
+ is constant in time (
+\begin_inset Quotes eld
+\end_inset
+
+conserved
+\begin_inset Quotes erd
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Subsection*
+Problem 2: 18.06 + Julia warmup
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Note
+\series default
+: For computational (Julia-based) homework problems in 18.303, turn in with
+ your solutions a printout of any commands used and their results (please
+ edit out extraneous/irrelevant stuff); alternatively, you can 
+\series bold
+email your notebook (.ipynb) file
+\series default
+ to the grader seturton@mit.edu.
+ Because IJulia notebooks let you combine code, plots, headings, and formatted
+ text, it should be straighforward to turn in well-documented solutions.
+ (Alternatively, you can use Matlab or Python or whatever, but then you
+ are on your own when it comes to writing your code.)
+\end_layout
+
+\begin_layout Standard
+Using Julia, construct a random 
+\begin_inset Formula $5\times5$
+\end_inset
+
+ real-symmetric matrix 
+\begin_inset Formula $A$
+\end_inset
+
+ with the command 
+\family typewriter
+A = full(Symmetric(randn(5,5)))
+\family default
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+The eigenvalues of 
+\begin_inset Formula $A$
+\end_inset
+
+ are printed by 
+\family typewriter
+eigvals(A)
+\family default
+.
+ The 
+\family typewriter
+Q,R = qr(A)
+\family default
+ function computes the QR factorization 
+\begin_inset Formula $A=QR$
+\end_inset
+
+ Show that 
+\family typewriter
+Q,R = qr(A); eigvals(R*Q)
+\family default
+ gives the same eigenvalues.
+ i.e.
+ the matrices 
+\begin_inset Formula $A$
+\end_inset
+
+ and 
+\begin_inset Formula $RQ$
+\end_inset
+
+ are 
+\emph on
+similar
+\emph default
+.
+ (You may instead want to use 
+\family typewriter
+sort(eigvals(A))
+\family default
+ to sort the eigenvalues, since eigenvalues are returned in random order.)
+ Prove that 
+\begin_inset Formula $A$
+\end_inset
+
+ and 
+\begin_inset Formula $RQ$
+\end_inset
+
+ are similar.
+ (Hint: the QR factorization constructs an orthonormal basis of the columns
+ of 
+\begin_inset Formula $A$
+\end_inset
+
+, so that 
+\begin_inset Formula $Q$
+\end_inset
+
+ is unitary, i.e.
+ 
+\begin_inset Formula $Q^{*}=Q^{-1}$
+\end_inset
+
+.)
+\end_layout
+
+\begin_layout Enumerate
+Make a copy 
+\family typewriter
+B = A
+\family default
+, and repeatedly execute the command 
+\family typewriter
+Q,R = qr(B); B = R*Q
+\family default
+.
+ This constructs the QR factorization 
+\begin_inset Formula $B=QR$
+\end_inset
+
+ and then sets 
+\begin_inset Formula $B$
+\end_inset
+
+ to the new matrix 
+\begin_inset Formula $RQ$
+\end_inset
+
+.
+ To execute this process 1000 times, you can do 
+\family typewriter
+for i = 1:1000; Q,R = qr(B); B = R*Q; end
+\family default
+.
+ After many iterations, compare the matrix 
+\begin_inset Formula $B$
+\end_inset
+
+ to the eigenvalues of 
+\begin_inset Formula $A$
+\end_inset
+
+ (computed above).
+ What do you notice? (You should observe a remarkable fact … this fact is
+ the basis for the 
+\begin_inset Quotes eld
+\end_inset
+
+QR algorithm
+\begin_inset Quotes erd
+\end_inset
+
+ to compute eigenvalues of matrices.)
+\end_layout
+
+\begin_layout Subsection*
+Problem 3: Quasiperiodic boundary conditions
+\end_layout
+
+\begin_layout Standard
+In class, we considered the 1d Poisson equation 
+\begin_inset Formula $\frac{d^{2}}{dx^{2}}u(x)=f(x)$
+\end_inset
+
+ for the vector space of functions 
+\begin_inset Formula $u(x)$
+\end_inset
+
+ on 
+\begin_inset Formula $x\in[0,L]$
+\end_inset
+
+ with the 
+\begin_inset Quotes eld
+\end_inset
+
+Dirichlet
+\begin_inset Quotes erd
+\end_inset
+
+ boundary conditions 
+\begin_inset Formula $u(0)=u(L)=0$
+\end_inset
+
+, and solved it in terms of the eigenfunctions of 
+\begin_inset Formula $\frac{d^{2}}{dx^{2}}$
+\end_inset
+
+ (giving a Fourier sine series).
+ Here, we will consider a small variation on this:
+\end_layout
+
+\begin_layout Standard
+Suppose that we we change the boundary conditions to the 
+\emph on
+quasiperiodic
+\emph default
+ boundary condition 
+\begin_inset Formula $u(0)=e^{i\phi}u(L)$
+\end_inset
+
+ for some real number 
+\begin_inset Formula $\phi$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+What are the eigenfunctions and eigenvalues of 
+\begin_inset Formula $\frac{d^{2}}{dx^{2}}$
+\end_inset
+
+ now?
+\end_layout
+
+\begin_layout Enumerate
+For what values of 
+\begin_inset Formula $\phi$
+\end_inset
+
+ will Poisson's equation 
+\emph on
+not 
+\emph default
+have unique solutions, and why?
+\end_layout
+
+\begin_layout Enumerate
+Under what conditions (if any) on 
+\begin_inset Formula $f(x)$
+\end_inset
+
+ and 
+\begin_inset Formula $\phi$
+\end_inset
+
+ would a solution exist? (You can restrict yourself to 
+\begin_inset Formula $f$
+\end_inset
+
+ with a convergent Fourier series.)
+\end_layout
+
+\end_body
+\end_document

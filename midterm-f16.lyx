@@ -1,0 +1,401 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\renewcommand{\vec}[1]{\mathbf{#1}}
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2.5cm
+\topmargin 2.5cm
+\rightmargin 2.5cm
+\bottommargin 2.5cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+18.303 Midterm Exam, Fall 2016
+\end_layout
+
+\begin_layout Subsection*
+Problem 1: Hermitian (33 points)
+\end_layout
+
+\begin_layout Standard
+In homework, you showed that 
+\begin_inset Formula $\nabla\times{}$
+\end_inset
+
+ was Hermitian under the inner product 
+\begin_inset Formula $\langle\vec{F},\vec{G}\rangle=\int\overline{\vec{F}}\cdot\vec{G}$
+\end_inset
+
+; that is, 
+\begin_inset Formula $\int\overline{\nabla\times\vec{F}}\cdot\vec{G}=\int\overline{\vec{F}}\cdot\nabla\times\vec{G}$
+\end_inset
+
+, for appropriate boundary conditions, and from that you went on to show
+ that 
+\begin_inset Formula $\nabla\times\nabla\times{}$
+\end_inset
+
+ was Hermitian and positive-semidefinite, and hence Maxwell's equations
+ 
+\begin_inset Formula $\frac{\partial^{2}\vec{E}}{\partial t^{2}}=\nabla\times\nabla\times\vec{E}$
+\end_inset
+
+ had oscillating solutions.
+\end_layout
+
+\begin_layout Standard
+The case you analyzed in homework only applied to Maxwell's equations in
+ vacuum, however.
+ In materials, the equations become 
+\begin_inset Formula 
+\[
+\frac{\partial^{2}\vec{E}}{\partial t^{2}}=\varepsilon^{-1}\nabla\times\left(\mu^{-1}\nabla\times\vec{E}\right),
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\mu(\vec{x})$
+\end_inset
+
+ and 
+\begin_inset Formula $\varepsilon(\vec{x})$
+\end_inset
+
+ are material properties related to the magnetic and electric polarizability
+ of matter.
+\end_layout
+
+\begin_layout Standard
+Assuming 
+\begin_inset Formula $\mu$
+\end_inset
+
+ and 
+\begin_inset Formula $\varepsilon$
+\end_inset
+
+ are real, positive scalar functions, 
+\series bold
+choose an inner product and show
+\series default
+ that the operator 
+\begin_inset Formula $\hat{A}=\varepsilon^{-1}\nabla\times\mu^{-1}\nabla\times{}$
+\end_inset
+
+ is Hermitian and positive semidefinite, and hence that we still have oscillatin
+g solutions.
+ Don't worry about the boundary conditions—just assume that we have chosen
+ boundary conditions so that 
+\begin_inset Formula $\nabla\times{}$
+\end_inset
+
+ is still Hermitian as above (i.e.
+ so that boundary terms vanish when you integrate by parts, i.e.
+ you can just use the integral identity from above).
+\end_layout
+
+\begin_layout Subsection*
+Problem 2: Timestepping (34 points)
+\end_layout
+
+\begin_layout Standard
+Suppose we have a PDE 
+\begin_inset Formula $\frac{\partial u}{\partial t}=\hat{A}u$
+\end_inset
+
+, that we discretize via finite-differences as in class into a 
+\begin_inset Quotes eld
+\end_inset
+
+Crank-Nicolson
+\begin_inset Quotes erd
+\end_inset
+
+ scheme:
+\begin_inset Formula 
+\[
+\frac{\vec{u}^{n+1}-\vec{u}^{n}}{\Delta t}=A\frac{\vec{u}^{n+1}+\vec{u}^{n}}{2},
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\vec{u}^{n}$
+\end_inset
+
+ denotes the (discretized) 
+\begin_inset Formula $u(\vec{x})$
+\end_inset
+
+ at time 
+\begin_inset Formula $t=n\Delta t$
+\end_inset
+
+, and 
+\begin_inset Formula $A$
+\end_inset
+
+ is a discretized version of the operator 
+\begin_inset Formula $\hat{A}$
+\end_inset
+
+ (e.g.
+ finite differences in space if 
+\begin_inset Formula $\hat{A}$
+\end_inset
+
+ consists of spatial derivatives like 
+\begin_inset Formula $\nabla^{2}$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Enumerate
+From class, the left-hand side is a second-order accurate (errors 
+\begin_inset Formula $\sim\Delta t^{2}$
+\end_inset
+
+) center-difference approximation for 
+\begin_inset Formula $\frac{\partial u}{\partial t}$
+\end_inset
+
+ at time 
+\begin_inset Formula $t=(n+\frac{1}{2})\Delta t$
+\end_inset
+
+.
+ That requires the right-hand side to also be at time 
+\begin_inset Formula $n+\frac{1}{2}$
+\end_inset
+
+.
+ If we treat 
+\begin_inset Formula $\vec{u}^{n}$
+\end_inset
+
+ as an approximation for 
+\begin_inset Formula $\vec{u}(n\Delta t)$
+\end_inset
+
+, show that 
+\begin_inset Formula $\frac{\vec{u}^{n+1}+\vec{u}^{n}}{2}\approx\vec{u}([n+\frac{1}{2}]\Delta t)+O(\Delta t^{2})$
+\end_inset
+
+, i.e.
+ it is second-order accurate.
+ (This was claimed in class but not proved.
+ Use the Taylor series.)
+\end_layout
+
+\begin_layout Enumerate
+Suppose our matrix 
+\begin_inset Formula $A$
+\end_inset
+
+ (independent of 
+\begin_inset Formula $n$
+\end_inset
+
+) satisfies 
+\begin_inset Formula $A=A^{*}\prec0$
+\end_inset
+
+ (negative definite).
+ Show that the solutions 
+\begin_inset Formula $\vec{u}^{n}$
+\end_inset
+
+ of our finite-difference scheme above go to zero as 
+\begin_inset Formula $n\to\infty$
+\end_inset
+
+.
+ (Hint: write 
+\begin_inset Formula $\vec{u}^{n}=(\text{something})^{n}\vec{u}^{0}$
+\end_inset
+
+ as in class and write the eigenvalues of the 
+\begin_inset Quotes eld
+\end_inset
+
+something
+\begin_inset Quotes erd
+\end_inset
+
+ in terms of the eigenvalues of 
+\begin_inset Formula $A$
+\end_inset
+
+.) i.e.
+ show it is unconditionally stable (for any 
+\begin_inset Formula $\Delta t>0$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Subsection*
+Problem 3: Born (33 points)
+\end_layout
+
+\begin_layout Standard
+Consider the operator 
+\begin_inset Formula $\hat{A}(p)=-\nabla^{2}+c(p,\vec{x})$
+\end_inset
+
+ in some domain 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ with Dirichlet boundary conditions 
+\begin_inset Formula $\left.u\right|_{\partial\Omega}=0$
+\end_inset
+
+, where 
+\begin_inset Formula $c(p,\vec{x})$
+\end_inset
+
+ is a real-valued function that depends on some parameter 
+\begin_inset Formula $p$
+\end_inset
+
+ (
+\begin_inset Formula $p$
+\end_inset
+
+ is a real number).
+ Suppose that I tell you that I have a computer program that can quickly
+ and accurately solve 
+\begin_inset Formula 
+\[
+\hat{A}(0)u=f
+\]
+
+\end_inset
+
+for 
+\begin_inset Formula $u(\vec{x})$
+\end_inset
+
+ given any right-hand side 
+\begin_inset Formula $f(\vec{x})$
+\end_inset
+
+.
+ That is, I can apply 
+\begin_inset Formula $\hat{A}(0)^{-1}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Explain how, using my 
+\begin_inset Formula $\hat{A}(0)^{-1}$
+\end_inset
+
+ computer program (without modifying it), you can compute
+\begin_inset Formula 
+\[
+\left.\frac{\partial u}{\partial p}\right|_{p=0}.
+\]
+
+\end_inset
+
+Hint: write the solution for a 
+\emph on
+small
+\emph default
+ 
+\begin_inset Formula $\Delta p$
+\end_inset
+
+ approximately using a Born approximation, then take the 
+\begin_inset Formula $\Delta p\to0$
+\end_inset
+
+ limit.
+ Assume you can Taylor-expand 
+\begin_inset Formula $c(p,\vec{x})$
+\end_inset
+
+ around 
+\begin_inset Formula $p=0$
+\end_inset
+
+.
+\end_layout
+
+\end_body
+\end_document

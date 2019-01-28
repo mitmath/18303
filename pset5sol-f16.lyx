@@ -1,0 +1,260 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+
+\renewcommand{\vec}[1]{\mathbf{#1}}
+
+\renewcommand{\labelenumi}{(\alph{enumi})}
+\renewcommand{\labelenumii}{(\roman{enumii})}
+\newcommand{\rank}{\operatorname{rank}}
+
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
+\end_preamble
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 1
+\use_package esint 2
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 0.7in
+\topmargin 0.7in
+\rightmargin 0.7in
+\bottommargin 0.7in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section*
+18.303 Problem Set 5 Solutions
+\end_layout
+
+\begin_layout Subsection*
+Problem 1: (10+10+10+10)
+\end_layout
+
+\begin_layout Standard
+See also the IJulia notebook posted with the solutions.
+\end_layout
+
+\begin_layout Enumerate
+Setting the slopes to be zero at 
+\begin_inset Formula $R_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $R_{2}$
+\end_inset
+
+ simply gives 
+\begin_inset Formula 
+\[
+\alpha J_{m}'(kr)+\beta Y_{m}'(kr)=0
+\]
+
+\end_inset
+
+at the two radii, or 
+\begin_inset Formula $E\left(\begin{array}{c}
+\alpha\\
+\beta
+\end{array}\right)=0$
+\end_inset
+
+ where 
+\begin_inset Formula 
+\[
+\boxed{E=\left(\begin{array}{cc}
+J'_{m}(kR_{1}) & Y_{m}'(kR_{1})\\
+J'_{m}(kR_{2}) & Y_{m}'(kR_{2})
+\end{array}\right)}.
+\]
+
+\end_inset
+
+Hence, writing 
+\begin_inset Formula $f_{m}(k)=\det E$
+\end_inset
+
+, we get 
+\begin_inset Formula 
+\[
+\boxed{f_{m}(k)=J'_{m}(kR_{1})Y'_{m}(kR_{2})-J'_{m}(kR_{2})Y'_{m}(kR_{1})}.
+\]
+
+\end_inset
+
+Given a 
+\begin_inset Formula $k$
+\end_inset
+
+ for which 
+\begin_inset Formula $f_{m}(k)=0,$
+\end_inset
+
+ then we can solve for the nullspace of 
+\begin_inset Formula $E$
+\end_inset
+
+ by arbitrarily choosing a scaling such that 
+\begin_inset Formula $\boxed{\alpha=1}$
+\end_inset
+
+ and solving for 
+\begin_inset Formula $\beta$
+\end_inset
+
+ from the first 
+\emph on
+or
+\emph default
+ second rows of 
+\begin_inset Formula $E\left(\begin{array}{c}
+\alpha\\
+\beta
+\end{array}\right)=0$
+\end_inset
+
+: 
+\begin_inset Formula 
+\[
+\boxed{\beta=-\frac{J'_{m}(kR_{1})}{Y_{m}'(kR_{1})}=-\frac{J'_{m}(kR_{2})}{Y_{m}'(kR_{2})}}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Note that 
+\begin_inset Formula $f_{m}(k)$
+\end_inset
+
+ for 
+\begin_inset Formula $m>0$
+\end_inset
+
+ has a divergence as 
+\begin_inset Formula $k\to0$
+\end_inset
+
+, so we used the 
+\family typewriter
+ylim
+\family default
+ command to rescale the vertical axis (otherwise it would be hard to read
+ the plot!); see the solution IJulia notebook
+\end_layout
+
+\begin_layout Enumerate
+We'll use the Scilab 
+\family typewriter
+newton
+\family default
+ function, similar to class, to find the roots, with initial guesses provided
+ by our plot in the notebook.
+ We find 
+\begin_inset Formula $k_{1}\approx3.196578$
+\end_inset
+
+, 
+\begin_inset Formula $k_{2}\approx6.31234951$
+\end_inset
+
+, and 
+\begin_inset Formula $k_{3}\approx9.4444649$
+\end_inset
+
+.
+ See the solutions notebook.
+\end_layout
+
+\begin_layout Enumerate
+See the IJulia notebook.
+ Using our 
+\begin_inset Formula $k_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $k_{2}$
+\end_inset
+
+ from part (c) and our 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ and 
+\begin_inset Formula $\beta$
+\end_inset
+
+ from part (a), we find that 
+\begin_inset Formula $\int_{R_{1}}^{R_{2}}ru_{0,1}(r)u_{0,2}(r)dr\approx10^{-15}$
+\end_inset
+
+, which is zero up to roundoff errors.
+\end_layout
+
+\end_body
+\end_document

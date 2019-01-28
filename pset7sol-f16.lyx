@@ -1,0 +1,436 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+
+\renewcommand{\vec}[1]{\mathbf{#1}}
+
+\renewcommand{\labelenumi}{(\alph{enumi})}
+\renewcommand{\labelenumii}{(\roman{enumii})}
+\newcommand{\rank}{\operatorname{rank}}
+\end_preamble
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 1
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 0.7in
+\topmargin 0.7in
+\rightmargin 0.7in
+\bottommargin 0.7in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section*
+18.303 Problem Set 7 Solutions
+\end_layout
+
+\begin_layout Subsection*
+Problem 1: (10+10pts)
+\end_layout
+
+\begin_layout Enumerate
+Let 
+\begin_inset Formula $V^{c}$
+\end_inset
+
+ denote the complement of 
+\begin_inset Formula $V$
+\end_inset
+
+ (the exterior region outside 
+\begin_inset Formula $V$
+\end_inset
+
+, i.e.
+ 
+\begin_inset Formula $V^{c}=\mathbb{R}^{d}\backslash V$
+\end_inset
+
+), and note that 
+\begin_inset Formula $\partial V^{c}=\partial V$
+\end_inset
+
+ (but with the outward-normal vector reversed in sign).
+ We write: 
+\begin_inset Formula 
+\begin{align*}
+\nabla f\{\phi\} & =f\{-\nabla\phi\}=-\int_{V}f_{1}\nabla\phi-\int_{V^{c}}f_{2}\nabla\phi\\
+ & =-\int_{V}\left[\nabla(f_{1}\phi)-\phi\nabla f_{1}\right]-\int_{V^{c}}\left[\nabla(f_{2}\phi)-\phi\nabla f_{2}\right]\\
+ & =-\oint_{\partial V}f_{1}\phi\vec{n}+\int_{V}\phi\nabla f_{1}+\oint_{\partial V}f_{2}\phi\vec{n}+\int_{V^{c}}\phi\nabla f_{2}\\
+ & =\left[\delta(\partial V)\left[f_{2}(\vec{x})-f_{1}(\vec{x})\right]\vec{n}(\vec{x})+\begin{cases}
+\nabla f_{1}(\vec{x}) & \vec{x}\in V\\
+\nabla f_{2}(\vec{x}) & \vec{x}\notin V
+\end{cases}\right]\{\phi\}
+\end{align*}
+
+\end_inset
+
+ as desired.
+ 
+\series bold
+Note: there was a typo in the pset
+\series default
+, which had 
+\begin_inset Formula $f_{1}-f_{2}$
+\end_inset
+
+ instead of 
+\begin_inset Formula $f_{2}-f_{1}$
+\end_inset
+
+ in the formula you were supposed to derive.
+\end_layout
+
+\begin_layout Enumerate
+In this case, we will need to integrate by parts twice, but we can just
+ quote the results from the 
+\begin_inset Quotes eld
+\end_inset
+
+notes on elliptic operators
+\begin_inset Quotes erd
+\end_inset
+
+ from class (where we integrated by parts twice with 
+\begin_inset Formula $-\nabla^{2}$
+\end_inset
+
+ already), albeit keeping the boundary terms from 
+\begin_inset Formula $\partial V$
+\end_inset
+
+ that were zero in the notes: 
+\begin_inset Formula 
+\begin{align*}
+\nabla^{2}f\{\phi\} & =f\{\nabla^{2}\phi\}=\int_{V}f_{1}\nabla^{2}\phi+\int_{V^{c}}f_{2}\nabla^{2}\phi\\
+ & =\oint_{\partial V}\left[(f_{1}-f_{2})\nabla\phi-\phi(\nabla f_{1}-\nabla f_{2})\right]\cdot\vec{n}+\int_{V}\phi\nabla^{2}f_{1}+\int_{V^{c}}\phi\nabla^{2}f_{2}.
+\end{align*}
+
+\end_inset
+
+But the first term is 
+\begin_inset Formula $\delta(\partial V)\left[f_{1}(\vec{x})-f_{2}(\vec{x})\right]\{\vec{n}\cdot\nabla\phi\}=(\vec{n}\cdot\nabla)\delta(\partial V)\left[f_{2}(\vec{x})-f_{1}(\vec{x})\right]\{\phi\}$
+\end_inset
+
+ by the definition (note the sign change) of the distributional derivative
+ 
+\begin_inset Formula $\vec{n}\cdot\nabla$
+\end_inset
+
+ (note that this is a scalar derivative in the 
+\begin_inset Formula $\vec{n}$
+\end_inset
+
+ direction, not a gradient vector).
+ The second term is a surface delta function weighted by 
+\begin_inset Formula $\left(\vec{n}\cdot\nabla f_{1}-\vec{n}\cdot\nabla f_{2}\right),$
+\end_inset
+
+the discontinuity in the normal derivative.
+ And the last terms are just a regular distribution.
+ So, we have 
+\begin_inset Formula 
+\[
+\nabla^{2}f=(\vec{n}\cdot\nabla)\delta(\partial V)\left[f_{2}-f_{1}\right]+\delta(\partial V)\left[\vec{n}\cdot\nabla f_{1}-\vec{n}\cdot\nabla f_{2}\right]+\begin{cases}
+\nabla^{2}f_{1}(\vec{x}) & \vec{x}\in V\\
+\nabla^{2}f_{2}(\vec{x}) & \vec{x}\notin V
+\end{cases}.
+\]
+
+\end_inset
+
+As noted in class, 
+\begin_inset Formula $\vec{n}\cdot\nabla$
+\end_inset
+
+ of a delta function is a 
+\begin_inset Quotes eld
+\end_inset
+
+dipole
+\begin_inset Quotes erd
+\end_inset
+
+ oriented in the 
+\begin_inset Formula $\vec{n}$
+\end_inset
+
+ direction, so the first term is a 
+\begin_inset Quotes eld
+\end_inset
+
+dipole layer
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection*
+Problem 2: ((5+5+5)+5 points)
+\end_layout
+
+\begin_layout Standard
+Consider Green's functions of the self-adjoint indefinite operator 
+\begin_inset Formula $\hat{A}=-\nabla^{2}-\omega^{2}$
+\end_inset
+
+ (
+\begin_inset Formula $\kappa>0$
+\end_inset
+
+) over all space (
+\begin_inset Formula $\Omega=\mathbb{R}^{3}$
+\end_inset
+
+ in 3d), with solutions that 
+\begin_inset Formula $\to0$
+\end_inset
+
+ at infinity.
+ (This is related to the previous problem.) As in class, thanks to the translatio
+nal and rotational invariance of this problem, we can find 
+\begin_inset Formula $G(\vec{x},\vec{x}')=g(|\vec{x}-\vec{x}'|)$
+\end_inset
+
+ for some 
+\begin_inset Formula $g(r)$
+\end_inset
+
+ in spherical coordinates.
+\end_layout
+
+\begin_layout Enumerate
+Solve for 
+\begin_inset Formula $g(r)$
+\end_inset
+
+ in 3d, similar to the procedure in class.
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+For 
+\begin_inset Formula $r>0$
+\end_inset
+
+, 
+\begin_inset Formula $-\nabla^{2}g-\omega^{2}g=0$
+\end_inset
+
+ and hence 
+\begin_inset Formula $-\omega^{2}g=\nabla^{2}g=\frac{1}{r}(rg)''\implies h''=-\omega^{2}h$
+\end_inset
+
+ where 
+\begin_inset Formula $h(r)=rg(r)$
+\end_inset
+
+.
+ The solution to this is 
+\begin_inset Formula $h(r)=ce^{i\omega r}+de^{-i\omega r}$
+\end_inset
+
+ for some constants 
+\begin_inset Formula $c$
+\end_inset
+
+ and 
+\begin_inset Formula $d$
+\end_inset
+
+, or 
+\begin_inset Formula $g(r)=\frac{ce^{i\omega r}+de^{-i\omega r}}{r}$
+\end_inset
+
+ for 
+\begin_inset Formula $r>0$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+This operator arose by assuming a time dependence 
+\begin_inset Formula $e^{-i\omega t}$
+\end_inset
+
+ multiplying the solution, in which case we are looking at wave solutions
+ 
+\begin_inset Formula $\frac{ce^{i\omega(r-t)}+de^{-i\omega(r+t)}}{r}$
+\end_inset
+
+, where the 
+\begin_inset Formula $c$
+\end_inset
+
+ term describes waves moving 
+\emph on
+out
+\emph default
+ towards 
+\begin_inset Formula $r\to\infty$
+\end_inset
+
+, while the 
+\begin_inset Formula $d$
+\end_inset
+
+ term describes waves moving 
+\emph on
+in
+\emph default
+ from infinity.
+ In wave problems, we typically impose a boundary condition of 
+\emph on
+outgoing waves at infinity
+\emph default
+, in which case we must set 
+\begin_inset Formula $d=0$
+\end_inset
+
+.
+ (However, the choice would have been reversed if we picked the opposite
+ sign convention, 
+\begin_inset Formula $e^{+i\omega t}$
+\end_inset
+
+, for the time dependence.)
+\end_layout
+
+\begin_layout Enumerate
+From above, we have 
+\begin_inset Formula $g(r)=ce^{i\omega r}/r$
+\end_inset
+
+.
+ As in class, the 
+\begin_inset Formula $1/r$
+\end_inset
+
+ singularity is no problem in 3d (it is cancelled by the Jacobian factor
+ 
+\begin_inset Formula $r^{2}dr$
+\end_inset
+
+), so 
+\begin_inset Formula $g$
+\end_inset
+
+ is a regular distribution.
+ Given an arbitrary test function 
+\begin_inset Formula $q(\vec{x}),$
+\end_inset
+
+ we now evaluate 
+\begin_inset Formula 
+\begin{align*}
+(\hat{A}g)\{q\} & =g\{\hat{A}q\}=\int g\hat{A}q\\
+ & =\int_{0}^{\infty}r^{2}dr\int_{0}^{2\pi}d\phi\int_{0}^{\pi}\sin\theta\,d\theta\,\left[-\omega^{2}gq-\frac{g}{r}\frac{\partial^{2}}{\partial r^{2}}(rq)+\underbrace{\cancel{\left(\theta,\phi\mbox{ derivatives of }q\right)}}_{\mbox{integrate to 0, from class}}\right]\\
+ & =\iint\sin\theta\,d\theta\,d\phi\left[\int_{0}^{\infty}c\left(-\omega^{2}rqe^{i\omega r}-\underbrace{e^{i\omega r}\frac{\partial^{2}}{\partial r^{2}}[rq]}_{\mbox{int. by parts}}\right)dr\right]\\
+ & =\iint\sin\theta\,d\theta\,d\phi\left[\left.-ce^{i\omega r}\frac{\partial}{\partial r}[rq]\right|_{0}^{\infty}+c\int_{0}^{\infty}\left(-\omega^{2}rqe^{i\omega r}+\underbrace{i\omega e^{i\omega r}\frac{\partial}{\partial r}[rq]}_{\mbox{int. by parts}}\right)dr\right]\\
+ & =\iint\sin\theta\,d\theta\,d\phi\left[cq(0)-\cancel{\left.ic\omega e^{i\omega r}[rq]\right|_{0}^{\infty}}+c\int_{0}^{\infty}\left(\cancel{-\omega^{2}rqe^{i\omega r}+\omega^{2}e^{i\omega r}[rq]}\right)dr\right]\\
+ & =4\pi cq(0),
+\end{align*}
+
+\end_inset
+
+and hence 
+\begin_inset Formula $\boxed{c=1/4\pi}$
+\end_inset
+
+.
+ Thus 
+\begin_inset Formula 
+\[
+G(\vec{x},\vec{x}')=\frac{e^{i\omega|\vec{x}-\vec{x}'|}}{4\pi|\vec{x}-\vec{x}'|}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+The 
+\begin_inset Formula $\omega\to0$
+\end_inset
+
+ limit gives 
+\begin_inset Formula $1/4\pi|\vec{x}-\vec{x}'|$
+\end_inset
+
+ as in class, by inspection.
+\end_layout
+
+\end_body
+\end_document

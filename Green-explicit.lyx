@@ -1,0 +1,393 @@
+#LyX 1.6.9 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+\usepackage{cancel}
+\end_preamble
+\use_default_options true
+\language english
+\inputencoding auto
+\font_roman times
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Title
+18.303: Notes on the
+\begin_inset Newline newline
+\end_inset
+
+1d-Laplacian Green's function
+\end_layout
+
+\begin_layout Author
+Steven G.
+ Johnson
+\end_layout
+
+\begin_layout Standard
+In class, we solved for the Green's function 
+\begin_inset Formula $G(x,x')$
+\end_inset
+
+ of the 1d Poisson equation 
+\begin_inset Formula $-\frac{d^{2}}{dx^{2}}u=f$
+\end_inset
+
+ where 
+\begin_inset Formula $u(x)$
+\end_inset
+
+ is a function on 
+\begin_inset Formula $[0,L]$
+\end_inset
+
+ with Dirichlet boundaries 
+\begin_inset Formula $u(0)=u(L)=0$
+\end_inset
+
+.
+ We obtained: 
+\begin_inset Formula \[
+G(x,x')=\begin{cases}
+-\frac{x'}{L}\left(x-L\right) & x>x'\\
+\left(1-\frac{x'}{L}\right)x & x\leq x'\end{cases}=\begin{cases}
+x'\left(1-\frac{x}{L}\right) & x>x'\\
+x\left(1-\frac{x'}{L}\right) & x\leq x'\end{cases},\]
+
+\end_inset
+
+which can be derived in any number of ways.
+ Once we understand delta 
+\begin_inset Quotes eld
+\end_inset
+
+functions
+\begin_inset Quotes erd
+\end_inset
+
+ and distributions, we can derive it from 
+\begin_inset Formula $-\frac{\partial^{2}}{\partial x^{2}}G(x,x')=\delta(x-x')$
+\end_inset
+
+, where the 
+\begin_inset Formula $\delta(x-x')$
+\end_inset
+
+ yields a a slope discontinuity of 1 in 
+\begin_inset Formula $G$
+\end_inset
+
+ at 
+\begin_inset Formula $x=x'$
+\end_inset
+
+.
+ Instead, we first derived it the 
+\begin_inset Quotes eld
+\end_inset
+
+long
+\begin_inset Quotes erd
+\end_inset
+
+ way, by taking a width-
+\begin_inset Formula $\Delta x$
+\end_inset
+
+ approximation for the delta function (
+\begin_inset Formula $=1/\Delta x$
+\end_inset
+
+ in 
+\begin_inset Formula $[x',x'+\Delta x$
+\end_inset
+
+] and 
+\begin_inset Formula $=0$
+\end_inset
+
+ otherwise) on the right-hand side, solving, and then taking the limit 
+\begin_inset Formula $\Delta x\to0$
+\end_inset
+
+ on the 
+\emph on
+solution
+\emph default
+ (whereas the limit 
+\begin_inset Formula $\Delta x\to0$
+\end_inset
+
+ of the right-hand side does not exist as an ordinary function).
+\end_layout
+
+\begin_layout Standard
+Regardless of how it is obtained, we get the 
+\begin_inset Formula $G(x,x')$
+\end_inset
+
+ above.
+ Clearly, this 
+\begin_inset Formula $G$
+\end_inset
+
+ satisfies the reciprocity property 
+\begin_inset Formula $G(x,x')=G(x',x)$
+\end_inset
+
+, which (as shown in class) follows from the fact that the Laplacian is
+ real-symmetric with these boundary conditions.
+ Physically, 
+\begin_inset Formula $G(x,x')$
+\end_inset
+
+ could be thought of as a 
+\begin_inset Quotes eld
+\end_inset
+
+plucked string:
+\begin_inset Quotes erd
+\end_inset
+
+ a stretched string where you have concentrated a finite force at one 
+\begin_inset Quotes eld
+\end_inset
+
+point
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Formula $x'$
+\end_inset
+
+ in the string.
+\end_layout
+
+\begin_layout Standard
+It is also good to check that 
+\begin_inset Formula \[
+u(x)=\int_{0}^{L}G(x,x')f(x')dx'\]
+
+\end_inset
+
+satisfies 
+\begin_inset Formula $-\frac{d^{2}}{dx^{2}}u=f$
+\end_inset
+
+ for any 
+\begin_inset Formula $f(x)$
+\end_inset
+
+.
+ Note that 
+\begin_inset Formula $u(0)=u(L)=0$
+\end_inset
+
+ automatically, since 
+\begin_inset Formula $G(0,x')=G(L,x')=0$
+\end_inset
+
+ by construction.
+ If we use delta functions, taking the second derivative of 
+\begin_inset Formula $G$
+\end_inset
+
+ is easy.
+ However, let's do it the 
+\begin_inset Quotes eld
+\end_inset
+
+hard way
+\begin_inset Quotes erd
+\end_inset
+
+ instead, performing one derivative at a time and avoiding differentiating
+ any discontinuous function.
+ We can do this by breaking the integral up into two pieces 
+\begin_inset Formula $[0,x]$
+\end_inset
+
+ and 
+\begin_inset Formula $[x,L]$
+\end_inset
+
+ based on the two pieces of 
+\begin_inset Formula $G(x,x')$
+\end_inset
+
+: 
+\begin_inset Formula \[
+u(x)=\left(1-\frac{x}{L}\right)\int_{0}^{x}x'f(x')dx'+x\int_{x}^{L}\left(1-\frac{x'}{L}\right)f(x')dx',\]
+
+\end_inset
+
+where we have pulled the 
+\begin_inset Formula $x$
+\end_inset
+
+ terms out of the 
+\begin_inset Formula $x'$
+\end_inset
+
+ integrals.
+ The first derivative is then:
+\begin_inset Formula \begin{multline*}
+u'(x)=-\frac{1}{L}\int_{0}^{x}x'f(x')dx'+\int_{x}^{L}\left(1-\frac{x'}{L}\right)f(x')dx'\\
++\cancel{\left(1-\frac{x}{L}\right)xf(x)}-\cancel{x\left(1-\frac{x}{L}\right)f(x)},\end{multline*}
+
+\end_inset
+
+where the terms on the second line [which cancel each other] come from the
+ derivatives of the integration limits.
+ [Recall the fundamental theorem of calculus: 
+\begin_inset Formula $\frac{d}{dx}\int^{x}h(x')dx'=h(x)$
+\end_inset
+
+ and 
+\begin_inset Formula $\frac{d}{dx}\int_{x}h(x')dx'=-h(x)$
+\end_inset
+
+ for any 
+\begin_inset Formula $h$
+\end_inset
+
+.] Since 
+\begin_inset Formula $x$
+\end_inset
+
+ only appears in the integration limits in 
+\begin_inset Formula $u'$
+\end_inset
+
+, the second derivative is then given by the fundamental theorem of calculus
+ again: 
+\begin_inset Formula \[
+u''(x)=-\cancel{\frac{1}{L}xf(x)}-\left(1-\cancel{\frac{x}{L}}\right)f(x)=-f(x),\]
+
+\end_inset
+
+and thus 
+\begin_inset Formula $-u''=f$
+\end_inset
+
+ as desired.
+\end_layout
+
+\begin_layout Standard
+More abstractly, the key properties are that 
+\begin_inset Formula $G(x,x')$
+\end_inset
+
+ is continuous: 
+\begin_inset Formula $G(x,x^{-})=G(x,x^{+})$
+\end_inset
+
+ [where 
+\begin_inset Formula $x^{\pm}$
+\end_inset
+
+ denote the limits as 
+\begin_inset Formula $x'\to x$
+\end_inset
+
+ from the left and right], while 
+\begin_inset Formula $G'(x,x')=\frac{\partial}{\partial x}G(x,x')$
+\end_inset
+
+ has a jump discontinuity 
+\begin_inset Formula $G'(x,x^{-})=G'(x,x^{+})-1$
+\end_inset
+
+, and 
+\begin_inset Formula $G''(x,x')=\frac{\partial^{2}}{\partial x^{2}}G(x,x')=0$
+\end_inset
+
+ for 
+\begin_inset Formula $x\neq x'$
+\end_inset
+
+.
+ That means: 
+\begin_inset Formula \[
+u(x)=\int_{0}^{x}G(x,x')f(x')dx'+\int_{x}^{L}G(x,x')f(x')dx',\]
+
+\end_inset
+
+
+\begin_inset Formula \[
+u'(x)=\int_{0}^{x}G'(x,x')f(x')dx'+\int_{x}^{L}G'(x,x')f(x')dx'+\cancel{G(x,x^{-})f(x)}-\cancel{G(x,x^{+})f(x)},\]
+
+\end_inset
+
+
+\begin_inset Formula \[
+u''(x)=G'(x,x^{-})f(x)-G'(x,x^{+})f(x)=-f(x)\]
+
+\end_inset
+
+as desired (omitting the 
+\begin_inset Formula $G''=0$
+\end_inset
+
+ terms from the last line).
+\end_layout
+
+\begin_layout Standard
+So, all of this can be solved without delta functions or discontinuities,
+ and people did this historically.
+ But it is 
+\emph on
+much easier
+\emph default
+ if we don't have to continually dodge discontinuities and can differentiate
+ them naturally.
+ Generalizing functions as distributions (or solving the 
+\begin_inset Quotes eld
+\end_inset
+
+weak form
+\begin_inset Quotes erd
+\end_inset
+
+ of the PDE), and setting up the rules for differentiating distributions,
+ will allow us to do that.
+ 
+\end_layout
+
+\end_body
+\end_document

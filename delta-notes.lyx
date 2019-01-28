@@ -1,0 +1,2776 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\date{Created October 2010, updated \today.}
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 2
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1in
+\topmargin 1in
+\rightmargin 1in
+\bottommargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 2
+\papersides 2
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+When functions have no value(s):
+\begin_inset Newline newline
+\end_inset
+
+Delta functions and distributions
+\end_layout
+
+\begin_layout Author
+Steven G.
+ Johnson, MIT course 18.303 notes
+\end_layout
+
+\begin_layout Abstract
+These notes give a brief introduction to the motivations, concepts, and
+ properties of 
+\emph on
+distributions
+\emph default
+, which generalize the notion of functions 
+\begin_inset Formula $f(x)$
+\end_inset
+
+ to allow derivatives of discontinuities, 
+\begin_inset Quotes eld
+\end_inset
+
+delta
+\begin_inset Quotes erd
+\end_inset
+
+ functions, and other nice things.
+ This generalization is increasingly important the more you work with linear
+ PDEs, as we do in 18.303.
+ For example, Green's functions are extremely cumbersome if one does not
+ allow delta functions.
+ Moreover, solving PDEs with functions that are not classically differentiable
+ is of great practical importance (e.g.
+ a plucked string with a triangle shape is not twice differentiable, making
+ the wave equation problematic with traditional functions).
+ Any serious work with PDEs will eventually run into the concept of a 
+\begin_inset Quotes eld
+\end_inset
+
+weak solution,
+\begin_inset Quotes erd
+\end_inset
+
+ which is essentially a version of the distribution concept.
+\end_layout
+
+\begin_layout Section
+What's wrong with functions?
+\end_layout
+
+\begin_layout Standard
+The most familiar notion of a function 
+\begin_inset Formula $f(x)$
+\end_inset
+
+ is a map from real numbers 
+\begin_inset Formula $\mathbb{R}$
+\end_inset
+
+ to real numbers 
+\begin_inset Formula $\mathbb{R}$
+\end_inset
+
+ (or maybe complex numbers 
+\begin_inset Formula $\mathbb{C}$
+\end_inset
+
+); that is, for every 
+\begin_inset Formula $x$
+\end_inset
+
+ you have a value 
+\begin_inset Formula $y=f(x)$
+\end_inset
+
+.
+ Of course, you may know that one can define functions from any set to any
+ other set, but at first glance it seems that 
+\begin_inset Formula $\mathbb{R}\to\mathbb{R}$
+\end_inset
+
+ functions (and multi-dimensional generalizations thereof) are the best-suited
+ concept for describing most physical quantities—for example, velocity as
+ a function of time, or pressure or density as a function of position in
+ a fluid, and so on.
+ Unfortunately, such functions have some severe drawbacks that, eventually,
+ lead them to be replaced in some contexts by another concept: 
+\emph on
+distributions
+\emph default
+ (also called 
+\emph on
+generalized functions
+\emph default
+).
+ What are these drawbacks?
+\end_layout
+
+\begin_layout Subsection
+No delta functions
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:No-delta-functions"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For lots of applications, such as those involving PDEs and Green's functions,
+ one would like to have a function 
+\begin_inset Formula $\delta(x)$
+\end_inset
+
+ whose integral is 
+\begin_inset Quotes eld
+\end_inset
+
+concentrated
+\begin_inset Quotes erd
+\end_inset
+
+ at the point 
+\begin_inset Formula $x=0$
+\end_inset
+
+.
+ That is, one would like the function 
+\begin_inset Formula $\delta(x)=0$
+\end_inset
+
+ for all 
+\begin_inset Formula $x\neq0$
+\end_inset
+
+, but with 
+\begin_inset Formula $\int\delta(x)dx=1$
+\end_inset
+
+ for any integration region that includes 
+\begin_inset Formula $x=0$
+\end_inset
+
+; this concept is called a 
+\begin_inset Quotes eld
+\end_inset
+
+Dirac delta function
+\begin_inset Quotes erd
+\end_inset
+
+ or simply a 
+\begin_inset Quotes eld
+\end_inset
+
+delta function.
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Formula $\delta(x)$
+\end_inset
+
+ is usually the simplest right-hand-side for which to solve differential
+ equations, yielding a Green's function.
+ It is also the simplest way to consider physical effects that are concentrated
+ within very small volumes or times, for which you don't actually want to
+ worry about the microscopic details in this volume—for example, think of
+ the concepts of a 
+\begin_inset Quotes eld
+\end_inset
+
+point charge,
+\begin_inset Quotes erd
+\end_inset
+
+ a 
+\begin_inset Quotes eld
+\end_inset
+
+point mass,
+\begin_inset Quotes erd
+\end_inset
+
+ a force plucking a string at 
+\begin_inset Quotes eld
+\end_inset
+
+one point,
+\begin_inset Quotes erd
+\end_inset
+
+ a 
+\begin_inset Quotes eld
+\end_inset
+
+kick
+\begin_inset Quotes erd
+\end_inset
+
+ that 
+\begin_inset Quotes eld
+\end_inset
+
+suddenly
+\begin_inset Quotes erd
+\end_inset
+
+ imparts some momentum to an object, and so on.
+ The problem is that there is no classical function 
+\begin_inset Formula $\delta(x)$
+\end_inset
+
+ having these properties.
+\end_layout
+
+\begin_layout Standard
+For example, one could imagine constructing this function as the limit:
+ 
+\begin_inset Formula 
+\[
+\delta(x)=\lim_{\Delta x\to0^{+}}\begin{cases}
+\frac{1}{\Delta x} & 0\leq x<\Delta x\\
+0 & \mbox{otherwise}
+\end{cases}=\lim_{\Delta x\to0^{+}}\delta_{\Delta x}(x)?
+\]
+
+\end_inset
+
+For any 
+\begin_inset Formula $\Delta x>0$
+\end_inset
+
+, the function 
+\begin_inset Formula $\delta_{\Delta x}(x)$
+\end_inset
+
+ at right has integral 
+\begin_inset Formula $=1$
+\end_inset
+
+ and is zero except near 
+\begin_inset Formula $x=0$
+\end_inset
+
+.
+ Unfortunately, the 
+\begin_inset Formula $\Delta x\to0$
+\end_inset
+
+ limit does not exist as an ordinary function: 
+\begin_inset Formula $\delta_{\Delta x}(x)$
+\end_inset
+
+ approaches 
+\begin_inset Formula $\infty$
+\end_inset
+
+ for 
+\begin_inset Formula $x=0$
+\end_inset
+
+, but of course 
+\begin_inset Formula $\infty$
+\end_inset
+
+ is not a real number.
+\end_layout
+
+\begin_layout Standard
+Informally, one often sees 
+\begin_inset Quotes eld
+\end_inset
+
+definitions
+\begin_inset Quotes erd
+\end_inset
+
+ of 
+\begin_inset Formula $\delta(x)$
+\end_inset
+
+ that describe it as some mysterious object that is 
+\begin_inset Quotes eld
+\end_inset
+
+not quite
+\begin_inset Quotes erd
+\end_inset
+
+ a function, which 
+\begin_inset Formula $=0$
+\end_inset
+
+ for 
+\begin_inset Formula $x\neq0$
+\end_inset
+
+ but is undefined at 
+\begin_inset Formula $x=0$
+\end_inset
+
+, and which is 
+\begin_inset Quotes eld
+\end_inset
+
+only really defined inside an integral
+\begin_inset Quotes erd
+\end_inset
+
+ (where it 
+\begin_inset Quotes eld
+\end_inset
+
+integrates
+\begin_inset Quotes erd
+\end_inset
+
+ to 1).
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Historically, this unsatisfactory description is precisely how 
+\begin_inset Formula $\delta(x)$
+\end_inset
+
+ first appeared, and for many years there was a corresponding cloud of guilt
+ and uncertainty surrounding any usage of it.
+ Most famously, an informal 
+\begin_inset Formula $\delta(x)$
+\end_inset
+
+ notion was popularized by physicist Paul
+\begin_inset space ~
+\end_inset
+
+Dirac, who in his 
+\emph on
+Principles of Quantum Mechanics
+\emph default
+ (1930) wrote: 
+\begin_inset Quotes eld
+\end_inset
+
+Thus 
+\begin_inset Formula $\delta(x)$
+\end_inset
+
+ is not a quantity which can be generally used in mathematical analysis
+ like an ordinary function, but its use must be confined to certain simple
+ types of expression for which it is obvious that no inconsistency can arise.
+\begin_inset Quotes erd
+\end_inset
+
+ You know you are on shaky ground, in mathematics, when you are forced to
+ appeal to the 
+\begin_inset Quotes eld
+\end_inset
+
+obvious.
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ This may leave you with a queasy feeling that 
+\begin_inset Formula $\delta(x)$
+\end_inset
+
+ is somehow not real or rigorous (and therefore anything based on it may
+ be suspect).
+ For example, integration is an operation that is classically only defined
+ for ordinary functions, so it may not even be clear (yet) what 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Formula $\int$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ means when we write 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Formula $\int\delta(x)dx$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Not all functions are differentiable
+\end_layout
+
+\begin_layout Standard
+Most physical laws can be written in the form of derivatives, but lots of
+ functions are not differentiable.
+ Discontinuous functions arise all of the time at the interface between
+ two materials (e.g.
+ think of the density at the interface between glass and air).
+ Of course, at a microscopic level you could argue that the quantum wavefunction
+s might be continuous, but one hardly wishes to resort to atoms and quantum
+ mechanics every time a material has a boundary!
+\end_layout
+
+\begin_layout Standard
+The classic example of a discontinuous function is the Heaviside step function:
+ 
+\begin_inset Formula 
+\[
+S(x)=\begin{cases}
+1 & x\geq0\\
+0 & x<0
+\end{cases}.
+\]
+
+\end_inset
+
+The derivative 
+\begin_inset Formula $S'(x)$
+\end_inset
+
+ is zero everywhere except at 
+\begin_inset Formula $x=0$
+\end_inset
+
+, where the derivative does not exist—the slope at 
+\begin_inset Formula $x=0$
+\end_inset
+
+ is 
+\begin_inset Quotes eld
+\end_inset
+
+infinity.
+\begin_inset Quotes erd
+\end_inset
+
+ Notice that 
+\begin_inset Formula $S'(x)$
+\end_inset
+
+ very much resembles 
+\begin_inset Formula $\delta(x)$
+\end_inset
+
+, and 
+\begin_inset Formula $\int_{\infty}^{x}\delta(x')dx'$
+\end_inset
+
+ would certainly look something like 
+\begin_inset Formula $S(x)$
+\end_inset
+
+ if it existed (since the 
+\begin_inset Quotes eld
+\end_inset
+
+integral
+\begin_inset Quotes erd
+\end_inset
+
+ of 
+\begin_inset Formula $\delta$
+\end_inset
+
+ should be 
+\begin_inset Formula $1$
+\end_inset
+
+ for 
+\begin_inset Formula $x>0$
+\end_inset
+
+)—this is not a coincidence, and it would be a shame not to exploit it!
+\end_layout
+
+\begin_layout Standard
+A function doesn't need to be discontinuous to lack a derivative.
+ Consider the function 
+\begin_inset Formula $|x|$
+\end_inset
+
+: its derivative is +1 for 
+\begin_inset Formula $x>0$
+\end_inset
+
+ and 
+\begin_inset Formula $-1$
+\end_inset
+
+ for 
+\begin_inset Formula $x<0$
+\end_inset
+
+, but at 
+\begin_inset Formula $x=0$
+\end_inset
+
+ the derivative doesn't exist.
+ We say that 
+\begin_inset Formula $|x|$
+\end_inset
+
+ is only 
+\begin_inset Quotes eld
+\end_inset
+
+piecewise
+\begin_inset Quotes erd
+\end_inset
+
+ differentiable.
+\end_layout
+
+\begin_layout Standard
+Note that 
+\begin_inset Formula $S(x)$
+\end_inset
+
+ is very useful for writing down all sorts of functions with discontinuities.
+ 
+\begin_inset Formula $|x|=xS(x)-xS(-x)$
+\end_inset
+
+, for example, and the 
+\begin_inset Formula $\delta_{\Delta x}(x)$
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+box
+\begin_inset Quotes erd
+\end_inset
+
+ function on the right-hand-side of the 
+\begin_inset Formula $\delta(x)$
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+definition
+\begin_inset Quotes erd
+\end_inset
+
+ above can be written 
+\begin_inset Formula $\delta_{\Delta x}(x)=[S(x)-S(x-\Delta x)]/\Delta x$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Nagging worries about
+\begin_inset Newline newline
+\end_inset
+
+discrepancies at isolated points
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Continual-worrying-about"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+When we try to do linear algebra with functions, we continually find ourselves
+ worrying about excluding odd caveats and counterexamples that have to do
+ with 
+\emph on
+finite 
+\emph default
+discrepancies at isolated points.
+ For example, a Fourier series of a square-integrable function converges
+ everywhere\SpecialChar ldots
+except at isolated points of discontinuity [like the point 
+\begin_inset Formula $x=0$
+\end_inset
+
+ for 
+\begin_inset Formula $S(x)$
+\end_inset
+
+, where a Fourier series would converge to 0.5].
+ As another example, 
+\begin_inset Formula $\langle u,v\rangle=\int\bar{u}v$
+\end_inset
+
+ defines an inner product on functions and a norm 
+\begin_inset Formula $\Vert u\Vert^{2}=\langle u,u\rangle>0$
+\end_inset
+
+ for 
+\begin_inset Formula $u\neq0$
+\end_inset
+
+\SpecialChar ldots
+except for 
+\begin_inset Formula $u(x)$
+\end_inset
+
+ that are only nonzero for isolated points.
+ And with functions like 
+\begin_inset Formula $S(x)$
+\end_inset
+
+ there are all sorts of apparently pointless questions about what value
+ to assign exactly at the discontinuity.
+ It may likewise seem odd to care about what value to assign the slope of
+ 
+\begin_inset Formula $|x|$
+\end_inset
+
+ at 
+\begin_inset Formula $x=0$
+\end_inset
+
+; surely any value in 
+\begin_inset Formula $[-1,1]$
+\end_inset
+
+ should do?
+\end_layout
+
+\begin_layout Subsection
+Limits and derivatives
+\begin_inset Newline newline
+\end_inset
+
+cannot always be interchanged
+\end_layout
+
+\begin_layout Standard
+In numerical and analytical PDE methods, we are continually writing functions
+ as limits.
+ A Fourier series is a limit as the number of terms goes to infinity.
+ A finite-difference method solves the problem in the limit as 
+\begin_inset Formula $\Delta x\to0$
+\end_inset
+
+.
+ We initially find the Green's function as the limit of the response to
+ a box-like function that is nonzero outside of a width 
+\begin_inset Formula $\Delta x$
+\end_inset
+
+, and then take the limit 
+\begin_inset Formula $\Delta x\to0$
+\end_inset
+
+.
+ After all of these kinds of things, we eventually substitute our solution
+ back into the PDE, and we assume that the limit of the solution is still
+ a solution.
+ In doing so, however, we usually end up interchanging the limits and the
+ differentiation.
+ For example, we usually differentiate a Fourier series by: 
+\begin_inset Formula 
+\[
+\frac{d}{dx}\sum_{n=1}^{\infty}a_{n}\sin(n\pi x)=\sum_{n=1}^{\infty}a_{n}\frac{d}{dx}\sin(n\pi x)=\sum_{n=1}^{\infty}n\pi a_{n}\cos(n\pi x),
+\]
+
+\end_inset
+
+but this 
+\emph on
+is not always true
+\emph default
+ if we interpret 
+\begin_inset Quotes eld
+\end_inset
+
+=
+\begin_inset Quotes erd
+\end_inset
+
+ in the usual sense of being true for every 
+\begin_inset Formula $x$
+\end_inset
+
+.
+ The general problem is that 
+\emph on
+one cannot always interchange limits and derivatives
+\emph default
+, i.e.
+ 
+\begin_inset Formula $\frac{d}{dx}\lim\neq\lim\frac{d}{dx}$
+\end_inset
+
+.
+ (Note that 
+\begin_inset Formula $\sum_{n=1}^{\infty}$
+\end_inset
+
+ is really a limit 
+\begin_inset Formula $\lim_{N\to\infty}\sum_{n=1}^{N}$
+\end_inset
+
+.)
+\end_layout
+
+\begin_layout Standard
+A simple example of this is the function 
+\begin_inset Formula 
+\[
+f_{\epsilon}(x)=\begin{cases}
+-\epsilon & x<-\epsilon\\
+x & -\epsilon\leq x\leq\epsilon\\
+\epsilon & x>\epsilon
+\end{cases},\qquad f'_{\epsilon}(x)=\begin{cases}
+1 & -\epsilon<x<\epsilon\\
+0 & |x|>\epsilon
+\end{cases}.
+\]
+
+\end_inset
+
+The limit as 
+\begin_inset Formula $\epsilon\to0$
+\end_inset
+
+ of 
+\begin_inset Formula $f_{\epsilon}(x)$
+\end_inset
+
+ is simply zero.
+ But 
+\begin_inset Formula $f'_{\epsilon}(0)=1$
+\end_inset
+
+ for all 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+, so 
+\begin_inset Formula 
+\[
+0=\left.\frac{d}{dx}\left(\lim_{\epsilon\to0}f_{\epsilon}\right)\right|_{x=0}\neq1=\lim_{\epsilon\to0}\left(\left.\frac{d}{dx}f_{\epsilon}\right|_{x=0}\right).
+\]
+
+\end_inset
+
+Notice, however, that this mismatch only occurs at one isolated point 
+\begin_inset Formula $x=0$
+\end_inset
+
+.
+ The same thing happens for Fourier series: differentiation term-by-term
+ works 
+\emph on
+except at isolated points
+\emph default
+.
+ Thus, this problem returns to the complaint in the previous section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Continual-worrying-about"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+
+\emph on
+Too much information
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Too-much-information"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A function 
+\begin_inset Formula $f(x)$
+\end_inset
+
+ gives us a value at 
+\emph on
+every point
+\emph default
+ 
+\begin_inset Formula $x$
+\end_inset
+
+, but does this really correspond to a measurable quantity in the physical
+ universe? How would you measure the velocity at one 
+\emph on
+instant
+\emph default
+ in time, or the density at one 
+\emph on
+point
+\emph default
+ in a fluid? Of course, your measurement device could be very precise, and
+ very small, and very fast, but in the end 
+\emph on
+all you can ever measure are averages
+\emph default
+ of 
+\begin_inset Formula $f(x)$
+\end_inset
+
+ over a small region of space and/or time.
+\end_layout
+
+\begin_layout Standard
+But an average is the same thing as an integral 
+\begin_inset Formula $\int f(x)$
+\end_inset
+
+ over the averaging region.
+ More generally, instead of averaging 
+\begin_inset Formula $f(x)$
+\end_inset
+
+ uniformly in some region, we could average with some weights 
+\begin_inset Formula $\phi(x)$
+\end_inset
+
+ (e.g.
+ our device could be more sensitive to some points than others).
+ Thus, the 
+\emph on
+only physical question we can ever ask about a function is the value of
+ an integral
+\emph default
+ 
+\begin_inset Formula 
+\[
+\int_{-\infty}^{\infty}f(x)\phi(x)dx
+\]
+
+\end_inset
+
+of 
+\begin_inset Formula $f(x)$
+\end_inset
+
+ against a 
+\emph on
+test function
+\emph default
+ 
+\begin_inset Formula $\phi(x)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+But if all we can ever ask is such an integral, why are we worrying about
+ isolated points? In fact, why do we even 
+\emph on
+define
+\emph default
+ 
+\begin_inset Formula $f(x)$
+\end_inset
+
+ to have values at points at all? In a physical application of mathematics,
+ perhaps we should only define things that we can measure! This insight
+ fixes 
+\emph on
+every one of the problems above
+\emph default
+, and leads to the concept of 
+\series bold
+distributions
+\series default
+.
+\end_layout
+
+\begin_layout Section
+Distributions
+\end_layout
+
+\begin_layout Standard
+The old kind of function is a map from 
+\begin_inset Formula $\mathbb{R}\to\mathbb{R}$
+\end_inset
+
+: given an 
+\begin_inset Formula $x$
+\end_inset
+
+, we get a value 
+\begin_inset Formula $f(x)$
+\end_inset
+
+.
+ Following section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Too-much-information"
+
+\end_inset
+
+, this is too much information; we can only ask for an 
+\begin_inset Quotes eld
+\end_inset
+
+average
+\begin_inset Quotes erd
+\end_inset
+
+ value given some weight function 
+\begin_inset Formula $\phi(x)$
+\end_inset
+
+.
+ So, we make a new definition of 
+\begin_inset Quotes eld
+\end_inset
+
+function
+\begin_inset Quotes erd
+\end_inset
+
+ that provides this information, and 
+\emph on
+only
+\emph default
+ this information: 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $f$
+\end_inset
+
+ is a rule that given any 
+\emph on
+test function
+\emph default
+ 
+\begin_inset Formula $\phi(x)$
+\end_inset
+
+ returns a 
+\emph on
+number
+\emph default
+ 
+\begin_inset Formula $f\{\phi\}$
+\end_inset
+
+.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Many authors use the notation 
+\begin_inset Formula $\langle f,\phi\rangle$
+\end_inset
+
+ instead of 
+\begin_inset Formula $f\{\phi\}$
+\end_inset
+
+, but we are already using 
+\begin_inset Formula $\langle\cdot,\cdot\rangle$
+\end_inset
+
+ for inner products and I don't want to confuse matters.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This new definition of a 
+\begin_inset Quotes eld
+\end_inset
+
+function
+\begin_inset Quotes erd
+\end_inset
+
+ is called a 
+\series bold
+distribution
+\series default
+ or a 
+\series bold
+generalized function
+\series default
+.
+ We are no longer allowed to ask the value at a 
+\emph on
+point
+\emph default
+ 
+\begin_inset Formula $x$
+\end_inset
+
+.
+ This will fix all of the problems with the old functions from above.
+ However, we should be more precise about our definition.
+ First, we have to specify what 
+\begin_inset Formula $\phi(x)$
+\end_inset
+
+ can be:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\phi(x)$
+\end_inset
+
+ is an ordinary function 
+\begin_inset Formula $\mathbb{R}\to\mathbb{R}$
+\end_inset
+
+ (not a distribution) in some set 
+\begin_inset Formula $\mathcal{D}$
+\end_inset
+
+.
+ We require 
+\begin_inset Formula $\phi(x)$
+\end_inset
+
+ to be 
+\emph on
+infinitely differentiable
+\emph default
+.
+ We also require 
+\begin_inset Formula $\phi(x)$
+\end_inset
+
+ to be 
+\emph on
+nonzero
+\emph default
+ only in some finite region (the 
+\begin_inset Quotes eld
+\end_inset
+
+support
+\begin_inset Quotes erd
+\end_inset
+
+ of 
+\begin_inset Formula $\phi$
+\end_inset
+
+): 
+\begin_inset Formula $\phi$
+\end_inset
+
+ is a smooth 
+\begin_inset Quotes eld
+\end_inset
+
+bump
+\begin_inset Quotes erd
+\end_inset
+
+ function.
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Alternatively, one sometimes loosens this requirement to merely say that
+ 
+\begin_inset Formula $\phi(x)$
+\end_inset
+
+ must 
+\begin_inset Formula $\to0$
+\end_inset
+
+ quickly as 
+\begin_inset Formula $x\to\pm\infty$
+\end_inset
+
+, and in particular that 
+\begin_inset Formula $x^{n}\phi(x)\to0$
+\end_inset
+
+ as 
+\begin_inset Formula $x\to\pm\infty$
+\end_inset
+
+ for all integers 
+\begin_inset Formula $n\geq0$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+[The generalization to functions 
+\begin_inset Formula $\phi(\vec{x})$
+\end_inset
+
+ for 
+\begin_inset Formula $\vec{x}\in\mathbb{R}^{d}$
+\end_inset
+
+, with the distributions corresponding to 
+\begin_inset Formula $d$
+\end_inset
+
+-dimensional integrals, is very straightforward, but we will stick to 
+\begin_inset Formula $d=1$
+\end_inset
+
+ for simplicity.] Second,
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+There is also a third requirement: 
+\begin_inset Formula $f\{\phi\}$
+\end_inset
+
+ must be continuous, in that if you change 
+\begin_inset Formula $\phi(x)$
+\end_inset
+
+ continuously the value of 
+\begin_inset Formula $f\{\phi\}$
+\end_inset
+
+ must change continuously.
+ In practice, you will never violate this condition unless you are trying
+ to construct perverse counter-examples.
+\end_layout
+
+\end_inset
+
+ we require that 
+\begin_inset Formula $f\{\phi\}$
+\end_inset
+
+ act like integration in that it must be 
+\emph on
+linear
+\emph default
+:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $f\{\alpha\phi_{1}+\beta\phi_{2}\}=\alpha f\{\phi_{1}\}+\beta f\{\phi_{2}\}$
+\end_inset
+
+ for any numbers 
+\begin_inset Formula $\alpha,\beta\in\mathbb{R}$
+\end_inset
+
+ and any 
+\begin_inset Formula $\phi_{1},\phi_{2}\in\mathcal{D}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Thus, 
+\begin_inset Formula $f$
+\end_inset
+
+ is a linear map from 
+\begin_inset Formula $\mathcal{D}\to\mathbb{R}$
+\end_inset
+
+, and the set of all distributions for a given set of test functions 
+\begin_inset Formula $\mathcal{D}$
+\end_inset
+
+ is sometimes denoted 
+\begin_inset Formula $\mathcal{D}'$
+\end_inset
+
+.
+ There are two classes of distributions: 
+\series bold
+regular
+\series default
+ and 
+\series bold
+singular
+\series default
+ distributions.
+\end_layout
+
+\begin_layout Subsection
+Regular distributions
+\begin_inset Newline newline
+\end_inset
+
+from ordinary functions 
+\begin_inset Formula $f(x)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The most obvious way to define a distribution 
+\begin_inset Formula $f\{\phi\}$
+\end_inset
+
+ is simply an ordinary integral of an ordinary function: given an ordinary
+ function 
+\begin_inset Formula $f(x)$
+\end_inset
+
+, we can define the distribution: 
+\begin_inset Formula 
+\[
+\boxed{f\{\phi\}=\int_{-\infty}^{\infty}f(x)\phi(x)dx}.
+\]
+
+\end_inset
+
+This is called a 
+\series bold
+regular distribution
+\series default
+.
+\end_layout
+
+\begin_layout Standard
+Not all ordinary functions 
+\begin_inset Formula $f(x)$
+\end_inset
+
+ define regular distributions: we must have 
+\begin_inset Formula $\int f\phi$
+\end_inset
+
+ finite for all 
+\begin_inset Formula $\phi\in\mathcal{D}$
+\end_inset
+
+.
+ This reduces to requiring that 
+\begin_inset Formula $\int_{a}^{b}|f(x)|dx<\infty$
+\end_inset
+
+ for all intervals 
+\begin_inset Formula $[a,b]$
+\end_inset
+
+ (
+\begin_inset Formula $f$
+\end_inset
+
+ is 
+\begin_inset Quotes eld
+\end_inset
+
+locally integrable
+\begin_inset Quotes erd
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Subsection
+Singular distributions
+\begin_inset Newline newline
+\end_inset
+
+& the delta function
+\end_layout
+
+\begin_layout Standard
+Although the integral of an ordinary function is 
+\emph on
+one
+\emph default
+ way to define a distribution, it is not the 
+\emph on
+only
+\emph default
+ way.
+ For example, the following distribution is a perfectly good one: 
+\begin_inset Formula 
+\[
+\boxed{\delta\{\phi\}=\phi(0)}.
+\]
+
+\end_inset
+
+This rule is linear and continuous, there are no weird infinities, nor is
+ there anything spooky or non-rigorous.
+ Given a test function 
+\begin_inset Formula $\phi(x)$
+\end_inset
+
+, the 
+\begin_inset Formula $\delta(x)$
+\end_inset
+
+ 
+\emph on
+distribution
+\emph default
+ is simply the rule that gives 
+\begin_inset Formula $\phi(0)$
+\end_inset
+
+ from each 
+\begin_inset Formula $\phi.$
+\end_inset
+
+ 
+\begin_inset Formula $\delta(x)$
+\end_inset
+
+, however, does not correspond to any ordinary function—it is not a regular
+ distribution—so we call it a 
+\series bold
+singular distribution
+\series default
+.
+\end_layout
+
+\begin_layout Itemize
+Notation: when we write 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Formula $\int\delta(x)\phi(x)dx$
+\end_inset
+
+,
+\begin_inset Quotes erd
+\end_inset
+
+ we don't mean an ordinary integral, we really mean 
+\begin_inset Formula $\delta\{\phi\}=\phi(0)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Furthermore, when we say 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Formula $f=\delta(x-x')$
+\end_inset
+
+,
+\begin_inset Quotes erd
+\end_inset
+
+ we just mean the distribution 
+\begin_inset Formula $f\{\phi\}=\phi(x')$
+\end_inset
+
+.
+ (This kind of 
+\begin_inset Quotes eld
+\end_inset
+
+abuse
+\begin_inset Quotes erd
+\end_inset
+
+ of notation is too convenient, and too widespread, to discard in the name
+ of purity.)
+\end_layout
+
+\begin_layout Standard
+If we look at the 
+\begin_inset Quotes eld
+\end_inset
+
+finite-
+\begin_inset Formula $\Delta x$
+\end_inset
+
+ delta
+\begin_inset Quotes erd
+\end_inset
+
+ approximation 
+\begin_inset Formula $\delta_{\Delta x}(x)$
+\end_inset
+
+ from section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:No-delta-functions"
+
+\end_inset
+
+, that defines the 
+\emph on
+regular
+\emph default
+ distribution: 
+\begin_inset Formula 
+\[
+\delta_{\Delta x}\{\phi\}=\frac{1}{\Delta x}\int_{0}^{\Delta x}\phi(x)dx,
+\]
+
+\end_inset
+
+which is just the average of 
+\begin_inset Formula $\phi(x)$
+\end_inset
+
+ in 
+\begin_inset Formula $[0,\Delta x]$
+\end_inset
+
+.
+ Now, however, viewed as a distribution, the limit 
+\begin_inset Formula $\Delta x\to0$
+\end_inset
+
+ is perfectly well defined:
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+We have used the fact that 
+\begin_inset Formula $\phi(x)$
+\end_inset
+
+ is required to be continuous, from which one can show that nothing weird
+ can happen with the average of 
+\begin_inset Formula $\phi(x)$
+\end_inset
+
+ as 
+\begin_inset Formula $\Delta x\to0$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\lim_{\Delta x\to0}\delta_{\Delta x}\{\phi\}=\phi(0)=\delta\{\phi\}$
+\end_inset
+
+, i.e.
+ 
+\begin_inset Formula $\delta_{\Delta x}\to\delta$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Of course, the 
+\begin_inset Formula $\delta$
+\end_inset
+
+ distribution is not the only singular distribution, but it is the most
+ famous one (and the one from which many other singular distributions are
+ built).
+ We will see more examples later.
+\end_layout
+
+\begin_layout Subsection
+Derivatives of distributions
+\begin_inset Newline newline
+\end_inset
+
+& differentiating discontinuities
+\end_layout
+
+\begin_layout Standard
+How do we define the derivative 
+\begin_inset Formula $f'$
+\end_inset
+
+ of a distribution? Well, at the very least we want it to be the same as
+ the ordinary derivative when 
+\begin_inset Formula $f$
+\end_inset
+
+ is a regular distribution 
+\begin_inset Formula $f(x)$
+\end_inset
+
+ that happens to be differentiable in the ordinary sense.
+ In that case, 
+\begin_inset Formula $f'\{\phi\}=\int f'(x)\phi(x)dx=-\int f(x)\phi'(x)dx=f\{-\phi'\}$
+\end_inset
+
+, where we have integrated by parts and used the fact that 
+\begin_inset Formula $\phi(x)$
+\end_inset
+
+ is zero outside a finite region to eliminate the boundary terms.
+ This is such a nice result that we will use it to 
+\emph on
+define
+\emph default
+ the derivative of 
+\emph on
+any
+\emph default
+ distribution:
+\end_layout
+
+\begin_layout Itemize
+The
+\series bold
+ distributional derivative
+\series default
+ 
+\begin_inset Formula $f'$
+\end_inset
+
+ of 
+\begin_inset Formula $f\{\phi\}$
+\end_inset
+
+ is given by the distribution 
+\begin_inset Formula $\boxed{f'\{\phi\}=f\{-\phi'\}}$
+\end_inset
+
+, where 
+\begin_inset Formula $\phi'(x)$
+\end_inset
+
+ is the ordinary derivative of 
+\begin_inset Formula $\phi(x)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+(This is sometimes also called a 
+\series bold
+weak derivative
+\series default
+.) Since the test functions 
+\begin_inset Formula $\phi(x)$
+\end_inset
+
+ were required to be infinitely differentiable, we have a remarkable consequence
+: 
+\emph on
+every distribution is infinitely differentiable
+\emph default
+ (in the distributional sense).
+\end_layout
+
+\begin_layout Standard
+For example, since 
+\begin_inset Formula $\delta\{\phi\}=\phi(0)$
+\end_inset
+
+, it immediately follows that the derivative of a delta function is the
+ distribution 
+\begin_inset Formula $\delta'\{\phi\}=\delta\{-\phi'\}=-\phi'(0)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The most important consequence of this definition is that even 
+\series bold
+discontinuous functions are differentiable
+\series default
+ as distributions, and their derivatives 
+\series bold
+give delta functions
+\series default
+ for each discontinuity.
+ Consider the regular distribution 
+\begin_inset Formula $S$
+\end_inset
+
+ defined by the step function 
+\begin_inset Formula $S(x)$
+\end_inset
+
+: 
+\begin_inset Formula 
+\[
+S\{\phi\}=\int_{-\infty}^{\infty}S(x)\phi(x)dx=\int_{0}^{\infty}\phi(x)dx.
+\]
+
+\end_inset
+
+It immediately follows that the distributional derivative of the step function
+ is 
+\begin_inset Formula 
+\begin{eqnarray*}
+S'\{\phi\} & = & S\{-\phi'\}=-\int_{0}^{\infty}\phi'(x)dx=\left.-\phi(x)\right|_{0}^{\infty}\\
+ & = & \phi(0)-\cancel{\phi(\infty)}=\phi(0).
+\end{eqnarray*}
+
+\end_inset
+
+But this is exactly the same as 
+\begin_inset Formula $\delta\{\phi\}$
+\end_inset
+
+, so we immediately conclude: 
+\begin_inset Formula $\boxed{S'=\delta}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Since any function with jump discontinuities can be written in terms of
+ 
+\begin_inset Formula $S(x)$
+\end_inset
+
+, we find that the derivative of any jump discontinuity gives a delta function
+ multiplied by the magnitude of the jump.
+ For example, consider: 
+\begin_inset Formula 
+\[
+f(x)=\begin{cases}
+x^{2} & x<3\\
+x^{3} & x\geq3
+\end{cases}=x^{2}+(x^{3}-x^{2})S(x-3).
+\]
+
+\end_inset
+
+The distributional derivative works just like the ordinary derivative, except
+ that 
+\begin_inset Formula $S'=\delta$
+\end_inset
+
+, so
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+I'm being a bit glib here.
+ How do we know that the product rule works the same? Below, we will rigorously
+ define what it means to multiply a distribution by a smooth function like
+ 
+\begin_inset Formula $x^{3}-x^{2}$
+\end_inset
+
+, and the ordinary product rule will follow.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\begin{alignedat}{1}f'(x) & =2x+(3x^{2}-2x)S(x-3)+(3^{3}-3^{2})\delta(x-3)\\
+ & =18\delta(x-3)+\begin{cases}
+2x & x<3\\
+3x^{2} & x\geq3
+\end{cases},
+\end{alignedat}
+\]
+
+\end_inset
+
+where of course by 
+\begin_inset Formula $f'(x)$
+\end_inset
+
+ I mean the distribution 
+\begin_inset Formula $f'\{\phi\}$
+\end_inset
+
+.
+ It is common to be 
+\begin_inset Quotes eld
+\end_inset
+
+casual
+\begin_inset Quotes erd
+\end_inset
+
+ with notation in this way for distributions, treating them like ordinary
+ functions, but you have to remember that you can't evaluate them at any
+ point 
+\begin_inset Formula $x$
+\end_inset
+
+, you can only evaluate them for test functions 
+\begin_inset Formula $\phi(x)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Isolated points
+\end_layout
+
+\begin_layout Standard
+With ordinary functions, we had to make lots of caveats about isolated points.
+ No more with distributions.
+ The key point is that two 
+\emph on
+different
+\emph default
+ ordinary functions can define the 
+\emph on
+same
+\emph default
+ distribution.
+ Consider, for example, the function 
+\begin_inset Formula 
+\[
+f(x)=\begin{cases}
+1 & x=0\\
+0 & \mbox{otherwise}
+\end{cases}.
+\]
+
+\end_inset
+
+This is 
+\emph on
+not
+\emph default
+ a delta function: it is finite at 
+\begin_inset Formula $x=0$
+\end_inset
+
+, and is a perfectly acceptable function.
+ It also defines a regular distribution: 
+\begin_inset Formula 
+\[
+f\{\phi\}=\int_{-\infty}^{\infty}f(x)\phi(x)dx=0.
+\]
+
+\end_inset
+
+Think about it: no matter what 
+\begin_inset Formula $\phi(x)$
+\end_inset
+
+ is, the integral must give zero because it is only nonzero (by a 
+\emph on
+finite
+\emph default
+ amount) at a single point, with zero area (
+\begin_inset Quotes eld
+\end_inset
+
+zero measure
+\begin_inset Quotes erd
+\end_inset
+
+ for the pure-math folks).
+ Thus, in the distribution sense, we can say perfectly rigorously that 
+\begin_inset Formula 
+\[
+f=0
+\]
+
+\end_inset
+
+even though 
+\begin_inset Formula $f(x)\neq0$
+\end_inset
+
+ in the ordinary-function sense!
+\end_layout
+
+\begin_layout Standard
+In general, any two ordinary functions that only differ (by 
+\emph on
+finite
+\emph default
+ amounts—not delta functions!) at 
+\emph on
+isolated points
+\emph default
+ (a 
+\begin_inset Quotes eld
+\end_inset
+
+set of measure zero
+\begin_inset Quotes erd
+\end_inset
+
+) define the 
+\emph on
+same 
+\emph default
+regular distribution.
+ We no longer have to make caveats about isolated points—finite values at
+ isolated points make 
+\emph on
+no difference
+\emph default
+ to a distribution.
+\end_layout
+
+\begin_layout Standard
+For example, there are no more caveats about the Fourier series or Fourier
+ transforms: they converge, period, for distributions.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Technically, we have to choose distributions with the right set of test
+ functions.
+ The right test functions for the general Fourier transform on the real
+ line are those for which 
+\begin_inset Formula $x^{n}\phi(x)\to0$
+\end_inset
+
+ as 
+\begin_inset Formula $x\to\pm\infty$
+\end_inset
+
+ for any 
+\begin_inset Formula $n>0$
+\end_inset
+
+, i.e.
+ 
+\begin_inset Formula $\phi(x)$
+\end_inset
+
+ vanishes faster than any polynomial.
+ The resulting distributions are called 
+\emph on
+tempered distributions
+\emph default
+, and are the domain of the Fourier transform.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Also, there is no more quibbling about the value of things like 
+\begin_inset Formula $S(x)$
+\end_inset
+
+ right at the point of discontinuities.
+ It doesn't matter, for distributions.
+ Nor is there quibbling about the derivative of things like 
+\begin_inset Formula $|x|$
+\end_inset
+
+ right at the point of the slope discontinuity.
+ It is an easy matter to show that the distributional derivative of 
+\begin_inset Formula $|x|$
+\end_inset
+
+ is simply 
+\begin_inset Formula $2S(x)-1$
+\end_inset
+
+, i.e.
+ it is the regular distribution corresponding to the function that is 
+\begin_inset Formula $+1$
+\end_inset
+
+ for 
+\begin_inset Formula $x>0$
+\end_inset
+
+ and 
+\begin_inset Formula $-1$
+\end_inset
+
+ for 
+\begin_inset Formula $x<0$
+\end_inset
+
+ (with the value at 
+\begin_inset Formula $x=0$
+\end_inset
+
+ being rigorously irrelevant).
+\end_layout
+
+\begin_layout Subsection
+Interchanging
+\begin_inset Newline newline
+\end_inset
+
+limits and derivatives
+\end_layout
+
+\begin_layout Standard
+With a distribution, limits and (distributional) derivatives can always
+ be interchanged.
+ This is tremendously useful when talking about PDEs and convergence of
+ approximations.
+ In the distribution sense, the Fourier series can 
+\emph on
+always
+\emph default
+ be differentiated term-by-term, for example.
+\end_layout
+
+\begin_layout Standard
+This is easy to prove.
+ Suppose that the distributions 
+\begin_inset Formula $f_{n}\to f$
+\end_inset
+
+ as 
+\begin_inset Formula $n\to\infty$
+\end_inset
+
+.
+ That is, for any 
+\begin_inset Formula $\phi(x)$
+\end_inset
+
+, 
+\begin_inset Formula $f_{n}\{\phi\}\to f\{\phi\}$
+\end_inset
+
+.
+ Since this is true for 
+\emph on
+any
+\emph default
+ 
+\begin_inset Formula $\phi(x)$
+\end_inset
+
+, it must be true for 
+\begin_inset Formula $-\phi'(x)$
+\end_inset
+
+, and hence 
+\begin_inset Formula $f_{n}'\{\phi\}=f_{n}\{-\phi'\}\to f\{-\phi'\}=f'\{\phi\}$
+\end_inset
+
+ as 
+\begin_inset Formula $n\to\infty$
+\end_inset
+
+.
+ Q.E.D.
+\end_layout
+
+\begin_layout Section
+Rules for distributions
+\end_layout
+
+\begin_layout Standard
+For the most part, in 18.303, we will cheat a bit.
+ We will treat things as ordinary functions whenever we can, using the ordinary
+ operations, and only switch to interpreting them as distributions when
+ we run into difficulty (e.g.
+ derivatives of discontinuities, etcetera).
+ Since the rules for distribution operations are all defined to be consistent
+ with those for functions in the case of regular distributions, this doesn't
+ usually cause any trouble.
+\end_layout
+
+\begin_layout Standard
+However, it is good to define some of the important operations on distributions
+ precisely.
+ All you have to do is to explain what the operation does to test functions,
+ usually defined by analogy with 
+\begin_inset Formula $\int f(x)\phi(x)dx$
+\end_inset
+
+ for regular distributions.
+ Here are a few of the most basic operations:
+\end_layout
+
+\begin_layout Itemize
+differentiation: 
+\begin_inset Formula $f'\{\phi\}=f\{-\phi\}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+addition: 
+\begin_inset Formula $(f_{1}+f_{2})\{\phi\}=f_{1}\{\phi\}+f_{2}\{\phi\}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+multiplication by smooth functions (including constants) 
+\begin_inset Formula $s(x)$
+\end_inset
+
+: 
+\begin_inset Formula $[s(x)\cdot f]\{\phi\}=f\{s(x)\phi(x)\}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+product rule for multiplication by smooth functions 
+\begin_inset Formula $s(x)$
+\end_inset
+
+: 
+\begin_inset Formula $[s\cdot f]'\{\phi\}=[s\cdot f]\{-\phi'\}=f\{-s\phi'\}=f\{s'\phi-(s\phi)'\}=f\{s'\phi\}+f'\{s\phi\}=[s'\cdot f]\{\phi\}+[s\cdot f']\{\phi\}=[s'\cdot f+s\cdot f']\{\phi\}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+translation: 
+\begin_inset Formula $[f(x-y)]\{\phi(x)\}=f\{\phi(x+y)\}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+scaling 
+\begin_inset Formula $[f(\alpha x)]\{\phi(x)\}=\frac{1}{\alpha}f\{\phi(x/\alpha)\}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+If you are not sure where these rules come from, just try plugging them
+ into a regular distribution 
+\begin_inset Formula $f\{\phi\}=\int f(x)\phi(x)dx$
+\end_inset
+
+, and you'll see that they work out in the ordinary way.
+\end_layout
+
+\begin_layout Section
+Problems with distributions
+\end_layout
+
+\begin_layout Standard
+Unfortunately, distributions are not a free lunch; they come with their
+ own headaches.
+ There are two major difficulties, one of which is surmountable and the
+ other is not: 
+\end_layout
+
+\begin_layout Itemize
+Boundary conditions: since distributions do not have values at individual
+ points, it is not so easy to impose boundary conditions on the solutions
+ if they are viewed as distributions—what does it mean to set 
+\begin_inset Formula $u(0)=0$
+\end_inset
+
+? There are ways around this, but they are a bit cumbersome, especially
+ in more than one dimension.
+\end_layout
+
+\begin_layout Itemize
+Multiplication: it is not generally meaningful to multiply distributions.
+ The simplest example is the delta function: what would 
+\begin_inset Formula $\delta(x)^{2}$
+\end_inset
+
+ be? 
+\begin_inset Formula $\delta_{\Delta x}(x)^{2}$
+\end_inset
+
+ is okay, but its limit as 
+\begin_inset Formula $\Delta x\to0$
+\end_inset
+
+ does not exist even as a distribution (the amplitude goes as 
+\begin_inset Formula $1/\Delta x^{2}$
+\end_inset
+
+ while the integral goes as 
+\begin_inset Formula $\Delta x$
+\end_inset
+
+, so it diverges).
+\end_layout
+
+\begin_layout Standard
+For linear PDEs, lack of multiplication is not such a big problem, but it
+ does mean that we need to be careful about Hilbert spaces: if we think
+ of the solutions 
+\begin_inset Formula $u(x)$
+\end_inset
+
+ as distributions, we have a problem because 
+\begin_inset Formula $\langle u,u\rangle$
+\end_inset
+
+ may not be defined—the set of distributions does not form a Hilbert space.
+ (Technically, we can make something called a 
+\emph on
+rigged Hilbert space
+\emph default
+ that includes distributions, but I don't want to go there.)
+\end_layout
+
+\begin_layout Section
+The weak form of a PDE
+\end_layout
+
+\begin_layout Standard
+Suppose we have a linear PDE 
+\begin_inset Formula $\hat{A}u=f$
+\end_inset
+
+.
+ We want to allow 
+\begin_inset Formula $f$
+\end_inset
+
+ to be a delta function etcetera, but we still want to talk about boundary
+ conditions, Hilbert spaces, and so on for 
+\begin_inset Formula $u$
+\end_inset
+
+.
+ There is a relatively simple compromise for linear PDEs, called the 
+\series bold
+weak form
+\series default
+ of the PDE or the 
+\series bold
+weak solution
+\series default
+.
+ This concept can roughly be described as requiring 
+\begin_inset Formula $\hat{A}u=f$
+\end_inset
+
+ only in the 
+\begin_inset Quotes eld
+\end_inset
+
+weak
+\begin_inset Quotes erd
+\end_inset
+
+ sense of distributions (i.e., integrated against test functions, taking distribut
+ional derivatives in the case of a 
+\begin_inset Formula $u$
+\end_inset
+
+ with discontinuities), but requiring 
+\begin_inset Formula $u$
+\end_inset
+
+ to be in a more restrictive class, e.g.
+ regular distributions corresponding to functions satisfying the boundary
+ conditions in the ordinary sense but having some continuity and differentiabili
+ty so that 
+\begin_inset Formula $\langle u,u\rangle$
+\end_inset
+
+ and 
+\begin_inset Formula $\langle u,\hat{A}u\rangle$
+\end_inset
+
+ are finite (i.e., living in an appropriate Sobolev space).
+ Even this definition gets rather technical very quickly, especially if
+ you want to allow delta functions for 
+\begin_inset Formula $f$
+\end_inset
+
+ (in which case 
+\begin_inset Formula $u$
+\end_inset
+
+ can blow up at the point of the delta for dimensions 
+\begin_inset Formula $>1$
+\end_inset
+
+).
+ Nailing down precisely what spaces of functions and operators one is dealing
+ with is where a lot of technical difficulty and obscurity arises in functional
+ analysis.
+ However, for practical engineering and science applications, we can get
+ away with being a little careless in precisely how we define the function
+ spaces because the weird counterexamples are usually obviously unphysical.
+ The key insight of distributions is that what we care about is weak equality,
+ not pointwise equality, and correspondingly we only need weak derivatives
+ (integration by parts, or technically 
+\begin_inset Quotes eld
+\end_inset
+
+bilinear forms
+\begin_inset Quotes erd
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Section
+Green's functions
+\end_layout
+
+\begin_layout Standard
+Now that we have distributions, Green's functions are much easier to work
+ with.
+ Consider, for example, the Green's function 
+\begin_inset Formula $G(x,x')$
+\end_inset
+
+ of 
+\begin_inset Formula $\hat{A}=-\frac{\partial^{2}}{\partial x^{2}}$
+\end_inset
+
+ on 
+\begin_inset Formula $[0,L]$
+\end_inset
+
+ with Dirichlet (zero) boundary conditions.
+ If 
+\begin_inset Formula $\hat{A}u=f$
+\end_inset
+
+ is to be solved by 
+\begin_inset Formula $u(x)=\int G(x,x')f(x')dx'$
+\end_inset
+
+, then we must have 
+\begin_inset Formula $\hat{A}u=\int[\hat{A}G(x,x')]f(x')dx'=f(x)$
+\end_inset
+
+, which is true if 
+\begin_inset Formula 
+\[
+\hat{A}G(x,x')=\delta(x-x')
+\]
+
+\end_inset
+
+and the integrals are re-interpreted as evaluating a distribution.
+\end_layout
+
+\begin_layout Standard
+What does this equation mean? For any 
+\begin_inset Formula $x\neq x'$
+\end_inset
+
+ [or for any 
+\begin_inset Formula $\phi(x)$
+\end_inset
+
+ with 
+\begin_inset Formula $\phi(x')=0$
+\end_inset
+
+] we must have 
+\begin_inset Formula $\hat{A}G(x,x')=0=-\frac{\partial^{2}}{\partial x^{2}}G(x,x')$
+\end_inset
+
+, and this must mean that 
+\begin_inset Formula $G(x,x')$
+\end_inset
+
+ is a straight line for 
+\begin_inset Formula $x<x'$
+\end_inset
+
+ and 
+\begin_inset Formula $x>x'$
+\end_inset
+
+.
+ To satisfy, the boundary conditions, this straight line must pass through
+ zero at 
+\begin_inset Formula $0$
+\end_inset
+
+ and 
+\begin_inset Formula $L$
+\end_inset
+
+, and hence 
+\begin_inset Formula $G(x,x')$
+\end_inset
+
+ must look like 
+\begin_inset Formula $\alpha x$
+\end_inset
+
+ for 
+\begin_inset Formula $x<x'$
+\end_inset
+
+ and 
+\begin_inset Formula $\beta(x-L)$
+\end_inset
+
+ for 
+\begin_inset Formula $x>x'$
+\end_inset
+
+ for some constants 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ and 
+\begin_inset Formula $\beta$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $G(x,x')$
+\end_inset
+
+ had better be continuous at 
+\begin_inset Formula $x=x'$
+\end_inset
+
+, or otherwise we would get a delta function from the 
+\emph on
+first
+\emph default
+ derivative—hence 
+\begin_inset Formula $\alpha=\beta(x'-L)/x'$
+\end_inset
+
+.
+ The first derivative 
+\begin_inset Formula $\frac{\partial}{\partial x}G(x,x')$
+\end_inset
+
+ then gives 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ for 
+\begin_inset Formula $x<x'$
+\end_inset
+
+ and 
+\begin_inset Formula $\beta$
+\end_inset
+
+ for 
+\begin_inset Formula $x>x'$
+\end_inset
+
+.
+ What about the next derivative? Since 
+\begin_inset Formula $\frac{\partial}{\partial x}G(x,x')$
+\end_inset
+
+ is discontinuous, it doesn't have an ordinary second derivative at 
+\begin_inset Formula $x=x'$
+\end_inset
+
+, but as a distribution it is no problem: 
+\begin_inset Formula $\frac{\partial^{2}}{\partial x^{2}}G(x,x')$
+\end_inset
+
+ is zero everywhere (the derivative of a constant) plus a delta function
+ 
+\begin_inset Formula $\delta(x-x')$
+\end_inset
+
+ multiplied by 
+\begin_inset Formula $\beta-\alpha$
+\end_inset
+
+, the size of the jump.
+ Thus, 
+\begin_inset Formula $-\frac{\partial^{2}}{\partial x^{2}}G(x,x')=\hat{A}G=(\alpha-\beta)\delta(x-x')$
+\end_inset
+
+, and from above we must have 
+\begin_inset Formula $\alpha-\beta=1$
+\end_inset
+
+.
+ Combined with the equation for 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ from continuity of 
+\begin_inset Formula $G$
+\end_inset
+
+, we obtain 
+\begin_inset Formula $\beta=-x'/L$
+\end_inset
+
+ and 
+\begin_inset Formula $\alpha=1-x'/L$
+\end_inset
+
+, exactly the same as our result from class (which we got by a more laborious
+ method).
+\end_layout
+
+\begin_layout Section*
+Further reading
+\end_layout
+
+\begin_layout Itemize
+I.
+ M.
+ Gel'fand and G.
+ E.
+ Shilov, 
+\emph on
+Generalized Functions, Volume I: Properties and Operations
+\emph default
+ (New York: Academic Press, 1964).
+ [Out of print, but still my favorite book on the subject.]
+\end_layout
+
+\begin_layout Itemize
+Robert S.
+ Strichartz, 
+\emph on
+A Guide to Distribution Theory and Fourier Transforms
+\emph default
+ (Singapore: World Scientific, 1994).
+\end_layout
+
+\begin_layout Itemize
+Jesper Lutzen, 
+\emph on
+The Prehistory of the Theory of Distributions
+\emph default
+ (New York: Springer, 1982).
+ [A fascinating book describing the painful historical process that led
+ up to distribution theory.]
+\end_layout
+
+\begin_layout Section*
+\begin_inset Newpage newpage
+\end_inset
+
+Distributions in a nutshell
+\end_layout
+
+\begin_layout Itemize
+Delta functions are okay.
+ You can employ their informal description without guilt because there is
+ a rigorous definition to fall back on in case of doubt.
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+An 
+\begin_inset Quotes eld
+\end_inset
+
+integral
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Formula $\int_{-\infty}^{\infty}\delta(x-x')\phi(x)dx$
+\end_inset
+
+ just means 
+\begin_inset Formula $\phi(x')$
+\end_inset
+
+.
+ Integrals over finite domains 
+\begin_inset Formula $\int_{\Omega}\delta(x-x')\phi(x)$
+\end_inset
+
+ give 
+\begin_inset Formula $\phi(x')$
+\end_inset
+
+ if 
+\begin_inset Formula $x'$
+\end_inset
+
+ is in the interior of 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ and 0 if 
+\begin_inset Formula $x'$
+\end_inset
+
+ is outside 
+\begin_inset Formula $\Omega$
+\end_inset
+
+, but are undefined (or at least, more care is required) if 
+\begin_inset Formula $x'$
+\end_inset
+
+ is on the boundary 
+\begin_inset Formula $d\Omega$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+When in doubt about how to compute 
+\begin_inset Formula $f'(x)$
+\end_inset
+
+, integrate by parts against a test function to see what 
+\begin_inset Formula $\int f'(x)\phi(x)=-\int f(x)\phi'(x)$
+\end_inset
+
+ does (the 
+\begin_inset Quotes eld
+\end_inset
+
+weak
+\begin_inset Quotes erd
+\end_inset
+
+ or 
+\begin_inset Quotes eld
+\end_inset
+
+distributional
+\begin_inset Quotes erd
+\end_inset
+
+ derivative).
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A derivative of a discontinuity at 
+\begin_inset Formula $x'$
+\end_inset
+
+ gives 
+\begin_inset Formula $\delta(x-x')$
+\end_inset
+
+ multiplied by the size of the discontinuity [the difference 
+\begin_inset Formula $f(x'^{+})-f(x'^{-})$
+\end_inset
+
+], plus the ordinary derivative everywhere else.
+\end_layout
+
+\begin_layout Itemize
+This also applies to differentiating functions like 
+\begin_inset Formula $1/\sqrt{x}$
+\end_inset
+
+ that have finite integrals but whose classical derivatives have divergent
+ integrals—applying the weak derivative instead produces a well-defined
+ distribution.
+ [For example, this procedure famously yields 
+\begin_inset Formula $\nabla^{2}\frac{1}{r}=-4\pi\delta(\vec{x})$
+\end_inset
+
+ in 3d.
+ It also can lead to 
+\begin_inset Quotes eld
+\end_inset
+
+Hadamard regularizations,
+\begin_inset Quotes erd
+\end_inset
+
+ the famous Cauchy principal value, and other regularizations of apparently
+ divergent integrals that are often presented in a mysterious fashion: a
+ unique regularization arises because the integrand came from a distributional
+ derivative or limit.]
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+All that matters in the distribution (weak) sense is the integral of a function
+ times a smooth, localized test function 
+\begin_inset Formula $\phi(x)$
+\end_inset
+
+.
+ Anything that doesn't change such integrals 
+\begin_inset Formula $\int f(x)\phi(x)$
+\end_inset
+
+, like finite values of 
+\begin_inset Formula $f(x)$
+\end_inset
+
+ at isolated points, doesn't matter.
+ (That is, whenever we use 
+\begin_inset Quotes eld
+\end_inset
+
+=
+\begin_inset Quotes erd
+\end_inset
+
+ for functions we are almost always talking about 
+\emph on
+weak
+\emph default
+ equality.)
+\end_layout
+
+\begin_layout Itemize
+Interchanging limits and derivatives is okay in the distribution sense.
+ Differentiating Fourier series (and other expansions in infinite bases)
+ term-by-term is okay.
+\end_layout
+
+\begin_layout Itemize
+In practice, we only ever need to solve PDEs in the distribution sense (a
+ 
+\begin_inset Quotes eld
+\end_inset
+
+weak
+\begin_inset Quotes erd
+\end_inset
+
+ solution): integrating the left- and right-hand sides against any test
+ functions must give the same number, with all derivatives taken in the
+ weak sense.
+\end_layout
+
+\end_body
+\end_document

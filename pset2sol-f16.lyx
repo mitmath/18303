@@ -1,0 +1,595 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+
+\renewcommand{\vec}[1]{\mathbf{#1}}
+
+\renewcommand{\labelenumi}{(\alph{enumi})}
+\renewcommand{\labelenumii}{(\roman{enumii})}
+\end_preamble
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\topmargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section*
+18.303 Problem Set 2 Solutions
+\end_layout
+
+\begin_layout Subsection*
+Problem 1: (10+10 points)
+\end_layout
+
+\begin_layout Enumerate
+For any 
+\begin_inset Formula $u,v\in V$
+\end_inset
+
+, we integrate by parts as in class to obtain 
+\begin_inset Formula $\langle u,\hat{A}v\rangle=-\int_{0}^{L}\bar{u}v''=-\left.\bar{u}v'\right|_{0}^{L}+\int_{0}^{L}\overline{u'}v'=-\left.\bar{u}v'\right|_{0}^{L}+\left.\overline{u'}v\right|_{0}^{L}-\int_{0}^{L}\overline{u''}v=\langle\hat{A}u,v\rangle$
+\end_inset
+
+, where in the last step we used the fact that the boundary terms are zero
+ via the boundary conditions: 
+\begin_inset Formula 
+\[
+\left.\bar{u}v'\right|_{0}^{L}=\overline{u(L)}v'(L)-\overline{u(0)}v'(0)=\overline{u(L)}v'(L)-\overline{e^{i\phi}u(L)}e^{i\phi}v'(L)=0,
+\]
+
+\end_inset
+
+and similarly for the 
+\begin_inset Formula $\left.\overline{u'}v\right|_{0}^{L}$
+\end_inset
+
+ term; hence 
+\begin_inset Formula $\hat{A}=\hat{A}^{*}$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+To check definiteness, as in class we integrate by parts only once to obtain
+\begin_inset Formula 
+\[
+\langle u,\hat{A}u\rangle=\int_{0}^{L}\left|u'(x)\right|^{2}dx\geq0,
+\]
+
+\end_inset
+
+so we clearly have 
+\begin_inset Formula $\hat{A}\succeq0$
+\end_inset
+
+ (positive semidefinite).
+ To get 
+\begin_inset Formula $\hat{A}\succ0$
+\end_inset
+
+ (positive-definite), we need to show that 
+\begin_inset Formula $\langle u,\hat{A}u\rangle>0$
+\end_inset
+
+ for 
+\begin_inset Formula $u\neq0$
+\end_inset
+
+.
+ The integral above is only zero if 
+\begin_inset Formula $u'(x)=0$
+\end_inset
+
+, in which case 
+\begin_inset Formula $u$
+\end_inset
+
+ is a constant.
+ And the only way a nonzero constant can satisfy the boundary conditions
+ is if 
+\begin_inset Formula $e^{i\phi}=1$
+\end_inset
+
+, i.e.
+ 
+\begin_inset Formula $\phi=2\pi\ell$
+\end_inset
+
+ for some integer 
+\begin_inset Formula $\ell$
+\end_inset
+
+.
+ So, 
+\begin_inset Formula $\hat{A}\succ0$
+\end_inset
+
+ if and only if 
+\begin_inset Formula $\phi\neq2\pi\ell$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+This is consistent with what we found in problem 3(a) of pset 1, where we
+ looked at the operator 
+\begin_inset Formula $-\hat{A}$
+\end_inset
+
+ with the same boundary conditions.
+ The fact that 
+\begin_inset Formula $\hat{A}=\hat{A}^{*}$
+\end_inset
+
+ implies that the eigenvalues of 
+\begin_inset Formula $\hat{A}$
+\end_inset
+
+ (and 
+\begin_inset Formula $-\hat{A}$
+\end_inset
+
+) are real and that the eigenfunctions are orthogonal, both of which were
+ true for the explicit solutions 
+\begin_inset Formula $u_{n}=e^{i\frac{2\pi n}{L}x-i\frac{\phi}{L}x}$
+\end_inset
+
+ and 
+\begin_inset Formula $\lambda_{n}=-\frac{1}{L^{2}}(2\pi n-\phi)^{2}$
+\end_inset
+
+.
+ The fact that 
+\begin_inset Formula $\hat{A}\succ0$
+\end_inset
+
+ for 
+\begin_inset Formula $\phi\neq2\pi\ell$
+\end_inset
+
+ implies that the eigenvalues of 
+\begin_inset Formula $-\hat{A}$
+\end_inset
+
+ are 
+\begin_inset Formula $<0$
+\end_inset
+
+ for these 
+\begin_inset Formula $\phi$
+\end_inset
+
+, whereas 
+\begin_inset Formula $\lambda_{\ell}=0$
+\end_inset
+
+ if 
+\begin_inset Formula $\phi=2\pi\ell$
+\end_inset
+
+, which is also what we found in pset
+\begin_inset space ~
+\end_inset
+
+1.
+\end_layout
+
+\begin_layout Enumerate
+We already showed that 
+\begin_inset Formula $-\frac{d^{2}}{dx^{2}}$
+\end_inset
+
+ is self-adjoint.
+ It is also trivially true that 
+\begin_inset Formula $(\hat{B}+\hat{C})^{*}=\hat{B}^{*}+\hat{C}^{*}$
+\end_inset
+
+ by definition of the adjoint and by linearity, since 
+\begin_inset Formula $\langle u,(\hat{B}+C)v\rangle=\langle u,\hat{B}v\rangle+\langle u,\hat{C}v\rangle=\langle\hat{B}^{*}u,v\rangle+\langle\hat{C}^{*}u,v\rangle=\langle(\hat{B}^{*}+\hat{C}^{*})u,v\rangle$
+\end_inset
+
+.
+ So, the sum of two Hermitian operators is Hermitian, and hence we just
+ need to show that 
+\begin_inset Formula $q(x)$
+\end_inset
+
+ is Hermitian.
+ But this is also trivial since 
+\begin_inset Formula $q$
+\end_inset
+
+ is real: 
+\begin_inset Formula $\langle u,qv\rangle=\int\bar{u}qv=\int\overline{qu}v=\langle qu,v\rangle$
+\end_inset
+
+.
+ Hence 
+\begin_inset Formula $\hat{A}=-\frac{d^{2}}{dx^{2}}+q(x)$
+\end_inset
+
+ is Hermitian.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+If we take the operator 
+\begin_inset Formula $\hat{A}-q_{0}$
+\end_inset
+
+, we can easily see that it is positive semidefinite: 
+\begin_inset Formula 
+\begin{eqnarray*}
+\langle u,(\hat{A}-q_{0})u\rangle & = & \langle u,-u''\rangle+\langle u,(q-q_{0})u\rangle\\
+ & = & \int|u'|^{2}+\int(q-q_{0})|u|^{2}\geq0,
+\end{eqnarray*}
+
+\end_inset
+
+where we have integrated by parts from above, and used the fact that 
+\begin_inset Formula $q(x)-q_{0}\geq0$
+\end_inset
+
+ everywhere.
+ Hence the eigenvalues of 
+\begin_inset Formula $\hat{A}-q_{0}$
+\end_inset
+
+ are 
+\begin_inset Formula $\geq0$
+\end_inset
+
+.
+ But this means that the eigenvalues of 
+\begin_inset Formula $\hat{A}$
+\end_inset
+
+ are 
+\begin_inset Formula $\geq q_{0}$
+\end_inset
+
+, since for any eigensolution 
+\begin_inset Formula $\hat{A}u=\lambda u$
+\end_inset
+
+ we have 
+\begin_inset Formula $(\hat{A}-q_{0})u=(\lambda-q_{0})u$
+\end_inset
+
+ and hence 
+\begin_inset Formula $\lambda-q_{0}\geq0$
+\end_inset
+
+.
+ (Adding a constant to an operator just shifts the eigenvalues by a constant,
+ just like adding a multiple of the identity matrix in 18.06.)
+\end_layout
+
+\begin_layout Subsection*
+Problem 2: (10 points)
+\end_layout
+
+\begin_layout Standard
+Proof:
+\begin_inset Formula 
+\[
+\langle\vec{x},B^{-1}A\vec{y}\rangle_{B}=\vec{x}^{*}B(B^{-1}A\vec{y})=\vec{x}^{*}A\vec{y}=\vec{x}^{*}AB^{-1}B\vec{y}=(B^{-1}A\vec{x})^{*}B\vec{y}=\langle B^{-1}A\vec{x},\vec{y}\rangle_{B},
+\]
+
+\end_inset
+
+where we have used the fact that 
+\begin_inset Formula $(B^{-1})^{*}=(B^{*})^{-1}=B^{-1}$
+\end_inset
+
+ (reviewed in pset 1).
+\end_layout
+
+\begin_layout Subsection*
+Problem 3: (5+5+5+5+10 points)
+\end_layout
+
+\begin_layout Enumerate
+Discretizing 
+\begin_inset Formula $\frac{d^{2}}{dx^{2}}$
+\end_inset
+
+ with center differences leads to the matrix 
+\begin_inset Formula $-D^{T}D$
+\end_inset
+
+, exactly as in class.
+ To discretize 
+\begin_inset Formula $c\frac{d^{2}u}{dx^{2}}$
+\end_inset
+
+, we just need to multiply the second derivative 
+\begin_inset Formula $u''_{m}$
+\end_inset
+
+ at each point 
+\begin_inset Formula $m$
+\end_inset
+
+ by 
+\begin_inset Formula $c_{m}=c(m\Delta x)$
+\end_inset
+
+.
+ This corresponds to multiplying on the left by the 
+\begin_inset Formula $M\times M$
+\end_inset
+
+ diagonal matrix 
+\begin_inset Formula 
+\[
+C=\left(\begin{array}{ccccc}
+c_{1}\\
+ & c_{2}\\
+ &  & \ddots\\
+ &  &  & c_{M-1}\\
+ &  &  &  & c_{M}
+\end{array}\right)
+\]
+
+\end_inset
+
+to obtain 
+\begin_inset Formula $A=-CD^{T}D$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Following problem 2, we choose the inner product 
+\begin_inset Formula $\langle\vec{x},\vec{y}\rangle_{C^{-1}}=\vec{x}^{*}C^{-1}\vec{y}$
+\end_inset
+
+, which is valid because 
+\begin_inset Formula $C$
+\end_inset
+
+ is (obviously) real-symmetric and positive-definite (its eigenvalues are
+ 
+\begin_inset Formula $c_{m}>0$
+\end_inset
+
+).
+ Then, from problem
+\begin_inset space ~
+\end_inset
+
+2, 
+\begin_inset Formula $A$
+\end_inset
+
+ is self-adjoint with respect to this inner product, so the eigenvalues
+ are real.
+ Furthermore, 
+\begin_inset Formula $\langle\vec{x},A\vec{x}\rangle_{C^{-1}}=-\vec{x}^{*}D^{T}D\vec{x}<0$
+\end_inset
+
+ (using the fact, proved in class, that 
+\begin_inset Formula $-D^{T}D$
+\end_inset
+
+ is negative-definite) so the eigenvalues are negative.
+\end_layout
+
+\begin_layout Enumerate
+See solutions notebook.
+\end_layout
+
+\begin_layout Enumerate
+See solutions notebook.
+\end_layout
+
+\begin_layout Enumerate
+In class, we had 
+\begin_inset Formula $u_{0}=u_{M+1}=0$
+\end_inset
+
+, with 
+\begin_inset Formula $(M+1)\Delta x=L$
+\end_inset
+
+.
+ Now, we will want to write 
+\begin_inset Formula $u(0)$
+\end_inset
+
+ in terms of 
+\begin_inset Formula $u(L)$
+\end_inset
+
+, so we want 
+\begin_inset Formula $u_{M}=u(L)$
+\end_inset
+
+ as one of our degrees of freedom, and set 
+\begin_inset Formula $\boxed{M\Delta x=L}$
+\end_inset
+
+ (i.e.
+ the definition of 
+\begin_inset Formula $\Delta x$
+\end_inset
+
+ changes!).
+ In this case we get 
+\begin_inset Formula $u_{0}=e^{i\phi}u_{M}$
+\end_inset
+
+, and the first row of our second-derivative approximation becomes 
+\begin_inset Formula 
+\[
+u_{1}''\approx\frac{u_{2}-2u_{1}+u_{0}}{\Delta x^{2}}=\frac{u_{2}-2u_{1}+e^{i\phi}u_{M}}{\Delta x^{2}}.
+\]
+
+\end_inset
+
+To get the last row, i.e.
+ 
+\begin_inset Formula $u_{M}''$
+\end_inset
+
+, we need an equation for 
+\begin_inset Formula $u_{M+1}$
+\end_inset
+
+.
+ If we think of the whole function as living 
+\begin_inset Quotes eld
+\end_inset
+
+in a loop,
+\begin_inset Quotes erd
+\end_inset
+
+ i.e.
+ 
+\begin_inset Formula $u(x)=e^{i\phi}u(x+L)$
+\end_inset
+
+, then we would get 
+\begin_inset Formula $u_{M+1}=e^{-i\phi}u_{1}$
+\end_inset
+
+.
+ However, the boundary condition that was explicitly supplied was 
+\begin_inset Formula $u'(0)=e^{i\phi}u'(L)$
+\end_inset
+
+.
+ If we discretize this as 
+\begin_inset Formula 
+\[
+\frac{u_{1}-u_{0}}{\Delta x}=e^{i\phi}\frac{u_{M+1}-u_{M}}{\Delta x}
+\]
+
+\end_inset
+
+and cancel 
+\begin_inset Formula $u_{0}=e^{i\phi}u_{M}$
+\end_inset
+
+ from both sides, we still get 
+\begin_inset Formula $\boxed{u_{M+1}=e^{-i\phi}u_{1}}$
+\end_inset
+
+, in which case the equation for the last row becomes 
+\begin_inset Formula 
+\[
+u_{M}''\approx\frac{u_{M+1}-2u_{M}+u_{M-1}}{\Delta x^{2}}=\frac{e^{-i\phi}u_{1}-2u_{M}+u_{M-1}}{\Delta x^{2}}.
+\]
+
+\end_inset
+
+Writing this all out in matrix form, we get 
+\begin_inset Formula 
+\[
+\boxed{A=\frac{1}{\Delta x^{2}}\left(\begin{array}{ccccc}
+c_{1}\\
+ & c_{2}\\
+ &  & \ddots\\
+ &  &  & c_{M-1}\\
+ &  &  &  & c_{M}
+\end{array}\right)\left(\begin{array}{ccccc}
+-2 & 1 &  &  & e^{i\phi}\\
+1 & -2 & 1\\
+ & \ddots & \ddots & \ddots\\
+ &  & 1 & -2 & 1\\
+e^{-i\phi} &  &  & 1 & -2
+\end{array}\right)}.
+\]
+
+\end_inset
+
+Notice that the second matrix is our usual 2nd-derivative matrix except
+ with 
+\begin_inset Formula $e^{\pm i\phi}$
+\end_inset
+
+ in the corners (which makes it still Hermitian but no longer real!).
+\end_layout
+
+\end_body
+\end_document

@@ -1,0 +1,479 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\renewcommand{\vec}[1]{\mathbf{#1}}
+\usepackage{cancel}
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2.5cm
+\topmargin 2.5cm
+\rightmargin 2.5cm
+\bottommargin 2.5cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+18.303 Midterm Exam Solutions, Fall 2016
+\end_layout
+
+\begin_layout Subsection*
+Problem 1: Hermitian (33 points)
+\end_layout
+
+\begin_layout Standard
+We just choose the inner product 
+\begin_inset Formula 
+\[
+\langle\vec{F},\vec{G}\rangle_{\varepsilon}=\int\overline{\vec{F}}\cdot\varepsilon\vec{G}
+\]
+
+\end_inset
+
+in order to cancel the 
+\begin_inset Formula $\varepsilon^{-1}$
+\end_inset
+
+ factor in 
+\begin_inset Formula $\hat{A}$
+\end_inset
+
+.
+ (Note that this is a valid inner product since 
+\begin_inset Formula $\varepsilon>0$
+\end_inset
+
+, much like the weighted inner product we used for 
+\begin_inset Formula $c\nabla^{2}$
+\end_inset
+
+ in class.) Then 
+\begin_inset Formula 
+\begin{align*}
+\langle\vec{E},\hat{A}\vec{E}'\rangle_{\varepsilon} & =\langle\vec{E},\nabla\times\mu^{-1}\nabla\times\vec{E}'\rangle=\langle\nabla\times\vec{E},\mu^{-1}\nabla\times\vec{E}'\rangle\\
+ & =\langle\mu^{-1}\nabla\times\vec{E},\nabla\times\vec{E}'\rangle=\langle\nabla\times\mu^{-1}\nabla\times\vec{E},\vec{E}'\rangle\\
+ & =\langle\varepsilon^{-1}\nabla\times\mu^{-1}\nabla\times\vec{E},\vec{E}'\rangle_{\varepsilon}=\langle\hat{A}\vec{E},\vec{E}'\rangle_{\varepsilon},
+\end{align*}
+
+\end_inset
+
+where we have integrated by parts twice with 
+\begin_inset Formula $\nabla\times$
+\end_inset
+
+, using the identity from homework, assuming we have boundary conditions
+ such that the boundary terms vanish as in homework.
+ Hence 
+\begin_inset Formula $\hat{A}=\hat{A}^{*}$
+\end_inset
+
+.
+ To check definiteness, we just look at the 
+\begin_inset Quotes eld
+\end_inset
+
+middle
+\begin_inset Quotes erd
+\end_inset
+
+ step from the end of the first line to see that 
+\begin_inset Formula 
+\[
+\langle\vec{E},\hat{A}\vec{E}\rangle_{\varepsilon}=\langle\nabla\times\vec{E},\mu^{-1}\nabla\times\vec{E}\rangle=\int_{\Omega}\mu^{-1}\left|\nabla\times\vec{E}\right|^{2}\geq0
+\]
+
+\end_inset
+
+since 
+\begin_inset Formula $\mu>0$
+\end_inset
+
+.
+ Hence 
+\begin_inset Formula $\hat{A}=\hat{A}^{*}\succeq0$
+\end_inset
+
+ and we will obtain oscillating solutions for 
+\begin_inset Formula $\frac{\partial^{2}\vec{E}}{\partial t^{2}}=\hat{A}\vec{E}$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+A common mistake in this problem was to choose an inner product 
+\begin_inset Formula $\langle\vec{F},\vec{G}\rangle=\int\varepsilon\mu\bar{\vec{F}}\cdot\vec{G}$
+\end_inset
+
+, and then to claim that 
+\begin_inset Formula $\langle\vec{E},\hat{A}\vec{E}'\rangle_{\varepsilon}=\int\cancel{\varepsilon\mu}\cancel{\varepsilon^{-1}}\bar{\vec{E}}\cdot\nabla\times\cancel{\mu^{-1}}\nabla\times\vec{E}'=\int\bar{\vec{E}}\cdot\nabla\times\nabla\times\vec{E}'$
+\end_inset
+
+, which is not true since 
+\begin_inset Formula $\mu(\vec{x})$
+\end_inset
+
+ is not a constant (you can't interchange it with 
+\begin_inset Formula $\nabla\times{}$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Subsection*
+Problem 2: Timestepping (34 points)
+\end_layout
+
+\begin_layout Enumerate
+We use the Taylor series around 
+\begin_inset Formula $n+\frac{1}{2}$
+\end_inset
+
+: 
+\begin_inset Formula 
+\[
+\vec{u}^{n+\frac{1}{2}\pm\frac{1}{2}}=\vec{u}([n+\frac{1}{2}]\Delta t)\pm\Delta t\,\dot{\vec{u}}([n+\frac{1}{2}]\Delta t)+O(\Delta t^{2}),
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $+$
+\end_inset
+
+ gives 
+\begin_inset Formula $\vec{u}^{n+1}$
+\end_inset
+
+ and 
+\begin_inset Formula $-$
+\end_inset
+
+ gives 
+\begin_inset Formula $\vec{u}^{n}$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula 
+\begin{align*}
+\frac{\vec{u}^{n+1}+\vec{u}^{n}}{2} & =\frac{\vec{u}([n+\frac{1}{2}]\Delta t)+\cancel{\Delta t\,\dot{\vec{u}}([n+\frac{1}{2}]\Delta t)}+O(\Delta t^{2})+\vec{u}([n+\frac{1}{2}]\Delta t)-\cancel{\Delta t\,\dot{\vec{u}}([n+\frac{1}{2}]\Delta t)}+O(\Delta t^{2})}{2}\\
+ & =\vec{u}([n+\frac{1}{2}]\Delta t)+O(\Delta t^{2}),
+\end{align*}
+
+\end_inset
+
+as desired.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+It is also possible to do this by Taylor-expanding around 
+\begin_inset Formula $\vec{u}(n\Delta t)$
+\end_inset
+
+, and comparing the result to the Taylor series of 
+\begin_inset Formula $\vec{u}([n+\frac{1}{2}]\Delta t)$
+\end_inset
+
+: 
+\begin_inset Formula 
+\[
+\frac{\vec{u}^{n+1}+\vec{u}^{n}}{2}=\frac{\vec{u}(n\Delta t)+\Delta t\,\dot{\vec{u}}(n\Delta t)+O(\Delta t^{2})+\vec{u}(n\Delta t)}{2}=u(n\Delta t)+\frac{\Delta t}{2}\dot{\vec{u}}(n\Delta t)+O(\Delta t^{2})=\vec{u}([n+\frac{1}{2}]\Delta t)+\vec{u}([n+\frac{1}{2}]\Delta t).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Solving for 
+\begin_inset Formula $\vec{u}^{n+1}$
+\end_inset
+
+, we have 
+\begin_inset Formula 
+\[
+\vec{u}^{n+1}=\left(I-\frac{A\Delta t}{2}\right)^{-1}\left(I+\frac{A\Delta t}{2}\right)\vec{u}^{n}=B\vec{u}^{n},
+\]
+
+\end_inset
+
+where we have defined the matrix 
+\begin_inset Formula $B$
+\end_inset
+
+, and hence 
+\begin_inset Formula 
+\[
+\vec{u}^{n}=B^{n}\vec{u}^{0}
+\]
+
+\end_inset
+
+as in class.
+ If 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ is an eigenvalue of 
+\begin_inset Formula $A$
+\end_inset
+
+ for some eigenvector, then the 
+\emph on
+same
+\emph default
+ vector is an eigenvector of 
+\begin_inset Formula $B$
+\end_inset
+
+ with eigenvalue 
+\begin_inset Formula $\mu=(1+\lambda\Delta t/2)/(1-\lambda\Delta t/2)$
+\end_inset
+
+.
+ If 
+\begin_inset Formula $A=A^{*}\prec0$
+\end_inset
+
+ , then 
+\begin_inset Formula $\lambda<0$
+\end_inset
+
+, and it follows that 
+\begin_inset Formula $|\mu|<1$
+\end_inset
+
+ for any 
+\begin_inset Formula $\Delta t>0$
+\end_inset
+
+ (the denominator of 
+\begin_inset Formula $\mu$
+\end_inset
+
+ is bigger than the numerator, since addition gives a bigger number than
+ subtraction).
+ Hence 
+\begin_inset Formula $B^{n}\to0$
+\end_inset
+
+ as 
+\begin_inset Formula $n\to\infty$
+\end_inset
+
+, and the scheme is unconditionally stable.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+By the way, a common mistake here is to write 
+\begin_inset Formula $\vec{u}^{n+1}=\frac{I+A\Delta t/2}{I-A\Delta t/2}\vec{u}^{n}$
+\end_inset
+
+, which is 
+\begin_inset Quotes eld
+\end_inset
+
+not even wrong:
+\begin_inset Quotes erd
+\end_inset
+
+ if 
+\begin_inset Formula $B$
+\end_inset
+
+ and 
+\begin_inset Formula $C$
+\end_inset
+
+ are matrices, the expression 
+\begin_inset Formula $\frac{B}{C}$
+\end_inset
+
+ is meaningless because it is not clear whether you mean 
+\begin_inset Formula $B^{-1}C$
+\end_inset
+
+ or 
+\begin_inset Formula $CB^{-1}$
+\end_inset
+
+ (unless they happen to commute, which they don't in this case).
+ Another common mistake is to check that 
+\begin_inset Formula $\mu<1$
+\end_inset
+
+, which is not sufficient: you need 
+\begin_inset Formula $|\mu|<1$
+\end_inset
+
+ for the solutions to decay.
+ 
+\end_layout
+
+\begin_layout Subsection*
+Problem 3: Born (33 points)
+\end_layout
+
+\begin_layout Standard
+We write 
+\begin_inset Formula 
+\[
+\hat{A}(\Delta p)=-\nabla^{2}+c(\Delta p,\vec{x})=\hat{A}(0)+\left.\frac{\partial c}{\partial p}\right|_{p=0}\Delta p+O(\Delta p^{2})
+\]
+
+\end_inset
+
+by Taylor-expanding 
+\begin_inset Formula $c$
+\end_inset
+
+ around 
+\begin_inset Formula $p=0$
+\end_inset
+
+.
+ Then, by moving the 
+\begin_inset Formula $\partial c/\partial p$
+\end_inset
+
+ term to the right-hand-side, we see that 
+\begin_inset Formula $\hat{A}(\Delta p)u=f$
+\end_inset
+
+ solves 
+\begin_inset Formula 
+\[
+u=\hat{A}(0)^{-1}\left[f-\left.\frac{\partial c}{\partial p}\right|_{p=0}u\Delta p+O(\Delta p^{2})\right].
+\]
+
+\end_inset
+
+Now, plugging in the right-hand-side for 
+\begin_inset Formula $u$
+\end_inset
+
+, as in the derivation of the Born–Dyson series in class, we obtain
+\begin_inset Formula 
+\[
+u=\hat{A}(0)^{-1}\left[f-\left.\frac{\partial c}{\partial p}\right|_{p=0}\hat{A}(0)^{-1}f\Delta p+O(\Delta p^{2})\right],
+\]
+
+\end_inset
+
+where we have lumped all terms of order 
+\begin_inset Formula $\Delta p^{2}$
+\end_inset
+
+ or higher together, and the second term is the first Born approximation.
+ Now, to get the derivative, we do 
+\begin_inset Formula 
+\begin{align*}
+\left.\frac{\partial u}{\partial p}\right|_{p=0} & =\lim_{\Delta p\to0}\frac{\left.u\right|_{p=\Delta p}-\left.u\right|_{p=0}}{\Delta p}\\
+ & =\lim_{\Delta p\to0}\frac{\hat{A}(0)^{-1}\left[\cancel{f}-\left.\frac{\partial c}{\partial p}\right|_{p=0}\hat{A}(0)^{-1}f\Delta p+O(\Delta p^{2})\right]-\cancel{\hat{A}(0)^{-1}f}}{\Delta p}\\
+ & =\boxed{-\hat{A}(0)^{-1}\left.\frac{\partial c}{\partial p}\right|_{p=0}\hat{A}(0)^{-1}f}.
+\end{align*}
+
+\end_inset
+
+In fact, one can easily generalize this approach to show that, for any invertibl
+e operator that depends in a differentiable way on a parameter 
+\begin_inset Formula $p$
+\end_inset
+
+, the derivative of the inverse of the operator is: 
+\begin_inset Formula 
+\[
+\frac{\partial}{\partial p}\hat{A}^{-1}=-\hat{A}^{-1}\frac{\partial\hat{A}}{\partial p}\hat{A}^{-1},
+\]
+
+\end_inset
+
+which is a geralization of the chain rule 
+\begin_inset Formula $\frac{\partial}{\partial p}a(p)^{-1}=-\frac{\partial a/\partial p}{a^{2}}$
+\end_inset
+
+ from first-year calculus.
+\end_layout
+
+\end_body
+\end_document
