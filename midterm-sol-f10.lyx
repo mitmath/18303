@@ -1,0 +1,475 @@
+#LyX 1.6.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+
+\renewcommand{\vec}[1]{\mathbf{#1}}
+
+\renewcommand{\labelenumi}{(\alph{enumi})}
+\renewcommand{\labelenumii}{(\roman{enumii})}
+\newcommand{\rank}{\operatorname{rank}}
+\end_preamble
+\use_default_options false
+\language english
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_amsmath 2
+\use_esint 0
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\leftmargin 0.7in
+\topmargin 0.7in
+\rightmargin 0.7in
+\bottommargin 0.7in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Section*
+18.303 Midterm, Fall 2010
+\end_layout
+
+\begin_layout Standard
+Each problem has 
+\series bold
+equal weight
+\series default
+.
+ You have 55 minutes.
+\end_layout
+
+\begin_layout Subsection*
+Problem 1: Finite differences (20 points)
+\end_layout
+
+\begin_layout Standard
+From class and homework, the 
+\begin_inset Formula $d^{2}/dx^{2}$
+\end_inset
+
+ operator on 
+\begin_inset Formula $[0,L]$
+\end_inset
+
+ can be discretized into points 
+\begin_inset Formula $x=m\Delta x$
+\end_inset
+
+ for 
+\begin_inset Formula $\Delta x=L/(M+1)$
+\end_inset
+
+ as 
+\begin_inset Formula $A=-D^{T}D/\Delta x^{2}$
+\end_inset
+
+, where 
+\begin_inset Formula \[
+D_{\mbox{Dirichlet}}=\left(\begin{array}{cccc}
+1\\
+-1 & 1\\
+ & \ddots & \ddots\\
+ &  & -1 & 1\\
+ &  &  & -1\end{array}\right),\qquad D_{\mbox{Neumann}}=\left(\begin{array}{ccccc}
+-1 & 1\\
+ & -1 & 1\\
+ &  & \ddots & \ddots\\
+ &  &  & -1 & 1\end{array}\right)\]
+
+\end_inset
+
+when the boundary conditions are Dirichlet 
+\begin_inset Formula $u(0)=u(L)=0$
+\end_inset
+
+ [
+\begin_inset Formula $D$
+\end_inset
+
+ an 
+\begin_inset Formula $(M+1)\times M$
+\end_inset
+
+ matrix] and Neumann 
+\begin_inset Formula $u'(0)=u'(L)=0$
+\end_inset
+
+ [
+\begin_inset Formula $D$
+\end_inset
+
+ an 
+\begin_inset Formula $(M-1)\times M$
+\end_inset
+
+ matrix], respectively.
+\end_layout
+
+\begin_layout Enumerate
+At the right boundary it is the same as the Dirichlet matrix before.
+ At the left boundary, evaluating at 
+\begin_inset Formula $\Delta x/2$
+\end_inset
+
+, we have 
+\begin_inset Formula \[
+\frac{u_{1}-u_{0}}{\Delta x}\approx-\frac{u_{0}+u_{1}}{2},\]
+
+\end_inset
+
+and so the new first row of 
+\begin_inset Formula $D$
+\end_inset
+
+ should be 
+\begin_inset Formula $-0.5,-0.5,0,0,0,\ldots$
+\end_inset
+
+.
+ That is, we have 
+\begin_inset Formula \[
+D=\left(\begin{array}{ccccc}
+-0.5 & -0.5\\
+0 & -1 & 1\\
+ &  & \ddots & \ddots\\
+ &  &  & -1 & 1\\
+ &  &  &  & -1\end{array}\right)\]
+
+\end_inset
+
+operating on the vector 
+\begin_inset Formula $(u_{0},u_{1},\ldots,u_{m})^{T}$
+\end_inset
+
+ to produce the approximate derivatives 
+\begin_inset Formula $\Delta x\,(u'_{0.5},u'_{1.5},\ldots,u'_{M+0.5})^{T}$
+\end_inset
+
+.
+ Thus, 
+\begin_inset Formula $D$
+\end_inset
+
+ is 
+\begin_inset Formula $(M+1)\times(M+1)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Since we applied the left boundary condition at the wrong place 
+\begin_inset Formula $\Delta x/2$
+\end_inset
+
+, this will introduce an error 
+\begin_inset Formula $\sim\Delta x$
+\end_inset
+
+.
+ [Like in the pset, however, we can correct this by changing 
+\begin_inset Formula $\Delta x$
+\end_inset
+
+ to 
+\begin_inset Quotes eld
+\end_inset
+
+stretch
+\begin_inset Quotes erd
+\end_inset
+
+ the grid so that the left boundary is at 0: 
+\begin_inset Formula $\Delta x=L/(M+0.5)$
+\end_inset
+
+, in which case we would get errors 
+\begin_inset Formula $\sim\Delta x^{2}$
+\end_inset
+
+.]
+\end_layout
+
+\begin_layout Subsection*
+Problem 2: Adjoints and stuff (20 points)
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $\Omega\subseteq\mathbb{R}^{2}$
+\end_inset
+
+ be the rectangular 2d region 
+\begin_inset Formula $x\in[0,L_{x}]$
+\end_inset
+
+, 
+\begin_inset Formula $y\in[0,L_{y}]$
+\end_inset
+
+, with Dirichlet boundaries 
+\begin_inset Formula $u|_{d\Omega}=0$
+\end_inset
+
+.
+ Consider the operator 
+\begin_inset Formula \[
+\hat{A}u=\nabla^{2}u+\frac{\partial}{\partial x}\left[c(x,y)\frac{\partial u}{\partial y}\right]+\frac{\partial}{\partial y}\left[c(x,y)\frac{\partial u}{\partial x}\right]\]
+
+\end_inset
+
+for some real-valued function 
+\begin_inset Formula $c(x,y)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Writing out the integrals:
+\begin_inset Formula \begin{align*}
+\left\langle u,\hat{B}\right\rangle  & =\int_{0}^{L_{x}}\int_{0}^{L_{y}}dxdy\, u\frac{\partial}{\partial x}\left[c(x,y)\frac{\partial v}{\partial y}\right]\\
+ & =-\int_{0}^{L_{x}}\int_{0}^{L_{y}}dxdy\,\frac{\partial u}{\partial x}\left[c(x,y)\frac{\partial v}{\partial y}\right]\\
+ & =+\int_{0}^{L_{x}}\int_{0}^{L_{y}}dxdy\,\frac{\partial}{\partial y}\left[c(x,y)\frac{\partial u}{\partial x}\right]v\\
+ & =\left\langle \frac{\partial}{\partial y}\left[c\frac{\partial u}{\partial x}\right],v\right\rangle ,\end{align*}
+
+\end_inset
+
+where we have integrated by parts twice and the boundary terms vanish as
+ usual from Dirichlet.
+ vice-versa for the other mixed-derivative term, hence 
+\begin_inset Formula \[
+\hat{B}^{*}=\left(\frac{\partial}{\partial x}\left[c(x,y)\frac{\partial}{\partial y}\right]\right)^{*}=\left(\frac{\partial}{\partial y}\left[c(x,y)\frac{\partial}{\partial x}\right]\right),\]
+
+\end_inset
+
+hence 
+\begin_inset Formula \[
+\hat{A}=\nabla^{2}+\hat{B}+\hat{B}^{*}\]
+
+\end_inset
+
+and the self-adjointness of 
+\begin_inset Formula $\hat{A}$
+\end_inset
+
+ follows immediately.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+A more beautiful and general way to do this is to write 
+\begin_inset Formula \[
+\hat{A}u=\nabla\cdot\left[\left(\begin{array}{cc}
+1 & c\\
+c & 1\end{array}\right)\nabla u\right]=\nabla\cdot(C\nabla u)\]
+
+\end_inset
+
+ with the matrix 
+\begin_inset Formula $C$
+\end_inset
+
+, in which case we can integrate by parts using the divergence theorem for
+ any shape 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ (and in any number of dimensions if we make 
+\begin_inset Formula $C$
+\end_inset
+
+ a bigger matrix).
+\end_layout
+
+\begin_layout Enumerate
+It will have decaying solutions if 
+\begin_inset Formula $\hat{A}$
+\end_inset
+
+ is negative-definite.
+ To check this, we integrate by parts 
+\emph on
+once
+\emph default
+, to obtain: 
+\begin_inset Formula \begin{align*}
+\langle u,\hat{A}u\rangle & =-\langle\nabla u,\nabla u\rangle-\langle\frac{\partial u}{\partial x},c\frac{\partial u}{\partial y}\rangle-\langle\frac{\partial u}{\partial y},c\frac{\partial u}{\partial x}\rangle\\
+ & =\int_{\Omega}\nabla u\cdot\left(\begin{array}{cc}
+1 & c\\
+c & 1\end{array}\right)\nabla u,\end{align*}
+
+\end_inset
+
+which is 
+\begin_inset Formula $>0$
+\end_inset
+
+ if 
+\begin_inset Formula $\nabla u\ne0$
+\end_inset
+
+ (true because of the boundary conditions: 
+\begin_inset Formula $u$
+\end_inset
+
+ cannot be a nonzero constant) and if 
+\begin_inset Formula $\left(\begin{array}{cc}
+1 & c\\
+c & 1\end{array}\right)$
+\end_inset
+
+ is positive-definite, i.e.
+ its eigenvalues 
+\begin_inset Formula $1\pm c$
+\end_inset
+
+ must be 
+\begin_inset Formula $>0$
+\end_inset
+
+, i.e.
+ 
+\begin_inset Formula $|c|<1$
+\end_inset
+
+..
+\end_layout
+
+\begin_layout Subsection*
+Problem 3: Thinking Green (20 points)
+\end_layout
+
+\begin_layout Standard
+Consider the operator 
+\begin_inset Formula $\hat{A}=-c(\vec{x})\nabla^{2}$
+\end_inset
+
+ in some 2d region 
+\begin_inset Formula $\Omega\subseteq\mathbb{R}^{2}$
+\end_inset
+
+ with Dirichlet boundaries (
+\begin_inset Formula $u|_{d\Omega}=0$
+\end_inset
+
+), where 
+\begin_inset Formula $c(\vec{x})>0$
+\end_inset
+
+.
+ Suppose the eigenfunctions of 
+\begin_inset Formula $\hat{A}$
+\end_inset
+
+ are 
+\begin_inset Formula $u_{n}(\vec{x})$
+\end_inset
+
+ with eigenvalues 
+\begin_inset Formula $\lambda_{n}$
+\end_inset
+
+ [that is, 
+\begin_inset Formula $\hat{A}u_{n}=\lambda_{n}u_{n}$
+\end_inset
+
+] for 
+\begin_inset Formula $n=1,2,\ldots$
+\end_inset
+
+, numbered in order 
+\begin_inset Formula $\lambda_{1}<\lambda_{2}<\lambda_{3}<\cdots$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $G(\vec{x},\vec{x}')$
+\end_inset
+
+ be the Green's function of 
+\begin_inset Formula $\hat{A}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\hat{A}$
+\end_inset
+
+ is self-adjoint under the inner product 
+\begin_inset Formula $\langle u,v\rangle=\int_{\Omega}\bar{u}v/c$
+\end_inset
+
+, from class (and the 1d version in homework), and hence the eigenfunctions
+ are orthogonal, hence 
+\begin_inset Formula $\alpha_{n}=\langle u_{n},f\rangle/\langle u_{n},u_{n}\rangle$
+\end_inset
+
+.
+ 
+\begin_inset Formula $\int_{\Omega}G(\vec{x},\vec{x}')f(\vec{x}')d^{2}\vec{x}'$
+\end_inset
+
+ is just 
+\begin_inset Formula $\hat{A}^{-1}f=\sum_{n}\frac{\alpha_{n}}{\lambda_{n}}u_{n}(\vec{x})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+This is just 
+\begin_inset Formula $\langle u,\hat{A}^{-1}u\rangle/\langle u,u\rangle$
+\end_inset
+
+, which is a Rayleigh quotient for the self-adjoint operator 
+\begin_inset Formula $\hat{A}^{-1}$
+\end_inset
+
+, and hence it is bounded above by the largest eigenvalue of 
+\begin_inset Formula $\hat{A}^{-1}$
+\end_inset
+
+, which is 
+\begin_inset Formula $1/\lambda_{1}$
+\end_inset
+
+.
+\end_layout
+
+\end_body
+\end_document

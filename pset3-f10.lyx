@@ -1,0 +1,1103 @@
+#LyX 1.6.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+
+\renewcommand{\vec}[1]{\mathbf{#1}}
+
+\renewcommand{\labelenumi}{(\alph{enumi})}
+\renewcommand{\labelenumii}{(\roman{enumii})}
+\newcommand{\rank}{\operatorname{rank}}
+\end_preamble
+\use_default_options false
+\language english
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_amsmath 2
+\use_esint 0
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\topmargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Section*
+18.303 Problem Set 3
+\end_layout
+
+\begin_layout Standard
+Due Wednesday, 29 September 2010.
+\end_layout
+
+\begin_layout Subsection*
+Problem 1: Diffusion equation
+\end_layout
+
+\begin_layout Standard
+For this problem, you will be solving the diffusion equation 
+\begin_inset Formula $\frac{\partial u}{\partial t}=\frac{\partial^{2}u}{\partial x^{2}}$
+\end_inset
+
+ for 
+\begin_inset Formula $x\in[0,L]$
+\end_inset
+
+ with Neumann boundary conditions 
+\begin_inset Formula $u'(0)=u'(L)=0$
+\end_inset
+
+ and an initial condition 
+\begin_inset Formula $u(x,0)=f(x)$
+\end_inset
+
+.
+ Physically, 
+\begin_inset Formula $u(x,t)$
+\end_inset
+
+ could represent, for example, the concentration (mass per unit volume)
+ of salt dissolved in water along a straw of length 
+\begin_inset Formula $L$
+\end_inset
+
+ (neglecting diffusion 
+\begin_inset Formula $\perp$
+\end_inset
+
+ to the straw), with 
+\begin_inset Formula $f(x)$
+\end_inset
+
+ being the initial concentration.
+ For simplicity, take 
+\begin_inset Formula $L=1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Recall that, in pset 1, you found that the eigenfunctions of 
+\begin_inset Formula $d^{2}/dx^{2}$
+\end_inset
+
+ with these boundary conditions are 
+\begin_inset Formula $\cos(n\pi x/L)$
+\end_inset
+
+ for 
+\begin_inset Formula $n=0,1,2,\ldots$
+\end_inset
+
+ with eigenvalues 
+\begin_inset Formula $\lambda_{n}=-(n\pi/L)^{2}$
+\end_inset
+
+.
+ Hence, it is natural to write 
+\begin_inset Formula $f(x)$
+\end_inset
+
+ as a cosine series 
+\begin_inset Formula \[
+f(x)=\frac{a_{0}}{2}+\sum_{n=1}^{\infty}a_{n}\cos(n\pi x/L),\]
+
+\end_inset
+
+where 
+\begin_inset Formula $a_{n}=\frac{2}{L}\int_{0}^{L}f(x)\cos(n\pi x/L)dx$
+\end_inset
+
+ due to orthogonality.
+ The Matlab file 
+\family typewriter
+cosines.m
+\family default
+, posted on the web page, provides a function 
+\family typewriter
+cosines(x, L, a)
+\family default
+ to do this summation for a given vector 
+\family typewriter
+a
+\family default
+ of the coefficients 
+\begin_inset Formula $a_{n}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Suppose 
+\begin_inset Formula $f(x)$
+\end_inset
+
+ has Fourier coefficients 
+\begin_inset Formula $a_{n}=\cos(n\pi/2)$
+\end_inset
+
+ for 
+\begin_inset Formula $n=0,1,2,\ldots,N$
+\end_inset
+
+.
+ Plot this function for 
+\begin_inset Formula $N=10$
+\end_inset
+
+, 100, and 1000 versus 
+\begin_inset Formula $x$
+\end_inset
+
+.
+ You can use the commands: 
+\family typewriter
+L=1; x=linspace(0,L,10000); plot(x, cosines(x, L, cos([0:N]*pi/2))
+\family default
+ to do the plot for each 
+\begin_inset Formula $N$
+\end_inset
+
+ (setting 
+\family typewriter
+N=10
+\family default
+ etcetera first).
+ 
+\end_layout
+
+\begin_layout Enumerate
+You should be able to answer the following questions with pen and paper:
+ How does the total initial solute mass 
+\begin_inset Formula $\int_{0}^{L}f(x)dx$
+\end_inset
+
+ depend on 
+\begin_inset Formula $N$
+\end_inset
+
+? What is 
+\begin_inset Formula $f(L/2)$
+\end_inset
+
+ as a function of 
+\begin_inset Formula $N$
+\end_inset
+
+? What does the answer to the previous two questions tell you about the
+ width of the peak shape that you observed in the previous part, as a function
+ of 
+\begin_inset Formula $N$
+\end_inset
+
+?
+\end_layout
+
+\begin_layout Enumerate
+From class, 
+\begin_inset Formula $u(x,t)$
+\end_inset
+
+ is given by the same series as 
+\begin_inset Formula $f(x)$
+\end_inset
+
+, except that 
+\begin_inset Formula $a_{n}$
+\end_inset
+
+ is multiplied by 
+\begin_inset Formula $e^{\lambda_{n}t}$
+\end_inset
+
+.
+ In Matlab, you use the commands: 
+\family typewriter
+L=1; x=linspace(0,L,10000); plot(x, cosines(x, L, cos([0:N]*pi/2) .* exp(-([0:N]*
+pi/L).^2 * t)))
+\family default
+ to plot 
+\begin_inset Formula $u(x,t)$
+\end_inset
+
+ for a given 
+\begin_inset Formula $t$
+\end_inset
+
+.
+ Do this plot for 
+\begin_inset Formula $t=0.0001$
+\end_inset
+
+, 
+\begin_inset Formula $t=0.001$
+\end_inset
+
+, 
+\begin_inset Formula $t=0.01$
+\end_inset
+
+, 
+\begin_inset Formula $t=0.1$
+\end_inset
+
+, and 
+\begin_inset Formula $t=1$
+\end_inset
+
+.
+ (You can type 
+\family typewriter
+hold on
+\family default
+ between plots in order to superimpose multiple plots, which might be useful
+ for the last 3 plots where the scales are similar.) Describe physically
+ what is happening.
+\end_layout
+
+\begin_layout Enumerate
+Check that mass is conserved: compute 
+\begin_inset Formula $\int_{0}^{L}u(x,t)dx$
+\end_inset
+
+ approximately for a few values of 
+\begin_inset Formula $t$
+\end_inset
+
+ via a summation: 
+\family typewriter
+sum(cosines(x, L, cos([0:N]*pi/2) .* exp(-([0:N]*pi/L).^2 * t))) * x(2)
+\family default
+.
+ The result should equal your answer for 
+\begin_inset Formula $\int f(x)dx$
+\end_inset
+
+ from above.
+\end_layout
+
+\begin_layout Subsection*
+Problem 2: Finite differences and boundary conditions
+\end_layout
+
+\begin_layout Standard
+In class, we considered 
+\begin_inset Formula $d^{2}/dx^{2}$
+\end_inset
+
+ for 
+\begin_inset Formula $x\in[0,L]$
+\end_inset
+
+ and Dirichlet boundary conditions 
+\begin_inset Formula $u(0)=u(L)=0$
+\end_inset
+
+.
+ We approximated 
+\begin_inset Formula $u(x)$
+\end_inset
+
+ by its values 
+\begin_inset Formula $u_{m}\approx u(m\Delta x)$
+\end_inset
+
+ on a grid of 
+\begin_inset Formula $M$
+\end_inset
+
+ points, with 
+\begin_inset Formula $\Delta x=L/(M+1)$
+\end_inset
+
+ and 
+\begin_inset Formula $u_{0}=u_{M+1}=0$
+\end_inset
+
+.
+ We then approximated 
+\begin_inset Formula $d^{2}/dx^{2}$
+\end_inset
+
+ in two center-difference steps: first, we approximated 
+\begin_inset Formula $d/dx$
+\end_inset
+
+ by 
+\begin_inset Formula $u'_{m+1/2}\approx(u_{m+1}-u_{m})/\Delta x$
+\end_inset
+
+; then, we approximated 
+\begin_inset Formula $d^{2}/dx^{2}$
+\end_inset
+
+ by 
+\begin_inset Formula $u''_{m}\approx(u'_{m+1/2}-u'_{m-1/2})/\Delta x$
+\end_inset
+
+.
+ This gave us the wonderful discrete Laplacian matrix 
+\begin_inset Formula $A$
+\end_inset
+
+ (with 
+\begin_inset Formula $1,-2,1$
+\end_inset
+
+ on the diagonals), which we could also write as 
+\begin_inset Formula $A=-D^{T}D/\Delta x^{2}$
+\end_inset
+
+ for the 
+\begin_inset Formula $D$
+\end_inset
+
+ matrix given in class (and computed by the 
+\family typewriter
+diff1.m
+\family default
+ file from pset 2).
+ Now, in this problem we will do the same thing for the Neumann boundary
+ conditions 
+\begin_inset Formula $u'(0)=u'(L)=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Find the 
+\emph on
+Neumann
+\emph default
+ discrete Laplacian matrix 
+\begin_inset Formula $\tilde{A}$
+\end_inset
+
+.
+ Use the same center-difference steps that we used to find 
+\begin_inset Formula $A$
+\end_inset
+
+ in class, except now impose the boundary condition 
+\begin_inset Formula $u'_{1/2}=u'_{M+1/2}=0$
+\end_inset
+
+ to approximate the Neumann condition.
+\end_layout
+
+\begin_layout Enumerate
+Show that 
+\begin_inset Formula $\tilde{A}=-\tilde{D}^{T}\tilde{D}/\Delta x^{2}$
+\end_inset
+
+ for a matrix 
+\begin_inset Formula $\tilde{D}$
+\end_inset
+
+ that can be obtained from 
+\begin_inset Formula $D$
+\end_inset
+
+ just by deleting rows and/or columns.
+ Modify the 
+\family typewriter
+diff1.m
+\family default
+ file to compute 
+\begin_inset Formula $\tilde{D}$
+\end_inset
+
+ instead of 
+\begin_inset Formula $D$
+\end_inset
+
+, making a new file 
+\family typewriter
+diff1n.m
+\family default
+.
+ [For example, given a matrix 
+\begin_inset Formula $M$
+\end_inset
+
+, in Matlab you can make a submatrix of rows 3 to 5 and columns 8 to 17
+ by 
+\family typewriter
+M(3:5, 8:17)
+\family default
+, or columns 8 to 17 and all the rows by 
+\family typewriter
+M(:, 8:17)
+\family default
+.]
+\end_layout
+
+\begin_layout Enumerate
+One of the nice theorems from 18.06 was that, for matrices of the form 
+\begin_inset Formula $\tilde{A}=\alpha\tilde{D}^{T}\tilde{D}$
+\end_inset
+
+ for 
+\begin_inset Formula $\alpha\neq0$
+\end_inset
+
+, 
+\begin_inset Formula $\rank(\tilde{A})=\rank(\tilde{D})=\rank(\tilde{D}^{T})$
+\end_inset
+
+.
+ By inspection of either 
+\begin_inset Formula $\tilde{D}$
+\end_inset
+
+ or 
+\begin_inset Formula $\tilde{D}^{T}$
+\end_inset
+
+, say what the rank of 
+\begin_inset Formula $\tilde{A}$
+\end_inset
+
+ is and the dimension of the nullspace 
+\begin_inset Formula $N(\tilde{A})$
+\end_inset
+
+.
+ Give a basis for the nullspace of 
+\begin_inset Formula $\tilde{A}$
+\end_inset
+
+.
+ (This should be all possible by inspection, little computation required!)
+ Compare to the nullspace of 
+\begin_inset Formula $d^{2}/dx^{2}$
+\end_inset
+
+ with these boundary conditions, from pset 1.
+\end_layout
+
+\begin_layout Enumerate
+Using Matlab code similar to problem 3 of pset 2, compute the eigenvalues
+ and eigenvectors of 
+\begin_inset Formula $\tilde{A}$
+\end_inset
+
+, and compare the solutions with the smallest three 
+\begin_inset Formula $|\lambda|$
+\end_inset
+
+ to the corresponding exact eigensolutions for 
+\begin_inset Formula $d^{2}/dx^{2}$
+\end_inset
+
+ with these boundary conditions.
+ Roughly how fast does the error in 
+\begin_inset Formula $\lambda_{1}\approx-(\pi/L)^{2}$
+\end_inset
+
+ decrease with 
+\begin_inset Formula $\Delta x$
+\end_inset
+
+? This is because 
+\begin_inset Formula $u'_{1/2}$
+\end_inset
+
+ is a ________ difference approximation for 
+\begin_inset Formula $u'(0)$
+\end_inset
+
+ and 
+\begin_inset Formula $u'_{M+1/2}$
+\end_inset
+
+ is a _________ difference approximation for 
+\begin_inset Formula $u'(L)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+The distance from the 
+\begin_inset Formula $u'_{1/2}$
+\end_inset
+
+ to 
+\begin_inset Formula $u'_{M+1/2}$
+\end_inset
+
+ grid points is 
+\begin_inset Formula $L-\Delta x$
+\end_inset
+
+, not 
+\begin_inset Formula $L$
+\end_inset
+
+.
+ Fix this by changing 
+\begin_inset Formula $\Delta x$
+\end_inset
+
+ to 
+\begin_inset Formula $\Delta x=L/M$
+\end_inset
+
+.
+ With this new 
+\begin_inset Formula $\Delta x$
+\end_inset
+
+, roughly how fast does the error in 
+\begin_inset Formula $\lambda_{1}=-(\pi/L)^{2}$
+\end_inset
+
+ decrease with 
+\begin_inset Formula $\Delta x$
+\end_inset
+
+? 
+\end_layout
+
+\begin_layout Subsection*
+Problem 3: Bessel, Bessel, toil and mess...el
+\end_layout
+
+\begin_layout Standard
+In class, we solved for the eigenfunctions of 
+\begin_inset Formula $\nabla^{2}$
+\end_inset
+
+ in two dimensions, in a cylindrical region 
+\begin_inset Formula $r\in[0,R]$
+\end_inset
+
+, 
+\begin_inset Formula $\theta\in[0,2\pi]$
+\end_inset
+
+ using separation of variables, and obtained Bessel's equation and Bessel-functi
+on solutions.
+ Although Bessel's equation has two solutions 
+\begin_inset Formula $J_{m}(kr)$
+\end_inset
+
+ and 
+\begin_inset Formula $Y_{m}(kr)$
+\end_inset
+
+ (the 
+\emph on
+Bessel functions
+\emph default
+), the second solution 
+\begin_inset Formula $(Y_{m}$
+\end_inset
+
+) blows up as 
+\begin_inset Formula $r\to0$
+\end_inset
+
+ and so for that problem we could only have 
+\begin_inset Formula $J_{m}(kr)$
+\end_inset
+
+ solutions (although we still needed to solve a transcendental equation
+ to obtain 
+\begin_inset Formula $k$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename annulus.eps
+	width 50col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:annulus"
+
+\end_inset
+
+Schematic of the domain 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ for problem 3: an annular region in two dimensions, with radii 
+\begin_inset Formula $r\in[R_{1},R_{2}]$
+\end_inset
+
+ and angles 
+\begin_inset Formula $\theta\in[0,2\pi]$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+In this problem, you will solve for the 2d eigenfunctions of 
+\begin_inset Formula $\nabla^{2}$
+\end_inset
+
+ in an 
+\emph on
+annular
+\emph default
+ region 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ that does 
+\emph on
+not contain the origin
+\emph default
+, as depicted schematically in Fig.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:annulus"
+
+\end_inset
+
+, between radii 
+\begin_inset Formula $R_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $R_{2}$
+\end_inset
+
+, so that you will need 
+\emph on
+both
+\emph default
+ the 
+\begin_inset Formula $J_{m}$
+\end_inset
+
+ and 
+\begin_inset Formula $Y_{m}$
+\end_inset
+
+ solutions.
+ We will impose Dirichlet boundary conditions 
+\begin_inset Formula $u|_{d\Omega}=0$
+\end_inset
+
+; i.e.
+ for a function 
+\begin_inset Formula $u(r,\theta)$
+\end_inset
+
+ in cylindrical coordinates, 
+\begin_inset Formula $u(R_{1},\theta)=u(R_{2},\theta)=0$
+\end_inset
+
+.
+ Exactly as in class, the separation of variables ansatz 
+\begin_inset Formula $u(r,\theta)=\rho(r)\tau(\theta)$
+\end_inset
+
+ leads to functions 
+\begin_inset Formula $\tau(\theta)$
+\end_inset
+
+ spanned by 
+\begin_inset Formula $\sin(m\theta)$
+\end_inset
+
+ and 
+\begin_inset Formula $\cos(m\theta)$
+\end_inset
+
+ for integers 
+\begin_inset Formula $m$
+\end_inset
+
+, and functions 
+\begin_inset Formula $\rho(r)$
+\end_inset
+
+ that satisfy Bessel's equation.
+ Thus, the eigenfunctions are of the form: 
+\begin_inset Formula \[
+u(r,\theta)=\left[\alpha J_{m}(kr)+\beta Y_{m}(kr)\right]\times\left[A\cos(m\theta)+B\sin(m\theta)\right]\]
+
+\end_inset
+
+for arbitrary constants 
+\begin_inset Formula $A$
+\end_inset
+
+ and 
+\begin_inset Formula $B$
+\end_inset
+
+, for integers 
+\begin_inset Formula $m=0,1,2,\ldots$
+\end_inset
+
+, and for constants 
+\begin_inset Formula $\alpha$
+\end_inset
+
+, 
+\begin_inset Formula $\beta$
+\end_inset
+
+, and 
+\begin_inset Formula $k$
+\end_inset
+
+ to be determined.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Using the boundary conditions, write down two equations for 
+\begin_inset Formula $\alpha$
+\end_inset
+
+, 
+\begin_inset Formula $\beta$
+\end_inset
+
+ and 
+\begin_inset Formula $k$
+\end_inset
+
+, of the form 
+\begin_inset Formula $E\left(\begin{array}{c}
+\alpha\\
+\beta\end{array}\right)=0$
+\end_inset
+
+ for some 
+\begin_inset Formula $2\times2$
+\end_inset
+
+ matrix 
+\begin_inset Formula $E$
+\end_inset
+
+.
+ This only has a solution when 
+\begin_inset Formula $\det E=0$
+\end_inset
+
+, and from this fact obtain a single equation for 
+\begin_inset Formula $k$
+\end_inset
+
+ of the form 
+\begin_inset Formula $f_{m}(k)=0$
+\end_inset
+
+ for some function 
+\begin_inset Formula $f_{m}$
+\end_inset
+
+ that depends on 
+\begin_inset Formula $m$
+\end_inset
+
+.
+ This is a transcendental equation; you can't solve it by hand for 
+\begin_inset Formula $k$
+\end_inset
+
+.
+ In terms of 
+\begin_inset Formula $k$
+\end_inset
+
+ (which is still unknown), write down a possible expression for 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ and 
+\begin_inset Formula $\beta$
+\end_inset
+
+, i.e.
+ a basis for 
+\begin_inset Formula $N(E)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Assuming 
+\begin_inset Formula $R_{1}=1$
+\end_inset
+
+, 
+\begin_inset Formula $R_{2}=2$
+\end_inset
+
+, plot your function 
+\begin_inset Formula $f_{m}(k)$
+\end_inset
+
+ versus 
+\begin_inset Formula $k\in[0,20]$
+\end_inset
+
+ for 
+\begin_inset Formula $m=0,1,2$
+\end_inset
+
+.
+ Note that Matlab provides the Bessel functions built-in: 
+\begin_inset Formula $J_{m}(x)$
+\end_inset
+
+ is 
+\family typewriter
+besselj(m,x)
+\family default
+ and 
+\begin_inset Formula $Y_{m}(x)$
+\end_inset
+
+ is 
+\family typewriter
+bessely(m,x)
+\family default
+.
+ You can plot a function with the 
+\family typewriter
+fplot
+\family default
+ command.
+ For example, to plot 
+\begin_inset Formula $J_{m}(k)\cdot Y_{m}(3k)$
+\end_inset
+
+ as a blue line, you would do 
+\family typewriter
+fplot(@(k) besselj(m, k) .* bessely(m, 3*k), [0,20], 'b')
+\family default
+, assuming you have assigned 
+\family typewriter
+m
+\family default
+ to a value.
+ [
+\family typewriter
+@(k)
+\family default
+_____ defines a function of 
+\begin_inset Formula $k$
+\end_inset
+
+.] It might be helpful to use 
+\family typewriter
+hold on
+\family default
+ between plots so that you can plot 
+\begin_inset Formula $f_{0}$
+\end_inset
+
+, 
+\begin_inset Formula $f_{1}$
+\end_inset
+
+, and 
+\begin_inset Formula $f_{2}$
+\end_inset
+
+ on the same plot (labelled, of course).
+\end_layout
+
+\begin_layout Enumerate
+For 
+\begin_inset Formula $m=0$
+\end_inset
+
+, find the first three (smallest 
+\begin_inset Formula $k>0$
+\end_inset
+
+) solutions 
+\begin_inset Formula $k_{1}$
+\end_inset
+
+, 
+\begin_inset Formula $k_{2}$
+\end_inset
+
+, and 
+\begin_inset Formula $k_{3}$
+\end_inset
+
+ to 
+\begin_inset Formula $f_{0}(k)=0$
+\end_inset
+
+.
+ Get a rough estimate first from your graph (zooming if necessary), and
+ then get an accurate answer by calling the 
+\family typewriter
+fzero
+\family default
+ function (Matlab's nonlinear root-finding function).
+ For example, to find a root of 
+\begin_inset Formula $\cos(x)-x$
+\end_inset
+
+ near 
+\begin_inset Formula $x=1$
+\end_inset
+
+, you would call 
+\family typewriter
+fzero(@(x) cos(x) - x, 1)
+\family default
+ in Matlab.
+ Plot the corresponding functions 
+\begin_inset Formula $\alpha J_{0}(kr)+\beta Y_{0}(kr)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Because 
+\begin_inset Formula $\nabla^{2}$
+\end_inset
+
+ is real-symmetric, we know that the eigenfunctions must be orthogonal.
+ From class, this implies that the radial parts must also be orthogonal
+ when integrated via 
+\begin_inset Formula $\int r\, dr$
+\end_inset
+
+.
+ Check that your Bessel solutions for 
+\begin_inset Formula $k_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $k_{2}$
+\end_inset
+
+ are indeed orthogonal, by numerically integrating them via the 
+\family typewriter
+quadl
+\family default
+ function in Matlab.
+ In particular, if you have assigned your 
+\begin_inset Formula $\alpha,\beta,k$
+\end_inset
+
+ solutions to variables 
+\family typewriter
+a1
+\family default
+,
+\family typewriter
+b1
+\family default
+,
+\family typewriter
+k1
+\family default
+ and 
+\family typewriter
+a2
+\family default
+,
+\family typewriter
+b2
+\family default
+,
+\family typewriter
+k2
+\family default
+ in Matlab, then the integral for 
+\begin_inset Formula $r\in[1,2]$
+\end_inset
+
+ is given to at least six digits of accuracy by 
+\family typewriter
+quadl(@(r) (a1*besselj(0,k1*r) + b1*bessely(0,k1*r)) 
+\begin_inset Newline newline
+\end_inset
+
+.* (a2*besselj(0,k2*r) + b2*bessely(0,k2*r)) .* r, 1,2, 1e-6) 
+\family default
+in Matlab.
+\end_layout
+
+\end_body
+\end_document

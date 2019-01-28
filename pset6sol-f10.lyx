@@ -1,0 +1,742 @@
+#LyX 1.6.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+
+\renewcommand{\vec}[1]{\mathbf{#1}}
+
+\renewcommand{\labelenumi}{(\alph{enumi})}
+\renewcommand{\labelenumii}{(\roman{enumii})}
+\newcommand{\rank}{\operatorname{rank}}
+
+\usepackage{cancel}
+\end_preamble
+\use_default_options false
+\language english
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_amsmath 2
+\use_esint 0
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\leftmargin 0.7in
+\topmargin 0.7in
+\rightmargin 0.7in
+\bottommargin 0.7in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Section*
+18.303 Problem Set 6 Solutions
+\end_layout
+
+\begin_layout Subsection*
+Problem 1: (5+5+10)+(5+5+10) points
+\end_layout
+
+\begin_layout Enumerate
+Solution:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+As pointed out in the notes, for any 
+\begin_inset Formula $f(x)$
+\end_inset
+
+ to define a regular distribution, it is sufficient for 
+\begin_inset Formula $\int_{a}^{b}|f(x)|dx$
+\end_inset
+
+ to be finite for any 
+\begin_inset Formula $[a,b]$
+\end_inset
+
+.
+ Here, even though 
+\begin_inset Formula $f(x)$
+\end_inset
+
+ diverges as 
+\begin_inset Formula $x\to0^{+}$
+\end_inset
+
+, the integral of 
+\begin_inset Formula $f(x)$
+\end_inset
+
+ does not: 
+\begin_inset Formula $\int_{a}^{b}\frac{dx}{\sqrt{x}}=\left.2\sqrt{x}\right|_{a}^{b}$
+\end_inset
+
+, which is finite for any 
+\begin_inset Formula $a,b\geq0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+In this case, the integral 
+\emph on
+does
+\emph default
+ diverge: if 
+\begin_inset Formula $a,b\geq0$
+\end_inset
+
+, then 
+\begin_inset Formula $\int_{a}^{b}|g(x)|dx=\left.-1/\sqrt{x}\right|_{a}^{b}$
+\end_inset
+
+, which blows up as 
+\begin_inset Formula $a\to0^{+}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+As a distribution, 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+
+\begin_inset Formula $f\{\phi\}=\lim_{\epsilon\to0}\int_{\epsilon}^{\infty}\frac{\phi(x)}{\sqrt{x}}dx$
+\end_inset
+
+, where the limit exists since, for small 
+\begin_inset Formula $x$
+\end_inset
+
+, the integrand is 
+\begin_inset Formula $\approx\phi(0)/\sqrt{x}$
+\end_inset
+
+, which as a finite integral from above.
+ The 
+\family default
+\series default
+\shape default
+\size default
+\emph on
+\bar default
+\noun default
+\color inherit
+definition
+\emph default
+ of the distributional derivative is
+\begin_inset Formula \begin{align*}
+f'\{\phi\} & =f\{-\phi'\}=\lim_{\epsilon\to0}\int_{\epsilon}^{\infty}\frac{-\phi'(x)}{\sqrt{x}}dx\\
+ & =\lim_{\epsilon\to0}\int_{\epsilon}^{\infty}\frac{-1}{\sqrt{x}}\frac{d}{dx}\left[\phi(x)-\phi(0)\right]dx\\
+ & =\lim_{\epsilon\to0}\left.\frac{-1}{\sqrt{x}}\frac{d}{dx}\left[\phi(x)-\phi(0)\right]\right|_{\epsilon}^{\infty}+\lim_{\epsilon\to0}\int_{\epsilon}^{\infty}\frac{-1}{2x^{3/2}}\left[\phi(x)-\phi(0)\right]dx\\
+ & =\lim_{\epsilon\to0}\int_{\epsilon}^{\infty}g(x)\left[\phi(x)-\phi(0)\right]dx,\end{align*}
+
+\end_inset
+
+where in the second line we have used the hint, in the third line we have
+ integrated by parts, and in the fourth line we have used the fact that
+ 
+\begin_inset Formula $\phi(x)$
+\end_inset
+
+ vanishes at 
+\begin_inset Formula $\infty$
+\end_inset
+
+ (by definition of the space of test functions) and 
+\begin_inset Formula $\frac{\phi(\epsilon)-\phi(0)}{\sqrt{\epsilon}}\to\frac{\epsilon\phi'(\epsilon)}{\sqrt{\epsilon}}=\sqrt{\epsilon}\phi'(\epsilon)\to0$
+\end_inset
+
+ as 
+\begin_inset Formula $\epsilon\to0$
+\end_inset
+
+ (by virtue of 
+\begin_inset Formula $\phi$
+\end_inset
+
+ being differentiable).
+ By the same token, the integrand 
+\begin_inset Formula $g(x)[\phi(x)-\phi(0)]$
+\end_inset
+
+ is asymptotically proportional to 
+\begin_inset Formula $\phi'(0)/2\sqrt{x}$
+\end_inset
+
+ in the limit of small 
+\begin_inset Formula $x$
+\end_inset
+
+, and hence has a finite integral.
+ This is 
+\emph on
+not
+\emph default
+ a regular distribution---it is not an integral of 
+\begin_inset Formula $\phi(x)$
+\end_inset
+
+ multiplied by any function---it is a singular distribution.
+ It is, however, the same as the naive integration against 
+\begin_inset Formula $g(x)$
+\end_inset
+
+ for any 
+\begin_inset Formula $\phi(x)$
+\end_inset
+
+ with 
+\begin_inset Formula $\phi(0)=0$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Solution:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+For 
+\begin_inset Formula $r>0$
+\end_inset
+
+, 
+\begin_inset Formula $-\nabla^{2}g(r)=-\frac{1}{r}\frac{\partial}{\partial r}(rg')=0$
+\end_inset
+
+, hence 
+\begin_inset Formula $\frac{\partial}{\partial r}(rg')=0$
+\end_inset
+
+, hence 
+\begin_inset Formula $rg'(r)=c$
+\end_inset
+
+ for some constant 
+\begin_inset Formula $c$
+\end_inset
+
+, hence 
+\begin_inset Formula $g'(r)=\frac{c}{r}$
+\end_inset
+
+, hence 
+\begin_inset Formula $g(r)=c\ln r+C$
+\end_inset
+
+.
+ The 
+\begin_inset Formula $+C$
+\end_inset
+
+ constant is just a function in the nullspace of 
+\begin_inset Formula $\nabla^{2}$
+\end_inset
+
+ independent of the right-hand side, and we will set this to zero.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Writing the integral as 
+\begin_inset Formula $g\{\phi\}=\lim_{\epsilon\to0}\int_{0}^{2\pi}d\theta\int_{\epsilon}^{\infty}c\ln r\phi(r,\theta)r\, dr$
+\end_inset
+
+, it is clear that the only possible problem could come from the 
+\begin_inset Formula $r$
+\end_inset
+
+ integral.
+ By definition of the space of test functions, 
+\begin_inset Formula $\phi(r,\theta)$
+\end_inset
+
+ must be zero for 
+\begin_inset Formula $r>R$
+\end_inset
+
+ for some 
+\begin_inset Formula $R$
+\end_inset
+
+, and it is bounded for 
+\begin_inset Formula $r<R$
+\end_inset
+
+ (being continuous).
+ The 
+\begin_inset Formula $c\ln r\phi(r,\theta)r$
+\end_inset
+
+ integrand may look worrying at first glance because 
+\begin_inset Formula $\ln r\to-\infty$
+\end_inset
+
+ as 
+\begin_inset Formula $r\to0^{+}$
+\end_inset
+
+.
+ However, application of L'Hopital's rule shows that 
+\begin_inset Formula $\lim_{r\to0}r\ln r=\lim_{r\to0}\frac{\ln r}{1/r}=\lim_{r\to0}\frac{1/r}{-1/r^{2}}=0$
+\end_inset
+
+, so the integrand is bounded (and continuous) for 
+\begin_inset Formula $r<R$
+\end_inset
+
+, and hence the integral exists.
+ (Note that we don't have to worry about the 
+\begin_inset Formula $r\to\infty$
+\end_inset
+
+ limit, since 
+\begin_inset Formula $\phi=0$
+\end_inset
+
+ for all sufficiently large 
+\begin_inset Formula $r$
+\end_inset
+
+: no limit is required.
+ This wouldn't be the case if we had defined the test functions differently,
+ requiring them to 
+\begin_inset Formula $\to0$
+\end_inset
+
+ at 
+\begin_inset Formula $\infty$
+\end_inset
+
+ rather than having compact support---in that case, we would have to worry
+ about how fast they 
+\begin_inset Formula $\to0$
+\end_inset
+
+.)
+\end_layout
+
+\begin_layout Enumerate
+Taking the distributional derivative, we find:
+\begin_inset Formula \[
+(-\nabla^{2}g)\{\phi\}=\int g(r)[-\nabla^{2}\phi]=-\lim_{\epsilon\to0}\int_{0}^{2\pi}d\theta\int_{\epsilon}^{\infty}cr\ln r\left[\frac{1}{r}\frac{\partial}{\partial r}\left(r\frac{\partial\phi}{\partial r}\right)+\frac{1}{r^{2}}\frac{\partial^{2}\phi}{\partial\theta^{2}}\right]dr.\]
+
+\end_inset
+
+Now, we will perform this integral in two pieces, as in class.
+ For the 
+\begin_inset Formula $\partial^{2}\phi/\partial\theta^{2}$
+\end_inset
+
+ term, we will do the 
+\begin_inset Formula $d\theta$
+\end_inset
+
+ integral first:
+\begin_inset Formula \[
+\int_{0}^{2\pi}d\theta\frac{\partial^{2}\phi}{\partial\theta^{2}}=\left.\frac{\partial\phi}{\partial\theta}\right|_{0}^{2\pi}=0\]
+
+\end_inset
+
+where we have used the fact that any function in polar coordinates must
+ be periodic in 
+\begin_inset Formula $\theta$
+\end_inset
+
+.
+ Fort the 
+\begin_inset Formula $\partial\phi/\partial r$
+\end_inset
+
+ term, we will integrate by parts:
+\begin_inset Formula \[
+\lim_{\epsilon\to0}\int_{\epsilon}^{\infty}c\cancel{r}\ln r\cancel{\frac{1}{r}}\frac{\partial}{\partial r}\left(r\frac{\partial\phi}{\partial r}\right)dr=\lim_{\epsilon\to0}\left.c\left(\ln r\right)r\frac{\partial\phi}{\partial r}\right|_{\epsilon}^{\infty}-\lim_{\epsilon\to0}\int_{\epsilon}^{\infty}c\cancel{\frac{1}{r}}\cancel{r}\frac{\partial\phi}{\partial r}dr=-\left.c\phi(r,\theta)\right|_{0}^{\infty}=c\phi(\vec{0}),\]
+
+\end_inset
+
+where in the second step we have used the fact that 
+\begin_inset Formula $\lim_{r\to0}r\ln r=0$
+\end_inset
+
+.
+ Combined with the other integrals above, we get 
+\begin_inset Formula $-\int_{0}^{2\pi}c\phi(\vec{0})d\theta=-2\pi c\phi(\vec{0})$
+\end_inset
+
+.
+ Since we want this to be 
+\begin_inset Formula $\delta\{\phi\}=\phi(\vec{0})$
+\end_inset
+
+, we immediately obtain 
+\begin_inset Formula $\boxed{c=-1/2\pi}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Subsection*
+Problem 2: 5+5+5+10+10 points
+\end_layout
+
+\begin_layout Enumerate
+If we simply used 
+\begin_inset Formula $\vec{y}_{n}=\vec{x}_{n}$
+\end_inset
+
+, then the diagonal entries of 
+\begin_inset Formula $A$
+\end_inset
+
+ would blow up (since they would have 
+\begin_inset Formula $\ln0$
+\end_inset
+
+).
+ In general, these kinds of singularities in the Green's functions for coinciden
+t points require lots of careful handling in integral-equation methods.
+ (Although using 
+\begin_inset Formula $\vec{y}_{n}\neq\vec{x}_{n}$
+\end_inset
+
+ as we did here is a simple fix, it has the unfortunate side-effect of making
+ 
+\begin_inset Formula $A$
+\end_inset
+
+ non-symmetric.
+ There are cleverer ways around this problem in serious Nyström methods.)
+\end_layout
+
+\begin_layout Enumerate
+Since we want 
+\begin_inset Formula \[
+A\vec{s}=\sum_{n=1}^{N}\sigma_{n}\ln|\vec{y}_{m}-\vec{x}_{n}|=-\ln|\vec{y}_{m}-\vec{x}'|=-\vec{b}\]
+
+\end_inset
+
+in order to satisfy the Dirichlet boundary conditions, we should solve 
+\begin_inset Formula $A\vec{s}=-\vec{b}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+(There is a typo in the problem set: 
+\begin_inset Formula $\vec{s}$
+\end_inset
+
+ should be plotted versus 
+\family typewriter
+x_theta
+\family default
+, not 
+\family typewriter
+y_theta
+\family default
+, not that it matters much; the two differ by only about 
+\begin_inset Formula $0.2^{\circ}$
+\end_inset
+
+.) The command 
+\family typewriter
+plot(x_theta * 180/pi, A 
+\backslash
+ -b)
+\family default
+ yields the solution plot shown in figure
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:2c"
+
+\end_inset
+
+.
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pset6-2c.eps
+	width 50col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:2c"
+
+\end_inset
+
+Point-source values 
+\begin_inset Formula $\sigma_{n}$
+\end_inset
+
+ versus angle 
+\begin_inset Formula $\theta$
+\end_inset
+
+ for a 
+\begin_inset Quotes eld
+\end_inset
+
+point charge
+\begin_inset Quotes erd
+\end_inset
+
+ at 
+\begin_inset Formula $(2,0)$
+\end_inset
+
+ near a unit circle with Dirichlet (0) boundary conditions.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+We just need to compute 
+\begin_inset Formula \[
+\ln|\vec{x}-\vec{x}'|+\sum_{n=1}^{N}\sigma_{n}\ln|\vec{x}-\vec{x}_{n}|\]
+
+\end_inset
+
+for 
+\begin_inset Formula $\vec{x}=(1,1)$
+\end_inset
+
+.
+ In Matlab, this corresponds to the command 
+\family typewriter
+log(sqrt((1-2)^2+(1-0)^2)) + sum((A 
+\backslash
+ -b) .* log(sqrt((1-x_x).^2+(1-x_y).^2)))
+\family default
+, which gives 
+\begin_inset Formula $-345.3383$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Given 
+\begin_inset Formula $\vec{s}$
+\end_inset
+
+, we can easily change the total charge to zero just by subtracting the
+ mean 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ (
+\begin_inset Formula $=\sum\sigma_{n}/N$
+\end_inset
+
+) from each 
+\begin_inset Formula $\sigma_{n}$
+\end_inset
+
+.
+ (A little more cleverness is to realize that the mean 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ is exactly 
+\begin_inset Formula $-1$
+\end_inset
+
+, but it's okay if you don't notice this.) However, we 
+\emph on
+also
+\emph default
+ require that the potential 
+\begin_inset Formula $G$
+\end_inset
+
+ be a constant on the cylinder, and for an arbitrary shape subtracting constant
+ from all the 
+\begin_inset Formula $\sigma_{n}'s$
+\end_inset
+
+ wouldn't change 
+\begin_inset Formula $G$
+\end_inset
+
+ by a constant.
+ Here, we are saved by symmetry: since, in the case of a circle, every point
+ 
+\begin_inset Formula $\vec{y}_{m}$
+\end_inset
+
+ is equivalent under rotation to every other 
+\begin_inset Formula $\vec{y}_{m}$
+\end_inset
+
+, so adding a constant to all the 
+\begin_inset Formula $\sigma_{n}'s$
+\end_inset
+
+ changes 
+\begin_inset Formula $G$
+\end_inset
+
+ at every 
+\begin_inset Formula $\vec{y}_{m}$
+\end_inset
+
+ by the same amount, so the result is a constant 
+\begin_inset Formula $G$
+\end_inset
+
+ at the 
+\begin_inset Formula $\vec{y}_{m}'s$
+\end_inset
+
+ (which are the only points we enforce the boundary conditions at in this
+ approximation).
+ This is easily verified by multipling 
+\begin_inset Formula $A$
+\end_inset
+
+ by 
+\begin_inset Formula $\vec{o}$
+\end_inset
+
+ (the vector of all ones) in Matlab by the command 
+\family typewriter
+A * o'
+\family default
+, which results in a vector of all the same values.
+ In fact, since the old 
+\begin_inset Formula $G$
+\end_inset
+
+ at the surface is zero and the mean 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ was 
+\begin_inset Formula $-1$
+\end_inset
+
+, we are just adding 
+\begin_inset Formula $+1$
+\end_inset
+
+ to all the 
+\begin_inset Formula $\sigma_{n}'s$
+\end_inset
+
+ and get a new potential on the surface of 
+\begin_inset Formula $A\vec{o}$
+\end_inset
+
+, which is 0.6931.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+(For a more general shape, matters are not so easy because we cannot simply
+ add a constant to all the charges to get a constant 
+\begin_inset Formula $G$
+\end_inset
+
+ on the surface.
+ In that case, we would have to set all the potentials at 
+\begin_inset Formula $\vec{y}_{m}$
+\end_inset
+
+ to equal the potential at 
+\begin_inset Formula $\vec{y}_{1}$
+\end_inset
+
+, remove the equation for 
+\begin_inset Formula $\vec{y}_{1}$
+\end_inset
+
+, and add a new equation that the sum of the 
+\begin_inset Formula $\sigma_{n}$
+\end_inset
+
+'s is zero, to obtain a new system of equations to solve.)
+\end_layout
+
+\end_body
+\end_document

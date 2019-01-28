@@ -1,0 +1,523 @@
+#LyX 1.6.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+
+\renewcommand{\vec}[1]{\mathbf{#1}}
+
+\renewcommand{\labelenumi}{(\alph{enumi})}
+\renewcommand{\labelenumii}{(\roman{enumii})}
+\newcommand{\rank}{\operatorname{rank}}
+\end_preamble
+\use_default_options false
+\language english
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_amsmath 2
+\use_esint 2
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\leftmargin 0.7in
+\topmargin 0.7in
+\rightmargin 0.7in
+\bottommargin 0.7in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Section*
+18.303 Final Exam, Fall 2010
+\end_layout
+
+\begin_layout Standard
+There are 
+\series bold
+five problems
+\series default
+ with 
+\series bold
+equal weight
+\series default
+.
+ You have 3 hours, and may bring 
+\series bold
+one page
+\series default
+ of notes.
+\end_layout
+
+\begin_layout Subsection*
+Problem 1: Derivatives and differences (30 points)
+\end_layout
+
+\begin_layout Standard
+Consider functions 
+\begin_inset Formula $u(x)$
+\end_inset
+
+ on 
+\begin_inset Formula $x\in[0,L]$
+\end_inset
+
+, and the operator 
+\begin_inset Formula $\hat{A}=\frac{d^{4}}{dx^{4}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Give 
+\emph on
+one
+\emph default
+ example of boundary conditions that make 
+\begin_inset Formula $\hat{A}$
+\end_inset
+
+ self-adjoint.
+\end_layout
+
+\begin_layout Enumerate
+If we make a finite difference approximation 
+\begin_inset Formula $u(m\Delta x)\approx u_{m}$
+\end_inset
+
+, give a second-order accurate finite-difference approximation of 
+\begin_inset Formula $\hat{A}$
+\end_inset
+
+.
+ (Hint: use a second-order accurate difference approximation four times.)
+\end_layout
+
+\begin_layout Subsection*
+Problem 2: No more scalars (30 points)
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $\Omega\subseteq\mathbb{R}^{3}$
+\end_inset
+
+ be some 3d region, and consider 3-component vector-valued functions 
+\begin_inset Formula $\vec{u}(\vec{x})$
+\end_inset
+
+ with Dirichlet boundary conditions 
+\begin_inset Formula $\vec{u}|_{d\Omega}=0$
+\end_inset
+
+.
+ In class, we showed that the curl operator 
+\begin_inset Formula $\nabla\times$
+\end_inset
+
+ is then self-adjoint for the inner product 
+\begin_inset Formula $\langle\vec{u},\vec{v}\rangle=\int_{\Omega}\bar{\vec{u}}\cdot\vec{v}$
+\end_inset
+
+.
+ Consider the operator 
+\begin_inset Formula $\hat{A}$
+\end_inset
+
+ for some real-valued function 
+\begin_inset Formula $c(\vec{x})$
+\end_inset
+
+, where: 
+\begin_inset Formula \[
+\hat{A}\vec{u}=\nabla\times(c\nabla\times\vec{u})\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Under what conditions on 
+\begin_inset Formula $c(\vec{x})$
+\end_inset
+
+ does the equation 
+\begin_inset Formula $\hat{A}\vec{u}=\frac{\partial\vec{u}}{\partial t}$
+\end_inset
+
+ have only solutions that decay exponentially to some limiting values (possibly
+ nonzero)? (Hint: you should not need to do any messy integrals; the fact
+ that 
+\begin_inset Formula $\nabla\times$
+\end_inset
+
+ is self-adjoint should simplify things.)
+\end_layout
+
+\begin_layout Enumerate
+What quantities are conserved over time by solutions of 
+\begin_inset Formula $\hat{A}\vec{u}=\frac{\partial\vec{u}}{\partial t}$
+\end_inset
+
+? (Hint: the nullspace of 
+\begin_inset Formula $\nabla\times$
+\end_inset
+
+ is 
+\begin_inset Formula $\nabla\phi$
+\end_inset
+
+ for any 
+\begin_inset Formula $\phi$
+\end_inset
+
+.)
+\end_layout
+
+\begin_layout Subsection*
+Problem 3: Guided waves (30 points)
+\end_layout
+
+\begin_layout Standard
+Consider the scalar wave equation 
+\begin_inset Formula $\nabla^{2}u=\frac{\partial^{2}u}{\partial t^{2}}$
+\end_inset
+
+ in two dimensions for 
+\begin_inset Formula $x\in[0,L]$
+\end_inset
+
+ and 
+\begin_inset Formula $y\in(-\infty,\infty)$
+\end_inset
+
+, with the Neumann boundary conditions 
+\begin_inset Formula $\left.\frac{\partial u}{\partial x}\right|_{x=0,L}=0$
+\end_inset
+
+.
+ That is, 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ is a width-
+\begin_inset Formula $L$
+\end_inset
+
+ strip extending infinitely in the 
+\begin_inset Formula $y$
+\end_inset
+
+ direction, with Neumann boundaries.
+\end_layout
+
+\begin_layout Enumerate
+If we look for separable eigenfunctions 
+\begin_inset Formula $u(x,y,t)=u_{k}(x)e^{i(ky-\omega t)}$
+\end_inset
+
+, what equation and what boundary conditions does 
+\begin_inset Formula $u_{k}$
+\end_inset
+
+ satisfy?
+\end_layout
+
+\begin_layout Enumerate
+Solve your equation from the previous part to obtain the eigenfunctions
+ and the dispersion relation 
+\begin_inset Formula $\omega(k)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+In this geometry, it possible to propagate a wavepacket (e.g.
+ a Gaussian-envelope pulse) in the 
+\begin_inset Formula $y$
+\end_inset
+
+ direction without it spreading out (becoming broader in time and/or 
+\begin_inset Formula $y$
+\end_inset
+
+)? Why or why not?
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\emph on
+CONTINUED ON NEXT PAGE...
+\end_layout
+
+\begin_layout Subsection*
+\begin_inset Newpage clearpage
+\end_inset
+
+Problem 4: Timestepping and stability (30 points)
+\end_layout
+
+\begin_layout Standard
+Consider the equation 
+\begin_inset Formula $\frac{\partial u}{\partial t}=-c\frac{\partial u}{\partial x}$
+\end_inset
+
+, where 
+\begin_inset Formula $c$
+\end_inset
+
+ is a constant, on an infinite domain 
+\begin_inset Formula $x\in(-\infty,\infty)$
+\end_inset
+
+.
+ Suppose that we discretize this as 
+\begin_inset Formula $u(m\Delta x,n\Delta t)\approx u_{m}^{n}$
+\end_inset
+
+ by 
+\begin_inset Formula \[
+\frac{u_{m}^{n+1}-u_{m}^{n}}{\Delta t}=-c\left[\alpha\frac{u_{m+1}^{n+1}-u_{m-1}^{n+1}}{2\Delta x}+(1-\alpha)\frac{u_{m+1}^{n}-u_{m-1}^{n}}{2\Delta x}\right],\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ is some real constant with 
+\begin_inset Formula $0\leq\alpha\leq1$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Show that this discretization is unconditionally stable when 
+\begin_inset Formula $\alpha=0.5$
+\end_inset
+
+.
+ (Recall von Neumann analysis.
+ e.g.
+ look for solutions 
+\begin_inset Formula $u_{m}^{n}=\lambda^{n}e^{ikm}$
+\end_inset
+
+ and show that 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ satisfies....) 
+\end_layout
+
+\begin_layout Enumerate
+For what other values of 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ is it unconditionally stable?
+\end_layout
+
+\begin_layout Enumerate
+For the remaining values of 
+\begin_inset Formula $\alpha$
+\end_inset
+
+, is it conditionally stable (and if so, what are the conditions on 
+\begin_inset Formula $\Delta x$
+\end_inset
+
+ and 
+\begin_inset Formula $\Delta t$
+\end_inset
+
+?) or always unstable?
+\end_layout
+
+\begin_layout Subsection*
+Problem 5: Green's functions (30 points)
+\end_layout
+
+\begin_layout Standard
+Suppose that we have an operator 
+\begin_inset Formula $\hat{A}$
+\end_inset
+
+ on a domain 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ with Dirichlet boundaries 
+\begin_inset Formula $u_{0}|_{d\Omega}=0$
+\end_inset
+
+, and we know the corresponding Green's function 
+\begin_inset Formula $G_{0}(\vec{x},\vec{x}')$
+\end_inset
+
+ [i.e.
+ 
+\begin_inset Formula $\hat{A}G_{0}(\vec{x},\vec{x}')=\delta(\vec{x}-\vec{x}')$
+\end_inset
+
+ and 
+\begin_inset Formula $G_{0}(\vec{x},\vec{x}')=0$
+\end_inset
+
+ for 
+\begin_inset Formula $\vec{x}\in d\Omega$
+\end_inset
+
+].
+ Suppose that we now want to solve the problem with some nonzero Dirichlet
+ boundary condition: 
+\begin_inset Formula $u|_{d\Omega}=b(\vec{x})$
+\end_inset
+
+ for some given function 
+\begin_inset Formula $b(x)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Write the solution 
+\begin_inset Formula $u$
+\end_inset
+
+ of 
+\begin_inset Formula $\hat{A}u=f$
+\end_inset
+
+ (satisfying the 
+\begin_inset Formula $b$
+\end_inset
+
+ boundary condition on 
+\begin_inset Formula $u$
+\end_inset
+
+) as some integral expression involving 
+\begin_inset Formula $G_{0}$
+\end_inset
+
+, 
+\begin_inset Formula $f$
+\end_inset
+
+, and 
+\begin_inset Formula $b$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Suppose 
+\begin_inset Formula $\hat{A}=\nabla^{2}$
+\end_inset
+
+.
+ In your expression from the previous part, integrate by parts on the term
+ involving 
+\begin_inset Formula $b$
+\end_inset
+
+ to show that your total solution 
+\begin_inset Formula $u$
+\end_inset
+
+ is exactly the zero boundary-condition solution 
+\begin_inset Formula $\int G_{0}(\vec{x},\vec{x}')f(\vec{x}')$
+\end_inset
+
+ plus a bunch of extra 
+\begin_inset Quotes eld
+\end_inset
+
+source
+\begin_inset Quotes erd
+\end_inset
+
+ terms from 
+\begin_inset Formula $d\Omega$
+\end_inset
+
+ involving 
+\begin_inset Formula $b$
+\end_inset
+
+.
+ (Careful with integration by parts: 
+\begin_inset Formula $b$
+\end_inset
+
+ is not zero on 
+\begin_inset Formula $d\Omega$
+\end_inset
+
+.)
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Useful 
+\begin_inset Quotes eld
+\end_inset
+
+integration by parts
+\begin_inset Quotes erd
+\end_inset
+
+ formula from class: 
+\begin_inset Formula $\int_{\Omega}u\nabla\cdot\vec{v}=\oiint_{d\Omega}u\vec{v}\cdot d\vec{A}-\int_{\Omega}(\nabla u)\cdot\vec{v}$
+\end_inset
+
+.
+\end_layout
+
+\end_body
+\end_document

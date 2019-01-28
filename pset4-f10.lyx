@@ -1,0 +1,763 @@
+#LyX 1.6.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+
+\renewcommand{\vec}[1]{\mathbf{#1}}
+
+\renewcommand{\labelenumi}{(\alph{enumi})}
+\renewcommand{\labelenumii}{(\roman{enumii})}
+\newcommand{\rank}{\operatorname{rank}}
+\end_preamble
+\use_default_options false
+\language english
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_amsmath 2
+\use_esint 0
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\topmargin 0.7in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Section*
+18.303 Problem Set 4
+\end_layout
+
+\begin_layout Standard
+Due Wednesday, 6 October 2010.
+\end_layout
+
+\begin_layout Subsection*
+Problem 1: Vive la différence
+\end_layout
+
+\begin_layout Standard
+In class, we derived the 2d center-difference approximation 
+\begin_inset Formula $A$
+\end_inset
+
+ of the operator 
+\begin_inset Formula $\hat{A}=-\nabla^{2}=-\frac{\partial^{2}}{\partial x^{2}}-\frac{\partial^{2}}{\partial y^{2}}$
+\end_inset
+
+ in a 
+\begin_inset Formula $L_{x}\times L_{y}$
+\end_inset
+
+ box (Dirichlet boundaries 
+\begin_inset Formula $u=0$
+\end_inset
+
+) with 
+\begin_inset Formula $M\times N$
+\end_inset
+
+ points [
+\begin_inset Formula $\Delta x=L_{x}/(M+1)$
+\end_inset
+
+, 
+\begin_inset Formula $\Delta y=L_{y}/(N+1)$
+\end_inset
+
+], writing it in the form of the 
+\begin_inset Formula $MN\times MN$
+\end_inset
+
+ matrix: 
+\begin_inset Formula \[
+A=\frac{1}{\Delta x^{2}}\left(\begin{array}{ccccc}
+2I & -I\\
+-I & 2I & -I\\
+ & \ddots & \ddots & \ddots\\
+ &  & -I & 2I & I\\
+ &  &  & -I & 2I\end{array}\right)+\frac{1}{\Delta y^{2}}\left(\begin{array}{ccccc}
+K\\
+ & K\\
+ &  & \ddots\\
+ &  &  & K\\
+ &  &  &  & K\end{array}\right)=A_{x}+A_{y},\]
+
+\end_inset
+
+where 
+\begin_inset Formula $I$
+\end_inset
+
+ is the 
+\begin_inset Formula $N\times N$
+\end_inset
+
+ identity matrix and 
+\begin_inset Formula $K$
+\end_inset
+
+ is the 
+\begin_inset Formula $N\times N$
+\end_inset
+
+ matrix 
+\begin_inset Formula $K=\left(\begin{array}{ccccc}
+2 & -1\\
+-1 & 2 & -1\\
+ & \ddots & \ddots & \ddots\\
+ &  & -1 & 2 & -1\\
+ &  &  & -1 & 2\end{array}\right).$
+\end_inset
+
+ As in class, this assumes that the points 
+\begin_inset Formula $u_{m,n}\approx u(m\Delta x,n\Delta y)$
+\end_inset
+
+ are converted into size-
+\begin_inset Formula $MN$
+\end_inset
+
+ vectors 
+\begin_inset Formula $[u_{1,:};u_{2,:};u_{3,:};\cdots;u_{M,:}]$
+\end_inset
+
+ by concatenating contiguous 
+\begin_inset Quotes eld
+\end_inset
+
+columns
+\begin_inset Quotes erd
+\end_inset
+
+ in the 
+\begin_inset Formula $y$
+\end_inset
+
+ direction.
+ (See also section 3.5 in the Strang book.) This form, however, is not necessarily
+ the most convenient one; as we saw in 1d, it is often nicer to write such
+ matrices in the form 
+\begin_inset Formula $D^{T}D$
+\end_inset
+
+ to make it clear that they are positive-definite, etcetera, and to make
+ it easier to implement non-constant coefficients 
+\begin_inset Formula $\nabla\cdot[c(\vec{x})\nabla]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Suppose 
+\begin_inset Formula $A_{x}=D_{x}^{T}D_{x}$
+\end_inset
+
+ and 
+\begin_inset Formula $A_{y}=D_{y}^{T}D_{y}$
+\end_inset
+
+ for some (as yet unknown) 1st-derivative matrices 
+\begin_inset Formula $D_{x}$
+\end_inset
+
+ and 
+\begin_inset Formula $D_{y}$
+\end_inset
+
+.
+ How many columns must 
+\begin_inset Formula $D_{x}$
+\end_inset
+
+ and 
+\begin_inset Formula $D_{y}$
+\end_inset
+
+ have? Show that 
+\begin_inset Formula $A=D^{T}D$
+\end_inset
+
+ for some 
+\begin_inset Formula $D$
+\end_inset
+
+ written in terms of 
+\begin_inset Formula $D_{x}$
+\end_inset
+
+ and 
+\begin_inset Formula $D_{y}$
+\end_inset
+
+ (and hence 
+\begin_inset Formula $A$
+\end_inset
+
+ is real-symmetric, definite, etcetera).
+ [Hint
+\begin_inset space ~
+\end_inset
+
+1: 
+\begin_inset Formula $D$
+\end_inset
+
+ can be a much bigger matrix than 
+\begin_inset Formula $D_{x}$
+\end_inset
+
+ or 
+\begin_inset Formula $D_{y}$
+\end_inset
+
+.
+ Hint
+\begin_inset space ~
+\end_inset
+
+2: think of 
+\begin_inset Formula $\nabla^{2}u=\nabla\cdot(\nabla u)$
+\end_inset
+
+; what vector space does 
+\begin_inset Formula $\nabla u$
+\end_inset
+
+ live in?] 
+\end_layout
+
+\begin_layout Enumerate
+Using the 
+\family typewriter
+diff1
+\family default
+ function from pset 1, the correct 
+\begin_inset Formula $D_{x}$
+\end_inset
+
+ matrix is 
+\family typewriter
+Dx=kron(diff1(M),speye(N,N))
+\family default
+ and the correct 
+\begin_inset Formula $D_{y}$
+\end_inset
+
+ matrix is 
+\family typewriter
+Dy=kron(speye(M,M),diff1(N))
+\family default
+.
+ For 
+\begin_inset Formula $M=N=10$
+\end_inset
+
+ and 
+\begin_inset Formula $\Delta x=\Delta y=1$
+\end_inset
+
+, give a command to form your 
+\begin_inset Formula $D$
+\end_inset
+
+ matrix in Matlab.
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Note: if you have two matrices 
+\begin_inset Formula $B$
+\end_inset
+
+ and 
+\begin_inset Formula $C$
+\end_inset
+
+, you can make a new matrix 
+\begin_inset Formula $(B\, C)$
+\end_inset
+
+ in Matlab by 
+\family typewriter
+[B,C]
+\family default
+ and a matrix 
+\begin_inset Formula $\left(\begin{array}{c}
+B\\
+C\end{array}\right)$
+\end_inset
+
+ by 
+\family typewriter
+[B;C]
+\family default
+.
+\end_layout
+
+\end_inset
+
+ Compare 
+\begin_inset Formula $D^{T}D$
+\end_inset
+
+ (
+\family typewriter
+D'*D
+\family default
+) to the 
+\begin_inset Formula $A$
+\end_inset
+
+ matrix produced by the command 
+\family typewriter
+A=delsq(numgrid('S',12)) 
+\family default
+using 
+\family typewriter
+A-D'*D
+\family default
+ to check that the result is the zero matrix.
+\end_layout
+
+\begin_layout Subsection*
+Problem 2: Brute-force Bessel
+\end_layout
+
+\begin_layout Standard
+In this problem, we will solve the Laplacian eigenproblem 
+\begin_inset Formula $-\nabla^{2}u=\lambda u$
+\end_inset
+
+ in a 2d cylinder 
+\begin_inset Formula $r\leq R$
+\end_inset
+
+ with Dirichlet boundary conditions 
+\begin_inset Formula $u|_{d\Omega}=0$
+\end_inset
+
+ by brute force, and compare to the analytical Bessel solutions from class.
+ Recall from class that the analytical solutions are of the form 
+\begin_inset Formula $J_{m}(k_{n}^{(m)}r)\times[\alpha\cos(m\theta)+\beta\cos(m\theta)]$
+\end_inset
+
+ for eigenvalues 
+\begin_inset Formula $\lambda=[k_{n}^{(m)}]^{2}$
+\end_inset
+
+ (positive since we have 
+\begin_inset Formula $-\nabla^{2}$
+\end_inset
+
+), where 
+\begin_inset Formula $m=0,1,2,\ldots$
+\end_inset
+
+ and 
+\begin_inset Formula $k_{n}^{(m)}R$
+\end_inset
+
+ is the 
+\begin_inset Formula $n$
+\end_inset
+
+-th root of 
+\begin_inset Formula $J_{m}(x)$
+\end_inset
+
+, and 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ and 
+\begin_inset Formula $\beta$
+\end_inset
+
+ are arbitrary constants.
+ Set 
+\begin_inset Formula $R=1$
+\end_inset
+
+ and form a corresponding finite-difference matrix 
+\begin_inset Formula $A\approx-\nabla^{2}$
+\end_inset
+
+ by the commands:
+\end_layout
+
+\begin_layout LyX-Code
+N = 50
+\end_layout
+
+\begin_layout LyX-Code
+G = numgrid('D', N+2);
+\end_layout
+
+\begin_layout LyX-Code
+dx = 2/(N+2);
+\end_layout
+
+\begin_layout LyX-Code
+A = delsq(G) / dx^2;
+\end_layout
+
+\begin_layout Enumerate
+Using 
+\family typewriter
+fzero
+\family default
+ as in pset 3 to find roots of 
+\begin_inset Formula $J_{m}(x)$
+\end_inset
+
+ to high accuracy, say what the smallest 3 eigenvalues of 
+\begin_inset Formula $-\nabla^{2}$
+\end_inset
+
+ should be, counting repeated eigenvalues only once each.
+ Be sure to compare more than one 
+\begin_inset Formula $m$
+\end_inset
+
+ value!
+\end_layout
+
+\begin_layout Enumerate
+Compute the first 5 eigenvalues and eigenvectors of 
+\begin_inset Formula $A$
+\end_inset
+
+ with the command 
+\family typewriter
+[V,S]=eigs(A,5,'SA')
+\family default
+, where 
+\family typewriter
+diag(S)
+\family default
+ are the eigenvalues and the columns of 
+\begin_inset Formula $V$
+\end_inset
+
+ are the eigenvectors.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Compare (
+\emph on
+quantitatively
+\emph default
+) to your predicted eigenvalues in the previous part.
+\end_layout
+
+\begin_layout Enumerate
+Plot each eigenfunction with the commands: 
+\family typewriter
+U=G; U(G>0)=V(G(G>0),k); surf(U)
+\family default
+ where 
+\begin_inset Formula $k=1,2,3,4,5$
+\end_inset
+
+ for the 5 eigenvectors, respectively and compare 
+\emph on
+qualitatively
+\emph default
+ with the analytical solution above (it is enough to check that the pattern
+ of peaks and valleys looks right).
+ [
+\family typewriter
+surf
+\family default
+ produces pretty 3d plots, but sometimes 2d plots are easier to understand.
+ e.g.
+ you can do a 2d contour plot with 
+\family typewriter
+contour(U); colorbar
+\family default
+ if you prefer.]
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+If you double the resolution to 
+\begin_inset Formula $N=100$
+\end_inset
+
+, the errors in these 5 eigenvalues should decrease.
+ Do they decrease by roughly 1/2, as if the error is 
+\begin_inset Formula $\sim\Delta x$
+\end_inset
+
+, or by roughly 1/4, as if the error is 
+\begin_inset Formula $\sim\Delta x^{2}$
+\end_inset
+
+? (If the trend isn't clear, try doubling again to 
+\begin_inset Formula $N=200$
+\end_inset
+
+.) How can you relate this to the fact that center-difference approximations
+ are supposed to have 
+\begin_inset Formula $\sim\Delta x^{2}$
+\end_inset
+
+ errors? (Hint: remember the previous pset, and use 
+\family typewriter
+spy(G)
+\family default
+ to view the grid.)
+\end_layout
+
+\begin_layout Subsection*
+Problem 3: Physical schmisical
+\end_layout
+
+\begin_layout Standard
+This question involves mathematical equations similar to those of problem
+\begin_inset space ~
+\end_inset
+
+2, but asks some physical questions if we interpret 
+\begin_inset Formula $u(x,y)$
+\end_inset
+
+ as the vertical displacement of a stretched surface on a circular drum
+ of radius 
+\begin_inset Formula $R$
+\end_inset
+
+.
+ This displacement satisfies the 2d wave equation 
+\begin_inset Formula $\nabla^{2}u=\frac{1}{c^{2}}\partial^{2}u/\partial t^{2}$
+\end_inset
+
+ (this is derived from 
+\begin_inset Formula $F=ma$
+\end_inset
+
+ where 
+\begin_inset Formula $\partial^{2}u/\partial t^{2}$
+\end_inset
+
+ is acceleration) where 
+\begin_inset Formula $c$
+\end_inset
+
+ is a constant (the 
+\begin_inset Quotes eld
+\end_inset
+
+wave speed
+\begin_inset Quotes erd
+\end_inset
+
+ as we will see later in the semester) that depends on the tension and density;
+ here, say 
+\begin_inset Formula $c=200$
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+m/s.
+ If the edges of the drum are held flat, then the boundary condition is
+ the Dirichlet 
+\begin_inset Formula $u|_{r=R}=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+You bang your drum a few times with your drumstick, and your friend Elise
+ the electrical engineer analyzes the sound frequency components 
+\begin_inset Formula $f$
+\end_inset
+
+ after each hit with her spectrum analyzer [i.e.
+ breaking the sound into components with time dependence 
+\begin_inset Formula $\sim\sin(2\pi ft+\mbox{phase})$
+\end_inset
+
+], finding that the lowest observed frequency component is roughly 100
+\begin_inset space ~
+\end_inset
+
+Hz.
+ What is the radius 
+\begin_inset Formula $R$
+\end_inset
+
+ of the drum? 
+\end_layout
+
+\begin_layout Enumerate
+Setting 
+\begin_inset Formula $R=1$
+\end_inset
+
+ again, suppose that your drum surface is at rest, but that you have twisted
+ the edges so that the drum edges are at a height 
+\begin_inset Formula $x^{2}y^{2}=R\cos^{2}(\theta)\sin^{2}(\theta)$
+\end_inset
+
+ (for simplicity, assume they are still at a radius 
+\begin_inset Formula $R$
+\end_inset
+
+).
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+What equation and what boundary conditions does the height 
+\begin_inset Formula $u(x,y)$
+\end_inset
+
+ of the drum surface now satisfy?
+\end_layout
+
+\begin_layout Enumerate
+Approximately solve this equation using your finite-difference approximation
+ for 
+\begin_inset Formula $-\nabla^{2}$
+\end_inset
+
+ above.
+ Plot the solution 
+\begin_inset Formula $u(x,y)$
+\end_inset
+
+ similarly to how you plotted the eigenfunctions above, and check that it
+ satisfies the boundary conditions by also plotting 
+\begin_inset Formula $u-x^{2}y^{2}$
+\end_inset
+
+.
+ Hint: in Matlab, you can solve 
+\begin_inset Formula $Av=b$
+\end_inset
+
+ efficiently by the command 
+\family typewriter
+v=A
+\backslash
+b
+\family default
+.
+ Hint: to define the function 
+\begin_inset Formula $g(x,y)=x^{2}y^{2}$
+\end_inset
+
+ as a 2d matrix 
+\family typewriter
+g2
+\family default
+, do: 
+\family typewriter
+x2=ones(N+2,1)*linspace(-1,1,N+2); y2=x2'; g2=x2.^2 .* y2.^2;
+\family default
+ and to convert this to a column vector 
+\family typewriter
+g
+\family default
+ in the grid coordinates you would do 
+\family typewriter
+g=g2(G>0); 
+\family default
+...
+ you can do similarly for other functions of 
+\begin_inset Formula $x$
+\end_inset
+
+ and 
+\begin_inset Formula $y$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Hold the edges of the drum flat again, so that 
+\begin_inset Formula $u=0$
+\end_inset
+
+ on the boundaries.
+ Change to 
+\begin_inset Formula $N=20$
+\end_inset
+
+ and recompute your 
+\begin_inset Formula $A$
+\end_inset
+
+ matrix to make it a bit smaller.
+ Compute the 
+\begin_inset Formula $A^{-1}$
+\end_inset
+
+ matrix 
+\family typewriter
+Ainv=inv(full(A));
+\family default
+ and plot a couple columns 
+\begin_inset Formula $k$
+\end_inset
+
+ via the commands 
+\family typewriter
+U=G; U(G>0)=Ainv(G(G>0),k); surf(U)
+\family default
+ for the columns 
+\family typewriter
+k=G(10,10)
+\family default
+ [a point in the middle of the cylinder] and 
+\family typewriter
+k=G(10,15)
+\family default
+ [a point halfway to one side].
+ What do these plots correspond to, physically, and why? (Think about what
+ equations the columns of 
+\begin_inset Formula $A^{-1}$
+\end_inset
+
+ each solve.)
+\end_layout
+
+\end_body
+\end_document

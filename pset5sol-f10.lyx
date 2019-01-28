@@ -1,0 +1,1078 @@
+#LyX 1.6.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+
+\renewcommand{\vec}[1]{\mathbf{#1}}
+
+\renewcommand{\labelenumi}{(\alph{enumi})}
+\renewcommand{\labelenumii}{(\roman{enumii})}
+\newcommand{\rank}{\operatorname{rank}}
+
+\usepackage{cancel}
+\end_preamble
+\use_default_options false
+\language english
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_amsmath 2
+\use_esint 0
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\topmargin 0.7in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Section*
+18.303 Problem Set 5
+\end_layout
+
+\begin_layout Standard
+Due Wednesday, 13 October 2010.
+\end_layout
+
+\begin_layout Subsection*
+Problem 1: (10+(5+5+5) points)
+\end_layout
+
+\begin_layout Enumerate
+The denominator of the Rayleigh quotient is 
+\begin_inset Formula $\langle u_{a},u_{a}\rangle=\int_{0}^{a}(x/a)^{2}dx+\int_{a}^{1}(1-x)^{2}/(1-a)^{2}dx=a/3+(1-a)/3=1/3$
+\end_inset
+
+.
+ The derivative is 
+\begin_inset Formula $u_{a}'(x)=1/a$
+\end_inset
+
+ for 
+\begin_inset Formula $x\leq a$
+\end_inset
+
+ and 
+\begin_inset Formula $1/(1-a)$
+\end_inset
+
+ for 
+\begin_inset Formula $x>a$
+\end_inset
+
+, so the numerator of the Rayleigh quotient is 
+\begin_inset Formula $\langle u_{a}',u_{a}'\rangle=\int_{0}^{a}(1/a)^{2}dx+\int_{a}^{1}1/(1-a)^{2}dx=\frac{1}{a}+\frac{1}{1-a}$
+\end_inset
+
+, and hence 
+\begin_inset Formula \[
+R(u_{a})=3\left(\frac{1}{a}+\frac{1}{1-a}\right),\]
+
+\end_inset
+
+which is maximized when 
+\begin_inset Formula $\frac{dR}{da}=\frac{3}{(1-a)^{2}}-\frac{3}{a^{2}}=0$
+\end_inset
+
+, and hence at 
+\begin_inset Formula $\boxed{a=1/2}$
+\end_inset
+
+.
+ The minimum is then 
+\begin_inset Formula $R(u_{1/2})=12$
+\end_inset
+
+, which is a bit bigger than the smallest eigenvalue 
+\begin_inset Formula $\pi^{2}\approx9.8696$
+\end_inset
+
+ (it is the right order of magnitude anyway, and as expected 
+\begin_inset Formula $R$
+\end_inset
+
+ cannot be 
+\emph on
+smaller
+\emph default
+ than the smallest 
+\begin_inset Formula $\lambda$
+\end_inset
+
+).
+ 
+\end_layout
+
+\begin_layout Enumerate
+The contour plots are shown in figure
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:1b"
+
+\end_inset
+
+.
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pset5-1b.eps
+	width 80col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:1b"
+
+\end_inset
+
+Contour plots of the eigenfunctions for the smallest three eigenvalues 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ of the 
+\begin_inset Formula $-\nabla^{2}$
+\end_inset
+
+ operator on a triangular half of a square (cut diagonally), with Dirichlet
+ boundary conditions.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+ These are actually numerical calculations, but you should be able to guess
+ something qualitatively similar.
+ The reasoning goes as follows, similar to class.
+ The eigenfunctions minimize 
+\begin_inset Formula $R(u)=\int|\nabla u|^{2}/\int|u|^{2},$
+\end_inset
+
+ subject to the boundary conditions and to orthogonality with the lower
+ modes.
+ Thus, they want to minimize the average 
+\begin_inset Formula $|\nabla u|$
+\end_inset
+
+ relative to the overall amplitude 
+\begin_inset Formula $|u|$
+\end_inset
+
+, i.e.
+ they 
+\begin_inset Quotes eld
+\end_inset
+
+want
+\begin_inset Quotes erd
+\end_inset
+
+ to oscillate as slowly as possible.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+The lowest 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ solution should therefore just have a single peak in the center---it has
+ to be zero at the boundaries, and must be nonzero somewhere, so the slowest
+ it can oscillate is to go up to a peak in the center and then back down,
+ as in figure
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:1b"
+
+\end_inset
+
+(left).
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+The second 
+\begin_inset Formula $u$
+\end_inset
+
+ must be orthogonal to the first, so it must flip sign, i.e.
+ have two peaks of opposite sign, but in which direction? This triangle
+ is 
+\emph on
+not equilateral
+\emph default
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+In an equilateral triangle, the second two 
+\begin_inset Formula $\lambda's$
+\end_inset
+
+ turn out to be equal, i.e.
+ oscillating in either of the two directions gives the same Rayleigh queotient.
+ This equality turns out to be a deeper consequence of symmetry, but that
+ is outside the scope of 18.303.
+\end_layout
+
+\end_inset
+
+---it is longer in the 
+\begin_inset Formula $(-1,1)$
+\end_inset
+
+ direction (parallel to the diagonal of the square), so that is the direction
+ in which a sign oscillation can occur most slowly.
+ Hence, we should expect a single 
+\begin_inset Formula $+/-$
+\end_inset
+
+ oscillation along this direction, as in figure
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:1b"
+
+\end_inset
+
+(middle).
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+The third 
+\begin_inset Formula $u$
+\end_inset
+
+ must be orthogonal to the first two, and the slowest oscillation that will
+ do this turns out to be in the 
+\begin_inset Formula $(1,1)$
+\end_inset
+
+ direction, as in figure
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:1b"
+
+\end_inset
+
+(right).
+ However, this one is a little tricky, because it is not completely obvious
+ that the third 
+\begin_inset Formula $u$
+\end_inset
+
+ does not instead oscillate three times in the (-1,1) direction (i.e.
+ 
+\begin_inset Formula $-/+/-$
+\end_inset
+
+ peaks aong that direction), so I would accept that answer as well.
+ [Exact calculations turn out to show that a 3-peak oscillation in the 
+\begin_inset Formula $(-1,1)$
+\end_inset
+
+ direction gives the fourth 
+\begin_inset Formula $\lambda$
+\end_inset
+
+, which is about 30% bigger than the third 
+\begin_inset Formula $\lambda$
+\end_inset
+
+, corresponding to an average 
+\begin_inset Quotes eld
+\end_inset
+
+wavelength
+\begin_inset Quotes erd
+\end_inset
+
+ that is about 12% smaller.]
+\end_layout
+
+\begin_layout Subsection*
+Problem 2: (10+10+5+5 points)
+\end_layout
+
+\begin_layout Enumerate
+The solutions in the three region I (
+\begin_inset Formula $x<x'$
+\end_inset
+
+), II (
+\begin_inset Formula $x'\leq x\leq x'+\Delta x$
+\end_inset
+
+), and III (
+\begin_inset Formula $x>x'+\Delta x$
+\end_inset
+
+) satisfy 
+\begin_inset Formula $\hat{A}g_{\mbox{I,III}}=0$
+\end_inset
+
+ and 
+\begin_inset Formula $\hat{A}g_{\mbox{II}}=1/\Delta x$
+\end_inset
+
+.
+ Given the hint and the fact that they must vanish at 
+\begin_inset Formula $x=0,L$
+\end_inset
+
+, this means that they must be of the form: 
+\begin_inset Formula \[
+g_{\mbox{I}}=\alpha(e^{\kappa x}-e^{-\kappa x})/2=\alpha\sinh(\kappa x),\]
+
+\end_inset
+
+
+\begin_inset Formula \[
+g_{\mbox{III}}=\beta\sinh(\kappa(x-L)),\]
+
+\end_inset
+
+
+\begin_inset Formula \[
+g_{\mbox{II}}=\gamma e^{-\kappa(x-x')}+\xi e^{+\kappa(x-x')}+\frac{1}{\kappa^{2}\Delta x}\]
+
+\end_inset
+
+for some constants 
+\begin_inset Formula $\alpha,\beta,\gamma,\xi$
+\end_inset
+
+ to be determined (since these are free parameters, we can pull out convenient
+ factors of 2, 
+\begin_inset Formula $e^{\kappa x'}$
+\end_inset
+
+, etcetera if we want).
+ Continuity of 
+\begin_inset Formula $g$
+\end_inset
+
+ and 
+\begin_inset Formula $g'$
+\end_inset
+
+ result in the following four equations: 
+\begin_inset Formula \[
+\alpha\sinh(\kappa x')=\gamma+\xi+\frac{1}{\kappa^{2}\Delta x}\]
+
+\end_inset
+
+
+\begin_inset Formula \[
+\kappa\alpha\cosh(\kappa x')=\kappa(\xi-\gamma)\]
+
+\end_inset
+
+
+\begin_inset Formula \[
+\beta\sinh(\kappa(x'+\Delta x-L))=\gamma e^{-\kappa\Delta x}+\xi e^{+\kappa\Delta x}+\frac{1}{\kappa^{2}\Delta x}\]
+
+\end_inset
+
+
+\begin_inset Formula \[
+\kappa\beta\cosh(\kappa(x'+\Delta x-L))=\kappa\left(\xi e^{+\kappa\Delta x}-\gamma e^{-\kappa\Delta x}\right).\]
+
+\end_inset
+
+Dividing the first equation by the second and the third by the fourth, and
+ let 
+\begin_inset Formula $x''=x'+\Delta x-L$
+\end_inset
+
+, to yield two equations for 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ and 
+\begin_inset Formula $\xi$
+\end_inset
+
+: 
+\begin_inset Formula \[
+\tanh(\kappa x')=\frac{\gamma+\xi+\frac{1}{\kappa^{2}\Delta x}}{\xi-\gamma},\]
+
+\end_inset
+
+
+\begin_inset Formula \[
+\tanh(\kappa x'')=\frac{\gamma e^{-\kappa\Delta x}+\xi e^{+\kappa\Delta x}+\frac{1}{\kappa^{2}\Delta x}}{\xi e^{+\kappa\Delta x}-\gamma e^{-\kappa\Delta x}},\]
+
+\end_inset
+
+which (moving the denominators to the left-hand sides) becomes two linear
+ equations in two unknowns.
+ The first equation can be solved for 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ to obtain: 
+\begin_inset Formula \[
+\gamma=\frac{\xi[\tanh(\kappa x')-1]-\frac{1}{\kappa^{2}\Delta x}}{\tanh(\kappa x')+1}=\xi T-\frac{p}{\kappa^{2}\Delta x},\]
+
+\end_inset
+
+defining the quantities 
+\begin_inset Formula $T$
+\end_inset
+
+ and 
+\begin_inset Formula $p$
+\end_inset
+
+ for convenience.
+ This can be substituted into the second equation to find 
+\begin_inset Formula $\xi$
+\end_inset
+
+:
+\begin_inset Formula \[
+\xi=\frac{1}{\kappa^{2}\Delta x}\frac{pe^{-\kappa\Delta x}[\tanh(\kappa x'')+1]-1}{e^{+\kappa\Delta x}+Te^{-\kappa\Delta x}-\tanh(\kappa x'')\left[e^{+\kappa\Delta x}-Te^{-\kappa\Delta x}\right]}.\]
+
+\end_inset
+
+Given 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ and 
+\begin_inset Formula $\xi$
+\end_inset
+
+, we then immediately have 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ and 
+\begin_inset Formula $\beta$
+\end_inset
+
+: 
+\begin_inset Formula \[
+\alpha=\frac{\xi-\gamma}{\cosh(\kappa x')},\qquad\beta=\frac{\xi e^{+\kappa\Delta x}-\gamma e^{-\kappa\Delta x}}{\cosh(\kappa x'')}.\]
+
+\end_inset
+
+We can then plot this with the Matlab function:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\family typewriter
+function g = pset5g(kappa, L, x,xp,dx)
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+xpp = xp + dx - L;
+\begin_inset Newline newline
+\end_inset
+
+T = (tanh(kappa*xp) - 1) / (tanh(kappa*xp) + 1);
+\begin_inset Newline newline
+\end_inset
+
+p = 1 / (tanh(kappa*xp) + 1);
+\begin_inset Newline newline
+\end_inset
+
+ep = exp(kappa*dx); em = exp(-kappa*dx);
+\begin_inset Newline newline
+\end_inset
+
+xi = (p * em * (t + 1) - 1) / (kappa^2*dx) / ((ep+T*em) - t*(ep-T*em));
+\begin_inset Newline newline
+\end_inset
+
+gam = xi * T - p / (kappa^2*dx);
+\begin_inset Newline newline
+\end_inset
+
+alpha = (gam + xi) / sinh(kappa*xp);
+\begin_inset Newline newline
+\end_inset
+
+beta = (gam*em + xi*ep) / sinh(kappa*xpp);
+\begin_inset Newline newline
+\end_inset
+
+g = alpha*sinh(kappa*x) .* (x < xp) + beta*sinh(kappa*(x-L)) .* (x > xp+dx)
+ ...
+\begin_inset Newline newline
+\end_inset
+
+ + (gam*exp(-kappa*(x-xp))+xi*exp(kappa*(x-xp)) + 1/(kappa^2*dx)) ...
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+.* (x >= xp & x <= xp+dx);
+\family default
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+which is shown in figure
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Green's-function-"
+
+\end_inset
+
+ for 
+\begin_inset Formula $\kappa=5$
+\end_inset
+
+.
+ (
+\begin_inset Formula $\kappa=1$
+\end_inset
+
+ is also acceptable, since that is what I asked for originally before I
+ revised the problem via email.
+ 
+\begin_inset Formula $\kappa=1$
+\end_inset
+
+ is similar but gives lines that are more straight; it is harder to see
+ the exponentials.) Notice that the curves are clearly continuous with continuous
+ slope---if we didn't get this, it would mean we made a mistake in solving
+ our equations.
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pset5-2a.eps
+	width 60col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Green's-function-"
+
+\end_inset
+
+Green's function 
+\begin_inset Formula $G(x,x')$
+\end_inset
+
+ for 
+\begin_inset Quotes eld
+\end_inset
+
+approximate 
+\begin_inset Formula $\delta$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ consisting of width-
+\begin_inset Formula $\Delta x$
+\end_inset
+
+ rectangular bump, plotted for 
+\begin_inset Formula $x'=0.25$
+\end_inset
+
+, 0.5, and 0.75, and for 
+\begin_inset Formula $\Delta x=0.1$
+\end_inset
+
+ and 0.01.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+Even easier alternative:
+\series default
+ Since the equations are linear, it is perfectly acceptable to simply set
+ them up as a 
+\begin_inset Formula $4\times4$
+\end_inset
+
+ matrix in Matlab (or 
+\begin_inset Formula $6\times6$
+\end_inset
+
+, including the boundary conditions at 
+\begin_inset Formula $0$
+\end_inset
+
+ and 
+\begin_inset Formula $L$
+\end_inset
+
+) and ask Matlab to solve them for you.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Hard way:
+\series default
+ In the limit 
+\begin_inset Formula $\Delta x\to0$
+\end_inset
+
+, then many things simplify: 
+\begin_inset Formula $e^{\pm\kappa\Delta x}\to1$
+\end_inset
+
+, 
+\begin_inset Formula $x''\to x'-L$
+\end_inset
+
+, and we obtain: 
+\begin_inset Formula \[
+\xi\to\frac{1}{\kappa^{2}\Delta x}\frac{\frac{\tanh(\kappa x'')+1}{\tanh(\kappa x')+1}-1}{1+T-\tanh(\kappa x'')[1-T]}=\frac{1}{\kappa^{2}\Delta x}\frac{\tanh(\kappa x'')-\tanh(\kappa x')}{2\left[\tanh(\kappa x')-\tanh(\kappa x'')\right]}=-\frac{1}{2\kappa^{2}\Delta x},\]
+
+\end_inset
+
+
+\begin_inset Formula \[
+\gamma\to\frac{1}{\kappa^{2}\Delta x}\frac{-\frac{1}{2}[\tanh(\kappa x')-1]-1}{\tanh(\kappa x')+1}=-\frac{1}{2\kappa^{2}\Delta x}.\]
+
+\end_inset
+
+Unfortunately, this is a little too simplified, because we need to compute
+ 
+\begin_inset Formula $\xi-\gamma$
+\end_inset
+
+ to get 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ and 
+\begin_inset Formula $\beta$
+\end_inset
+
+, so we need to keep the next order in the Taylor expansion (or equivalently
+ apply L'Hopital's rule to get 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ and 
+\begin_inset Formula $\beta$
+\end_inset
+
+).
+ To get the next-order term, we expand 
+\begin_inset Formula $e^{\pm\kappa\Delta x}\approx1\pm\kappa\Delta x$
+\end_inset
+
+, to obtain: 
+\begin_inset Formula \begin{align*}
+\xi & \approx-\frac{1}{\kappa^{2}\Delta x}\frac{(1-\kappa\Delta x)[\tanh(\kappa x'')+1]-[\tanh(\kappa x')+1]}{(1+\kappa\Delta x)[\tanh(\kappa x')+1]\,[1-\tanh(\kappa x'')]+(1-\kappa\Delta x)[\tanh(\kappa x')-1]\,[1+\tanh(\kappa x'')]}\\
+ & \approx-\frac{1}{2\kappa^{2}\Delta x}-\frac{1}{2\kappa}\left[\frac{\tanh(\kappa x'')+1}{\tanh(\kappa x')-\tanh(\kappa x'')}-\frac{1-\tanh(\kappa x')\tanh(\kappa x'')}{\tanh(\kappa x')-\tanh(\kappa x'')}\right]\\
+ & =-\frac{1}{2\kappa^{2}\Delta x}-\frac{1}{2\kappa}\frac{\tanh(\kappa x')+1}{\tanh(\kappa x')-\tanh(\kappa x'')}\tanh(\kappa x''),\end{align*}
+
+\end_inset
+
+in which case 
+\begin_inset Formula \[
+\gamma\approx-\frac{1}{2\kappa^{2}\Delta x}-\frac{1}{2\kappa}\frac{\tanh(\kappa x')-1}{\tanh(\kappa x')-\tanh(\kappa x'')}\tanh(\kappa x''),\]
+
+\end_inset
+
+and thus we obtain 
+\begin_inset Formula \begin{align*}
+\alpha & \to-\frac{1}{\kappa}\frac{1}{\cosh(\kappa x')\left[\tanh(\kappa x')-\tanh(\kappa x'')\right]}\tanh(\kappa x'')\\
+ & =\frac{\sinh(\kappa x'')/\kappa}{\sinh(\kappa x'')\cosh(\kappa x')-\cosh(\kappa x'')\sinh(\kappa x')}\end{align*}
+
+\end_inset
+
+ and 
+\begin_inset Formula \[
+\beta\to\frac{\sinh(\kappa x')/\kappa}{\sinh(\kappa x'')\cosh(\kappa x')-\cosh(\kappa x'')\sinh(\kappa x')}.\]
+
+\end_inset
+
+
+\series bold
+Easier way:
+\series default
+ It is 
+\emph on
+much
+\emph default
+ easier, however to solve for 
+\begin_inset Formula $G(x,x')$
+\end_inset
+
+ directly, as in class.
+ We write 
+\begin_inset Formula $\hat{A}G=\delta(x-x')$
+\end_inset
+
+, and break it into two regions: I (
+\begin_inset Formula $x<x')$
+\end_inset
+
+ and II (
+\begin_inset Formula $x>x''$
+\end_inset
+
+) where 
+\begin_inset Formula $\hat{A}G=0$
+\end_inset
+
+.
+ The solutions in these regions are, as above, of the form: 
+\begin_inset Formula \[
+G_{\mbox{I}}=\alpha\sinh(\kappa x),\]
+
+\end_inset
+
+
+\begin_inset Formula \[
+G_{\mbox{III}}=\beta\sinh(\kappa(x-L)).\]
+
+\end_inset
+
+We require 
+\begin_inset Formula $G$
+\end_inset
+
+ to be continuous at 
+\begin_inset Formula $x=x'$
+\end_inset
+
+, but the slope of 
+\begin_inset Formula $G'$
+\end_inset
+
+ should drop discontinuously by 1 at 
+\begin_inset Formula $x'$
+\end_inset
+
+ to give us a 
+\begin_inset Formula $\delta(x-x')$
+\end_inset
+
+ from 
+\begin_inset Formula $-G''$
+\end_inset
+
+, leading to the equations: 
+\begin_inset Formula \begin{align*}
+\alpha\sinh(\kappa x') & =\beta\sinh(\kappa x'')\\
+\kappa\alpha\cosh(\kappa x') & =\kappa\beta\cosh(\kappa x'')+1,\end{align*}
+
+\end_inset
+
+where 
+\begin_inset Formula $x''=x'-L$
+\end_inset
+
+.
+ These two equations can easily be solved for 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ and 
+\begin_inset Formula $\beta$
+\end_inset
+
+ to yield: 
+\begin_inset Formula \[
+\alpha=\frac{\sinh(\kappa x'')/\kappa}{\sinh(\kappa x'')\cosh(\kappa x')-\cosh(\kappa x'')\sinh(\kappa x')}=\frac{\sinh(\kappa[L-x'])}{\kappa\sinh(\kappa L)},\]
+
+\end_inset
+
+
+\begin_inset Formula \[
+\beta=-\frac{\sinh(\kappa x')}{\kappa\sinh(\kappa L)},\]
+
+\end_inset
+
+using the identity 
+\begin_inset Formula $\sinh(A-B)=\sinh(A)\cosh(B)-\cosh(A)\sinh(B)$
+\end_inset
+
+, as above.
+ When plotted, this is visually almost indistinguishable from the 
+\begin_inset Formula $\Delta x=0.01$
+\end_inset
+
+ curves plotted in figure
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Green's-function-"
+
+\end_inset
+
+, so I won't replot it here to save space.
+ [It is a good check to plot the curves on top of one another; you'll find
+ that the 
+\begin_inset Formula $\Delta x=0.01$
+\end_inset
+
+ curves are only slightly shifted from 
+\begin_inset Formula $\Delta x\to0$
+\end_inset
+
+, by a percent or two.]
+\end_layout
+
+\begin_layout Enumerate
+From above, using the identity that 
+\begin_inset Formula $\sinh(-A)=\sinh(A)$
+\end_inset
+
+, the Green's function is given by: 
+\begin_inset Formula \[
+G(x,x')=\frac{1}{\kappa\sinh(\kappa L)}\begin{cases}
+\sinh(\kappa[L-x'])\sinh(\kappa x) & x<x'\\
+\sinh(\kappa x')\sinh(\kappa[L-x]) & x>x'\end{cases}.\]
+
+\end_inset
+
+which by inspection is invariant under interchange of 
+\begin_inset Formula $x$
+\end_inset
+
+ and 
+\begin_inset Formula $x'$
+\end_inset
+
+ (which just swaps the two rows).
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\hat{A}G(x,x')=\delta(x-x')$
+\end_inset
+
+ by construction if we computed 
+\begin_inset Formula $G(x,x')$
+\end_inset
+
+ the easier way, above, since 
+\begin_inset Formula $\hat{A}G=0$
+\end_inset
+
+ everywhere except that 
+\begin_inset Formula $G'$
+\end_inset
+
+ jumps by -1 at 
+\begin_inset Formula $x'$
+\end_inset
+
+, giving a 
+\begin_inset Formula $\delta(x-x')$
+\end_inset
+
+ in 
+\begin_inset Formula $-G''$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+(This part was optional.)
+\emph default
+ Here, 
+\begin_inset Formula \begin{align*}
+u(x) & =\frac{1}{\kappa\sinh(\kappa L)}\left[\sinh(\kappa[L-x'])\int_{0}^{x'}\sinh(\kappa x)e^{x}dx+\sinh(\kappa x')\int_{x'}^{L}\sinh(\kappa[L-x])e^{x}dx\right]\\
+ & =\frac{1}{2\kappa\sinh(\kappa L)}\left[\sinh(\kappa[L-x'])\left.\left(\frac{e^{x(1+\kappa)}}{1+\kappa}-\frac{e^{x(1-\kappa)}}{1-\kappa}\right)\right|_{0}^{x'}+\sinh(\kappa x')\left.\left(e^{\kappa L}\frac{e^{x(1-\kappa)}}{1-\kappa}-e^{-\kappa L}\frac{e^{x(1+\kappa)}}{1+\kappa}\right)\right|_{x'}^{L}\right]\\
+ & =\frac{1}{2\kappa\sinh(\kappa L)}\left[\sinh(\kappa[L-x'])\left.\left(\frac{e^{x(1+\kappa)}}{1+\kappa}-\frac{e^{x(1-\kappa)}}{1-\kappa}\right)\right|_{0}^{x'}+\sinh(\kappa x')\left.\left(e^{\kappa L}\frac{e^{x(1-\kappa)}}{1-\kappa}-e^{-\kappa L}\frac{e^{x(1+\kappa)}}{1+\kappa}\right)\right|_{x'}^{L}\right]\\
+ & =\frac{1}{2\kappa\sinh(\kappa L)}\left[\sinh(\kappa[L-x'])\left(\frac{e^{x'(1+\kappa)}}{1+\kappa}-\frac{e^{x'(1-\kappa)}}{1-\kappa}-\frac{2}{1-\kappa^{2}}\right)\right.\\
+ & \qquad\qquad\qquad\qquad\left.{}+\sinh(\kappa x')\left(\frac{2e^{L}}{1-\kappa^{2}}-e^{\kappa L}\frac{e^{x'(1-\kappa)}}{1-\kappa}+e^{-\kappa L}\frac{e^{x'(1+\kappa)}}{1+\kappa}\right)\right]\end{align*}
+
+\end_inset
+
+which can probably simplify further, but I'll stop here.
+\end_layout
+
+\begin_layout Subsection*
+Problem 3: (15 points)
+\end_layout
+
+\begin_layout Standard
+Since this function has two discontinuities, at 
+\begin_inset Formula $x=\pm\Delta x$
+\end_inset
+
+, and is otherwise constant, the derivative is simply two delta functions
+ multiplied by the respective amplitudes of the discontinuities: 
+\begin_inset Formula \[
+s'_{\Delta x}=\frac{1}{2\Delta x}\left[\delta(x-\Delta x)-\delta(x+\Delta x)\right],\]
+
+\end_inset
+
+which can also be seen by writing 
+\begin_inset Formula $s_{\Delta x}(x)=\frac{1}{2\Delta x}\left[S(x-\Delta x)-S(x+\Delta x)\right]$
+\end_inset
+
+ in terms of the unit step function 
+\begin_inset Formula $S(x)$
+\end_inset
+
+ from the notes and then applying the rule for differentiating 
+\begin_inset Formula $S$
+\end_inset
+
+ as a distribution.
+ Hence, 
+\begin_inset Formula \[
+s'_{\Delta x}\{\phi\}=\frac{1}{2\Delta x}\left[\phi(-\Delta x)-\phi(\Delta x)\right].\]
+
+\end_inset
+
+But this is exactly a center-difference approximation for 
+\begin_inset Formula $-\phi'(0)$
+\end_inset
+
+.
+ Therefore, 
+\begin_inset Formula \[
+\lim_{\Delta x\to0}s'_{\Delta x}\{\phi\}=-\lim_{\Delta x\to0}\frac{\phi(\Delta x)-\phi(-\Delta x)}{2\Delta x}=-\phi'(0)=\delta'\{\phi\}\]
+
+\end_inset
+
+as desired.
+\end_layout
+
+\end_body
+\end_document

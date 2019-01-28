@@ -1,0 +1,1374 @@
+#LyX 1.6.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+
+\renewcommand{\vec}[1]{\mathbf{#1}}
+
+\renewcommand{\labelenumi}{(\alph{enumi})}
+\renewcommand{\labelenumii}{(\roman{enumii})}
+\newcommand{\rank}{\operatorname{rank}}
+\end_preamble
+\use_default_options false
+\language english
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_amsmath 2
+\use_esint 0
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\topmargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Section*
+18.303 Problem Set 3 Solutions
+\end_layout
+
+\begin_layout Standard
+Due Wednesday, 29 September 2010.
+\end_layout
+
+\begin_layout Subsection*
+Problem 1: (5+10+10+5 points)
+\end_layout
+
+\begin_layout Enumerate
+The plot is shown in fig.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:p1a"
+
+\end_inset
+
+.
+ To show them all on the same plot, I rescaled the series by 
+\begin_inset Formula $1/N$
+\end_inset
+
+ [i.e.
+ plotting 
+\begin_inset Formula $f(x)/N$
+\end_inset
+
+].
+ The right panel shows a zoomed version of the same plot on the peak around
+ 
+\begin_inset Formula $x=0.5$
+\end_inset
+
+.
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pset3-p1a.eps
+	width 100col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:p1a"
+
+\end_inset
+
+Cosine series 
+\begin_inset Formula $f_{N}(x)=\frac{a_{0}}{2}+\sum_{n=1}^{N}a_{n}\cos(n\pi x/L)$
+\end_inset
+
+ for 
+\begin_inset Formula $a_{n}=\cos(n\pi/2)$
+\end_inset
+
+, for 
+\begin_inset Formula $N=10,100,1000$
+\end_inset
+
+; to fit them on the same plot, we instead show 
+\begin_inset Formula $f_{N}(x)/N$
+\end_inset
+
+.
+ Right plot is the same thing, but zoomed in on the peak around 
+\begin_inset Formula $x=0.5$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\int_{0}^{L}f(x)dx=a_{0}L/2=\boxed{L/2}$
+\end_inset
+
+, independent of 
+\begin_inset Formula $N$
+\end_inset
+
+, since all of the 
+\begin_inset Formula $n>0$
+\end_inset
+
+ terms integrate to zero.
+ 
+\begin_inset Formula $f(L/2)=\frac{1}{2}+\sum_{n}\cos(n\pi/2)^{2}$
+\end_inset
+
+.
+ Since 
+\begin_inset Formula $\cos(n\pi/2)=0$
+\end_inset
+
+ if 
+\begin_inset Formula $n$
+\end_inset
+
+ is odd and 
+\begin_inset Formula $\pm1$
+\end_inset
+
+ if 
+\begin_inset Formula $n$
+\end_inset
+
+ is even, 
+\begin_inset Formula $\boxed{f(L/2)=\frac{1}{2}+\left\lfloor N/2\right\rfloor }$
+\end_inset
+
+, where 
+\begin_inset Formula $\left\lfloor N/2\right\rfloor $
+\end_inset
+
+ is 
+\begin_inset Formula $N/2$
+\end_inset
+
+ rounded down, i.e.
+ the number of even positive integers 
+\begin_inset Formula $\leq N$
+\end_inset
+
+.
+ Since the area 
+\begin_inset Formula $L/2$
+\end_inset
+
+ is fixed and the height of the peak in the center grows as 
+\begin_inset Formula $\approx N/2$
+\end_inset
+
+, the width of the peak must get narrower and narrower to have the same
+ area, i.e.
+ a width of roughly 
+\begin_inset Formula $\frac{L/2}{N/2}=L/N$
+\end_inset
+
+.
+ [This series in fact approaches a Dirac 
+\begin_inset Quotes eld
+\end_inset
+
+delta function
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Formula $\delta(x-0.5)$
+\end_inset
+
+, something that will come up soon in 18.303, although for this notion (and
+ this limit 
+\begin_inset Formula $N\to\infty$
+\end_inset
+
+) to be well defined we will need to modify our definition of 
+\begin_inset Quotes eld
+\end_inset
+
+function.
+\begin_inset Quotes erd
+\end_inset
+
+]
+\end_layout
+
+\begin_layout Enumerate
+The plot is shown in fig.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:p1c"
+
+\end_inset
+
+; on this scale, you cannot really distinguish 
+\begin_inset Formula $t=0.1$
+\end_inset
+
+ from 
+\begin_inset Formula $t=1$
+\end_inset
+
+, since in both cases 
+\begin_inset Formula $u(x,t)$
+\end_inset
+
+ is basically a constant.
+ Physically, this represents a situation where you have injected a big concentra
+tion of salt right at 
+\begin_inset Formula $x=0.5$
+\end_inset
+
+ at 
+\begin_inset Formula $t=0$
+\end_inset
+
+, and then for 
+\begin_inset Formula $t>0$
+\end_inset
+
+ the concentration is diffusing outwards.
+ As time goes on, the diffusion makes the salt spread out to eventually
+ have an equal concentration everywhere.
+ As we derived in class, Neumann boundary conditions represent zero mass
+ flux at the ends, so that the total mass of salt (
+\begin_inset Formula $\int u$
+\end_inset
+
+) is conserved.
+ Hence, it should spread out to a constant 
+\begin_inset Formula $u(x,\infty)=1/2$
+\end_inset
+
+ to have the correct area, and of course it does (as we could see analytically
+ from the cosine series in this case anyway).
+ 
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pset3-p1c.eps
+	width 60col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:p1c"
+
+\end_inset
+
+Solution 
+\begin_inset Formula $u(x,t)$
+\end_inset
+
+ of the diffusion equation for an initial condition 
+\begin_inset Formula $u(x,0)=\delta(x-0.5)$
+\end_inset
+
+.
+ Physically, this corresponds to dumping mass into the system at 
+\begin_inset Formula $x=0.5$
+\end_inset
+
+, and then watching it diffuse and spread out equally over the whole length.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Running the sum function for 
+\begin_inset Formula $t=0.0001,0.001,0.01,0.1,1$
+\end_inset
+
+, we indeed find that the answer is always 
+\begin_inset Formula $L/2=0.5$
+\end_inset
+
+ (to at least 3 significant digits, which is good enough since this crude
+ summation isn't an exact integral).
+\end_layout
+
+\begin_layout Subsection*
+Problem 2: (10+5+5+10+5)
+\end_layout
+
+\begin_layout Standard
+In class, we considered 
+\begin_inset Formula $d^{2}/dx^{2}$
+\end_inset
+
+ for 
+\begin_inset Formula $x\in[0,L]$
+\end_inset
+
+ and Dirichlet boundary conditions 
+\begin_inset Formula $u(0)=u(L)=0$
+\end_inset
+
+.
+ We approximated 
+\begin_inset Formula $u(x)$
+\end_inset
+
+ by its values 
+\begin_inset Formula $u_{m}\approx u(m\Delta x)$
+\end_inset
+
+ on a grid of 
+\begin_inset Formula $M$
+\end_inset
+
+ points, with 
+\begin_inset Formula $\Delta x=L/(M+1)$
+\end_inset
+
+ and 
+\begin_inset Formula $u_{0}=u_{M+1}=0$
+\end_inset
+
+.
+ We then approximated 
+\begin_inset Formula $d^{2}/dx^{2}$
+\end_inset
+
+ in two center-difference steps: first, we approximated 
+\begin_inset Formula $d/dx$
+\end_inset
+
+ by 
+\begin_inset Formula $u'_{m+1/2}\approx(u_{m+1}-u_{m})/\Delta x$
+\end_inset
+
+; then, we approximated 
+\begin_inset Formula $d^{2}/dx^{2}$
+\end_inset
+
+ by 
+\begin_inset Formula $u''_{m}\approx(u'_{m+1/2}-u'_{m-1/2})/\Delta x$
+\end_inset
+
+.
+ This gave us the wonderful discrete Laplacian matrix 
+\begin_inset Formula $A$
+\end_inset
+
+ (with 
+\begin_inset Formula $1,-2,1$
+\end_inset
+
+ on the diagonals), which we could also write as 
+\begin_inset Formula $A=-D^{T}D/\Delta x^{2}$
+\end_inset
+
+ for the 
+\begin_inset Formula $D$
+\end_inset
+
+ matrix given in class (and computed by the 
+\family typewriter
+diff1.m
+\family default
+ file from pset 2).
+ Now, in this problem we will do the same thing for the Neumann boundary
+ conditions 
+\begin_inset Formula $u'(0)=u'(L)=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+The center-difference steps from class are 
+\begin_inset Formula \[
+u'_{m+0.5}\approx\frac{u_{m+1}-u_{m}}{\Delta x}\implies u''_{m}\approx\frac{u'_{m+0.5}-u'_{m-0.5}}{\Delta x}\approx\frac{u_{m+1}-2u_{m}+u_{m-1}}{\Delta x^{2}}.\]
+
+\end_inset
+
+The boundary conditions only come in for 
+\begin_inset Formula $m=1$
+\end_inset
+
+ and 
+\begin_inset Formula $m=M$
+\end_inset
+
+ (the first and last rows of the matrix).
+ For Dirichlet boundary conditions in class, we just set 
+\begin_inset Formula $u_{0}=u_{M}=0$
+\end_inset
+
+.
+ Now, however, we'll set 
+\begin_inset Formula $u'_{0.5}=u'_{M+0.5}=0$
+\end_inset
+
+, obtaining 
+\begin_inset Formula \[
+u''_{1}\approx\frac{u'_{1.5}-0}{\Delta x}\approx\frac{u_{m+1}-u_{m}}{\Delta x^{2}},\qquad u''_{M}\approx\frac{0-u'_{M-0.5}}{\Delta x}\approx\frac{u_{m-1}-u_{m}}{\Delta x^{2}}.\]
+
+\end_inset
+
+All of the other 
+\begin_inset Formula $u''_{m}$
+\end_inset
+
+ equations (the middle rows of the matrix) are unchanged.
+ This gives the Laplacian matrix 
+\begin_inset Formula \[
+\tilde{A}=\frac{1}{\Delta x^{2}}\left(\begin{array}{ccccc}
+-1 & 1\\
+1 & -2 & 1\\
+ & \ddots & \ddots & \ddots\\
+ &  & 1 & -2 & 1\\
+ &  &  & 1 & -1\end{array}\right).\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+In the first step, computing 
+\begin_inset Formula $u'=Du/\Delta x$
+\end_inset
+
+, the only difference from before is that we no longer compute 
+\begin_inset Formula $u'_{0.5}$
+\end_inset
+
+ and 
+\begin_inset Formula $u'_{M+0.5}$
+\end_inset
+
+, which were computed by the first and last rows of 
+\begin_inset Formula $D$
+\end_inset
+
+.
+ Thus, we can omit the first and last rows of 
+\begin_inset Formula $D$
+\end_inset
+
+ to obtain the 
+\begin_inset Formula $(M-1)\times M$
+\end_inset
+
+ matrix 
+\begin_inset Formula \[
+\tilde{D}=\left(\begin{array}{ccccc}
+-1 & 1\\
+ & -1 & 1\\
+ &  & \ddots & \ddots\\
+ &  &  & -1 & 1\end{array}\right).\]
+
+\end_inset
+
+In the second step, computing 
+\begin_inset Formula $u''=-D^{T}u'/\Delta x$
+\end_inset
+
+, since we no longer have the first and last rows of 
+\begin_inset Formula $u'$
+\end_inset
+
+ then we shoud omit the first and last columns of 
+\begin_inset Formula $D^{T}$
+\end_inset
+
+.
+ But this is exactly the same as omitting the first and last rows of 
+\begin_inset Formula $D$
+\end_inset
+
+, hence 
+\begin_inset Formula $\tilde{A}=\tilde{D}^{T}\tilde{D}/\Delta x^{2}$
+\end_inset
+
+.
+ In Matlab, we can modify 
+\family typewriter
+diff1.m
+\family default
+ to do this simply by adding one line at the end to delete the first and
+ last rows: 
+\family typewriter
+D = D(2:end-1,:);
+\family default
+ (and also renaming the function name to 
+\family typewriter
+diff1n
+\family default
+).
+ A quick check, e.g.
+ 
+\family typewriter
+-diff1n(5)' * diff1n(5)
+\family default
+, shows that this yields the expected matrix 
+\begin_inset Formula $\tilde{A}$
+\end_inset
+
+ above.
+\end_layout
+
+\begin_layout Enumerate
+In this case 
+\begin_inset Formula $\tilde{D}$
+\end_inset
+
+ is already in upper-triangular form with 
+\begin_inset Formula $M-1$
+\end_inset
+
+ pivots, and hence 
+\begin_inset Formula $\rank(\tilde{D})=\rank(\tilde{A})=M-1$
+\end_inset
+
+ .
+ Since 
+\begin_inset Formula $\tilde{A}$
+\end_inset
+
+ is 
+\begin_inset Formula $M\times M$
+\end_inset
+
+, the dimension of its nullspace is 
+\begin_inset Formula $1$
+\end_inset
+
+.
+ Recall that the nullspace of the exact 
+\begin_inset Formula $d^{2}/dx^{2}$
+\end_inset
+
+ operator consists of the constant functions (which can be nonzero with
+ Neumann boundaries), and it is easy to see that 
+\begin_inset Formula $N(\tilde{A})$
+\end_inset
+
+ is similarly the constant vectors.
+ That is, 
+\begin_inset Formula $N(\tilde{A})$
+\end_inset
+
+ is spanned by 
+\begin_inset Formula $\vec{n}=(1,1,1,\ldots,1,1,1)^{T}$
+\end_inset
+
+: multiplying 
+\begin_inset Formula $\tilde{A}\vec{n}$
+\end_inset
+
+ simply sums the rows of 
+\begin_inset Formula $\tilde{A}$
+\end_inset
+
+, which gives zero by inspection.
+ 
+\end_layout
+
+\begin_layout Enumerate
+As in pset
+\begin_inset space ~
+\end_inset
+
+2, let's pick 
+\begin_inset Formula $L=1$
+\end_inset
+
+ and set 
+\begin_inset Formula $M=100$
+\end_inset
+
+ to start with [thus 
+\begin_inset Formula $\Delta x=L/(M+1)$
+\end_inset
+
+]; the other commands are the same as in pset
+\begin_inset space ~
+\end_inset
+
+3 except that we don't have the 
+\begin_inset Formula $e^{-x}$
+\end_inset
+
+ weighting factor and we use 
+\family typewriter
+diff1n
+\family default
+.
+ The smallest-
+\begin_inset Formula $|\lambda|$
+\end_inset
+
+ three eigenvalues are 
+\begin_inset Formula $ $
+\end_inset
+
+
+\begin_inset Formula $\approx0$
+\end_inset
+
+, 
+\begin_inset Formula $-10.0672$
+\end_inset
+
+, and 
+\begin_inset Formula $40.2587$
+\end_inset
+
+, similar to but not quite on the exact values of 0, 
+\begin_inset Formula $\pi^{2}\approx9.8696$
+\end_inset
+
+, and 
+\begin_inset Formula $(2\pi)^{2}\approx39.4784$
+\end_inset
+
+.
+ The corresponding eigenvectors of 
+\begin_inset Formula $\tilde{A}$
+\end_inset
+
+, along with the exact eigenfunctions 
+\begin_inset Formula $\cos(n\pi x)$
+\end_inset
+
+, are shown in fig.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:p2d"
+
+\end_inset
+
+; again, close but with noticeable small errors.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Note that the scaling and sign of the eigenvectors is somewhat arbitrary
+ in Matlab (since of course we can multiply them by any nonzero constants
+ we wish).
+ To compare with 
+\begin_inset Formula $\cos(n\pi x$
+\end_inset
+
+), I rescaled the eigenvectors so that their maximum component is 1, and
+ flipped the sign as needed.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pset3-p2d.eps
+	width 50col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:p2d"
+
+\end_inset
+
+Finite-difference eigenvectors (symbols) for the 
+\begin_inset Formula $100\times100$
+\end_inset
+
+ 
+\begin_inset Formula $\tilde{A}$
+\end_inset
+
+ matrix, corresponding to the three smallest-magnitude eigenvalues, along
+ with the exact 
+\begin_inset Formula $d^{2}/dx^{2}$
+\end_inset
+
+ eigenfunctions 
+\begin_inset Formula $\cos(n\pi x)$
+\end_inset
+
+ (lines).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+ The error 
+\begin_inset Formula $|\lambda_{n}+(n\pi)^{2}|$
+\end_inset
+
+ is plotted versus 
+\begin_inset Formula $M$
+\end_inset
+
+ on a log--log scale for the 
+\begin_inset Formula $n=1,2$
+\end_inset
+
+ eigenvalues in figure
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:p2de"
+
+\end_inset
+
+, and for comparison a line 
+\begin_inset Formula $\sim\Delta x$
+\end_inset
+
+ is also shown: the errors clearly decrase almost exactly proportional to
+ 
+\begin_inset Formula $\Delta x$
+\end_inset
+
+, not 
+\begin_inset Formula $\Delta x^{2}$
+\end_inset
+
+ even though we nominally have a second-order accurate center-difference
+ approximation!
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pset3-p2de.eps
+	width 50col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:p2de"
+
+\end_inset
+
+Errors in eigenvalues for discrete 
+\begin_inset Formula $d^{2}/dx^{2}$
+\end_inset
+
+ versus the number 
+\begin_inset Formula $M$
+\end_inset
+
+ of grid ponts, for the smallest two nonzero eigenvalues..
+ 
+\emph on
+Top curves:
+\emph default
+ part
+\begin_inset space ~
+\end_inset
+
+(d), Neumann approximated by 
+\begin_inset Formula $u'_{1/2}=u'_{M+1/2}=0$
+\end_inset
+
+.
+ 
+\emph on
+Bottom curves:
+\emph default
+ part
+\begin_inset space ~
+\end_inset
+
+(e), re-stretched to remove the first-order errors from the boundaries.
+ For reference, lines 
+\begin_inset Formula $\sim1/M\sim\Delta x$
+\end_inset
+
+ and 
+\begin_inset Formula $\sim1/M^{2}\sim\Delta x^{2}$
+\end_inset
+
+ are also shown.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+ This is because we are setting 
+\begin_inset Formula $u'_{1/2}=(u_{1}-u_{0})/\Delta x=0$
+\end_inset
+
+, which is a 
+\emph on
+forward
+\emph default
+ difference approximation for 
+\begin_inset Formula $u'(0)=u'_{0}$
+\end_inset
+
+, and also set 
+\begin_inset Formula $u'_{M+1/2}=(u_{M+1}-u_{M})/\Delta x=0$
+\end_inset
+
+, a 
+\emph on
+backward
+\emph default
+ difference approximation for 
+\begin_inset Formula $u'(L)=u'_{M}$
+\end_inset
+
+ Forward/backward differences are only 
+\emph on
+first
+\emph default
+-order accurate, and all it takes is one first-order error to screw up the
+ convergence of the entire solution.
+\end_layout
+
+\begin_layout Enumerate
+Changing to 
+\begin_inset Formula $\Delta x=L/M$
+\end_inset
+
+, we are now effectively putting the boundary conditions at the correct
+ place, removing our first-order error from before.
+ As seen in figure
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:p2de"
+
+\end_inset
+
+, the errors now scale as 
+\begin_inset Formula $\sim\Delta x^{2}$
+\end_inset
+
+.
+ Second-order accuracy is restored! (The moral of this story is that it
+ is very easy for errors in boundary conditions and other interfaces to
+ dominate; unfortunately, these are not always so easy to correct in higher
+ dimensions.)
+\end_layout
+
+\begin_layout Subsection*
+Problem 3: (10+5+10+5 points)
+\end_layout
+
+\begin_layout Enumerate
+Our boundary conditions give 
+\begin_inset Formula $\alpha J_{m}(kR_{1,2})+\beta Y_{m}(kR_{1,2})=0$
+\end_inset
+
+, or 
+\begin_inset Formula \[
+E=\left(\begin{array}{cc}
+J_{m}(kR_{1}) & Y_{m}(kR_{1})\\
+J_{m}(kR_{2}) & Y_{m}(kR_{2})\end{array}\right),\]
+
+\end_inset
+
+and hence 
+\begin_inset Formula $f_{m}(k)=\det E=J_{m}(kR_{1})Y_{m}(kR_{2})-Y_{m}(kR_{1})J_{m}(kR_{2})$
+\end_inset
+
+ must satisfy 
+\begin_inset Formula $f_{m}(k)=0$
+\end_inset
+
+.
+ Assuming we find a 
+\begin_inset Formula $k$
+\end_inset
+
+ such that 
+\begin_inset Formula $\det E=0$
+\end_inset
+
+, we must then have 
+\begin_inset Formula $\alpha J_{m}(kR_{1})=-\beta Y_{m}(kR_{1})$
+\end_inset
+
+, and hence a basis for the nullspace will be 
+\begin_inset Formula $\alpha=Y_{m}(kR_{1})$
+\end_inset
+
+, 
+\begin_inset Formula $\beta=J_{m}(kR_{1})$
+\end_inset
+
+ [there are several other correct answers, of course].
+ Note that the nullspace is 1-dimensional (it would only be 2-dimensional
+ if 
+\begin_inset Formula $E=0$
+\end_inset
+
+, which is clearly never true), so we only need one 
+\begin_inset Formula $(\alpha,\beta)\neq0$
+\end_inset
+
+ solution to span it.
+\end_layout
+
+\begin_layout Enumerate
+In Matlab, 
+\begin_inset Formula $f_{m}(k)$
+\end_inset
+
+ would be written as 
+\family typewriter
+@(k) besselj(m,k).*bessely(m,k*2)-bessely(m,k).*besselj(m,k*2)
+\family default
+ ...
+ note that we use 
+\family typewriter
+.*
+\family default
+, not 
+\family typewriter
+*
+\family default
+, since many of the Matlab functions need to handle the case where 
+\family typewriter
+k
+\family default
+ is a vector, not a number.
+ The plot for 
+\begin_inset Formula $m=0,1,2$
+\end_inset
+
+ is shown in figure
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:p3b"
+
+\end_inset
+
+.
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pset3-p3b.eps
+	width 60col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:p3b"
+
+\end_inset
+
+Plot of 
+\begin_inset Formula $f_{m}(k)$
+\end_inset
+
+ for 
+\begin_inset Formula $m=0,1,2$
+\end_inset
+
+.
+ where the roots 
+\begin_inset Formula $f_{m}(k)=0$
+\end_inset
+
+ correspond to 
+\begin_inset Formula $k$
+\end_inset
+
+ values where a Bessel solution can satisfy the Dirichlet boundary conditions.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+From the graph, a rough estimate for the first three roots of 
+\begin_inset Formula $f_{0}$
+\end_inset
+
+ is 
+\begin_inset Formula $k=3,6,9$
+\end_inset
+
+.
+ This is good enough for 
+\family typewriter
+fzero
+\family default
+ to find the exact roots (to machine precision, 
+\begin_inset Formula $\approx15$
+\end_inset
+
+ decimal places).
+ In particular, we just call 
+\family typewriter
+k1 = fzero(@(k)..., 3)
+\family default
+, 
+\family typewriter
+k2 = fzero(@(k)..., 6)
+\family default
+, 
+\family typewriter
+k3 = fzero(@(k)..., 9)
+\family default
+, where 
+\family typewriter
+@(k)...
+
+\family default
+ is the same as what you used for 
+\family typewriter
+fplot
+\family default
+ in the previous part (with 
+\family typewriter
+m=0
+\family default
+).
+ This gives 
+\begin_inset Formula $k_{1}\approx3.1230$
+\end_inset
+
+, 
+\begin_inset Formula $k_{2}\approx6.2734$
+\end_inset
+
+, 
+\begin_inset Formula $k_{3}\approx9.4182$
+\end_inset
+
+.
+ We plot the corresponding function, using our 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ and 
+\begin_inset Formula $\beta$
+\end_inset
+
+ from part
+\begin_inset space ~
+\end_inset
+
+(a), by 
+\family typewriter
+fplot(@(r) besselj(m,k*r).*bessely(m,k)-bessely(m,k*r).*besselj(m,k), [1,2])
+\family default
+, and the result is shown in figure
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:p3c"
+
+\end_inset
+
+.
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pset3-p3c.eps
+	width 60col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:p3c"
+
+\end_inset
+
+The radial part of the first three 
+\begin_inset Formula $m=0$
+\end_inset
+
+ eigenfunctions in an annulus, for the first three roots 
+\begin_inset Formula $k_{1,2,3}$
+\end_inset
+
+ of our equation 
+\begin_inset Formula $f_{m}(k)=0$
+\end_inset
+
+.
+ By construction, these vanish at 
+\begin_inset Formula $r=R_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $r=R_{2}=2R_{1}$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+ As desired, they satisfy both boundary conditions.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\emph on
+Comment: 
+\emph default
+If we made 
+\begin_inset Formula $R_{1}$
+\end_inset
+
+ very big and kept 
+\begin_inset Formula $R_{2}-R_{1}$
+\end_inset
+
+ fixed, then the curvature of the annulus would vanish and this problem
+ would reduce for 
+\begin_inset Formula $m=0$
+\end_inset
+
+ to the 1d problem 
+\begin_inset Formula $d^{2}/dx^{2}$
+\end_inset
+
+ with Dirichlet boundaries, having eigenfunctions 
+\begin_inset Formula $\sin[n\pi(r-R_{1})/(R_{2}-R_{1})]$
+\end_inset
+
+.
+ Even for 
+\begin_inset Formula $R_{1}=1$
+\end_inset
+
+, here, the eigenfunctions are already strikingly close to the 
+\begin_inset Formula $R_{1}\to\infty$
+\end_inset
+
+ sine solutions.
+\end_layout
+
+\begin_layout Enumerate
+Performing the integral with the commands given, I get 
+\begin_inset Formula $\approx2.53\times10^{-8}$
+\end_inset
+
+, which is zero to within the accuracy we requested.
+ (You can sort of see that they are orthogonal-ish just by looking at the
+ graphs in figure
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:p3b"
+
+\end_inset
+
+, since the larger 
+\begin_inset Formula $k$
+\end_inset
+
+'s oscillate more, but it is quite another matter to get such precise cancellati
+on in the integrals!
+\end_layout
+
+\end_body
+\end_document

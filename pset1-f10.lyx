@@ -1,0 +1,473 @@
+#LyX 1.6.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+
+\renewcommand{\vec}[1]{\mathbf{#1}}
+
+\renewcommand{\labelenumi}{(\alph{enumi})}
+\renewcommand{\labelenumii}{(\roman{enumii})}
+\end_preamble
+\use_default_options false
+\language english
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_amsmath 1
+\use_esint 0
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\topmargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Section*
+18.303 Problem Set 1
+\end_layout
+
+\begin_layout Standard
+Due Wednesday, 15 September 2010.
+\end_layout
+
+\begin_layout Subsection*
+Problem 1: 18.06 warmup
+\end_layout
+
+\begin_layout Standard
+Here are a few questions that you should be able to answer based only on
+ 18.06:
+\end_layout
+
+\begin_layout Enumerate
+Suppose 
+\begin_inset Formula $A$
+\end_inset
+
+ has a nullspace spanned by the vector 
+\begin_inset Formula $\vec{n}$
+\end_inset
+
+, and a left nullspace spanned by the vector 
+\begin_inset Formula $\vec{m}$
+\end_inset
+
+.
+ In terms of 
+\begin_inset Formula $\vec{m}$
+\end_inset
+
+, 
+\begin_inset Formula $\vec{n}$
+\end_inset
+
+, 
+\begin_inset Formula $\vec{b}$
+\end_inset
+
+, and/or 
+\begin_inset Formula $\vec{x}$
+\end_inset
+
+ only (
+\emph on
+not
+\emph default
+ 
+\begin_inset Formula $A$
+\end_inset
+
+), give an equation that will tell you whether 
+\begin_inset Formula $A\vec{x}=\vec{b}$
+\end_inset
+
+ has a solution.
+ Supposing it does have a solution 
+\begin_inset Formula $\vec{x}$
+\end_inset
+
+, give an expression for 
+\emph on
+all
+\emph default
+ solutions.
+\end_layout
+
+\begin_layout Enumerate
+Suppose that 
+\begin_inset Formula $A$
+\end_inset
+
+ is a real 
+\begin_inset Formula $20\times20$
+\end_inset
+
+ matrix with eigenvalues 
+\begin_inset Formula $-1,-2,\ldots,-20$
+\end_inset
+
+ and corresponding eigenvectors 
+\begin_inset Formula $\vec{x}_{1},\vec{x}_{2},\ldots,\vec{x}_{20}$
+\end_inset
+
+, respectively.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Is 
+\begin_inset Formula $A$
+\end_inset
+
+ necessarily diagonalizable? Symmetric? 
+\end_layout
+
+\begin_layout Enumerate
+Suppose 
+\begin_inset Formula $A$
+\end_inset
+
+ is symmetric.
+ If 
+\begin_inset Formula $\vec{x}(t)$
+\end_inset
+
+ solves 
+\begin_inset Formula $\frac{d}{dt}\vec{x}=Ax$
+\end_inset
+
+ with 
+\begin_inset Formula $\vec{x}(0)=\vec{b}$
+\end_inset
+
+, for some random 
+\begin_inset Formula $\vec{b}$
+\end_inset
+
+, what is likely to be true about the solution at large 
+\begin_inset Formula $t$
+\end_inset
+
+?
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+In 18.06, you were shown a simple (2--3 line) proof that the eigenvalues
+ 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ of 
+\begin_inset Formula $A$
+\end_inset
+
+ (solutions of 
+\begin_inset Formula $A\vec{x}=\lambda\vec{x}$
+\end_inset
+
+) must be real numbers if 
+\begin_inset Formula $A$
+\end_inset
+
+ is real-symmetric (if you forgot, look it up).
+ Adapt the same proof to show that the solutions 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ of 
+\begin_inset Formula $A\vec{x}=\lambda B\vec{x}$
+\end_inset
+
+ must be real if 
+\begin_inset Formula $A$
+\end_inset
+
+ and 
+\begin_inset Formula $B$
+\end_inset
+
+ are real-symmetric and 
+\begin_inset Formula $B$
+\end_inset
+
+ is positive-definite.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+The problem 
+\begin_inset Formula $A\vec{x}=\lambda B\vec{x}$
+\end_inset
+
+ is known as a 
+\begin_inset Quotes eld
+\end_inset
+
+generalized eigenproblem
+\begin_inset Quotes erd
+\end_inset
+
+ and comes up a lot in numerical methods for PDE eigenproblems.
+\end_layout
+
+\end_inset
+
+ Why does the proof fail if 
+\begin_inset Formula $B$
+\end_inset
+
+ is not positive-definite?
+\end_layout
+
+\begin_layout Enumerate
+Linearity means that if 
+\begin_inset Formula $A\vec{x}=\vec{b}$
+\end_inset
+
+ and 
+\begin_inset Formula $A\vec{y}=\vec{c},$
+\end_inset
+
+ then the solution 
+\begin_inset Formula $\vec{z}$
+\end_inset
+
+ of 
+\begin_inset Formula $A\vec{z}=2\vec{b}+4\vec{c}$
+\end_inset
+
+ is 
+\begin_inset Formula $\vec{z}=?$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Problem 2: Les Poissons, les Poissons, how I love les Poissons
+\end_layout
+
+\begin_layout Standard
+In class, we considered the 1d Poisson equation 
+\begin_inset Formula $\frac{d^{2}}{dx^{2}}u(x)=f(x)$
+\end_inset
+
+ for the vector space of functions 
+\begin_inset Formula $u(x)$
+\end_inset
+
+ on 
+\begin_inset Formula $x\in[0,L]$
+\end_inset
+
+ with the 
+\begin_inset Quotes eld
+\end_inset
+
+Dirichlet
+\begin_inset Quotes erd
+\end_inset
+
+ boundary conditions 
+\begin_inset Formula $u(0)=u(L)=0$
+\end_inset
+
+, and solved it in terms of the eigenfunctions of 
+\begin_inset Formula $\frac{d^{2}}{dx^{2}}$
+\end_inset
+
+ (giving a Fourier sine series).
+ Here, we will consider a couple of small variations on this:
+\end_layout
+
+\begin_layout Enumerate
+Does the space of all possible right-hand sides 
+\begin_inset Formula $f(x)$
+\end_inset
+
+ (for any 
+\begin_inset Formula $u$
+\end_inset
+
+) form a vector space? Is it the same as the vector space of the 
+\begin_inset Formula $u(x)$
+\end_inset
+
+ functions? Why or why not?
+\end_layout
+
+\begin_layout Enumerate
+How do the eigenfunctions of 
+\begin_inset Formula $\frac{d^{2}}{dx^{2}}$
+\end_inset
+
+ change if we change the boundary conditions to 
+\begin_inset Formula $u'(0)=u'(L)=0$
+\end_inset
+
+?
+\end_layout
+
+\begin_layout Enumerate
+If we instead consider 
+\begin_inset Formula $\frac{d^{2}}{dx^{2}}v(x)=g(x)$
+\end_inset
+
+ for functions 
+\begin_inset Formula $v(x)$
+\end_inset
+
+ with the boundary conditions 
+\begin_inset Formula $v(0)=0$
+\end_inset
+
+, 
+\begin_inset Formula $v(L)=1$
+\end_inset
+
+, do these functions form a vector space? Why or why not?
+\end_layout
+
+\begin_layout Enumerate
+Explain how we can transform the 
+\begin_inset Formula $v(x)$
+\end_inset
+
+ problem of the previous part back into the original 
+\begin_inset Formula $\frac{d^{2}}{dx^{2}}u(x)=f(x)$
+\end_inset
+
+ problem with 
+\begin_inset Formula $u(0)=u(L)=0$
+\end_inset
+
+, by writing 
+\begin_inset Formula $u(x)=v(x)+q(x)$
+\end_inset
+
+ and 
+\begin_inset Formula $f(x)=g(x)+r(x)$
+\end_inset
+
+ for some functions 
+\begin_inset Formula $q$
+\end_inset
+
+ and 
+\begin_inset Formula $r$
+\end_inset
+
+.
+ Suggest two different possible choices of 
+\begin_inset Formula $q$
+\end_inset
+
+ and 
+\begin_inset Formula $r$
+\end_inset
+
+.
+ (Transforming a new problem into an old, solved one is always a useful
+ thing to do!)
+\end_layout
+
+\begin_layout Subsection*
+Problem 3: Nullicious
+\end_layout
+
+\begin_layout Enumerate
+How does the null space of 
+\begin_inset Formula $\frac{d^{2}}{dx^{2}}$
+\end_inset
+
+ differ if we consider the functions 
+\begin_inset Formula $u(x)$
+\end_inset
+
+ on 
+\begin_inset Formula $x\in[0,L]$
+\end_inset
+
+ with 
+\begin_inset Formula $u(0)=u(L)=0$
+\end_inset
+
+ (as in class) versus functions with different boundary conditions 
+\begin_inset Formula $u'(0)=u'(L)=0$
+\end_inset
+
+? What does this imply for the solutions of 
+\begin_inset Formula $\frac{d^{2}}{dx^{2}}u(x)=f(x)$
+\end_inset
+
+, if any, in the latter case?
+\end_layout
+
+\begin_layout Enumerate
+The linear operator 
+\begin_inset Formula $\frac{d^{4}}{dx^{4}}$
+\end_inset
+
+ is important for something called the 
+\emph on
+beam equation
+\emph default
+ (for which Wikipedia has some pretty pictures).
+ If we consider the vector space of functions 
+\begin_inset Formula $u(x)$
+\end_inset
+
+ on 
+\begin_inset Formula $x\in[0,L]$
+\end_inset
+
+ with the boundary conditions 
+\begin_inset Formula $u(0)=u(L)=0$
+\end_inset
+
+, then what is the null space of 
+\begin_inset Formula $\frac{d^{4}}{dx^{4}}$
+\end_inset
+
+? Give an example of 
+\emph on
+additional
+\emph default
+ boundary conditions that you could add that shrink this null space to 
+\begin_inset Formula $\{0\}$
+\end_inset
+
+ (but make sure it stays a vector space!).
+\end_layout
+
+\end_body
+\end_document

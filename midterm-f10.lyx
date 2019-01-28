@@ -1,0 +1,440 @@
+#LyX 1.6.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+
+\renewcommand{\vec}[1]{\mathbf{#1}}
+
+\renewcommand{\labelenumi}{(\alph{enumi})}
+\renewcommand{\labelenumii}{(\roman{enumii})}
+\newcommand{\rank}{\operatorname{rank}}
+\end_preamble
+\use_default_options false
+\language english
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_amsmath 2
+\use_esint 0
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\leftmargin 0.7in
+\topmargin 0.7in
+\rightmargin 0.7in
+\bottommargin 0.7in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Section*
+18.303 Midterm, Fall 2010
+\end_layout
+
+\begin_layout Standard
+Each problem has 
+\series bold
+equal weight
+\series default
+.
+ You have 55 minutes.
+\end_layout
+
+\begin_layout Subsection*
+Problem 1: Finite differences (20 points)
+\end_layout
+
+\begin_layout Standard
+From class and homework, the 
+\begin_inset Formula $d^{2}/dx^{2}$
+\end_inset
+
+ operator on 
+\begin_inset Formula $[0,L]$
+\end_inset
+
+ can be discretized into values 
+\begin_inset Formula $u_{m}\approx u(m\Delta x)$
+\end_inset
+
+ at points 
+\begin_inset Formula $x=m\Delta x$
+\end_inset
+
+ [for 
+\begin_inset Formula $\Delta x=L/(M+1)$
+\end_inset
+
+] as 
+\begin_inset Formula $A=-D^{T}D/\Delta x^{2}$
+\end_inset
+
+, where 
+\begin_inset Formula \[
+D_{\mbox{Dirichlet}}=\left(\begin{array}{cccc}
+1\\
+-1 & 1\\
+ & \ddots & \ddots\\
+ &  & -1 & 1\\
+ &  &  & -1\end{array}\right),\qquad D_{\mbox{Neumann}}=\left(\begin{array}{ccccc}
+-1 & 1\\
+ & -1 & 1\\
+ &  & \ddots & \ddots\\
+ &  &  & -1 & 1\end{array}\right)\]
+
+\end_inset
+
+when the boundary conditions are Dirichlet 
+\begin_inset Formula $u(0)=u(L)=0$
+\end_inset
+
+ [
+\begin_inset Formula $D$
+\end_inset
+
+ an 
+\begin_inset Formula $(M+1)\times M$
+\end_inset
+
+ matrix] and Neumann 
+\begin_inset Formula $u'(0)=u'(L)=0$
+\end_inset
+
+ [
+\begin_inset Formula $D$
+\end_inset
+
+ an 
+\begin_inset Formula $(M-1)\times M$
+\end_inset
+
+ matrix], respectively.
+\end_layout
+
+\begin_layout Enumerate
+Write down a new 
+\begin_inset Formula $D$
+\end_inset
+
+ matrix that implements the boundary conditions: 
+\begin_inset Formula $u(0)+u'(0)=0$
+\end_inset
+
+, 
+\begin_inset Formula $u(L)=0$
+\end_inset
+
+.
+ For simplicity, apply the left boundary condition at 
+\begin_inset Formula $\Delta x/2$
+\end_inset
+
+ rather than at 
+\begin_inset Formula $0$
+\end_inset
+
+, using 
+\begin_inset Formula $u(\Delta x/2)\approx(u_{0}+u_{1})/2$
+\end_inset
+
+.
+ Be sure to indicate how many rows and columns your 
+\begin_inset Formula $D$
+\end_inset
+
+ matrix has, and for what 
+\begin_inset Formula $m$
+\end_inset
+
+ values you have degrees of freedom 
+\begin_inset Formula $u_{m}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+If you use your 
+\begin_inset Formula $D$
+\end_inset
+
+ matrix from the previous part to solve 
+\begin_inset Formula $u''(x)=f(x)$
+\end_inset
+
+ approximately via 
+\begin_inset Formula $A=-D^{T}D/\Delta x^{2}$
+\end_inset
+
+, how fast would you expect the errors to vanish as 
+\begin_inset Formula $\Delta x\to0$
+\end_inset
+
+? [i.e.
+ errors proportional to 
+\begin_inset Formula $\Delta x^{n}$
+\end_inset
+
+ for what power 
+\begin_inset Formula $n$
+\end_inset
+
+?]
+\end_layout
+
+\begin_layout Subsection*
+Problem 2: Adjoints and stuff (20 points)
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $\Omega\subseteq\mathbb{R}^{2}$
+\end_inset
+
+ be the rectangular 2d region 
+\begin_inset Formula $x\in[0,L_{x}]$
+\end_inset
+
+, 
+\begin_inset Formula $y\in[0,L_{y}]$
+\end_inset
+
+, with Dirichlet boundaries 
+\begin_inset Formula $u|_{d\Omega}=0$
+\end_inset
+
+.
+ Consider the operator 
+\begin_inset Formula \[
+\hat{A}u=\nabla^{2}u+\frac{\partial}{\partial x}\left[c(x,y)\frac{\partial u}{\partial y}\right]+\frac{\partial}{\partial y}\left[c(x,y)\frac{\partial u}{\partial x}\right]\]
+
+\end_inset
+
+for some real-valued function 
+\begin_inset Formula $c(x,y)$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $\hat{B}=\frac{\partial}{\partial x}c\frac{\partial}{\partial y}$
+\end_inset
+
+, i.e.
+ 
+\begin_inset Formula $\hat{B}u=\frac{\partial}{\partial x}\left[c(x,y)\frac{\partial u}{\partial y}\right]$
+\end_inset
+
+, the second term in 
+\begin_inset Formula $\hat{A}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Find 
+\begin_inset Formula $\hat{B}^{*}=$
+\end_inset
+
+_____________ under the inner product 
+\begin_inset Formula $\langle u,v\rangle=\int_{\Omega}uv=\int_{0}^{L_{x}}\int_{0}^{L_{y}}dx\, dy\, u(x,y)\, v(x,y)$
+\end_inset
+
+ [use real-valued functions for simplicity].
+ Hence conclude that 
+\begin_inset Formula $\hat{A}^{*}=$
+\end_inset
+
+________.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Under what conditions on 
+\begin_inset Formula $c(x,y)$
+\end_inset
+
+ will 
+\begin_inset Formula $\hat{A}u=\frac{\partial u}{\partial t}$
+\end_inset
+
+ have solutions 
+\begin_inset Formula $u(x,y,t)$
+\end_inset
+
+ that 
+\begin_inset Formula $\to0$
+\end_inset
+
+ as 
+\begin_inset Formula $t\to\infty$
+\end_inset
+
+ for any initial condition 
+\begin_inset Formula $u(x,y,0)$
+\end_inset
+
+? Hint: consider 
+\begin_inset Formula $\langle u,\hat{A}u\rangle$
+\end_inset
+
+ for 
+\begin_inset Formula $u\neq0$
+\end_inset
+
+, and note that the eigenvalues of the 
+\begin_inset Formula $2\times2$
+\end_inset
+
+ matrix 
+\begin_inset Formula $\left(\begin{array}{cc}
+1 & c\\
+c & 1\end{array}\right)$
+\end_inset
+
+ are 
+\begin_inset Formula $1\pm c$
+\end_inset
+
+.
+ (From class: 
+\begin_inset Formula $\langle u,\nabla^{2}u\rangle=-\int_{\Omega}\nabla u\cdot\nabla u$
+\end_inset
+
+.)
+\end_layout
+
+\begin_layout Subsection*
+Problem 3: Thinking Green (20 points)
+\end_layout
+
+\begin_layout Standard
+Consider the operator 
+\begin_inset Formula $\hat{A}=-c(\vec{x})\nabla^{2}$
+\end_inset
+
+ in some 2d region 
+\begin_inset Formula $\Omega\subseteq\mathbb{R}^{2}$
+\end_inset
+
+ with Dirichlet boundaries (
+\begin_inset Formula $u|_{d\Omega}=0$
+\end_inset
+
+), where 
+\begin_inset Formula $c(\vec{x})>0$
+\end_inset
+
+.
+ Suppose the eigenfunctions of 
+\begin_inset Formula $\hat{A}$
+\end_inset
+
+ are 
+\begin_inset Formula $u_{n}(\vec{x})$
+\end_inset
+
+ with eigenvalues 
+\begin_inset Formula $\lambda_{n}$
+\end_inset
+
+ [that is, 
+\begin_inset Formula $\hat{A}u_{n}=\lambda_{n}u_{n}$
+\end_inset
+
+] for 
+\begin_inset Formula $n=1,2,\ldots$
+\end_inset
+
+, numbered in order 
+\begin_inset Formula $\lambda_{1}<\lambda_{2}<\lambda_{3}<\cdots$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $G(\vec{x},\vec{x}')$
+\end_inset
+
+ be the Green's function of 
+\begin_inset Formula $\hat{A}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+If 
+\begin_inset Formula $f(\vec{x})=\sum_{n}\alpha_{n}u_{n}(\vec{x})$
+\end_inset
+
+ for some coefficients 
+\begin_inset Formula $\alpha_{n}=$
+\end_inset
+
+_________________ (expression in terms of 
+\begin_inset Formula $f$
+\end_inset
+
+ and 
+\begin_inset Formula $u_{n}$
+\end_inset
+
+), then 
+\begin_inset Formula $\int_{\Omega}G(\vec{x},\vec{x}')f(\vec{x}')d^{2}\vec{x}'=$
+\end_inset
+
+__________________ (in terms of 
+\begin_inset Formula $\alpha_{n}$
+\end_inset
+
+ and 
+\begin_inset Formula $u_{n}$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Enumerate
+The maximum possible value of 
+\begin_inset Formula \[
+\frac{\int_{\Omega}\int_{\Omega}\frac{1}{c(\vec{x})}\overline{u(\vec{x})}G(\vec{x},\vec{x}')u(\vec{x}')\, d^{2}\vec{x}\, d^{2}\vec{x}'}{\int_{\Omega}\frac{|u(\vec{x}'')|^{2}}{c(\vec{x}'')}d^{2}\vec{x}''},\]
+
+\end_inset
+
+for any possible 
+\begin_inset Formula $u(\vec{x})$
+\end_inset
+
+, is _____________________ (in terms of quantities mentioned above).
+ [Hint: min--max.]
+\end_layout
+
+\end_body
+\end_document

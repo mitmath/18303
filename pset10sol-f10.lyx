@@ -1,0 +1,382 @@
+#LyX 1.6.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+
+\renewcommand{\vec}[1]{\mathbf{#1}}
+
+\renewcommand{\labelenumi}{(\alph{enumi})}
+\renewcommand{\labelenumii}{(\roman{enumii})}
+\newcommand{\rank}{\operatorname{rank}}
+
+\usepackage{cancel}
+\end_preamble
+\use_default_options false
+\language english
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_amsmath 2
+\use_esint 2
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\leftmargin 0.7in
+\topmargin 0.7in
+\rightmargin 0.7in
+\bottommargin 0.7in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Section*
+18.303 Problem Set 10 Solutions
+\end_layout
+
+\begin_layout Subsection*
+Problem 1: (10+10+10+10 points)
+\end_layout
+
+\begin_layout Standard
+In class (and notes), we showed that we can turn the scalar wave equation
+ 
+\begin_inset Formula $b\nabla\cdot(a\nabla u)=\frac{\partial^{2}u}{\partial t^{2}}$
+\end_inset
+
+ (
+\begin_inset Formula $a>0$
+\end_inset
+
+ and 
+\begin_inset Formula $b>0$
+\end_inset
+
+) into two coupled first-derivative equations: 
+\begin_inset Formula $\frac{\partial u}{\partial t}=b\nabla\cdot\vec{v}$
+\end_inset
+
+, 
+\begin_inset Formula $\frac{\partial\vec{v}}{\partial t}=a\nabla u$
+\end_inset
+
+ by introducing a new (vector) unknown 
+\begin_inset Formula $\vec{v}(\vec{x},t)$
+\end_inset
+
+.
+ By defining 
+\begin_inset Formula $\vec{w}=(u,\vec{v})^{T}$
+\end_inset
+
+, we obtained the form 
+\begin_inset Formula \[
+\frac{\partial\vec{w}}{\partial t}=\left(\begin{array}{cc}
+ & b\nabla\cdot\\
+a\nabla\end{array}\right)\vec{w}=\hat{D}\vec{w},\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\hat{D}$
+\end_inset
+
+ was anti-Hermitian (
+\begin_inset Formula $\hat{D}^{*}=-\hat{D})$
+\end_inset
+
+ under the inner product 
+\begin_inset Formula $\langle\vec{w},\vec{w}'\rangle=\int_{\Omega}\left(\frac{1}{b}\bar{u}u'+\frac{1}{a}\bar{\vec{v}}\cdot\vec{v}'\right)$
+\end_inset
+
+, for appropriate boundary conditions (e.g.
+ 
+\begin_inset Formula $u|_{d\Omega}=0$
+\end_inset
+
+).
+ This gave us conservation of 
+\begin_inset Quotes eld
+\end_inset
+
+energy
+\begin_inset Quotes erd
+\end_inset
+
+: 
+\begin_inset Formula $\frac{\partial}{\partial t}\langle\vec{w},\vec{w}\rangle=\langle\vec{w},\hat{D}\vec{w}\rangle+\langle\hat{D}\vec{w},\vec{w}\rangle=\langle\hat{D}^{*}\vec{w},\vec{w}\rangle+\langle\hat{D}\vec{w},\vec{w}\rangle=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Suppose we don't have any boudnary conditions; in this case integration
+ by parts gives 
+\begin_inset Formula \begin{align*}
+\langle\vec{w},\hat{D}\vec{w}\rangle & =\int_{\Omega}\left(\bar{u}\nabla\cdot\vec{v}+\bar{\vec{v}}\cdot\nabla u\right)\\
+ & =\int_{\Omega}\left(\nabla\cdot\left[\bar{u}\vec{v}\right]-\vec{v}\cdot\nabla\bar{u}+\nabla\left[u\bar{\vec{v}}\right]-u\nabla\cdot\bar{\vec{v}}\right)\\
+ & =-\langle\hat{D}\vec{w},\vec{w}\rangle+2\Re\oiint_{d\Omega}(\bar{u}\vec{v})d\vec{A},\end{align*}
+
+\end_inset
+
+where the surface integral comes from the divergence theorem and 
+\begin_inset Formula $\Re$
+\end_inset
+
+ denotes the real part (since 
+\begin_inset Formula $z+\bar{z}=2\Re z$
+\end_inset
+
+).
+ Therefore, we obtain:
+\begin_inset Formula \[
+\frac{\partial}{\partial t}\langle\vec{w},\vec{w}\rangle=\langle\vec{w},\hat{D}\vec{w}\rangle+\langle\hat{D}\vec{w},\vec{w}\rangle=-\langle\hat{D}\vec{w},\vec{w}\rangle+\oiint_{d\Omega}\vec{F}\cdot d\vec{A}+\langle\hat{D}\vec{w},\vec{w}\rangle=\oiint_{d\Omega}\vec{F}\cdot d\vec{A},\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\vec{F}=2\Re(\bar{u}\vec{v})$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Thus, 
+\begin_inset Formula $-\vec{F}$
+\end_inset
+
+ can be interpreted as a flux of energy per unit area per unit time.
+ (Note the sign: the loss of energy from 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ is 
+\begin_inset Formula $-\frac{\partial}{\partial t}\langle\vec{w},\vec{w}\rangle$
+\end_inset
+
+.) 
+\end_layout
+
+\begin_layout Enumerate
+Plugging 
+\begin_inset Formula $\vec{w}(x,y,z,t)=\vec{w}_{k}(x,y)e^{i(kz-\omega t)}$
+\end_inset
+
+ into the eigenequation 
+\begin_inset Formula $\hat{D}\vec{w}=-i\omega\vec{w}$
+\end_inset
+
+, cancelling 
+\begin_inset Formula $e^{-i\omega t}$
+\end_inset
+
+ from both sides, and moving 
+\begin_inset Formula $e^{ikz}$
+\end_inset
+
+ to the left side, we obtain: 
+\begin_inset Formula \[
+\hat{D}_{k}\vec{w}_{k}=e^{-ikz}\hat{D}e^{ikz}\vec{w}_{k}=-i\omega\vec{w}_{k},\]
+
+\end_inset
+
+where as in class this transformation of 
+\begin_inset Formula $\hat{D}$
+\end_inset
+
+ turns each 
+\begin_inset Formula $\nabla$
+\end_inset
+
+ into 
+\begin_inset Formula $\nabla_{xy}+i\vec{k}$
+\end_inset
+
+, where 
+\begin_inset Formula $\nabla_{xy}$
+\end_inset
+
+ is just the 
+\begin_inset Formula $x$
+\end_inset
+
+ and 
+\begin_inset Formula $y$
+\end_inset
+
+ derivatives and 
+\begin_inset Formula $\vec{k}=k\hat{z}$
+\end_inset
+
+, so that 
+\begin_inset Formula \[
+\hat{D}_{k}=\left(\begin{array}{cc}
+ & b\left[\nabla_{xy}+i\vec{k}\right]\cdot\\
+a\left[\nabla_{xy}+i\vec{k}\right]\end{array}\right)=\left(\begin{array}{cc}
+ & b\nabla_{xy}\cdot\\
+a\nabla_{xy}\end{array}\right)+i\left(\begin{array}{cc}
+ & b\vec{k}\cdot\\
+a\vec{k}\end{array}\right).\]
+
+\end_inset
+
+Plugging this into the 2d inner product 
+\begin_inset Formula $\langle\vec{w},\vec{w}'\rangle=\int_{\Omega_{xy}}\left(\frac{1}{b}\bar{u}u'+\frac{1}{a}\bar{\vec{v}}\cdot\vec{v}'\right)$
+\end_inset
+
+, we obtain two terms from 
+\begin_inset Formula $\langle\vec{w},\hat{D}_{k}\vec{w}'\rangle$
+\end_inset
+
+, from the two terms above.
+ The first, from the 
+\begin_inset Formula $\nabla_{xy}$
+\end_inset
+
+ terms, works exactly like 
+\begin_inset Formula $\hat{D}$
+\end_inset
+
+ (since we analyzed 
+\begin_inset Formula $\hat{D}$
+\end_inset
+
+ in any number of dimensions, and this is just the 2d case), and so is anti-Herm
+itian as before.
+ The second, from the 
+\begin_inset Formula $\vec{k}$
+\end_inset
+
+ terms, is: 
+\begin_inset Formula \begin{align*}
+\langle\vec{w},i\left(\begin{array}{cc}
+ & b\vec{k}\cdot\\
+a\vec{k}\end{array}\right)\vec{w}'\rangle & =\int_{\Omega_{xy}}\left(\bar{u}i\vec{k}\cdot\vec{v}+\bar{\vec{v}}\cdot i\vec{k}u\right)\\
+ & =-\int_{\Omega_{xy}}\left(\overline{i\vec{k}u}\cdot\vec{v}+\overline{i\vec{k}\cdot\vec{v}}u\right)\\
+ & =\langle-i\left(\begin{array}{cc}
+ & b\vec{k}\cdot\\
+a\vec{k}\end{array}\right)\vec{w},\vec{w}'\rangle,\end{align*}
+
+\end_inset
+
+and so this part is anti-Hermitian too.
+ Hence 
+\begin_inset Formula $\hat{D}_{k}=-\hat{D}_{k}^{*}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Here, we just apply the ordinary quotient/product rules of differentiation:
+ 
+\begin_inset Formula \begin{align*}
+\frac{\partial}{\partial k}\frac{\langle\vec{w}_{k},i\hat{D}_{k}\vec{w}_{k}\rangle}{\langle\vec{w}_{k},\vec{w}_{k}\rangle} & =\frac{\langle\frac{\partial\vec{w}_{k}}{\partial k},i\hat{D}_{k}\vec{w}_{k}\rangle+\langle\vec{w}_{k},i\hat{D}_{k}\frac{\partial\vec{w}_{k}}{\partial k}\rangle+\langle\vec{w}_{k},i\frac{\partial\hat{D}_{k}}{\partial k}\vec{w}_{k}\rangle}{\langle\vec{w}_{k},\vec{w}_{k}\rangle}-\frac{\langle\vec{w}_{k},i\hat{D}_{k}\vec{w}_{k}\rangle}{\langle\vec{w}_{k},\vec{w}_{k}\rangle^{2}}\left[\langle\frac{\partial\vec{w}_{k}}{\partial k},\vec{w}_{k}\rangle+\langle\vec{w}_{k},\frac{\partial\vec{w}_{k}}{\partial k}\rangle\right]\\
+ & =\frac{\langle\frac{\partial\vec{w}_{k}}{\partial k},i\hat{D}_{k}\vec{w}_{k}\rangle+\langle i\hat{D}_{k}\vec{w}_{k},\frac{\partial\vec{w}_{k}}{\partial k}\rangle+\langle\vec{w}_{k},i\frac{\partial\hat{D}_{k}}{\partial k}\vec{w}_{k}\rangle}{\langle\vec{w}_{k},\vec{w}_{k}\rangle}-\frac{\langle\vec{w}_{k},i\hat{D}_{k}\vec{w}_{k}\rangle}{\langle\vec{w}_{k},\vec{w}_{k}\rangle^{2}}\left[\langle\frac{\partial\vec{w}_{k}}{\partial k},\vec{w}_{k}\rangle+\langle\vec{w}_{k},\frac{\partial\vec{w}_{k}}{\partial k}\rangle\right]\\
+ & =\frac{\omega\cancel{\left[\langle\frac{\partial\vec{w}_{k}}{\partial k},\vec{w}_{k}\rangle+\langle\vec{w}_{k},\frac{\partial\vec{w}_{k}}{\partial k}\rangle\right]}+\langle\vec{w}_{k},i\frac{\partial\hat{D}_{k}}{\partial k}\vec{w}_{k}\rangle}{\langle\vec{w}_{k},\vec{w}_{k}\rangle}-\frac{\omega}{\langle\vec{w}_{k},\vec{w}_{k}\rangle}\cancel{\left[\langle\frac{\partial\vec{w}_{k}}{\partial k},\vec{w}_{k}\rangle+\langle\vec{w}_{k},\frac{\partial\vec{w}_{k}}{\partial k}\rangle\right]}\\
+ & =\frac{\langle\vec{w}_{k},i\frac{\partial\hat{D}_{k}}{\partial k}\vec{w}_{k}\rangle}{\langle\vec{w}_{k},\vec{w}_{k}\rangle},\end{align*}
+
+\end_inset
+
+where in the second line we have used the fact that 
+\begin_inset Formula $i\hat{D}_{k}$
+\end_inset
+
+ is Hermitian to move it from the right to the left in one term, and in
+ the third line we have used the eigenequation 
+\begin_inset Formula $i\hat{D}_{k}\vec{w}_{k}=\omega\vec{w}_{k}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Since 
+\begin_inset Formula $k$
+\end_inset
+
+ only appears in the 
+\begin_inset Formula $\vec{k}$
+\end_inset
+
+ terms of 
+\begin_inset Formula $\hat{D}_{k}$
+\end_inset
+
+, we obtain: 
+\begin_inset Formula \[
+i\frac{\partial\hat{D}_{k}}{\partial k}=-\left(\begin{array}{cc}
+ & b\hat{z}\cdot\\
+a\hat{z}\end{array}\right),\]
+
+\end_inset
+
+and hence 
+\begin_inset Formula \[
+\langle\vec{w}_{k},i\frac{\partial\hat{D}_{k}}{\partial k}\vec{w}_{k}\rangle=-\int_{\Omega_{xy}}\left(\bar{u}v_{z}+u\bar{v}_{z}\right)dx\, dy=-\int_{\Omega_{xy}}F_{z}dx\, dy,\]
+
+\end_inset
+
+where 
+\begin_inset Formula $F_{z}$
+\end_inset
+
+ is the 
+\begin_inset Formula $z$
+\end_inset
+
+ component of 
+\begin_inset Formula $\vec{F}$
+\end_inset
+
+ from part
+\begin_inset space ~
+\end_inset
+
+(a).
+ Note the minus sign: this is consistent with the interpretation from
+\begin_inset space ~
+\end_inset
+
+(a) of 
+\begin_inset Formula $-\vec{F}$
+\end_inset
+
+ as the flux of energy.
+\end_layout
+
+\end_body
+\end_document

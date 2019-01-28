@@ -1,0 +1,750 @@
+#LyX 1.6.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+
+\renewcommand{\vec}[1]{\mathbf{#1}}
+
+\renewcommand{\labelenumi}{(\alph{enumi})}
+\renewcommand{\labelenumii}{(\roman{enumii})}
+\end_preamble
+\use_default_options false
+\language english
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_amsmath 1
+\use_esint 0
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\topmargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Section*
+18.303 Problem Set 1 Solutions
+\end_layout
+
+\begin_layout Subsection*
+Problem 1: (10+10+10+5 points)
+\end_layout
+
+\begin_layout Standard
+Here are a few questions that you should be able to answer based only on
+ 18.06:
+\end_layout
+
+\begin_layout Enumerate
+For 
+\begin_inset Formula $A\vec{x}=\vec{b}$
+\end_inset
+
+ to have a solution, 
+\begin_inset Formula $\vec{b}$
+\end_inset
+
+ must be in the column space of 
+\begin_inset Formula $A$
+\end_inset
+
+, which is orthogonal to the left nullspace, which is spanned by 
+\begin_inset Formula $\vec{m}$
+\end_inset
+
+, so 
+\begin_inset Formula $\vec{b}^{*}\vec{m}=0$
+\end_inset
+
+ (or 
+\begin_inset Formula $\vec{b}^{T}\vec{m}=0$
+\end_inset
+
+ for real vectors) is true if and only if a solution exists.
+ If a solution 
+\begin_inset Formula $\vec{x}$
+\end_inset
+
+ exists, then all solutions are of the form 
+\begin_inset Formula $\vec{x}+\alpha\vec{n}$
+\end_inset
+
+ for any scalar 
+\begin_inset Formula $\alpha$
+\end_inset
+
+, since 
+\begin_inset Formula $\vec{n}$
+\end_inset
+
+ spans the nullspace.
+\end_layout
+
+\begin_layout Enumerate
+Solutions:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $A$
+\end_inset
+
+ must be diagonalizable since it is 
+\begin_inset Formula $n\times n$
+\end_inset
+
+ with 
+\begin_inset Formula $n$
+\end_inset
+
+ distinct eigenvalues.
+ It need not be symmetric, however.
+ (Real-symmetric implies real eigenvalues, but the converse is not true.
+ For example, consider 
+\begin_inset Formula $A=V^{-1}\Sigma V$
+\end_inset
+
+ where 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+ is a diagonal matrix of the eigenvalues, and 
+\begin_inset Formula $V$
+\end_inset
+
+ is any real invertible matrix: 
+\begin_inset Formula $A$
+\end_inset
+
+ is similar to 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+ and so has the same eigenvalues, but is not symmetric unless 
+\begin_inset Formula $V$
+\end_inset
+
+ is orthogonal.)
+\end_layout
+
+\begin_layout Enumerate
+Since 
+\begin_inset Formula $A$
+\end_inset
+
+ is diagonalizable, its eigenvectors 
+\begin_inset Formula $\vec{v}_{1},\ldots,\vec{v}_{20}$
+\end_inset
+
+ (corresponding to the eigenvalues 
+\begin_inset Formula $\lambda_{1},\ldots,\lambda_{20}=-1,\ldots-20$
+\end_inset
+
+) form a basis, and we can write 
+\begin_inset Formula $\vec{b}=\sum_{i}c_{i}\vec{v}_{i}$
+\end_inset
+
+ for some coefficients 
+\begin_inset Formula $c_{i}$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula $\vec{x}(t)=e^{At}\vec{b}=\sum_{i}e^{\lambda_{i}t}c_{i}\vec{v}_{i}$
+\end_inset
+
+.
+ Because all the 
+\begin_inset Formula $\lambda_{i}$
+\end_inset
+
+ are 
+\begin_inset Formula $<0$
+\end_inset
+
+, these terms are exponentially decaying and 
+\begin_inset Formula $\vec{x}(t)\to0$
+\end_inset
+
+ as 
+\begin_inset Formula $t\to\infty$
+\end_inset
+
+.
+ Moreover, for large finite 
+\begin_inset Formula $t\gg1$
+\end_inset
+
+, 
+\begin_inset Formula $\vec{x}(t)$
+\end_inset
+
+ will be dominated by the slowest-decaying term (the largest 
+\begin_inset Formula $\lambda_{i}$
+\end_inset
+
+ with a 
+\begin_inset Formula $c_{i}\ne0$
+\end_inset
+
+).
+ The largest eigenvalue is 
+\begin_inset Formula $-1$
+\end_inset
+
+, and since 
+\begin_inset Formula $\vec{b}$
+\end_inset
+
+ is random it is very unlikely that 
+\begin_inset Formula $c_{1}\neq0$
+\end_inset
+
+, so we should have 
+\begin_inset Formula $\vec{x}(t)\approx e^{-t}c_{1}\vec{v}_{1}$
+\end_inset
+
+ for large 
+\begin_inset Formula $t$
+\end_inset
+
+, i.e.
+ 
+\begin_inset Formula $\vec{x}(t)$
+\end_inset
+
+ will be approximately parallel to the eigenvector for 
+\begin_inset Formula $\lambda=-1$
+\end_inset
+
+ and will be decaying approximately as 
+\begin_inset Formula $e^{-t}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Let 
+\begin_inset Formula $\vec{x}^{*}$
+\end_inset
+
+ denote the conjugate-transpose 
+\begin_inset Formula $\overline{\vec{x}^{T}}$
+\end_inset
+
+.
+ 
+\begin_inset Formula $A=A^{T}=\bar{A}=A^{*}$
+\end_inset
+
+, and similarly for 
+\begin_inset Formula $B$
+\end_inset
+
+.
+ For an solution 
+\begin_inset Formula $A\vec{x}=\lambda B\vec{x}$
+\end_inset
+
+, we therefore have 
+\begin_inset Formula \begin{eqnarray*}
+\vec{x}^{*}A\vec{x} & = & \lambda(\vec{x}^{*}B\vec{x})\\
+ & = & (A\vec{x})^{*}\vec{x}=(\lambda B\vec{x})^{*}\vec{x}=\bar{\lambda}(\vec{x}^{*}B\vec{x}).\end{eqnarray*}
+
+\end_inset
+
+Since 
+\begin_inset Formula $B$
+\end_inset
+
+ is positive-definite, this guarantees 
+\begin_inset Formula $\vec{x}^{*}B\vec{x}>0$
+\end_inset
+
+ for 
+\begin_inset Formula $\vec{x}\neq0$
+\end_inset
+
+ (zero is never counted as an eigevector),
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Even if you only knew 
+\begin_inset Formula $B$
+\end_inset
+
+ was positive-definite for real 
+\begin_inset Formula $\vec{x}$
+\end_inset
+
+, the complex positive-definiteness follows.
+ Suppose 
+\begin_inset Formula $\vec{x}^{T}B\vec{x}>0$
+\end_inset
+
+ for any real 
+\begin_inset Formula $\vec{x}\neq0$
+\end_inset
+
+, with 
+\begin_inset Formula $B=B^{T}=\bar{B}$
+\end_inset
+
+.
+ Then, for any complex vector 
+\begin_inset Formula $\vec{z}=\vec{x}+i\vec{y}\neq0$
+\end_inset
+
+ for real 
+\begin_inset Formula $\vec{x}$
+\end_inset
+
+ and 
+\begin_inset Formula $\vec{y}$
+\end_inset
+
+, we have 
+\begin_inset Formula $\vec{z}^{*}B\vec{z}=(\vec{x}-i\vec{y})^{T}B(\vec{x}+iy)=\vec{x}^{T}B\vec{x}+\vec{y}^{T}B\vec{y}-i\vec{y}^{T}B\vec{x}+i\vec{x}^{T}B\vec{y}>0$
+\end_inset
+
+, since the last two terms cancel (
+\begin_inset Formula $\vec{y}^{T}B\vec{x}=\vec{x}^{T}B\vec{y}$
+\end_inset
+
+ for 
+\begin_inset Formula $B=B^{T}$
+\end_inset
+
+).
+\end_layout
+
+\end_inset
+
+ so we can cancel it from both lines above, obtaining 
+\begin_inset Formula $\lambda=\bar{\lambda}$
+\end_inset
+
+ and hence 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ is real.
+ If 
+\begin_inset Formula $B$
+\end_inset
+
+ was not given to be positive-definite, we could have 
+\begin_inset Formula $\vec{x}^{*}B\vec{x}=0$
+\end_inset
+
+, in which case it wouldn't cancel and 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ might be complex.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\vec{z}=2\vec{x}+4\vec{y}$
+\end_inset
+
+, since 
+\begin_inset Formula $A(2\vec{x}+4\vec{y})=2A\vec{x}+4A\vec{y}=2\vec{b}+4\vec{c}$
+\end_inset
+
+.
+ (This is sometimes called the 
+\begin_inset Quotes eld
+\end_inset
+
+superposition
+\begin_inset Quotes erd
+\end_inset
+
+ of two solutions, essentially another name for linearity.)
+\end_layout
+
+\begin_layout Subsection*
+Problem 2: (10+10+5+10 points)
+\end_layout
+
+\begin_layout Standard
+In class, we considered the 1d Poisson equation 
+\begin_inset Formula $\frac{d^{2}}{dx^{2}}u(x)=f(x)$
+\end_inset
+
+ for the vector space of functions 
+\begin_inset Formula $u(x)$
+\end_inset
+
+ on 
+\begin_inset Formula $x\in[0,L]$
+\end_inset
+
+ with the 
+\begin_inset Quotes eld
+\end_inset
+
+Dirichlet
+\begin_inset Quotes erd
+\end_inset
+
+ boundary conditions 
+\begin_inset Formula $u(0)=u(L)=0$
+\end_inset
+
+, and solved it in terms of the eigenfunctions of 
+\begin_inset Formula $\frac{d^{2}}{dx^{2}}$
+\end_inset
+
+ (giving a Fourier sine series).
+ Here, we will consider a couple of small variations on this:
+\end_layout
+
+\begin_layout Enumerate
+All possible 
+\begin_inset Formula $f(x)$
+\end_inset
+
+ do indeed form a vector space: this is just the column space of 
+\begin_inset Formula $d^{2}/dx^{2}$
+\end_inset
+
+.
+ More explicitly, recall that the column is a vector space because if 
+\begin_inset Formula $\frac{d^{2}}{dx^{2}}u_{1}(x)=f_{1}(x)$
+\end_inset
+
+ and 
+\begin_inset Formula $\frac{d^{2}}{dx^{2}}u_{2}(x)=f_{2}(x)$
+\end_inset
+
+ are possible right-hand sides, then clearly another possible right-hand
+ side is 
+\begin_inset Formula $\alpha f_{1}+\beta f_{2}=\frac{d^{2}}{dx^{2}}(u_{1}+u_{2})$
+\end_inset
+
+ for any scalars 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ and 
+\begin_inset Formula $\beta$
+\end_inset
+
+ .
+ However, it is 
+\emph on
+not
+\emph default
+ the same as the vector space of the 
+\begin_inset Formula $u(x)$
+\end_inset
+
+, because the boundary conditions are not the same.
+ For example, consider 
+\begin_inset Formula $u(x)=x(L-x)$
+\end_inset
+
+, which vanishes at the endpoints and hence is in the vector space.
+ Then the corresponding function in the column space is 
+\begin_inset Formula $\frac{d^{2}}{dx^{2}}x(L-x)=-2$
+\end_inset
+
+, which does not vanish at the endpoints.
+ 
+\begin_inset Formula $ $
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+To have 
+\begin_inset Formula $\frac{d^{2}}{dx^{2}}u=\lambda u$
+\end_inset
+
+, it still follows (as in class) that 
+\begin_inset Formula $u$
+\end_inset
+
+ is a sine, cosine, or exponential.
+ Of these three possibilities, the only one with vanishing slope at 
+\begin_inset Formula $x=0$
+\end_inset
+
+ is cosine functions 
+\begin_inset Formula $\cos(kx)$
+\end_inset
+
+ for some 
+\begin_inset Formula $k$
+\end_inset
+
+.
+ To have vanishing slope at 
+\begin_inset Formula $x=L$
+\end_inset
+
+ as well, we must have 
+\begin_inset Formula $L$
+\end_inset
+
+ equal to an integer number of half-periods 
+\begin_inset Formula $\pi/L$
+\end_inset
+
+, i.e.
+ the eigenfunctions must be spanned by 
+\begin_inset Formula $\cos(n\pi x/L)$
+\end_inset
+
+ for 
+\begin_inset Formula $n=0,1,2,\ldots$
+\end_inset
+
+.
+ Note that 
+\begin_inset Formula $n=0$
+\end_inset
+
+ is now a valid eigenfunction, whereas before we excluded this (since sine
+ of zero was zero).
+\end_layout
+
+\begin_layout Enumerate
+They do not form a vector space, since the space doesn't contain zero.
+ Or, you could say that we cannot add, subtract, or multiply such functions
+ by constants 
+\begin_inset Formula $\neq1$
+\end_inset
+
+ without the result violating the boundary condition 
+\begin_inset Formula $v(L)=1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Let 
+\begin_inset Formula $q(x)$
+\end_inset
+
+ be any twice-differentiable function with 
+\begin_inset Formula $q(0)=0$
+\end_inset
+
+ and 
+\begin_inset Formula $q(L)=-1$
+\end_inset
+
+, in which case 
+\begin_inset Formula $u(x)=v(x)+q(x)$
+\end_inset
+
+ satisfies 
+\begin_inset Formula $u(0)=u(L)=0$
+\end_inset
+
+.
+ For example, 
+\begin_inset Formula $q(x)=-x/L$
+\end_inset
+
+ or 
+\begin_inset Formula $q(x)=-\sin(\pi x/2L)$
+\end_inset
+
+ both work.
+ Then substitute 
+\begin_inset Formula $v(x)=u(x)-q(x)$
+\end_inset
+
+ into 
+\begin_inset Formula $\frac{d^{2}}{dx^{2}}v(x)=g(x)$
+\end_inset
+
+ to obtain 
+\begin_inset Formula $\frac{d^{2}}{dx^{2}}u(x)=g(x)+\frac{d^{2}}{dx^{2}}q(x)=f(x)$
+\end_inset
+
+.
+ In the two examples mentioned previously, we obtain 
+\begin_inset Formula $f(x)=g(x)$
+\end_inset
+
+ or 
+\begin_inset Formula $f(x)=g(x)+\left(\frac{\pi}{2L}\right)^{2}\sin(x/2L)$
+\end_inset
+
+, respectively.
+ Thus, if we solve the 
+\begin_inset Formula $u(0)=u(L)$
+\end_inset
+
+ Poisson equation with this new right-hand side 
+\begin_inset Formula $f(x)$
+\end_inset
+
+, then we get back a solution 
+\begin_inset Formula $u(x)+q(x)$
+\end_inset
+
+ to the 
+\begin_inset Formula $v(L)=1$
+\end_inset
+
+ equation!
+\end_layout
+
+\begin_layout Subsection*
+Problem 3: (15+15 points)
+\end_layout
+
+\begin_layout Enumerate
+Now the null space consists of 
+\begin_inset Formula $u(x)=c$
+\end_inset
+
+ for any constant 
+\begin_inset Formula $c$
+\end_inset
+
+.
+ This means that the Poisson solution, if it exists, is not unique: adding
+ any constant yields another solution.
+ Nor does the solution necessarily exist (even excluding crazy divergent
+ right-hand-sides): from prolem 2(a), the eigenfunctions are now 
+\begin_inset Formula $\cos(n\pi x/L)$
+\end_inset
+
+, so if we can express the right-hand-side as a cosine series 
+\begin_inset Formula $f(x)=\sum_{n}a_{n}\cos(n\pi x/L)$
+\end_inset
+
+, a solution 
+\begin_inset Formula $u(x)=\sum_{n}\frac{a}{-(n\pi/L)^{2}}\cos(n\pi x/L)$
+\end_inset
+
+ only exists of 
+\begin_inset Formula $a_{0}=0$
+\end_inset
+
+, i.e.
+ if 
+\begin_inset Formula $\int_{0}^{L}f(x)dx=0$
+\end_inset
+
+ (recalling the formula for the cosine series coefficients).
+\end_layout
+
+\begin_layout Enumerate
+Without any boundary conditions, null space is any cubic polynomial 
+\begin_inset Formula $a_{3}x^{3}+a_{2}x^{2}+a_{1}x+a_{0}$
+\end_inset
+
+.
+ Imposing 
+\begin_inset Formula $u(0)=0$
+\end_inset
+
+ gives 
+\begin_inset Formula $a_{0}=0$
+\end_inset
+
+.
+ Imposing 
+\begin_inset Formula $u(L)=0$
+\end_inset
+
+ gives 
+\begin_inset Formula $a_{1}=-a_{2}L+-a_{3}L^{2}$
+\end_inset
+
+, so we only have two remaining degrees of freedom 
+\begin_inset Formula $a_{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $a_{3}$
+\end_inset
+
+ (a two-dimensional null space).
+ To make the null space 
+\begin_inset Formula $\{0\}$
+\end_inset
+
+, it is sufficient to add the conditions 
+\begin_inset Formula $u'(0)=u'(L)=0$
+\end_inset
+
+.
+ Setting 
+\begin_inset Formula $u'(0)=0$
+\end_inset
+
+ means that 
+\begin_inset Formula $a_{1}=0$
+\end_inset
+
+ and hence 
+\begin_inset Formula $a_{2}=-a_{3}L$
+\end_inset
+
+.
+ Setting 
+\begin_inset Formula $u'(L)=0$
+\end_inset
+
+ means that 
+\begin_inset Formula $2a_{2}+3a_{3}L=0=-2a_{3}L+3a_{3}L=a_{3}L$
+\end_inset
+
+, and hence 
+\begin_inset Formula $a_{3}=0$
+\end_inset
+
+ and 
+\begin_inset Formula $a_{2}=0$
+\end_inset
+
+.
+ (It is still a vector space with these boundary conditions because they
+ are zero: we can add, subtract, and multiply functions by constants while
+ preserving the zero-slope property.) 
+\end_layout
+
+\end_body
+\end_document

@@ -1,0 +1,824 @@
+#LyX 1.6.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+
+\renewcommand{\vec}[1]{\mathbf{#1}}
+
+\renewcommand{\labelenumi}{(\alph{enumi})}
+\renewcommand{\labelenumii}{(\roman{enumii})}
+\newcommand{\rank}{\operatorname{rank}}
+
+\usepackage{cancel}
+\end_preamble
+\use_default_options false
+\language english
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_amsmath 2
+\use_esint 2
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\leftmargin 0.7in
+\topmargin 0.7in
+\rightmargin 0.7in
+\bottommargin 0.7in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Section*
+18.303 Final Exam Solutions, Fall 2010
+\end_layout
+
+\begin_layout Subsection*
+Problem 1: Derivatives and differences (30 points)
+\end_layout
+
+\begin_layout Enumerate
+Let's choose the usual inner produce 
+\begin_inset Formula $\langle u,v\rangle=\int_{0}^{L}\bar{u}v$
+\end_inset
+
+.
+ We want to move 
+\begin_inset Formula $\hat{A}$
+\end_inset
+
+ from one side to the other of the inner product by integrating by parts,
+ and will choose the boundary conditions to make the boundary terms zero.
+ Integrating by parts and choosing the boundary conditions as we go along,
+ we obtain: 
+\begin_inset Formula \begin{alignat*}{1}
+\langle u,\hat{A}v\rangle & =\int\bar{u}v''''=\cancel{\left.\bar{u}v'''\right|_{0}^{L}}-\int\bar{u}'v'''\\
+ & =-\cancel{\left.\bar{u}'v''\right|_{0}^{L}}+\int\bar{u}''v''\\
+ & =\cancel{\left.\bar{u}''v'\right|_{0}^{L}}-\int\bar{u}'''v'\\
+ & =-\cancel{\left.\bar{u}'''v\right|_{0}^{L}}+\int\bar{u}''''v\\
+ & =\langle\hat{A}u,v\rangle,\end{alignat*}
+
+\end_inset
+
+where in the first line we cancelled the boundary term by choosing 
+\begin_inset Formula $\boxed{u|_{0,L}=0}$
+\end_inset
+
+, and in the second line we cancelled the boundary term by choosing 
+\begin_inset Formula $\boxed{u'|_{0,L}=0}$
+\end_inset
+
+.
+ Since 
+\begin_inset Formula $v$
+\end_inset
+
+ and 
+\begin_inset Formula $u$
+\end_inset
+
+ have the same boundary conditions, this automatically zeroes the boundary
+ terms in the next two lines as well.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Note that it is 
+\emph on
+not
+\emph default
+ correct to simply choose 
+\begin_inset Formula $u|_{0,L}=0$
+\end_inset
+
+ and say that we can use the Hermitian property of 
+\begin_inset Formula $\frac{d^{2}}{dx^{2}}$
+\end_inset
+
+ from class twice.
+ The problem is that 
+\begin_inset Formula $u''$
+\end_inset
+
+ does not satisfy the same boundary conditions as 
+\begin_inset Formula $u$
+\end_inset
+
+, so you can't use the result from class to say that 
+\begin_inset Formula $\langle u,\frac{d^{2}}{dx^{2}}v''\rangle=\langle\frac{d^{2}}{dx^{2}}u,v''\rangle$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+We will just do center differences four times.
+ As in class, taking a center-difference of 
+\begin_inset Formula $u_{m}$
+\end_inset
+
+ yields 
+\begin_inset Formula $u'_{m+1/2}$
+\end_inset
+
+, i.e.
+ on a staggered grid.
+ This will now happen four times, alternating between half-integer and integer
+ grids to maintain the centering:
+\begin_inset Formula \[
+u'_{m+1/2}\approx\frac{u_{m+1}-u_{m}}{\Delta x},\]
+
+\end_inset
+
+
+\begin_inset Formula \[
+u''_{m}\approx\frac{u'_{m+1/2}-u'_{m-1/2}}{\Delta x}=\frac{u_{m+1}-2u_{m}+u_{m-1}}{\Delta x^{2}},\]
+
+\end_inset
+
+
+\begin_inset Formula \[
+u'''_{m+1/2}\approx\frac{u''_{m+1}-u''_{m}}{\Delta x}=\frac{u_{m+2}-3u_{m+1}+3u_{m}-u_{m-1}}{\Delta x^{3}},\]
+
+\end_inset
+
+
+\begin_inset Formula \[
+u''''_{m}\approx\frac{u'''_{m+1/2}-u'''_{m-1/2}}{\Delta x}=\boxed{\frac{u_{m+2}-4u_{m+1}+6u_{m}-4u_{m-1}+u_{m-2}}{\Delta x^{4}}}.\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Problem 2: No more scalars (30 points)
+\end_layout
+
+\begin_layout Enumerate
+We want exponentially decaying solutions, so we want 
+\begin_inset Formula $\hat{A}$
+\end_inset
+
+ to be negative-semidefinite (with zero eigenvalues corresponding to nonzero
+ limiting values).
+ This means we want 
+\begin_inset Formula $\langle\vec{u},\hat{A}\vec{u}\rangle\leq0$
+\end_inset
+
+ for all 
+\begin_inset Formula $\vec{u}$
+\end_inset
+
+, and hence: 
+\begin_inset Formula \[
+\langle\vec{u},\hat{A}\vec{u}\rangle=\langle\vec{u},\nabla\times c\nabla\times\vec{u}\rangle=\langle\nabla\times\vec{u},c\nabla\times\vec{u}\rangle=\int_{\Omega}c|\nabla\times\vec{u}|^{2}\leq0,\]
+
+\end_inset
+
+where we have used the self-adjoint property of 
+\begin_inset Formula $\nabla\times$
+\end_inset
+
+ to move it to the other side of the inner product.
+ For this to be true for all 
+\begin_inset Formula $u$
+\end_inset
+
+, we clearly require 
+\begin_inset Formula $c\leq0$
+\end_inset
+
+ everywhere (except at isolated points, but we never worry about those).
+\end_layout
+
+\begin_layout Enumerate
+We know from class that 
+\begin_inset Formula $\langle\vec{v},\vec{u}\rangle$
+\end_inset
+
+ is conserved for any 
+\begin_inset Formula $\vec{v}\in N(\hat{A}^{*})=N(\hat{A})$
+\end_inset
+
+ [since we can move 
+\begin_inset Formula $\nabla\times$
+\end_inset
+
+ from right-to-left twice to obtain 
+\begin_inset Formula $\hat{A}^{*}=\hat{A}$
+\end_inset
+
+], so the only question is what is 
+\begin_inset Formula $\vec{v}$
+\end_inset
+
+ and what does this mean?
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+To start with, for simplicity take 
+\begin_inset Formula $c<0$
+\end_inset
+
+ (i.e.
+ 
+\begin_inset Formula $c\neq0$
+\end_inset
+
+).
+ From the hint, 
+\begin_inset Formula $\nabla\phi$
+\end_inset
+
+ for any 
+\begin_inset Formula $\phi$
+\end_inset
+
+ is the nullspace of 
+\begin_inset Formula $\nabla\times$
+\end_inset
+
+, so this is clearly in the nullspace of 
+\begin_inset Formula $\hat{A}$
+\end_inset
+
+.
+ The converse is also true, since 
+\begin_inset Formula $\hat{A}$
+\end_inset
+
+ is of the form 
+\begin_inset Formula $(\nabla\times)^{*}c(\nabla\times)$
+\end_inset
+
+.
+ In particular (re-iterating the proof from class for 
+\begin_inset Formula $A=B^{*}B$
+\end_inset
+
+), if 
+\begin_inset Formula $\vec{v}\in N(\hat{A})$
+\end_inset
+
+ then 
+\begin_inset Formula $\hat{A}\vec{v}=0\implies0=\langle\vec{v},\hat{A}\vec{v}\rangle=\int c|\nabla\times\vec{v}|^{2}\implies\nabla\times\vec{v}=0$
+\end_inset
+
+, and so 
+\begin_inset Formula $\vec{v}=\nabla\phi$
+\end_inset
+
+ for some 
+\begin_inset Formula $\phi.$
+\end_inset
+
+ Therefore 
+\begin_inset Formula $\langle\nabla\phi,\vec{u}\rangle$
+\end_inset
+
+ is conserved for any test function 
+\begin_inset Formula $\phi$
+\end_inset
+
+.
+ We can simplify this further: integrating by parts, we obtain 
+\begin_inset Formula $\langle\phi,\nabla\cdot\vec{u}\rangle$
+\end_inset
+
+ is conserved for any 
+\begin_inset Formula $\phi$
+\end_inset
+
+, which means that 
+\begin_inset Formula $\nabla\cdot\vec{u}$
+\end_inset
+
+ is conserved.
+ (This is also easy to show directly: 
+\begin_inset Formula $\frac{\partial\nabla\cdot\vec{u}}{\partial t}=\nabla\cdot(\hat{A}\vec{u})=0$
+\end_inset
+
+ since the divergence of a curl is zero.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Now, suppose we include the case where 
+\begin_inset Formula $c=0$
+\end_inset
+
+ in some region 
+\begin_inset Formula $R$
+\end_inset
+
+ (not just a set of zero measure).
+ In that case, there are additional functions in the nullspace: any 
+\begin_inset Formula $\vec{v}$
+\end_inset
+
+ such that 
+\begin_inset Formula $\nabla\times\vec{v}$
+\end_inset
+
+ is nonzero only in 
+\begin_inset Formula $R$
+\end_inset
+
+.
+ These give an additional conservation law that is not quite so simple to
+ write down, but I didn't actually expect you to notice this case.
+\end_layout
+
+\begin_layout Subsection*
+Problem 3: Guided waves (30 points)
+\end_layout
+
+\begin_layout Standard
+Consider the scalar wave equation 
+\begin_inset Formula $\nabla^{2}u=\frac{\partial^{2}u}{\partial t^{2}}$
+\end_inset
+
+ in two dimensions for 
+\begin_inset Formula $x\in[0,L]$
+\end_inset
+
+ and 
+\begin_inset Formula $y\in(-\infty,\infty)$
+\end_inset
+
+, with the Neumann boundary conditions 
+\begin_inset Formula $\left.\frac{\partial u}{\partial x}\right|_{x=0,L}=0$
+\end_inset
+
+.
+ That is, 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ is a width-
+\begin_inset Formula $L$
+\end_inset
+
+ strip extending infinitely in the 
+\begin_inset Formula $y$
+\end_inset
+
+ direction, with Neumann boundaries.
+\end_layout
+
+\begin_layout Enumerate
+If we look for separable eigenfunctions 
+\begin_inset Formula $u(x,y,t)=u_{k}(x)e^{i(ky-\omega t)}$
+\end_inset
+
+, what equation and what boundary conditions does 
+\begin_inset Formula $u_{k}$
+\end_inset
+
+ satisfy?
+\end_layout
+
+\begin_layout Enumerate
+Starting with the boundary conditions, since 
+\begin_inset Formula $\frac{\partial u}{\partial x}=\frac{\partial u_{k}}{\partial x}e^{i(ky-\omega t)}=0$
+\end_inset
+
+ implies 
+\begin_inset Formula $\frac{\partial u_{k}}{\partial x}=0$
+\end_inset
+
+, the boundary conditions are simply Neumann on 
+\begin_inset Formula $u_{k}:$
+\end_inset
+
+ 
+\begin_inset Formula $\left.\frac{\partial u_{k}}{\partial x}\right|_{x=0,L}=0$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+The equation works out exactly as in class: 
+\begin_inset Formula \begin{align*}
+\nabla^{2}[u_{k}e^{i(ky-\omega t)}] & =\frac{\partial^{2}}{\partial t^{2}}u_{k}e^{i(ky-\omega t)}=-\omega^{2}u_{k}e^{i(ky-\omega t)}\\
+ & =(u_{k}''-k^{2}u_{k})e^{i(ky-\omega t)},\end{align*}
+
+\end_inset
+
+yielding: 
+\begin_inset Formula $\boxed{u_{k}''=-(\omega^{2}-k^{2})u_{k}}.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Since this equation is of the same form as one we have seen many times in
+ class (
+\begin_inset Formula $u''=-u\cdot\mbox{number}$
+\end_inset
+
+), we know immediately that the solutions are sines/cosines/exponentials.
+ To satisfy the Neumann boundary conditions, much like in one of the psets,
+ the solutions must be cosines: 
+\begin_inset Formula \[
+u_{k,n}(x)=\cos\left(\frac{n\pi x}{L}\right)\]
+
+\end_inset
+
+for 
+\begin_inset Formula $n=0,1,2,3,\ldots$
+\end_inset
+
+ (of course, 
+\begin_inset Formula $u_{k}$
+\end_inset
+
+ could be multiplied by any constant too).
+ Note that 
+\begin_inset Formula $n=0$
+\end_inset
+
+ is a valid solution! The corresponding eigenfunctions are obtained by plugging
+ this into the eigenequation, obtaining 
+\begin_inset Formula $\omega^{2}-k^{2}=(n\pi/L)^{2}$
+\end_inset
+
+, i.e.
+ 
+\begin_inset Formula \[
+\omega_{n}(k)=\pm\sqrt{k^{2}+(n\pi/L)^{2}}\]
+
+\end_inset
+
+for 
+\begin_inset Formula $n=0,1,2,3,\ldots$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+To obtain a wavepacket solution that propagates without spreading, we must
+ have a group velocity 
+\begin_inset Formula $\frac{\partial\omega_{k}}{\partial k}$
+\end_inset
+
+ that is constant (independent of 
+\begin_inset Formula $k$
+\end_inset
+
+).
+ This is 
+\emph on
+not
+\emph default
+ true of 
+\begin_inset Formula $\omega_{n}(k)$
+\end_inset
+
+ from the previous part for 
+\begin_inset Formula $n>0$
+\end_inset
+
+, similar to class.
+ However, for 
+\begin_inset Formula $n=0$
+\end_inset
+
+ we obtain 
+\begin_inset Formula $\omega=\pm|k|$
+\end_inset
+
+, a straight line, and in this case the group velocity is a constant (
+\begin_inset Formula $\pm1$
+\end_inset
+
+) and so wavepackets will indeed propagate without spreading 
+\emph on
+if we make them out of the 
+\begin_inset Formula $n=0$
+\end_inset
+
+ modes
+\emph default
+.
+\end_layout
+
+\begin_layout Subsection*
+Problem 4: Timestepping and stability (30 points)
+\end_layout
+
+\begin_layout Enumerate
+Since the coefficients are constant and the domain is infinite, we can look
+ for von-Neumann solutions 
+\begin_inset Formula $u_{m}^{n}=\lambda^{n}e^{ikm}$
+\end_inset
+
+ and check whether 
+\begin_inset Formula $|\lambda|\leq1$
+\end_inset
+
+ for all 
+\begin_inset Formula $k$
+\end_inset
+
+.
+ (Note that the original PDE is a wave equation, since 
+\begin_inset Formula $(\frac{\partial}{\partial x})^{*}=\frac{\partial}{\partial x}$
+\end_inset
+
+, so there are no legitimate exponentially growing solutions.) Plugging this
+ in, and dividing both sides by 
+\begin_inset Formula $\lambda^{n}e^{ikm}$
+\end_inset
+
+, we obtain: 
+\begin_inset Formula \begin{align*}
+\frac{\lambda-1}{\Delta t} & =-c\left[\alpha\lambda\frac{e^{ik}-e^{-ik}}{2\Delta x}+(1-\alpha)\frac{e^{ik}-e^{-ik}}{2\Delta x}\right]\\
+ & =-c\left[\alpha\lambda+(1-\alpha)\right]\frac{i\sin(k)}{\Delta x},\end{align*}
+
+\end_inset
+
+using the fact that 
+\begin_inset Formula $e^{ik}-e^{-ik}=2i\sin(k)$
+\end_inset
+
+.
+ Solving for 
+\begin_inset Formula $\lambda$
+\end_inset
+
+, we find: 
+\begin_inset Formula \[
+\lambda(k)=\frac{1-ic(1-\alpha)\frac{\Delta t}{\Delta x}\sin k}{1+ic\alpha\frac{\Delta t}{\Delta x}\sin k}.\]
+
+\end_inset
+
+If 
+\begin_inset Formula $\alpha=0.5$
+\end_inset
+
+, then this is of the form 
+\begin_inset Formula $\lambda=\frac{1-i\#}{1+i\#}$
+\end_inset
+
+ for 
+\begin_inset Formula $\#=ic\frac{1}{2}\frac{\Delta t}{\Delta x}\sin k$
+\end_inset
+
+, giving 
+\begin_inset Formula $|\lambda|=1$
+\end_inset
+
+ and so the scheme is unconditionally stable.
+\end_layout
+
+\begin_layout Enumerate
+In general, 
+\begin_inset Formula \[
+|\lambda|^{2}=\frac{1+c^{2}(1-\alpha)^{2}\frac{\Delta t^{2}}{\Delta x^{2}}\sin^{2}k}{1+c^{2}\alpha^{2}\frac{\Delta t^{2}}{\Delta x^{2}}\sin^{2}k},\]
+
+\end_inset
+
+and this is 
+\begin_inset Formula $\leq1$
+\end_inset
+
+, i.e.
+ the numerator is 
+\begin_inset Formula $\leq$
+\end_inset
+
+ the denominator, if 
+\begin_inset Formula $1-\alpha\leq\alpha$
+\end_inset
+
+, and so it is unconditionally stable for 
+\begin_inset Formula $1\geq\alpha\geq1/2$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+For 
+\begin_inset Formula $\alpha<1/2$
+\end_inset
+
+, the numerator of 
+\begin_inset Formula $|\lambda|^{2}$
+\end_inset
+
+ above is 
+\begin_inset Formula $>$
+\end_inset
+
+ the denominator, regardless of 
+\begin_inset Formula $k$
+\end_inset
+
+ or 
+\begin_inset Formula $\Delta t$
+\end_inset
+
+ (
+\begin_inset Formula $>0$
+\end_inset
+
+), and so it is always unstable.
+\end_layout
+
+\begin_layout Subsection*
+Problem 5: Green's functions (30 points)
+\end_layout
+
+\begin_layout Enumerate
+We use the trick from class and homework: write 
+\begin_inset Formula $u=u_{0}+b$
+\end_inset
+
+, where 
+\begin_inset Formula $u_{0}|_{d\Omega}=0$
+\end_inset
+
+, to turn it back to an ordinary Dirichlet problem for 
+\begin_inset Formula $u_{0}$
+\end_inset
+
+: 
+\begin_inset Formula $\hat{A}u_{0}=f-\hat{A}b$
+\end_inset
+
+.
+ This satisfies the ordinary 
+\begin_inset Formula $G_{0}$
+\end_inset
+
+ Green's function integral, with the new right-hand side 
+\begin_inset Formula $f-\hat{A}b$
+\end_inset
+
+: 
+\begin_inset Formula \[
+u_{0}(\vec{x})=\int_{\Omega}G_{0}(\vec{x},\vec{x}')\left.\left(f-\hat{A}b\right)\right|_{\vec{x}'}d^{n}\vec{x}',\]
+
+\end_inset
+
+and thus 
+\begin_inset Formula \[
+u(\vec{x})=u_{0}+b=b(\vec{x})+\int_{\Omega}G_{0}(\vec{x},\vec{x}')f(\vec{x}')d^{n}\vec{x}'-\int_{\Omega}G_{0}(\vec{x},\vec{x}')\hat{A}'b(\vec{x}')d^{n}\vec{x}',\]
+
+\end_inset
+
+where by 
+\begin_inset Formula $\hat{A}'$
+\end_inset
+
+ here I mean the operator 
+\begin_inset Formula $\hat{A}$
+\end_inset
+
+ acting on the 
+\begin_inset Formula $\vec{x}'$
+\end_inset
+
+ coordinate.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Here, letting 
+\begin_inset Formula $\hat{A}'=\nabla'^{2}$
+\end_inset
+
+, the 
+\begin_inset Formula $b$
+\end_inset
+
+ term from above integrates by parts to: 
+\begin_inset Formula \begin{align*}
+-\int_{\Omega}G_{0}(\vec{x},\vec{x}')\nabla'^{2}b(\vec{x}') & =-\cancel{\oiint_{d\Omega}G_{0}(\vec{x},\vec{x}')\nabla'b(\vec{x}')\cdot d\vec{A}'}+\int_{\Omega}\nabla'G_{0}(\vec{x},\vec{x}')\cdot\nabla'b(\vec{x}')\\
+ & =\oiint_{d\Omega}\nabla'G_{0}(\vec{x},\vec{x}')b(\vec{x}')\cdot d\vec{A}'-\int_{\Omega}\nabla'^{2}G_{0}(\vec{x},\vec{x}')\, b(\vec{x}'),\end{align*}
+
+\end_inset
+
+where in the first line we have used the fact that 
+\begin_inset Formula $G_{0}(\vec{x},\vec{x}')=G_{0}(\vec{x}',\vec{x})=0$
+\end_inset
+
+ for 
+\begin_inset Formula $\vec{x}'\in d\Omega$
+\end_inset
+
+ by the given boundary conditions (using reciprocity to swap 
+\begin_inset Formula $\vec{x}$
+\end_inset
+
+ and 
+\begin_inset Formula $\vec{x}'$
+\end_inset
+
+).
+ Also, from reciprocity and the definition of 
+\begin_inset Formula $G_{0}$
+\end_inset
+
+, we have 
+\begin_inset Formula $\nabla'^{2}G_{0}(\vec{x},\vec{x}')=\nabla'^{2}G_{0}(\vec{x}',\vec{x})=\delta(\vec{x}'-\vec{x})$
+\end_inset
+
+.
+ Inserting this into the last 
+\begin_inset Formula $\int_{\Omega}$
+\end_inset
+
+ integral, the delta function integrates to give 
+\begin_inset Formula $-b(\vec{x})$
+\end_inset
+
+ to cancel the 
+\begin_inset Formula $+b(\vec{x})$
+\end_inset
+
+ term in 
+\begin_inset Formula $u(\vec{x})$
+\end_inset
+
+ above, leaving: 
+\begin_inset Formula \[
+u(\vec{x})=\int_{\Omega}G_{0}(\vec{x},\vec{x}')f(\vec{x}')d^{n}\vec{x}'+\oiint_{d\Omega}\nabla'G_{0}(\vec{x},\vec{x}')b(\vec{x}')\cdot d\vec{A}',\]
+
+\end_inset
+
+which looks eactly like the zero-boundary-condition solution plus an additional
+ set of 
+\begin_inset Quotes eld
+\end_inset
+
+source
+\begin_inset Quotes erd
+\end_inset
+
+ terms from the boundary.
+ (In fact, from class, the 
+\begin_inset Formula $\nabla G_{0}$
+\end_inset
+
+ source terms correspond to 
+\begin_inset Quotes eld
+\end_inset
+
+dipole
+\begin_inset Quotes erd
+\end_inset
+
+ sources on the boundaries.)
+\end_layout
+
+\end_body
+\end_document

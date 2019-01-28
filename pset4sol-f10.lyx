@@ -1,0 +1,1275 @@
+#LyX 1.6.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 345
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+
+\renewcommand{\vec}[1]{\mathbf{#1}}
+
+\renewcommand{\labelenumi}{(\alph{enumi})}
+\renewcommand{\labelenumii}{(\roman{enumii})}
+\newcommand{\rank}{\operatorname{rank}}
+\end_preamble
+\use_default_options false
+\language english
+\inputencoding auto
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_amsmath 2
+\use_esint 0
+\cite_engine basic
+\use_bibtopic false
+\paperorientation portrait
+\topmargin 0.7in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\author "" 
+\author "" 
+\end_header
+
+\begin_body
+
+\begin_layout Section*
+18.303 Problem Set 4 Solutions
+\end_layout
+
+\begin_layout Subsection*
+Problem 1: (10+5)
+\end_layout
+
+\begin_layout Enumerate
+Since 
+\begin_inset Formula $D_{x}$
+\end_inset
+
+ and 
+\begin_inset Formula $D_{y}$
+\end_inset
+
+ both act on the same column vector 
+\begin_inset Formula $\vec{u}$
+\end_inset
+
+ of the 
+\begin_inset Formula $MN$
+\end_inset
+
+ unknowns 
+\begin_inset Formula $u_{m,n}$
+\end_inset
+
+, they must have the same number (
+\begin_inset Formula $MN$
+\end_inset
+
+) of columns.
+ Therefore, we can form a new matrix 
+\begin_inset Formula $D=\left(\begin{array}{c}
+D_{x}\\
+D_{y}\end{array}\right)$
+\end_inset
+
+ out of 
+\begin_inset Formula $D_{x}$
+\end_inset
+
+ and 
+\begin_inset Formula $D_{y}$
+\end_inset
+
+, from which it follows that 
+\begin_inset Formula $D^{T}=\left(\begin{array}{cc}
+D_{x}^{T} & D_{y}^{T}\end{array}\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $D^{T}D=D_{x}^{T}D_{x}+D_{y}^{T}D_{y}=A_{x}+A_{y}=A$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Using the given commands to form 
+\family typewriter
+Dx
+\family default
+ and 
+\family typewriter
+Dy
+\family default
+, 
+\begin_inset Formula $D$
+\end_inset
+
+ is then formed by 
+\family typewriter
+D=[Dx;Dy]
+\family default
+ ...
+ the command 
+\family typewriter
+A-D'*D
+\family default
+ then yields 
+\begin_inset Quotes eld
+\end_inset
+
+All zero sparse: 100-by-100
+\begin_inset Quotes erd
+\end_inset
+
+, indicating that the matrices are the same.
+\end_layout
+
+\begin_layout Subsection*
+Problem 2: (10+(5+5)+10)
+\end_layout
+
+\begin_layout Enumerate
+The eigenvalues of 
+\begin_inset Formula $-\nabla^{2}$
+\end_inset
+
+ are 
+\begin_inset Formula $k^{2}$
+\end_inset
+
+, where 
+\begin_inset Formula $k$
+\end_inset
+
+ is a root of 
+\begin_inset Formula $J_{m}(kR)$
+\end_inset
+
+.
+ These functions are plotted in figure
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:2a"
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pset4-2a.eps
+	width 50col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:2a"
+
+\end_inset
+
+Bessel functions 
+\begin_inset Formula $J_{m}(k)$
+\end_inset
+
+ for 
+\begin_inset Formula $m=0,1,2,3$
+\end_inset
+
+.
+ The nonzero roots 
+\begin_inset Formula $k$
+\end_inset
+
+ give the 
+\begin_inset Formula $-\nabla^{2}$
+\end_inset
+
+ cylinder eigenvalues 
+\begin_inset Formula $k^{2}$
+\end_inset
+
+.
+ The smallest three roots are shown as dots, and are the first roots of
+ 
+\begin_inset Formula $m=0,1,2$
+\end_inset
+
+ respectively.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+ for 
+\begin_inset Formula $m=0,1,2,3$
+\end_inset
+
+ via the fplot command, and one can clearly see that the smallest (nonzero)
+ three roots are the first roots of 
+\begin_inset Formula $m=0,1,2$
+\end_inset
+
+.
+ Using the command 
+\family typewriter
+fzero(@(k) besselj(m,k), kinit)
+\family default
+ for 
+\begin_inset Formula $m=0,1,2$
+\end_inset
+
+ with initial guesses 
+\family typewriter
+kinit
+\family default
+ of 
+\begin_inset Formula $2.5,4,5$
+\end_inset
+
+ from the plot, these roots are found to be 
+\begin_inset Formula $k_{0}\approx2.40482555769577$
+\end_inset
+
+, 
+\begin_inset Formula $k_{1}\approx3.83170597020751$
+\end_inset
+
+, and 
+\begin_inset Formula $k_{2}\approx5.13562230184068$
+\end_inset
+
+.
+ The corresponding eigenvalues 
+\begin_inset Formula $k^{2}$
+\end_inset
+
+ are 
+\begin_inset Formula $\approx5.7832,14.6820,26.3746$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Note that some of these eigenvalues are actually repeated.
+ Recall that the eigenfunctions are 
+\begin_inset Formula $J_{m}(kr)[\alpha\sin(m\theta)+\beta\cos(m\theta)]$
+\end_inset
+
+.
+ For any 
+\begin_inset Formula $m\neq0$
+\end_inset
+
+, there are two independent solutions: cosine and sine.
+ For 
+\begin_inset Formula $m=0$
+\end_inset
+
+, the sine solution disappears so there is only one solution.
+ So, the first five eigenvalues should actually be 
+\begin_inset Formula $5.7832,14.6820,14.6820,26.3746,26.3746$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Comparing the eigenvalues and eigenvectors for the 
+\begin_inset Formula $50\times50$
+\end_inset
+
+ finite-difference (FD) grid, we find:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+The FD eigenvalues are 5.8676, 14.8831, 14.8831, 26.6500, and 26.7611.
+ These have roughly the same magnitudes and repetition pattern as what we
+ expected from (a).
+ (Note that the last two eigenvalues are not exactly equal: this is because
+ the grid breaks the rotational symmetry.) Quantitatively, computing the
+ fractional error compared to the exact values, the errors are roughly 1.46%,
+ 1.37%, 1.37%, 1.04%, and 1.47%, respectively.
+\end_layout
+
+\begin_layout Enumerate
+The eigenfunctions are plotted (as 2d color plots with 
+\family typewriter
+pcolor
+\family default
+) in figure
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:2b"
+
+\end_inset
+
+, with a blue/white/red color scale for negative/zero/positive values.
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pset4-2b.eps
+	width 60col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:2b"
+
+\end_inset
+
+The first five eigenfunctions of 
+\begin_inset Formula $-\nabla^{2}$
+\end_inset
+
+ in the cylinder, with blue/white/red indicating negative/zero/positive
+ values.
+ They are labelled as 
+\begin_inset Formula $m=0,1,2$
+\end_inset
+
+ eigenfunctions since the sign patterns clearly show 
+\begin_inset Formula $\cos(m\theta)$
+\end_inset
+
+ (or sine) dependence.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+ Both the radial and angular dependence qualitatively matches what we expect
+ from the analytical solution.
+ Since 
+\begin_inset Formula $k$
+\end_inset
+
+ was the first nonzero root, we expect 
+\begin_inset Formula $J_{m}(kr)$
+\end_inset
+
+ to have roots only at 
+\begin_inset Formula $r=R$
+\end_inset
+
+, and at 
+\begin_inset Formula $r=0$
+\end_inset
+
+ for 
+\begin_inset Formula $m>0$
+\end_inset
+
+, and indeed the radial dependence shows that there is only one radial oscillati
+on starting from the origin, with a node at 
+\begin_inset Formula $r=0$
+\end_inset
+
+ for 
+\begin_inset Formula $m>0$
+\end_inset
+
+.
+ Angularly, we expect the first solution to be 
+\begin_inset Formula $m=0$
+\end_inset
+
+, which is rotationally invariant, the next two solutions to be 
+\begin_inset Formula $m=1$
+\end_inset
+
+, which have one sign oscillation in the angular direction corresponding
+ to 
+\begin_inset Formula $\cos(\theta)$
+\end_inset
+
+ and 
+\begin_inset Formula $\sin(\theta)$
+\end_inset
+
+ solutions (90 degrees out of phase), and the next two solutions to be 
+\begin_inset Formula $m=2$
+\end_inset
+
+, which have two sign oscillations in the angular direction corresponding
+ to 
+\begin_inset Formula $\cos(2\theta)$
+\end_inset
+
+ and 
+\begin_inset Formula $\sin(2\theta)$
+\end_inset
+
+ (45 degrees out of phase).
+ This is exactly what we observe in figure
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:2b"
+
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+The errors in the first five eigenvalues are plotted versus 
+\begin_inset Formula $N$
+\end_inset
+
+ in figure
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:2c"
+
+\end_inset
+
+, along with a line 
+\begin_inset Formula $\sim\Delta x$
+\end_inset
+
+ for reference.
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pset4-2c.eps
+	width 50col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:2c"
+
+\end_inset
+
+Absolute errors in the first five eigenvalues of 
+\begin_inset Formula $-\nabla^{2}$
+\end_inset
+
+ in a cylinder, computed by an 
+\begin_inset Formula $N\times N$
+\end_inset
+
+ finite-difference grid, compared to the semi-analytical solutions.
+ For reference, a line 
+\begin_inset Formula $\Delta x\sim1/N$
+\end_inset
+
+ is also plotted, showing that the eigenvalues are clearly converging 
+\begin_inset Formula $\sim\Delta x$
+\end_inset
+
+ (not 
+\begin_inset Formula $\sim\Delta x^{2}$
+\end_inset
+
+).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+ All five eigenvalues have errors that clearly scale roughly with 
+\begin_inset Formula $\sim\Delta x$
+\end_inset
+
+, 
+\emph on
+not
+\emph default
+ with 
+\begin_inset Formula $\sim\Delta x^{2}$
+\end_inset
+
+.
+ The reason is because our computational domain does not exactly conform
+ to a cylinder: it is a cylinder approximated by a 
+\emph on
+rectangular
+\emph default
+ grid, which necessarily makes a jagged (
+\begin_inset Quotes eld
+\end_inset
+
+stairstepped
+\begin_inset Quotes erd
+\end_inset
+
+) approximation of the curved cylinder boundary.
+ Hence, the 
+\begin_inset Formula $u=0$
+\end_inset
+
+ boundary points in the FD grid are only within 
+\begin_inset Formula $\sim\Delta x$
+\end_inset
+
+ of the 
+\begin_inset Quotes eld
+\end_inset
+
+true
+\begin_inset Quotes erd
+\end_inset
+
+ boundary location, which means the boundary condition is imposed at the
+ wrong points by 
+\begin_inset Formula $\sim\Delta x$
+\end_inset
+
+, which induces a first-order error like in pset
+\begin_inset space ~
+\end_inset
+
+3.
+\end_layout
+
+\begin_layout Subsection*
+Problem 3: (10+(5+10)+10)
+\end_layout
+
+\begin_layout Standard
+This question involves mathematical equations similar to those of problem
+\begin_inset space ~
+\end_inset
+
+2, but asks some physical questions if we interpret 
+\begin_inset Formula $u(x,y)$
+\end_inset
+
+ as the vertical displacement of a stretched surface on a circular drum
+ of radius 
+\begin_inset Formula $R$
+\end_inset
+
+.
+ This displacement satisfies the 2d wave equation 
+\begin_inset Formula $\nabla^{2}u=\frac{1}{c^{2}}\partial^{2}u/\partial t^{2}$
+\end_inset
+
+ (this is derived from 
+\begin_inset Formula $F=ma$
+\end_inset
+
+ where 
+\begin_inset Formula $\partial^{2}u/\partial t^{2}$
+\end_inset
+
+ is acceleration) where 
+\begin_inset Formula $c$
+\end_inset
+
+ is a constant (the 
+\begin_inset Quotes eld
+\end_inset
+
+wave speed
+\begin_inset Quotes erd
+\end_inset
+
+ as we will see later in the semester) that depends on the tension and density;
+ here, say 
+\begin_inset Formula $c=200$
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+m/s.
+ If the edges of the drum are held flat, then the boundary condition is
+ the Dirichlet 
+\begin_inset Formula $u|_{r=R}=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Recall from class that the solutions of the wave equation 
+\begin_inset Formula $c^{2}\nabla^{2}u=\ddot{u}$
+\end_inset
+
+ can be written as a superposition of eigenfunctions 
+\begin_inset Formula $u_{n}(x,y)$
+\end_inset
+
+ multiplied by sine or cosine of 
+\begin_inset Formula $\omega t$
+\end_inset
+
+, where 
+\begin_inset Formula $\omega=\sqrt{-\lambda}$
+\end_inset
+
+ from the eigenvalue 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ of 
+\begin_inset Formula $c^{2}\nabla^{2}$
+\end_inset
+
+: these are the oscillating 
+\begin_inset Quotes eld
+\end_inset
+
+normal modes
+\begin_inset Quotes erd
+\end_inset
+
+ of the drum.
+ (The only difference from class is that we are multiplying the operator,
+ and hence multiplying the eigenvalues, by 
+\begin_inset Formula $c^{2}$
+\end_inset
+
+.) When you bang on it, the initial condition will excite some superposition
+ of these, of which the lowest-frequency component will correspond to the
+ smallest 
+\begin_inset Formula $|\lambda|$
+\end_inset
+
+.
+ The smallest 
+\begin_inset Formula $|\lambda|$
+\end_inset
+
+ of 
+\begin_inset Formula $\nabla^{2}$
+\end_inset
+
+, from class (and problem
+\begin_inset space ~
+\end_inset
+
+2), is just 
+\begin_inset Formula $k^{2}$
+\end_inset
+
+ where 
+\begin_inset Formula $k$
+\end_inset
+
+ is the first root of 
+\begin_inset Formula $J_{0}(kR)$
+\end_inset
+
+; from problem 2, this is 
+\begin_inset Formula $kR\approx2.4048$
+\end_inset
+
+.
+ Hence, the smallest 
+\begin_inset Formula $|\lambda|$
+\end_inset
+
+ of 
+\begin_inset Formula $c^{2}\nabla^{2}$
+\end_inset
+
+ is 
+\begin_inset Formula $\approx c^{2}(2.4048/R)^{2}$
+\end_inset
+
+, and hence the corresponding frequency is 
+\begin_inset Formula $2\pi f=\omega=\sqrt{\lambda}=c(2.4048/R)$
+\end_inset
+
+, and hence 
+\begin_inset Formula $R\approx2.4048c/(2\pi f)\approx0.7655$
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+m (a pretty big drum).
+ 
+\end_layout
+
+\begin_layout Enumerate
+Setting 
+\begin_inset Formula $R=1$
+\end_inset
+
+ again, suppose that your drum surface is at rest, but that you have twisted
+ the edges so that the drum edges are at a height 
+\begin_inset Formula $x^{2}y^{2}=R\cos^{2}(\theta)\sin^{2}(\theta)$
+\end_inset
+
+ (for simplicity, assume they are still at a radius 
+\begin_inset Formula $R$
+\end_inset
+
+).
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Since the drum surface is at rest, 
+\begin_inset Formula $\partial^{2}u/\partial t^{2}=0$
+\end_inset
+
+ and hence 
+\begin_inset Formula $u$
+\end_inset
+
+ satisfies 
+\begin_inset Formula $\nabla^{2}u=0$
+\end_inset
+
+ (Laplace's equation).
+ The boundary conditions are no longer 
+\begin_inset Formula $u=0$
+\end_inset
+
+, however, but rather at the edge of the drum the height is 
+\begin_inset Formula $u|_{r=R}=R\cos^{2}(\theta)\sin^{2}(\theta)=x^{2}y^{2}$
+\end_inset
+
+ (general Dirichlet boundaries).
+\end_layout
+
+\begin_layout Enumerate
+As in problem set
+\begin_inset space ~
+\end_inset
+
+1 and in class, we can handle general boundary conditions 
+\begin_inset Formula $u|_{d\Omega}=g(\vec{x})$
+\end_inset
+
+ by defining a new function 
+\begin_inset Formula $u_{0}=u-g$
+\end_inset
+
+, so that 
+\begin_inset Formula $u_{0}|_{d\Omega}=0$
+\end_inset
+
+ (ordinary Dirichlet boundaries), and 
+\begin_inset Formula $\nabla^{2}u=0$
+\end_inset
+
+ implies 
+\begin_inset Formula $-\nabla^{2}u_{0}=\nabla^{2}g$
+\end_inset
+
+.
+ Here, 
+\begin_inset Formula $g=x^{2}y^{2}$
+\end_inset
+
+, so 
+\begin_inset Formula $\nabla^{2}g=2x^{2}+2y^{2}$
+\end_inset
+
+.
+ Now we can use the 
+\family typewriter
+delsq
+\family default
+ function in Matlab, which only works with Dirichlet boundaries.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+To approximate 
+\begin_inset Formula $-\nabla^{2}$
+\end_inset
+
+ on the cylinder, we can use exactly the same Matlab instructions as in
+ problem
+\begin_inset space ~
+\end_inset
+
+2 to make a matrix 
+\begin_inset Formula $A$
+\end_inset
+
+, freely choosing units of distance where 
+\begin_inset Formula $R=1$
+\end_inset
+
+ (i.e.
+ measuring distance in units of 
+\begin_inset Formula $R$
+\end_inset
+
+).
+ We will now solve 
+\begin_inset Formula $A\vec{u}_{0}=\vec{b}$
+\end_inset
+
+ for 
+\begin_inset Formula $\vec{u}_{0}$
+\end_inset
+
+.
+ Following the hint, we form the right-hand side 
+\begin_inset Formula $\vec{b}$
+\end_inset
+
+ (
+\begin_inset Formula $\nabla^{2}g$
+\end_inset
+
+) by the commands 
+\family typewriter
+b2=2*(x2.^2+y2.^2); b=b2(G>0);
+\family default
+ and solve with 
+\family typewriter
+u0=A
+\backslash
+b;
+\family default
+ to obtain 
+\begin_inset Formula $\vec{u}_{0}$
+\end_inset
+
+.
+ Given the vector 
+\begin_inset Formula $\vec{g}$
+\end_inset
+
+ in the hint (representing the function 
+\begin_inset Formula $g$
+\end_inset
+
+), the solution vector 
+\begin_inset Formula $\vec{u}$
+\end_inset
+
+ is then simply 
+\family typewriter
+u=u0+g
+\family default
+.
+ To plot, we use, similar to above, 
+\family typewriter
+U=G; U(G>0)=u(G(G>0)); surf(U)
+\family default
+; we also plot 
+\begin_inset Formula $u_{0}=u-g$
+\end_inset
+
+ in the same way (with 
+\family typewriter
+u0
+\family default
+ instead of 
+\family typewriter
+u
+\family default
+), and the result is shown in figure
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:3b"
+
+\end_inset
+
+.
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pset4-3b.eps
+	width 90col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+
+\emph on
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:3b"
+
+\end_inset
+
+Left:
+\emph default
+ Solution 
+\begin_inset Formula $u(x,y)$
+\end_inset
+
+ for the shape of a stretched circular drum at rest, with the boundaries
+ held at height 
+\begin_inset Formula $x^{2}y^{2}$
+\end_inset
+
+.
+ 
+\emph on
+Right
+\emph default
+: 
+\begin_inset Formula $u_{0}(x,y)=u(x,y)-x^{2}y^{2}$
+\end_inset
+
+, showing that the boundary condition is indeed satisfied (
+\begin_inset Formula $u_{0}=0$
+\end_inset
+
+ at the boundaries).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+ As expected, 
+\begin_inset Formula $u(x,y)$
+\end_inset
+
+ meets 
+\begin_inset Formula $x^{2}y^{2}$
+\end_inset
+
+ on the boundaries, while 
+\begin_inset Formula $u_{0}(x,y)$
+\end_inset
+
+ is zero on the boundaries.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+The results are plotted in figure
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:3c"
+
+\end_inset
+
+.
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename pset4-3c.eps
+	width 90col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:3c"
+
+\end_inset
+
+Columns of the inverse finite-difference Laplacian matrix 
+\begin_inset Formula $A^{-1}\approx(-\nabla^{2})^{-1}$
+\end_inset
+
+ on the cylinder.
+ 
+\emph on
+Left:
+\emph default
+ 
+\begin_inset Formula $A^{-1}$
+\end_inset
+
+ column corresponding to a point in the center of the cylinder.
+ 
+\emph on
+Right
+\emph default
+: corresponding to a point shifted halfway to one side.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+ Looking at the plot, the figures resemble someone pushing up at 
+\begin_inset Quotes eld
+\end_inset
+
+one point
+\begin_inset Quotes erd
+\end_inset
+
+ on the stretched drum surface, and this is in fact precisely what they
+ represent.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Each column 
+\begin_inset Formula $\vec{c}_{k}$
+\end_inset
+
+ of the inverse matrix 
+\begin_inset Formula $A^{-1}$
+\end_inset
+
+ solves 
+\begin_inset Formula $A\vec{c}_{k}=\vec{e}_{k}$
+\end_inset
+
+, where 
+\begin_inset Formula $\vec{e}_{k}$
+\end_inset
+
+ is a unit vector in the 
+\begin_inset Formula $k$
+\end_inset
+
+-th direction (the 
+\begin_inset Formula $k$
+\end_inset
+
+-th column of the identity matrix).
+ On the grid, a unit vector 
+\begin_inset Formula $\vec{e}_{k}$
+\end_inset
+
+ corresponds to one grid point that is nonzero, the rest being zero---it
+ only remains to show thath this right-hand-side can be interpreted as a
+ force, and then this will be a force at one grid point as suggested above.
+ It was given in the problem that the wave equation 
+\begin_inset Formula $c^{2}\nabla^{2}u=\partial^{2}u/\partial t^{2}$
+\end_inset
+
+ came from 
+\begin_inset Formula $F=ma$
+\end_inset
+
+ where 
+\begin_inset Formula $\partial^{2}u/\partial t^{2}$
+\end_inset
+
+ is acceleration---the 
+\begin_inset Formula $\nabla^{2}u$
+\end_inset
+
+ term is therefore proportional to the force from the drum tension.
+ If we add an external force (per unit area) 
+\begin_inset Formula $f(x,y),$
+\end_inset
+
+ therefore, the equation would look like 
+\begin_inset Formula $\#f+c^{2}\nabla^{2}u=\ddot{u}$
+\end_inset
+
+ for some proportionality constant 
+\begin_inset Formula $\#$
+\end_inset
+
+ (that is, adding the external force to the tension force on the left-hand
+ side).
+ If the drum is at rest (
+\begin_inset Formula $\ddot{u}=0$
+\end_inset
+
+), then we obtain 
+\begin_inset Formula $-\nabla^{2}u=\frac{\#}{c^{2}}f(x,y)$
+\end_inset
+
+: the right-hand side of this equation is proportional to the force at each
+ point.
+ This is exactly the equation 
+\begin_inset Formula $A^{-1}$
+\end_inset
+
+ solves, since 
+\begin_inset Formula $A\approx-\nabla^{2}$
+\end_inset
+
+, so each column 
+\begin_inset Formula $\vec{c}_{k}$
+\end_inset
+
+ of 
+\begin_inset Formula $A^{-1}$
+\end_inset
+
+ is proportional to the solution 
+\begin_inset Formula $u$
+\end_inset
+
+ in response to a force 
+\begin_inset Formula $\sim\vec{e}_{k}$
+\end_inset
+
+ (i.e.
+ at one grid point) when the drum is at rest.
+\end_layout
+
+\end_body
+\end_document
