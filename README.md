@@ -65,7 +65,7 @@ As a preview of things to come later, by a simple change to the time-dependence 
 
 ### Lecture 3 (Sep 12)
 
-**Handouts:** [notes on difference approximations](difference-approx.pdf); [IJulia notebook](http://nbviewer.ipython.org/url/math.mit.edu/~stevenj/18.303/lecture-3.ipynb) from the in-class demo
+**Handouts:** [notes on difference approximations](difference-approx.pdf); [IJulia notebook](https://nbviewer.jupyter.org/github/mitmath/18303/blob/fall16/lecture-3.ipynb) from the in-class demo
 
 Now, we will go back to the happy land of finite-ness for a while, by learning to approximate a PDE by a matrix. This will not only give us a way to compute things we cannot solve by hand, but it will also give us a different perspective on certain properties of the solutions that may make certain abstract concepts of the PDE clearer. We begin with one of the simplest numerical methods: we replace the continuous space by a grid, the function by the values on a grid, and derivatives by differences on the grid. This is called a **finite-difference method**.
 
@@ -77,7 +77,7 @@ Armed with center differences (see handout), went about approximating the 1d Lap
 
 ### _Optional_ Julia Tutorial (Sep 12 _evening_): 5pm, 32-155
 
-**Handouts/Files:** [Why Julia slides](https://github.com/mitmath/1806/blob/master/julia/Julia-intro.pdf) (also [pptx](https://github.com/mitmath/1806/blob/master/julia/Julia-intro.pptx?raw=true)), [Julia cheat-sheet](https://github.com/mitmath/julia-mit/blob/master/Julia-cheatsheet.pdf), [IJulia notebook from the tutorial session](http://nbviewer.ipython.org/url/math.mit.edu/~stevenj/18.303/julia-tut-f15.ipynb)
+**Handouts/Files:** [Why Julia slides](https://github.com/mitmath/1806/blob/master/julia/Julia-intro.pdf) (also [pptx](https://github.com/mitmath/1806/blob/master/julia/Julia-intro.pptx?raw=true)), [Julia cheat-sheet](https://github.com/mitmath/julia-mit/blob/master/Julia-cheatsheet.pdf), [IJulia notebook from the tutorial session](https://nbviewer.jupyter.org/github/mitmath/18303/blob/fall16/julia-tut-f15.ipynb)
 
 For our computational work in 18.303 this semester, we’ll be using a free/open-source scientific-computing language called [Julia](http://julialang.org). If you are familiar with languages like Python or Matlab, picking up Julia should be pretty easy for you. If not, don’t worry—I won’t be requiring any heavy duty programming, just simple scripts, and in early psets I’ll mostly tell you what to type.
 
@@ -103,7 +103,7 @@ Defined the **adjoint** Â ⃰ of a linear operator: whatever we have to do to m
 
 ### Lecture 5 (Sep 17)
 
-**Handout:** [pset 1 solutions](pset1sol-f16.pdf) and [notebook](http://nbviewer.ipython.org/url/math.mit.edu/~stevenj/18.303/pset1sol-f16.ipynb); [pset 2](pset2-f16.pdf)
+**Handout:** [pset 1 solutions](pset1sol-f16.pdf) and [notebook](https://nbviewer.jupyter.org/github/mitmath/18303/blob/fall16/pset1sol-f16.ipynb); [pset 2](pset2-f16.pdf)
 
 Showed that with u(0)=u(L)=0 boundary conditions and this inner product, (d²/dx²)ᵀ is real-symmetric (also called "Hermitian" or "self-adjoint"). \[There is an omitted technicality here: technically, we have only showed that the operator is symmetric. To show that it is Hermitian, we must also show that the adjoint has the same [domain](http://en.wikipedia.org/wiki/Domain_of_a_function) in the Hilbert space. Mostly we can avoid this technical distinction in real applications; it doesn't arise explicitly in the proofs here.\]
 
@@ -149,7 +149,7 @@ Finishing the discrete problem from the previous lecture, considered the "inhomo
 
 ### Lecture 7 (Sep 26)
 
-**Handouts:** [pset 2 solutions](pset2sol-f16.pdf) and [notebook](http://nbviewer.ipython.org/url/math.mit.edu/~stevenj/18.303/pset2sol-f16.ipynb); [pset 3](pset3-f16.pdf) (due Friday 9/30), [notes on separation of variables](separation.pdf)
+**Handouts:** [pset 2 solutions](pset2sol-f16.pdf) and [notebook](https://nbviewer.jupyter.org/github/mitmath/18303/blob/fall16/pset2sol-f16.ipynb); [pset 3](pset3-f16.pdf) (due Friday 9/30), [notes on separation of variables](separation.pdf)
 
 **New topic: Separation of variables:** (See [notes](separation.pdf).) This is a technique to _reduce the dimensionality_ of a PDE by representing the solution as a product of lower-dimensional functions. It _only works in a handful of cases_, usually as a consequence of _symmetry_, but those cases are common enough that it is important to know them. It also gives us our only analytically solvable PDE examples in more than 1d; otherwise we will have to use the computer.
 
@@ -211,13 +211,13 @@ In Julia, you exploit sparsity by using the `sparse` command and friends to crea
 
 Starting with the ∇2 operator on a square grid, showed how we can convert to any other Ω shape with Dirichlet boundaries just by taking a subset of the rows/cols (as in problem 2 of pset 5). Recovered the Bessel solutions for a circular domain. See the IJulia notebook:
 
-*   [lecture-10.ipynb](http://nbviewer.ipython.org/url/math.mit.edu/~stevenj/18.303/lecture-10.ipynb)
+*   [lecture-10.ipynb](https://nbviewer.jupyter.org/github/mitmath/18303/blob/fall16/lecture-10.ipynb)
 
 **Cylindrical domains:** see handout. More separation of variables: cylindrical case of a cylinder of radius R with Dirichlet boundary conditions. Show that the Laplace eigenequation here is indeed separable into a function of θ multiplied by a function of r, satisfying separate 1d ODEs. Show that the θ dependence is sin(mθ) or cos(mθ) (or any linear combination), where m is a non-negative integer (in order to be periodic in θ), or equivalently eimθ (including both positive and negative integers). The r dependence satisfies a more complicated 2nd-order ODE that we can't solve by hand (even if you have taken 18.03).
 
 ### Lecture 11 (Oct. 5)
 
-**Handouts:** [notes on Bessel functions and cylindrical problems](lecture-8.pdf); also [IJulia Bessel-function notebook](http://nbviewer.ipython.org/url/math.mit.edu/~stevenj/18.303/lecture-8.ipynb)
+**Handouts:** [notes on Bessel functions and cylindrical problems](lecture-8.pdf); also [IJulia Bessel-function notebook](https://nbviewer.jupyter.org/github/mitmath/18303/blob/fall16/lecture-8.ipynb)
 
 More separation of variables: cylindrical case of a cylinder of radius R with Dirichlet boundary conditions. Show that the Laplace eigenequation here is indeed separable into a function of θ multiplied by a function of r, satisfying separate 1d ODEs. Show that the θ dependence is sin(mθ) or cos(mθ) (or any linear combination), where m is an integer (in order to be periodic in θ). The r dependence satisfies a more complicated 2nd-order ODE that we can't solve by hand (even if you have taken 18.03).
 
@@ -237,7 +237,7 @@ In order to get an intuitive feel for what the eigenfunctions should look like, 
 
 ### Lecture 13 (Oct. 12)
 
-**Handouts:** [min-max theorem examples](http://nbviewer.ipython.org/url/math.mit.edu/~stevenj/18.303/min-max-examples.ipynb); [pset 5](pset5-f16.pdf) (due next Monday); [pset 4 solutions](pset4sol-f16.pdf)
+**Handouts:** [min-max theorem examples](https://nbviewer.jupyter.org/github/mitmath/18303/blob/fall16/min-max-examples.ipynb); [pset 5](pset5-f16.pdf) (due next Monday); [pset 4 solutions](pset4sol-f16.pdf)
 
 Finished notes on min-max theorem, and went over some examples; see also IJulia notebook.
 
@@ -251,7 +251,7 @@ Start on Green's functions (next lecture's notes).
 
 ### Lecture 15 (Oct. 17)
 
-**Handouts:** [notes on delta functions and distributions](delta-notes.pdf), [pset 6](pset6-f16.pdf) (due Friday); [pset 5 solutions](pset5sol-f16.pdf) and [notebook](http://nbviewer.ipython.org/url/math.mit.edu/~stevenj/18.303/pset5sol-f16.ipynb)
+**Handouts:** [notes on delta functions and distributions](delta-notes.pdf), [pset 6](pset6-f16.pdf) (due Friday); [pset 5 solutions](pset5sol-f16.pdf) and [notebook](https://nbviewer.jupyter.org/github/mitmath/18303/blob/fall16/pset5sol-f16.ipynb)
 
 Finished Green's function notes from last lecture.
 
@@ -377,7 +377,7 @@ The important consequence of this is: when you refine the discretization in spac
 
 ### Lecture 23: November 4
 
-**Handouts:** notebook with [conditional-stability example](http://nbviewer.ipython.org/url/math.mit.edu/~stevenj/18.303/conditional-stability.ipynb)
+**Handouts:** notebook with [conditional-stability example](https://nbviewer.jupyter.org/github/mitmath/18303/blob/fall16/conditional-stability.ipynb)
 
 Went over a numerical example of conditional stability in a 1d diffusion equation; see notebook.
 
@@ -423,7 +423,7 @@ Went through Von Neumann stability analysis of this leap-frog scheme, and derive
 
 ### Lecture 26: November 16
 
-**Handouts:** [Notes on Fourier transforms, wave velocity, and dispersion](fourier-dispersion.pdf), [leapfrog wave simulation notebook](http://nbviewer.ipython.org/url/math.mit.edu/~stevenj/18.303/wave-animation.ipynb), [pset 8](pset8-f16.pdf) (due next Wed).
+**Handouts:** [Notes on Fourier transforms, wave velocity, and dispersion](fourier-dispersion.pdf), [leapfrog wave simulation notebook](https://nbviewer.jupyter.org/github/mitmath/18303/blob/fall16/wave-animation.ipynb), [pset 8](pset8-f16.pdf) (due next Wed).
 
 **Traveling waves: D'Alembert's solution**. Considered the 1d scalar wave equation c²∂²u/∂x²\=∂²u/∂t² on an infinite domain with a constant coefficient c. Showed that any f(x) gives possible solutions u(x,t)=f(x±ct). This is called D'Alembert's solution, and describes the function f(x) "moving" to the left or right with speed c. That is, wave equations have travelling solutions, and the constant c can be interpreted as the speed of these solutions. Adding a hard wall (Dirichlet boundary) is equivalent to looking for an odd solution f(x±ct)−f(−x±ct), which gives an _inverted reflection_ off the wall. (Neumann boundary conditions correspond to even solutions and give non-inverted reflections.) If we have two Dirichlet boundaries, as in a finite stretched string, then we obtain an infinite sequence of inverted reflections which we can write as an infinite series.
 
@@ -473,7 +473,7 @@ Began discussing "total internal reflection" waveguides; see notes from next lec
 
 ### Lecture 32: December 2
 
-**Handouts:** [waveguide modes IJulia notebook](http://nbviewer.ipython.org/url/math.mit.edu/~stevenj/18.303/fall14/Waveguide-Modes.ipynb), [variational proof of slow-wave localization](slow-waveguides.pdf)
+**Handouts:** [waveguide modes IJulia notebook](https://nbviewer.jupyter.org/github/mitmath/18303/blob/fall16/fall14/Waveguide-Modes.ipynb), [variational proof of slow-wave localization](slow-waveguides.pdf)
 
 Went through analytical proof, based on the min–max theorem, that under very general conditions any regions with a smaller speed _c_ will lead to guided-wave (localized) solutions. See notes above.
 
