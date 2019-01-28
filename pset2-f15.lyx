@@ -1,5 +1,5 @@
-#LyX 2.0 created this file. For more info see http://www.lyx.org/
-\lyxformat 413
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
 \begin_document
 \begin_header
 \textclass article
@@ -19,13 +19,13 @@
 \font_roman default
 \font_sans default
 \font_typewriter default
+\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
-
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -36,15 +36,24 @@
 \use_hyperref false
 \papersize default
 \use_geometry true
-\use_amsmath 1
-\use_esint 0
-\use_mhchem 1
-\use_mathdots 1
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
 \cite_engine basic
+\cite_engine_type default
+\biblio_style plain
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\justification true
 \use_refstyle 0
 \index Index
 \shortcut idx
@@ -73,9 +82,216 @@
 \end_layout
 
 \begin_layout Standard
-Due Monday, 22 September 2014.
+Due Monday, 28 September 2015.
 \end_layout
 
+\begin_layout Subsection*
+Problem 1: Hermitian vs.
+ Self-adjoint
+\end_layout
+
+\begin_layout Standard
+One of the tricky issues that we will mostly gloss over in this class is
+ the distinction between Hermitian (or 
+\begin_inset Quotes eld
+\end_inset
+
+symmetric
+\begin_inset Quotes erd
+\end_inset
+
+) operators and self-adjoint operators.
+ 
+\begin_inset Formula $\hat{A}$
+\end_inset
+
+ Hermitian means that 
+\begin_inset Formula $\langle u,\hat{A}v\rangle=\langle\hat{A}u,v\rangle$
+\end_inset
+
+ for all 
+\begin_inset Formula $u,v$
+\end_inset
+
+ in the domain of 
+\begin_inset Formula $\hat{A}$
+\end_inset
+
+.
+ To be truly self-adjoint, however, we also need for 
+\begin_inset Formula $\hat{A}^{*}$
+\end_inset
+
+ to have the same domain as 
+\begin_inset Formula $\hat{A}$
+\end_inset
+
+.
+ In this problem you will explore this distinction a 
+\emph on
+little
+\emph default
+ bit, for the famously problematic example of the operator 
+\begin_inset Formula $\hat{A}=i\frac{\partial}{\partial x}$
+\end_inset
+
+ acting on differentiable functions 
+\begin_inset Formula $u(x)$
+\end_inset
+
+ on 
+\begin_inset Formula $\Omega=[0,L]$
+\end_inset
+
+ with 
+\begin_inset Formula $u(0)=u(L)=0$
+\end_inset
+
+, for the inner product 
+\begin_inset Formula $\langle u,v\rangle=\int_{0}^{L}\overline{u(x)}v(x)dx$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Show that 
+\begin_inset Formula $\langle\hat{A}^{*}u,v\rangle=\langle u,\hat{A}v\rangle$
+\end_inset
+
+ for all (differentiable) 
+\begin_inset Formula $v$
+\end_inset
+
+ with 
+\begin_inset Formula $v(0)=v(L)=0$
+\end_inset
+
+ with 
+\begin_inset Formula $\hat{A}=i\frac{\partial}{\partial x}$
+\end_inset
+
+.
+ However, you should be able to see that this is still true even for 
+\begin_inset Formula $u$
+\end_inset
+
+ that 
+\emph on
+don't
+\emph default
+ satisfy the boundary conditions, so that the domain of 
+\begin_inset Formula $\hat{A}^{*}$
+\end_inset
+
+ is larger than the domain of 
+\begin_inset Formula $\hat{A}$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+The analogous property in the discretized (matrix) system is the fact that
+ our first-derivative matrix 
+\begin_inset Formula $D$
+\end_inset
+
+ from class was 
+\emph on
+non-square
+\emph default
+: it was 
+\begin_inset Formula $(N+1)\times N$
+\end_inset
+
+, so that 
+\begin_inset Formula $D^{T}$
+\end_inset
+
+ operated on a larger (higher-dimensional) vector space than 
+\begin_inset Formula $D$
+\end_inset
+
+.
+ Non-square matrices don't have eigenvectors!
+\end_layout
+
+\begin_layout Enumerate
+What happens if you try to find eigenfunctions 
+\begin_inset Formula $\hat{A}u=\lambda u$
+\end_inset
+
+ satisfying these boundary conditions? (Something bad!)
+\end_layout
+
+\begin_layout Enumerate
+Describe the analogue of the 18.06 singular-value decomposition (SVD) for
+ 
+\begin_inset Formula $\hat{A}$
+\end_inset
+
+: orthogonal bases for the inputs (domain) and outputs (range) of 
+\begin_inset Formula $\hat{A}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Consider instead the same operator 
+\begin_inset Formula $\hat{A}$
+\end_inset
+
+, but for 
+\emph on
+periodic
+\emph default
+ functions 
+\begin_inset Formula $u(L)=u(0).$
+\end_inset
+
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+In this case, show that 
+\begin_inset Formula $\hat{A}^{*}=\hat{A}$
+\end_inset
+
+: 
+\begin_inset Formula $\langle\hat{A}^{*}u,v\rangle=\langle u,\hat{A}v\rangle$
+\end_inset
+
+ is only true if 
+\emph on
+both
+\emph default
+ 
+\begin_inset Formula $u$
+\end_inset
+
+ and 
+\begin_inset Formula $v$
+\end_inset
+
+ are periodic.
+\end_layout
+
+\begin_layout Enumerate
+Show that, in this case, 
+\begin_inset Formula $\hat{A}$
+\end_inset
+
+ has perfectly okay periodic eigenfunctions (what are they?).
+\end_layout
+
+\end_deeper
 \begin_layout Subsection*
 Problem 2: Modified inner products for column vectors
 \end_layout
@@ -205,8 +421,193 @@ this
 .
 \end_layout
 
+\begin_layout Enumerate
+In Julia, construct a random 
+\begin_inset Formula $5\times5$
+\end_inset
+
+ Hermitian matrix 
+\begin_inset Formula $A$
+\end_inset
+
+ in Julia by 
+\family typewriter
+A=randn(5,5); A=A+A'
+\family default
+, and a random 
+\begin_inset Formula $5\times5$
+\end_inset
+
+ Hermitian positive-definite matrix 
+\begin_inset Formula $B$
+\end_inset
+
+ by 
+\family typewriter
+B=randn(5,5); B=B'*B
+\family default
+, and check that 
+\begin_inset Formula $M=B^{-1}A$
+\end_inset
+
+ has real eigenvalues by 
+\family typewriter
+eigvals(B
+\backslash
+A)
+\family default
+.
+ [Optional: also check that the eigenvectors, from the 
+\family typewriter
+eig
+\family default
+ function, are orthogonal under your inner product.]
+\end_layout
+
+\begin_layout Enumerate
+In Julia, do the same thing except just make a random indefinite matrix
+ 
+\begin_inset Formula $B$
+\end_inset
+
+ by 
+\family typewriter
+B=randn(5,5); B=B+B'
+\family default
+.
+ Check that 
+\family typewriter
+eigvals(B
+\backslash
+A)
+\family default
+ does 
+\emph on
+not
+\emph default
+ generally give real eigenvalues (unless you get 
+\begin_inset Quotes eld
+\end_inset
+
+lucky
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\begin_inset Formula $B$
+\end_inset
+
+ happens to be definite by chance, but you can just repeat the process a
+ few times to be sure).
+\end_layout
+
 \begin_layout Subsection*
-Problem 2: Finite-difference approximations
+Problem 3: More Hermitian operators
+\end_layout
+
+\begin_layout Standard
+Consider 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\hat{A}u=a\frac{d}{dx}\left[b\frac{d(cu)}{dx}\right]+d
+\]
+
+\end_inset
+
+for some real-valued functions 
+\begin_inset Formula $a(x)>0$
+\end_inset
+
+, 
+\begin_inset Formula $b(x)$
+\end_inset
+
+, 
+\begin_inset Formula $c(x)>0$
+\end_inset
+
+, and 
+\begin_inset Formula $d(x)$
+\end_inset
+
+, acting on functions 
+\begin_inset Formula $u(x)$
+\end_inset
+
+ defined on 
+\begin_inset Formula $\Omega=[0,L]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Show that 
+\begin_inset Formula $\hat{A}$
+\end_inset
+
+ is Hermitian for an appropriate choice of inner product 
+\begin_inset Formula $\langle u,v\rangle$
+\end_inset
+
+ when:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+You have Dirichlet boundary conditions 
+\begin_inset Formula $u(0)=u(L)=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+You have 
+\begin_inset Quotes eld
+\end_inset
+
+Neumann
+\begin_inset Quotes erd
+\end_inset
+
+ boundary conditions 
+\begin_inset Formula $(cu)'(0)=(cu)'(L)=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+You have periodic boundary conditions 
+\begin_inset Formula $u(0)=u(L)$
+\end_inset
+
+, and the coefficients are also periodic.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Under what conditions on 
+\begin_inset Formula $b$
+\end_inset
+
+ and 
+\begin_inset Formula $d$
+\end_inset
+
+, and for which of the above boundary conditions, is 
+\begin_inset Formula $\hat{A}$
+\end_inset
+
+ positive-definite?
+\end_layout
+
+\begin_layout Subsection*
+Problem 4: Finite-difference approximations
 \end_layout
 
 \begin_layout Standard
@@ -589,359 +990,12 @@ For
 ?
 \end_layout
 
-\begin_layout Subsection*
-Problem 3: Discrete diffusion
-\end_layout
-
-\begin_layout Standard
-In this problem, you will examine thermal conduction in a system of a finite
- number 
-\begin_inset Formula $N$
-\end_inset
-
- of pieces, and then take the 
-\begin_inset Formula $N\to\infty$
-\end_inset
-
- limit to recover the heat equation.
- In particular:
-\end_layout
-
-\begin_layout Itemize
-You have a metal bar of length 
-\begin_inset Formula $L$
-\end_inset
-
- and cross-sectional area 
-\begin_inset Formula $a$
-\end_inset
-
- (hence a volume 
-\begin_inset Formula $La$
-\end_inset
-
-), with a varying temperature 
-\begin_inset Formula $T$
-\end_inset
-
- along the rod.
- We conceptually subdivide the rod into 
-\begin_inset Formula $N$
-\end_inset
-
- (touching) pieces of length 
-\begin_inset Formula $\Delta x=L/N$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Itemize
-If 
-\begin_inset Formula $\Delta x$
-\end_inset
-
- is small, we can approximate each piece as having a uniform temperature
- 
-\begin_inset Formula $T_{n}$
-\end_inset
-
- within the piece (
-\begin_inset Formula $n=1,2,\ldots,N$
-\end_inset
-
-), giving a vector 
-\begin_inset Formula $\vec{T}$
-\end_inset
-
- of 
-\begin_inset Formula $N$
-\end_inset
-
- temperatures.
-\end_layout
-
-\begin_layout Itemize
-Suppose that the rate 
-\begin_inset Formula $q$
-\end_inset
-
- (in units of W) at which heat flows across the boundary from piece 
-\begin_inset Formula $n$
-\end_inset
-
- to piece 
-\begin_inset Formula $n+1$
-\end_inset
-
- is given by 
-\begin_inset Formula $q=\frac{\kappa a}{\Delta x}(T_{n}-T_{n+1})$
-\end_inset
-
-, where 
-\begin_inset Formula $\kappa$
-\end_inset
-
- is the metal's 
-\emph on
-thermal conductivity
-\emph default
- (in units of W/m
-\begin_inset Formula $\cdot$
-\end_inset
-
-K).
- That is, piece 
-\begin_inset Formula $n$
-\end_inset
-
- 
-\emph on
-loses
-\emph default
- energy at a rate 
-\begin_inset Formula $q$
-\end_inset
-
-, and piece 
-\begin_inset Formula $n+1$
-\end_inset
-
- 
-\emph on
-gains
-\emph default
- energy at the same rate, and the heat flows faster across bigger areas,
- over shorter distances, or for larger temperature differences.
- Note that 
-\begin_inset Formula $q>0$
-\end_inset
-
- if 
-\begin_inset Formula $T_{n}>T_{n+1}$
-\end_inset
-
- and 
-\begin_inset Formula $q<0$
-\end_inset
-
- if 
-\begin_inset Formula $T_{n}<T_{n+1}$
-\end_inset
-
-: heat flows from the hotter piece to the cooler piece.
- 
-\end_layout
-
-\begin_layout Itemize
-If an amount of heat 
-\begin_inset Formula $\Delta Q$
-\end_inset
-
- (in J) flows into a piece, its temperature changes by 
-\begin_inset Formula $\Delta T=\Delta Q/(c\rho a\Delta x)$
-\end_inset
-
-, where 
-\begin_inset Formula $c$
-\end_inset
-
- is the specific heat capacity (in J/kg
-\begin_inset Formula $\cdot$
-\end_inset
-
-K) and 
-\begin_inset Formula $\rho$
-\end_inset
-
- is the density (kg/m
-\begin_inset Formula $^{3}$
-\end_inset
-
-) of the metal.
-\end_layout
-
-\begin_layout Itemize
-The rod is insulated: no heat flows out the sides or through the ends.
-\end_layout
-
-\begin_layout Standard
-Given these assumptions, you should be able to answer the following:
-\end_layout
-
 \begin_layout Enumerate
-\begin_inset Quotes eld
+How could you change your code to handle 
+\begin_inset Formula $\hat{A}=c\frac{d^{2}}{dx^{2}}$
 \end_inset
 
-Newton's law of cooling
-\begin_inset Quotes erd
-\end_inset
-
- says that that the temperature of an object changes at a rate (K/s) proportiona
-l to the temperature difference with its surroundings.
- Derive the equivalent here: show that our assumptions above imply that
- 
-\begin_inset Formula $\frac{dT_{n}}{dt}=\alpha(T_{n+1}-T_{n})+\alpha(T_{n-1}-T_{n})$
-\end_inset
-
- for some constant 
-\begin_inset Formula $\alpha$
-\end_inset
-
-, for 
-\begin_inset Formula $1<n<N$
-\end_inset
-
-.
- Also give the (slightly different) equations for 
-\begin_inset Formula $n=1$
-\end_inset
-
- and 
-\begin_inset Formula $n=N$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Enumerate
-Write your equation from the previous part in matrix form: 
-\begin_inset Formula $\frac{d\vec{T}}{dt}=A\vec{T}$
-\end_inset
-
- for some matrix 
-\begin_inset Formula $A$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Enumerate
-Let 
-\begin_inset Formula $T(x,t)$
-\end_inset
-
- be the temperature along the rod, and suppose 
-\begin_inset Formula $T_{n}(t)=T([n-0.5]\Delta x,t)$
-\end_inset
-
- (the temperature at the 
-\emph on
-center
-\emph default
- of the 
-\begin_inset Formula $n$
-\end_inset
-
--th piece).
- Take the limit 
-\begin_inset Formula $N\to\infty$
-\end_inset
-
- (with 
-\begin_inset Formula $L$
-\end_inset
-
- fixed, so that 
-\begin_inset Formula $\Delta x=L/N\to0$
-\end_inset
-
-), and derive a partial differential equation 
-\begin_inset Formula $\frac{\partial T}{\partial t}=\hat{A}T$
-\end_inset
-
-.
- What is 
-\begin_inset Formula $\hat{A}$
-\end_inset
-
-? (Don't worry about the 
-\begin_inset Formula $x=0,L$
-\end_inset
-
- ends until the next part.)
-\end_layout
-
-\begin_layout Enumerate
-What are the boundary conditions on 
-\begin_inset Formula $T(x,t)$
-\end_inset
-
- at 
-\begin_inset Formula $x=0$
-\end_inset
-
- and 
-\begin_inset Formula $L$
-\end_inset
-
-? Check that if you go backwards, and form a center-difference approximation
- of 
-\begin_inset Formula $\hat{A}$
-\end_inset
-
- with these boundary conditions, that you recover the matrix 
-\begin_inset Formula $A$
-\end_inset
-
- from above.
-\end_layout
-
-\begin_layout Enumerate
-How does your 
-\begin_inset Formula $\hat{A}$
-\end_inset
-
- change in the 
-\begin_inset Formula $N\to\infty$
-\end_inset
-
- limit if the conductivity is a function 
-\begin_inset Formula $\kappa(x)$
-\end_inset
-
- of 
-\begin_inset Formula $x$
-\end_inset
-
-? 
-\end_layout
-
-\begin_layout Enumerate
-Suppose that instead of a thin metal bar (1d), you have an 
-\begin_inset Formula $L\times L$
-\end_inset
-
- thin metal 
-\emph on
-plate
-\emph default
- (2d), with a temperature 
-\begin_inset Formula $T(x,y,t)$
-\end_inset
-
- and a constant conductivity 
-\begin_inset Formula $\kappa$
-\end_inset
-
-.
- If you go through the steps above dividing it into 
-\begin_inset Formula $N\times N$
-\end_inset
-
- little squares of size 
-\begin_inset Formula $\Delta x\times\Delta y$
-\end_inset
-
-, what PDE do you get for 
-\begin_inset Formula $T$
-\end_inset
-
- in the limit 
-\begin_inset Formula $N\to\infty$
-\end_inset
-
-? (Many of the steps should be similar to above.)
+?
 \end_layout
 
 \end_body

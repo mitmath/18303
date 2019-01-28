@@ -1,0 +1,689 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+
+\renewcommand{\vec}[1]{\mathbf{#1}}
+
+\renewcommand{\labelenumi}{(\alph{enumi})}
+\renewcommand{\labelenumii}{(\roman{enumii})}
+\newcommand{\rank}{\operatorname{rank}}
+
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
+\end_preamble
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 2
+\use_package esint 2
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 0.7in
+\topmargin 0.7in
+\rightmargin 0.7in
+\bottommargin 0.7in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section*
+18.303 Problem Set 6 Solutions
+\end_layout
+
+\begin_layout Subsection*
+Problem 1: (5+10) Scalar Helmholtz equation
+\end_layout
+
+\begin_layout Standard
+Recall that usual scalar wave equation [e.g.
+ for pressure waves 
+\begin_inset Formula $u(x,t)$
+\end_inset
+
+] is equation 
+\begin_inset Formula $\hat{A}u+f(x,t)=\frac{\partial^{2}u}{\partial t^{2}}$
+\end_inset
+
+, where 
+\begin_inset Formula $f(x,t)$
+\end_inset
+
+ is an external force density (pressure) on the string and 
+\begin_inset Formula $\hat{A}=\nabla\cdot c\nabla$
+\end_inset
+
+ for 
+\begin_inset Formula $c(\vec{x})>0$
+\end_inset
+
+ (e.g.
+ 
+\begin_inset Formula $c$
+\end_inset
+
+ ~ springiness, or 
+\begin_inset Quotes eld
+\end_inset
+
+bulk modulus
+\begin_inset Quotes erd
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Enumerate
+Suppose that 
+\begin_inset Formula $\tilde{u}$
+\end_inset
+
+ solves 
+\begin_inset Formula $\hat{A}\tilde{u}+\tilde{f}(x,t)=\frac{\partial^{2}\tilde{u}}{\partial t^{2}}$
+\end_inset
+
+ and satisfies the boundary conditions, e.g.
+ 
+\begin_inset Formula $\tilde{u}=0$
+\end_inset
+
+ on the boundaries for Dirichlet.
+ Now, consider 
+\begin_inset Formula $u=\Re\tilde{u}=\frac{\tilde{u}+\bar{\tilde{u}}}{2}$
+\end_inset
+
+.
+ Clearly, 
+\begin_inset Formula $u$
+\end_inset
+
+ satisfies the same boundary conditions (e.g.
+ Dirichlet or Neumann).
+ It also satisfies the PDE: 
+\begin_inset Formula 
+\begin{align*}
+\frac{\partial^{2}u}{\partial t^{2}} & =\frac{1}{2}\left[\frac{\partial^{2}\tilde{u}}{\partial t^{2}}+\overline{\frac{\partial^{2}\tilde{u}}{\partial t^{2}}}\right]\\
+ & =\frac{1}{2}\left[\hat{A}\tilde{u}+\tilde{f}+\overline{\hat{A}\tilde{u}+\tilde{f}}\right]\\
+ & =\hat{A}u+f,
+\end{align*}
+
+\end_inset
+
+since 
+\begin_inset Formula $f=\frac{\tilde{f}+\bar{\tilde{f}}}{2}=\Re\tilde{f}$
+\end_inset
+
+.
+ The key factors that allowed us to do this are (i) 
+\emph on
+linearity
+\emph default
+, and (ii) the 
+\emph on
+real-ness
+\emph default
+ of the PDE (the PDE itself contains no 
+\begin_inset Formula $i$
+\end_inset
+
+ factors or other complex coefficients).
+\end_layout
+
+\begin_layout Enumerate
+In this case, we have 
+\begin_inset Formula $\ddot{u}=-\omega^{2}u=\hat{A}u+f$
+\end_inset
+
+.
+ Multiplying both sides by 
+\begin_inset Formula $e^{i\omega t}$
+\end_inset
+
+, we obtain 
+\begin_inset Formula $-\omega^{2}v=\hat{A}v+g$
+\end_inset
+
+, or 
+\begin_inset Formula $\hat{H}v=g$
+\end_inset
+
+ where 
+\begin_inset Formula $\hat{H}=-\hat{A}-\omega^{2}$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Since 
+\begin_inset Formula $\hat{A}$
+\end_inset
+
+ is self-adjoint for Dirichlet boundary conditions (from class), and 
+\begin_inset Formula $-\omega^{2}$
+\end_inset
+
+ is trivially self-adjoint (just a real number), then 
+\begin_inset Formula $\hat{H}$
+\end_inset
+
+ is self-adjoint.
+ However, since 
+\begin_inset Formula $-\hat{A}$
+\end_inset
+
+ is positive-definite (from class) and 
+\begin_inset Formula $-\omega^{2}$
+\end_inset
+
+ is negative-definite (obviously), 
+\begin_inset Formula $\hat{H}$
+\end_inset
+
+ is in generally 
+\emph on
+indefinite
+\emph default
+.
+ The eigenvalues of 
+\begin_inset Formula $\hat{H}$
+\end_inset
+
+ are the eigenvalues of 
+\begin_inset Formula $-\hat{A}$
+\end_inset
+
+ minus 
+\begin_inset Formula $\omega^{2}$
+\end_inset
+
+, and hence if 
+\begin_inset Formula $\omega^{2}$
+\end_inset
+
+ is large enough (larger than the smallest eigenvalue of 
+\begin_inset Formula $-\hat{A}$
+\end_inset
+
+), the eigenvalues of 
+\begin_inset Formula $\hat{H}$
+\end_inset
+
+ can have either sign.
+\end_layout
+
+\begin_layout Subsection*
+Problem 2: ((5+10)+2 points) Green's functions
+\end_layout
+
+\begin_layout Enumerate
+We solve for 
+\begin_inset Formula $g(r)$
+\end_inset
+
+ in 3d as follows:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+For 
+\begin_inset Formula $r>0$
+\end_inset
+
+, 
+\begin_inset Formula $-\nabla^{2}g-\omega^{2}g=0$
+\end_inset
+
+ and hence 
+\begin_inset Formula $-\omega^{2}g=\nabla^{2}g=\frac{1}{r}(rg)''\implies h''=-\omega^{2}h$
+\end_inset
+
+ where 
+\begin_inset Formula $h(r)=rg(r)$
+\end_inset
+
+.
+ The solution to this is 
+\begin_inset Formula $h(r)=ce^{i\omega r}+de^{-i\omega r}$
+\end_inset
+
+ for some constants 
+\begin_inset Formula $c$
+\end_inset
+
+ and 
+\begin_inset Formula $d$
+\end_inset
+
+, or 
+\begin_inset Formula $g(r)=\frac{ce^{i\omega r}+de^{-i\omega r}}{r}$
+\end_inset
+
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+It is a little more tricky to determine whether we should use the 
+\begin_inset Formula $c$
+\end_inset
+
+ or the 
+\begin_inset Formula $d$
+\end_inset
+
+ term than in class, since both decay at the same rate.
+ The ratio 
+\begin_inset Formula $c/d$
+\end_inset
+
+ will be determined by some kind of boundary condition at infinity, but
+ what might this be? It is acceptable for you to just punt on this here;
+ since 
+\begin_inset Formula $e^{\pm i\omega r}$
+\end_inset
+
+ are complex conjugates of each other, your analysis will apply equally
+ well to either one, and you can arbitrarily pick one, say 
+\begin_inset Formula $ce^{i\omega r}/r$
+\end_inset
+
+, to analyze.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+However, to see why there should be a sensible choice, recall that this
+ operator arose in the previous problem by assuming a time dependence 
+\begin_inset Formula $e^{-i\omega t}$
+\end_inset
+
+ multiplying the solution, in which case we are looking at wave solutions
+ 
+\begin_inset Formula $\frac{ce^{i\omega(r-t)}+de^{-i\omega(r+t)}}{r}$
+\end_inset
+
+, where the 
+\begin_inset Formula $c$
+\end_inset
+
+ term describes waves moving 
+\emph on
+out
+\emph default
+ towards 
+\begin_inset Formula $r\to\infty$
+\end_inset
+
+, while the 
+\begin_inset Formula $d$
+\end_inset
+
+ term describes waves moving 
+\emph on
+in
+\emph default
+ from infinity.
+ In wave problems, we typically impose a boundary condition of 
+\emph on
+outgoing waves at infinity
+\emph default
+, in which case we must set 
+\begin_inset Formula $d=0$
+\end_inset
+
+.
+ (However, the choice would have been reversed if we picked the opposite
+ sign convention, 
+\begin_inset Formula $e^{+i\omega t}$
+\end_inset
+
+, for the time dependence.)
+\end_layout
+
+\begin_layout Enumerate
+Let's focus on 
+\begin_inset Formula $g(r)=ce^{i\omega r}/r$
+\end_inset
+
+.
+ As in class, the 
+\begin_inset Formula $1/r$
+\end_inset
+
+ singularity is no problem in 3d (it is cancelled by the Jacobian factor
+ 
+\begin_inset Formula $r^{2}dr$
+\end_inset
+
+), so 
+\begin_inset Formula $g$
+\end_inset
+
+ is a regular distribution.
+ Given an arbitrary test function 
+\begin_inset Formula $q(\vec{x}),$
+\end_inset
+
+ we now evaluate 
+\begin_inset Formula 
+\begin{align*}
+(\hat{A}g)\{q\} & =g\{\hat{A}q\}=\int g\hat{A}q\\
+ & =\int_{0}^{\infty}r^{2}dr\int_{0}^{2\pi}d\phi\int_{0}^{\pi}\sin\theta\, d\theta\,\left[-\omega^{2}gq-\frac{g}{r}\frac{\partial^{2}}{\partial r^{2}}(rq)+\underbrace{\cancel{\left(\theta,\phi\mbox{ derivatives of }q\right)}}_{\mbox{integrate to 0, from class}}\right]\\
+ & =\iint\sin\theta\, d\theta\, d\phi\left[\int_{0}^{\infty}c\left(-\omega^{2}rqe^{i\omega r}-\underbrace{e^{i\omega r}\frac{\partial^{2}}{\partial r^{2}}[rq]}_{\mbox{int. by parts}}\right)dr\right]\\
+ & =\iint\sin\theta\, d\theta\, d\phi\left[\left.-ce^{i\omega r}\frac{\partial}{\partial r}[rq]\right|_{0}^{\infty}+c\int_{0}^{\infty}\left(-\omega^{2}rqe^{i\omega r}+\underbrace{i\omega e^{i\omega r}\frac{\partial}{\partial r}[rq]}_{\mbox{int. by parts}}\right)dr\right]\\
+ & =\iint\sin\theta\, d\theta\, d\phi\left[cq(0)-\cancel{\left.ic\omega e^{i\omega r}[rq]\right|_{0}^{\infty}}+c\int_{0}^{\infty}\left(\cancel{-\omega^{2}rqe^{i\omega r}+\omega^{2}e^{i\omega r}[rq]}\right)dr\right]\\
+ & =4\pi cq(0),
+\end{align*}
+
+\end_inset
+
+and hence 
+\begin_inset Formula $\boxed{c=1/4\pi}$
+\end_inset
+
+.
+ Thus 
+\begin_inset Formula 
+\[
+G(\vec{x},\vec{x}')=\frac{e^{i\omega|\vec{x}-\vec{x}'|}}{4\pi|\vec{x}-\vec{x}'|}
+\]
+
+\end_inset
+
+assuming boundary conditions such that 
+\begin_inset Formula $d=0$
+\end_inset
+
+.
+ More generally, since exactly the same result applies to the 
+\begin_inset Formula $de^{-i\omega r}/r$
+\end_inset
+
+ term, we obtain,
+\begin_inset Formula 
+\[
+G(\vec{x},\vec{x}')=\frac{ce^{i\omega|\vec{x}-\vec{x}'|}+de^{-i\omega|\vec{x}-\vec{x}'|}}{|\vec{x}-\vec{x}'|}
+\]
+
+\end_inset
+
+for 
+\begin_inset Formula $\boxed{c+d=1/4\pi}$
+\end_inset
+
+, with the ratio 
+\begin_inset Formula $c/d$
+\end_inset
+
+ being set by the boundary conditions at 
+\begin_inset Formula $\infty$
+\end_inset
+
+.
+ The value at 
+\begin_inset Formula $\vec{x}=\vec{x}'$
+\end_inset
+
+ being irrelevant in the distribution sense, e.g.
+ we can assign it to zero, since this is a regular distribution with a finite
+ integral, similar to class.)
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+The 
+\begin_inset Formula $\omega\to0$
+\end_inset
+
+ limit gives 
+\begin_inset Formula $1/4\pi|\vec{x}-\vec{x}'|$
+\end_inset
+
+ as in class, by inspection.
+\end_layout
+
+\begin_layout Subsection*
+Problem 3: Born again (20 points)
+\end_layout
+
+\begin_layout Standard
+The Green's function where 
+\begin_inset Formula $\omega=\omega_{2}$
+\end_inset
+
+ is 
+\begin_inset Formula 
+\[
+G_{0}(\vec{x},\vec{x}')=\frac{e^{i\omega_{2}|\vec{x}-\vec{x}'|}}{4\pi|\vec{x}-\vec{x}'|}
+\]
+
+\end_inset
+
+ from above.
+ Write 
+\begin_inset Formula $\omega^{2}=\omega_{2}^{2}+c(\vec{x})$
+\end_inset
+
+, where 
+\begin_inset Formula $c=0$
+\end_inset
+
+ in the 
+\begin_inset Formula $\omega_{2}$
+\end_inset
+
+ region and 
+\begin_inset Formula $c=\omega_{1}^{2}-\omega_{2}^{2}$
+\end_inset
+
+ in the 
+\begin_inset Formula $\omega_{1}$
+\end_inset
+
+ volume.
+ Then we can write the PDE 
+\begin_inset Formula $\hat{A}u=f$
+\end_inset
+
+ as
+\begin_inset Formula 
+\[
+(-\nabla^{2}-\omega_{2}^{2})u=f+cu,
+\]
+
+\end_inset
+
+and hence we can write a Born-Dyson series 
+\begin_inset Formula 
+\[
+u=\hat{B}f+\hat{B}cu=\hat{B}f+\hat{B}c\hat{B}f+\cdots
+\]
+
+\end_inset
+
+ in class, where 
+\begin_inset Formula $\hat{B}=(-\nabla^{2}-\omega_{2}^{2})^{-1}$
+\end_inset
+
+ is integration against the Green's function 
+\begin_inset Formula $G_{0}$
+\end_inset
+
+.
+ If we let 
+\begin_inset Formula $u_{0}=\hat{B}f$
+\end_inset
+
+ as in class, then we have the first Born approximation: 
+\begin_inset Formula 
+\[
+u(\vec{x})\approx u_{0}+\hat{B}cu_{0}=u_{0}(\vec{x})+\int G_{0}(\vec{x},\vec{x}')c(\vec{x}')u_{0}(\vec{x}').
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+As in the notes, 
+\begin_inset Formula $f=\delta(\vec{x}-\vec{x}_{0})$
+\end_inset
+
+, so 
+\begin_inset Formula $u_{0}(\vec{x})=G_{0}(\vec{x},\vec{x}_{0})$
+\end_inset
+
+.
+ The next term has an integrand that is only nonzero inside 
+\begin_inset Formula $V$
+\end_inset
+
+, giving: 
+\begin_inset Formula 
+\[
+(\omega_{1}^{2}-\omega_{2}^{2})\int_{V}G_{0}(\vec{x},\vec{x}')G_{0}(\vec{x}',\vec{x}_{0}).
+\]
+
+\end_inset
+
+However, as in the notes, if the volume 
+\begin_inset Formula $V$
+\end_inset
+
+ is small and and far from both the source point 
+\begin_inset Formula $\vec{x}_{0}$
+\end_inset
+
+ and the observation point 
+\begin_inset Formula $\vec{x}$
+\end_inset
+
+, then the integrand is nearly constant and we can approximately pull it
+ out of the integral.
+ In particular, if 
+\begin_inset Formula $\vec{x}_{1}$
+\end_inset
+
+ is an arbitrary point in 
+\begin_inset Formula $V$
+\end_inset
+
+, we need the diameter of 
+\begin_inset Formula $V$
+\end_inset
+
+ to be much smaller than 
+\begin_inset Formula $|\vec{x}_{0}-\vec{x}_{1}|$
+\end_inset
+
+ and 
+\begin_inset Formula $|\vec{x}-\vec{x}_{1}|$
+\end_inset
+
+ to make the 
+\begin_inset Formula $1/r$
+\end_inset
+
+ terms in 
+\begin_inset Formula $G_{0}$
+\end_inset
+
+ approximately constant as in class, 
+\emph on
+and
+\emph default
+ we need the diameter of 
+\begin_inset Formula $V$
+\end_inset
+
+ to be much smaller than 
+\begin_inset Formula $1/\omega_{2}$
+\end_inset
+
+ to make the oscillatory numerator of 
+\begin_inset Formula $G_{0}$
+\end_inset
+
+ approximately constant in the integral.
+ Under these conditions, we obtain simply 
+\begin_inset Formula 
+\[
+u(\vec{x})\approx G_{0}(\vec{x},\vec{x}_{0})+(\omega_{1}^{2}-\omega_{2}^{2})G_{0}(\vec{x},\vec{x}_{1})G_{0}(\vec{x}_{1},\vec{x}_{0})\, V,
+\]
+
+\end_inset
+
+which is much simpler than the form of the Born approximation from class.
+\end_layout
+
+\end_body
+\end_document

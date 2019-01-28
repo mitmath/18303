@@ -1,0 +1,453 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+\renewcommand{\vec}[1]{\mathbf{#1}}
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2.5cm
+\topmargin 2.5cm
+\rightmargin 2.5cm
+\bottommargin 2.5cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+18.303 Midterm Exam, Fall 2015
+\end_layout
+
+\begin_layout Subsection*
+Problem 1: Adjoint (33 points)
+\end_layout
+
+\begin_layout Standard
+Consider the operator 
+\begin_inset Formula $\hat{A}=-c\nabla^{2}$
+\end_inset
+
+ on a 
+\begin_inset Formula $d$
+\end_inset
+
+-dimensional domain 
+\begin_inset Formula $\Omega$
+\end_inset
+
+, with boundary 
+\begin_inset Formula $\partial\Omega$
+\end_inset
+
+, for a real function 
+\begin_inset Formula $c(\vec{x})>0$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $\hat{\vec{n}}(\vec{x})$
+\end_inset
+
+ denote the outward normal vector on 
+\begin_inset Formula $\partial\Omega$
+\end_inset
+
+.
+ Suppose we have the 
+\begin_inset Quotes eld
+\end_inset
+
+Robin
+\begin_inset Quotes erd
+\end_inset
+
+ boundary condition 
+\begin_inset Formula 
+\[
+\left.\nabla u\cdot\hat{n}\right|_{\partial\Omega}=\left.\alpha u\right|_{\partial\Omega}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\alpha(\vec{x})$
+\end_inset
+
+ is some real-valued function.
+ 
+\series bold
+Show
+\series default
+ that 
+\begin_inset Formula $\hat{A}$
+\end_inset
+
+ is Hermitian under an appropriate choice of inner product 
+\begin_inset Formula $\langle u,v\rangle$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Hint:
+\series default
+ recall from class how to do integration by parts in 
+\begin_inset Formula $d$
+\end_inset
+
+ dimensions: 
+\begin_inset Formula $\int_{\Omega}\vec{f}\cdot\nabla g=\oint_{\partial\Omega}\vec{f}g\cdot\hat{\vec{n}}da-\int_{\Omega}g\nabla\cdot\vec{f}$
+\end_inset
+
+ for any differentiable scalar function 
+\begin_inset Formula $g(\vec{x})$
+\end_inset
+
+ and vector field 
+\begin_inset Formula $\vec{f}(\vec{x})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection*
+Problem 2: Finite differences (34 points)
+\end_layout
+
+\begin_layout Standard
+Consider the 1d constant-coefficient version of the operator from the previous
+ problem: 
+\begin_inset Formula $\hat{A}=-\frac{\partial^{2}}{\partial x^{2}}$
+\end_inset
+
+ on the domain 
+\begin_inset Formula $\Omega=[0,L]$
+\end_inset
+
+, with boundary conditions 
+\begin_inset Formula 
+\begin{eqnarray*}
+u(0) & = & 0,\\
+u'(L) & = & \alpha u(L)
+\end{eqnarray*}
+
+\end_inset
+
+ for some real number 
+\begin_inset Formula $\alpha$
+\end_inset
+
+.
+ (From the previous problem, 
+\begin_inset Formula $\hat{A}$
+\end_inset
+
+ is Hermitian.)
+\end_layout
+
+\begin_layout Standard
+Give a 
+\series bold
+finite-difference
+\series default
+ discretization of 
+\begin_inset Formula $\hat{A}u\approx A\vec{u}$
+\end_inset
+
+ for an 
+\begin_inset Formula $M\times M$
+\end_inset
+
+ matrix 
+\begin_inset Formula $A$
+\end_inset
+
+ and a vector 
+\begin_inset Formula $\vec{u}$
+\end_inset
+
+ of components 
+\begin_inset Formula $u_{m}\approx u(m\Delta x)$
+\end_inset
+
+.
+ Write down the matrix 
+\begin_inset Formula $A$
+\end_inset
+
+.
+ Some things to be careful about:
+\end_layout
+
+\begin_layout Itemize
+Make sure your discretization is second-order accurate, i.e.
+ errors 
+\begin_inset Formula $O(\Delta x^{2})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Be explicit about 
+\emph on
+where
+\emph default
+ 
+\begin_inset Formula $u_{M}$
+\end_inset
+
+ is, i.e.
+ how does 
+\begin_inset Formula $\Delta x$
+\end_inset
+
+ relate to 
+\begin_inset Formula $L$
+\end_inset
+
+ and 
+\begin_inset Formula $M$
+\end_inset
+
+? (Hint: 
+\begin_inset Formula $M\Delta x\neq L$
+\end_inset
+
+).
+ Draw a picture of the grid and label 
+\begin_inset Formula $0,1,2,\ldots,M-1,M,M+1$
+\end_inset
+
+ along with 
+\begin_inset Formula $x=0$
+\end_inset
+
+ and 
+\begin_inset Formula $x=L$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+The 
+\begin_inset Formula $m=0$
+\end_inset
+
+ boundary condition is easy.
+ Be careful on the other side: how does 
+\begin_inset Formula $u_{M+1}$
+\end_inset
+
+ relate to 
+\begin_inset Formula $u_{M}$
+\end_inset
+
+?
+\end_layout
+
+\begin_layout Itemize
+Be sure that your matrix 
+\begin_inset Formula $A$
+\end_inset
+
+ is self-adjoint (under some inner product).
+\end_layout
+
+\begin_layout Subsection*
+Problem 3: Green (33 points)
+\end_layout
+
+\begin_layout Standard
+In class, we saw that the Green's function for 
+\begin_inset Formula $\hat{A}=-\nabla^{2}$
+\end_inset
+
+ in 3d for 
+\begin_inset Formula $\Omega=\mathbb{R}^{3}$
+\end_inset
+
+ is 
+\begin_inset Formula $G_{0}(\vec{x},\vec{x}')=\frac{1}{4\pi|\vec{x}-\vec{x}'|},$
+\end_inset
+
+ such that 
+\begin_inset Formula $\hat{A}u_{0}=f$
+\end_inset
+
+ is solved by 
+\begin_inset Formula $u_{0}(\vec{x})=\hat{A}^{-1}f=\int G_{0}(\vec{x},\vec{x}')\, f(\vec{x}')\, d^{3}\vec{x}'$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Now, suppose that we want to solve the 
+\emph on
+nonlinear
+\emph default
+ equation
+\begin_inset Formula 
+\[
+\hat{A}u+\alpha u^{2}=f
+\]
+
+\end_inset
+
+for some small 
+\begin_inset Formula $|\alpha(\vec{x})|\ll1$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Suppose that we want to solve this 
+\emph on
+approximately
+\emph default
+ to 
+\emph on
+first order
+\emph default
+ in 
+\begin_inset Formula $\alpha$
+\end_inset
+
+, dropping terms of 
+\begin_inset Formula $O(\alpha^{2})$
+\end_inset
+
+ etc.
+ 
+\series bold
+Write down this approximate solution
+\series default
+ in terms of 
+\series bold
+integrals
+\series default
+ of 
+\begin_inset Formula $G_{0},$
+\end_inset
+
+ 
+\begin_inset Formula $u_{0}$
+\end_inset
+
+, 
+\begin_inset Formula $f$
+\end_inset
+
+, and 
+\begin_inset Formula $\alpha$
+\end_inset
+
+.
+ (Hint: Born approximation.)
+\end_layout
+
+\begin_layout Enumerate
+Improve your approximation by adding the 
+\emph on
+second
+\emph default
+-
+\emph on
+order
+\emph default
+ term in 
+\begin_inset Formula $\alpha$
+\end_inset
+
+, i.e.
+ dropping terms of 
+\begin_inset Formula $O(\alpha^{3})$
+\end_inset
+
+ etc.
+ (Hint: write 
+\begin_inset Formula $u=u_{0}+u_{1}+u_{2}+\ldots$
+\end_inset
+
+, where 
+\begin_inset Formula $u_{n}$
+\end_inset
+
+ is all the terms proportional to 
+\begin_inset Formula $\alpha^{n}$
+\end_inset
+
+.)
+\end_layout
+
+\end_body
+\end_document

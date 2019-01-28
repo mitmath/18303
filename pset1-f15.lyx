@@ -1,5 +1,5 @@
-#LyX 2.0 created this file. For more info see http://www.lyx.org/
-\lyxformat 413
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
 \begin_document
 \begin_header
 \textclass article
@@ -19,13 +19,13 @@
 \font_roman default
 \font_sans default
 \font_typewriter default
+\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
-
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -36,15 +36,24 @@
 \use_hyperref false
 \papersize default
 \use_geometry true
-\use_amsmath 1
-\use_esint 0
-\use_mhchem 1
-\use_mathdots 1
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 0
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
 \cite_engine basic
+\cite_engine_type default
+\biblio_style plain
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\justification true
 \use_refstyle 0
 \index Index
 \shortcut idx
@@ -73,7 +82,7 @@
 \end_layout
 
 \begin_layout Standard
-Due Friday, 12 September 2014.
+Due Friday, 18 September 2015.
 \end_layout
 
 \begin_layout Standard
@@ -88,7 +97,7 @@ Note
 \series bold
 email your notebook (.ipynb) file
 \series default
- to the grader cjfan@math.mit.edu.
+ to the grader huetter@math.mit.edu.
  
 \series bold
 Always label
@@ -125,165 +134,133 @@ Here are a few questions that you should be able to answer based only on
 \end_layout
 
 \begin_layout Enumerate
-Suppose that 
-\begin_inset Formula $B$
-\end_inset
-
- is a Hermitian positive-definite matrix.
- Show that there is a unique matrix 
-\begin_inset Formula $\sqrt{B}$
-\end_inset
-
- which is Hermitian positive-definite and has the property 
-\begin_inset Formula $(\sqrt{B})^{2}=B$
-\end_inset
-
-.
- (Hint: use the diagonalization of 
-\begin_inset Formula $B$
-\end_inset
-
-.)
-\end_layout
-
-\begin_layout Enumerate
-Suppose that 
+In 18.06, you showed that the eigenvectors of a real-symmetric or Hermitian
+ matrix 
 \begin_inset Formula $A$
 \end_inset
 
- and 
-\begin_inset Formula $B$
+ are orthogonal.
+ You may want to review that proof before doing this problem, which deals
+ with general non-symmetric square 
+\begin_inset Formula $m\times m$
 \end_inset
 
- are Hermitian matrices and that 
-\begin_inset Formula $B$
+ matrices 
+\begin_inset Formula $A$
 \end_inset
 
- is positive-definite.
- 
+.
 \end_layout
 
 \begin_deeper
 \begin_layout Enumerate
 Show that 
-\begin_inset Formula $B^{-1}A$
+\begin_inset Formula $A$
+\end_inset
+
+ and 
+\begin_inset Formula $A^{*}=\overline{A^{T}}$
+\end_inset
+
+ have complex-conjugate eigenvalues.
+ That is, for every eigenvalue 
+\begin_inset Formula $\lambda_{n}$
+\end_inset
+
+ of 
+\begin_inset Formula $A$
+\end_inset
+
+, with a corresponding eigenvector 
+\begin_inset Formula $x_{n}$
+\end_inset
+
+ (
+\begin_inset Formula $Ax_{n}=\lambda_{n}x_{n}$
+\end_inset
+
+), there is a corresponding eigenvalue 
+\begin_inset Formula $\overline{\lambda_{n}}$
+\end_inset
+
+ of 
+\begin_inset Formula $A^{*}$
+\end_inset
+
+ and a 
+\emph on
+left
+\emph default
+ 
+\emph on
+eigenvector
+\emph default
+ 
+\begin_inset Formula $y_{n}$
+\end_inset
+
+ satisfying 
+\begin_inset Formula $A^{*}y_{n}=\overline{\lambda_{n}}y_{n}.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Show that if 
+\begin_inset Formula $\lambda_{j}\neq\lambda_{k}$
+\end_inset
+
+ then 
+\begin_inset Formula $y_{j}^{*}x_{k}=0$
+\end_inset
+
+.
+ (This is called a 
+\begin_inset Quotes eld
+\end_inset
+
+bi-orthogonality
+\begin_inset Quotes erd
+\end_inset
+
+ relation between the left and right eigenvectors.)
+\end_layout
+
+\begin_layout Enumerate
+If 
+\begin_inset Formula $A=A^{T}$
+\end_inset
+
+ (but 
+\begin_inset Formula $A$
 \end_inset
 
  is 
 \emph on
-similar
+not 
 \emph default
- (in the 18.06 sense) to a Hermitian matrix.
- (Hint: use your answer from above.) 
-\end_layout
-
-\begin_layout Enumerate
-What does this tell you about the eigenvalues 
-\begin_inset Formula $\lambda$
+necessarily real), relate 
+\begin_inset Formula $x_{n}$
 \end_inset
 
- of 
-\begin_inset Formula $B^{-1}A$
+ to 
+\begin_inset Formula $y_{n}$
 \end_inset
 
- , i.e.
- the solutions of 
-\begin_inset Formula $B^{-1}A\vec{x}=\lambda\vec{x}$
-\end_inset
-
-?
-\end_layout
-
-\begin_layout Enumerate
-Are the eigenvectors 
-\begin_inset Formula $\vec{x}$
-\end_inset
-
- orthogonal?
-\end_layout
-
-\begin_layout Enumerate
-In Julia, make a random 
-\begin_inset Formula $5\times5$
-\end_inset
-
- real-symmetric matrix via 
-\family typewriter
-A=rand(5,5); A = A+A'
-\family default
- and a random 
-\begin_inset Formula $5\times5$
-\end_inset
-
- positive-definite matrix via 
-\family typewriter
-B = rand(5,5); B = B'*B
-\family default
- ...
- then check that the eigenvalues of 
-\begin_inset Formula $B^{-1}A$
-\end_inset
-
- match your expectations from above via 
-\family typewriter
-lambda,X = eigvals(B
-\backslash
-A)
-\family default
- (this will give an array 
-\family typewriter
-lambda
-\family default
- of the eigenvalues and a matrix 
-\family typewriter
-X
-\family default
- whose columns are the eigenvectors).
-\end_layout
-
-\begin_layout Enumerate
-Using your Julia result, what happens if you compute 
-\begin_inset Formula $C=X^{T}BX$
-\end_inset
-
- via 
-\family typewriter
-C=X'*B*X
-\family default
-? You should notice that the matrix 
-\begin_inset Formula $C$
-\end_inset
-
- is very special in some way.
- Show that the elements 
-\begin_inset Formula $C_{ij}$
-\end_inset
-
- of 
-\begin_inset Formula $C$
-\end_inset
-
- are a kind of 
-\begin_inset Quotes eld
-\end_inset
-
-dot product
-\begin_inset Quotes erd
-\end_inset
-
- of the eigenvectors 
-\begin_inset Formula $i$
+ and hence give an orthogonality relationship between 
+\begin_inset Formula $x_{j}$
 \end_inset
 
  and 
-\begin_inset Formula $j$
+\begin_inset Formula $x_{k}$
 \end_inset
 
-, but with a factor of 
-\begin_inset Formula $B$
+ for 
+\begin_inset Formula $\lambda_{j}\neq\lambda_{k}$
 \end_inset
 
- in the middle of the dot product.
+.
 \end_layout
 
 \end_deeper
@@ -515,12 +492,24 @@ Problem 3: Finite-difference approximations
 \end_layout
 
 \begin_layout Standard
-For this question, you may find it helpful to refer to the notes and reading
- from lecture 3.
- Consider a finite-difference approximation of the form: 
+For this question, you may find it helpful to refer to the notes, IJulia
+ notebook, and reading from lecture 3.
+ Consider a 
+\begin_inset Quotes eld
+\end_inset
+
+forward
+\begin_inset Quotes erd
+\end_inset
+
+ (only uses points 
+\begin_inset Formula $\geq x$
+\end_inset
+
+) finite-difference approximation of the form: 
 \begin_inset Formula 
 \[
-u'(x)\approx\frac{-u(x+2\Delta x)+c\cdot u(x+\Delta x)-c\cdot u(x-\Delta x)+u(x-2\Delta x)}{d\cdot\Delta x}.
+u'(x)\approx\frac{a\cdot u(x+2\Delta x)+b\cdot u(x+\Delta x)-u(x)}{c\cdot\Delta x}.
 \]
 
 \end_inset
@@ -548,10 +537,10 @@ Substituting the Taylor series for
 
  you can make this approximation 
 \emph on
-fourth-order accurate
+second-order accurate
 \emph default
 : that is, the errors are proportional to 
-\begin_inset Formula $(\Delta x)^{4}$
+\begin_inset Formula $(\Delta x)^{2}$
 \end_inset
 
  for small 
@@ -581,7 +570,24 @@ Check your answer to the previous part by numerically computing
 \begin_inset Formula $\Delta x$
 \end_inset
 
- that you obtained the expected fourth-order accuracy.
+ that you obtained the expected second-order accuracy.
+\end_layout
+
+\begin_layout Enumerate
+Try computing 
+\begin_inset Formula $u'(1)$
+\end_inset
+
+ for 
+\begin_inset Formula $u(x)=x^{2}$
+\end_inset
+
+ and plot the errors vs 
+\begin_inset Formula $\Delta x$
+\end_inset
+
+ as above.
+ Explain the results.
 \end_layout
 
 \end_body

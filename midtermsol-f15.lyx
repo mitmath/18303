@@ -1,0 +1,439 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+\renewcommand{\vec}[1]{\mathbf{#1}}
+
+\usepackage{cancel}
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2.5cm
+\topmargin 2.5cm
+\rightmargin 2.5cm
+\bottommargin 2.5cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+18.303 Midterm Solutions, Fall 2015
+\end_layout
+
+\begin_layout Subsection*
+Problem 1: Adjoint (33 points)
+\end_layout
+
+\begin_layout Standard
+As in class, let's define the inner product as 
+\begin_inset Formula $\langle u,v\rangle=\int_{\Omega}\bar{u}v/c$
+\end_inset
+
+, where the division by 
+\begin_inset Formula $c(\vec{x})$
+\end_inset
+
+ will cancel the asymmetrical-looking 
+\begin_inset Formula $c$
+\end_inset
+
+ factor in 
+\begin_inset Formula $\hat{A}$
+\end_inset
+
+.
+ Then we have: 
+\begin_inset Formula 
+\begin{eqnarray*}
+\langle u,\hat{A}v\rangle & = & -\int_{\Omega}\bar{u}\nabla^{2}v=+\int_{\Omega}\overline{\nabla u}\cdot\nabla v-\oint_{\partial\Omega}\bar{u}\nabla v\cdot\hat{\vec{n}}da\\
+ & = & -\int_{\Omega}\overline{c\nabla^{2}u}v/c+\oint_{\partial\Omega}\left[v\nabla\bar{u}-\bar{u}\nabla v\right]\cdot\hat{\vec{n}}da\\
+ & = & \langle\hat{A}u,v\rangle+\cancel{\oint_{\partial\Omega}\left[v\nabla\bar{u}-\bar{u}\nabla v\right]\cdot\hat{\vec{n}}da}
+\end{eqnarray*}
+
+\end_inset
+
+ where in the last line we have used the boundary conditions to cancel the
+ integrand: 
+\begin_inset Formula 
+\[
+\left[v\nabla\bar{u}-\bar{u}\nabla v\right]\cdot\hat{\vec{n}}=\alpha\left[v\bar{u}-\bar{u}v\right]=0.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Problem 2: Finite differences (34 points)
+\end_layout
+
+\begin_layout Standard
+Since we have a boundary condition 
+\begin_inset Formula $u'(L)=\alpha u(L)$
+\end_inset
+
+ that requires us to know the slope at 
+\begin_inset Formula $x=L$
+\end_inset
+
+, the most convenient thing is to put 
+\begin_inset Formula $x=L$
+\end_inset
+
+ 
+\emph on
+halfway between
+\emph default
+ two grid points so that we can use a center-difference approximation.
+ In particular, we set up the grid so that 
+\begin_inset Formula $u_{m}\approx u(m\Delta x)$
+\end_inset
+
+ as usual, but 
+\begin_inset Formula $\boxed{(M+0.5)\Delta x=L}$
+\end_inset
+
+.
+ Then we have the discretized boundary conditions: 
+\begin_inset Formula 
+\[
+u_{0}=0
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\frac{u_{M+1}-u_{M}}{\Delta x}=\alpha\frac{u_{M}+u_{M+1}}{2},
+\]
+
+\end_inset
+
+in which the left-hand side is the 2nd-order accurate center-difference
+ approximation for 
+\begin_inset Formula $u'(L)$
+\end_inset
+
+ and the right-hand side is the 2nd-order accurate approximation for 
+\begin_inset Formula $\alpha u(L)$
+\end_inset
+
+.
+ (The 2nd-order accuracy of both of these was shown in class.) We have the
+ 
+\begin_inset Formula $M$
+\end_inset
+
+ unknowns 
+\begin_inset Formula $u_{1},\ldots,u_{M}$
+\end_inset
+
+, and we can solve the second equation above for 
+\begin_inset Formula 
+\[
+\boxed{u_{M+1}=\frac{1+\alpha\Delta x/2}{1-\alpha\Delta x/2}u_{M}=\beta u_{M}},
+\]
+
+\end_inset
+
+defining the number 
+\begin_inset Formula $\beta$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+If we use the usual center-difference approximation for the second derivative,
+ we have 
+\begin_inset Formula 
+\[
+-u_{m}''=\frac{-u_{m-1}+2u_{m}-u_{m+1}}{\Delta x^{2}},
+\]
+
+\end_inset
+
+ which for the specific cases of 
+\begin_inset Formula $m=1$
+\end_inset
+
+ and 
+\begin_inset Formula $m=M$
+\end_inset
+
+ (the first and last matrix rows) gives (from the boundary conditions):
+ 
+\begin_inset Formula 
+\[
+-u_{1}''=\frac{2u_{m}-u_{m+1}}{\Delta x^{2}},
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+-u_{M}''=\frac{-u_{m-1}+(2-\beta)u_{m}}{\Delta x^{2}}.
+\]
+
+\end_inset
+
+Hence, we have the matris 
+\begin_inset Formula 
+\[
+\boxed{A=\frac{1}{\Delta x^{2}}\left(\begin{array}{ccccc}
+2 & -1\\
+-1 & 2 & -1\\
+ & \ddots & \ddots & \ddots\\
+ &  & -1 & 2 & -1\\
+ &  &  & -1 & 2-\beta
+\end{array}\right).}
+\]
+
+\end_inset
+
+Since this matrix is obviously real-symmetric, we have self-adjointness
+ under the usual inner product 
+\begin_inset Formula $\langle\vec{u},\vec{v}\rangle=\vec{u}^{*}\vec{v}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection*
+Problem 3: Green (33 points)
+\end_layout
+
+\begin_layout Standard
+We want to solve the 
+\emph on
+nonlinear
+\emph default
+ equation
+\begin_inset Formula 
+\[
+\hat{A}u+\alpha u^{2}=f
+\]
+
+\end_inset
+
+for some small 
+\begin_inset Formula $|\alpha(\vec{x})|\ll1$
+\end_inset
+
+.
+ We begin by writing write 
+\begin_inset Formula $u=u_{0}+u_{1}+u_{2}+\cdots$
+\end_inset
+
+ as a power series in 
+\begin_inset Formula $\alpha$
+\end_inset
+
+, where 
+\begin_inset Formula $u_{n}$
+\end_inset
+
+ denotes all the terms proportional to 
+\begin_inset Formula $\alpha^{n}$
+\end_inset
+
+.
+ If we plug this in to our equation, we get 
+\begin_inset Formula $\hat{A}u_{0}+\hat{A}u_{1}+\hat{A}u_{2}+\cdots+\alpha u_{0}^{2}+2\alpha u_{0}u_{1}+\alpha u_{1}^{2}+\cdots=f$
+\end_inset
+
+.
+ If we collect terms by power of 
+\begin_inset Formula $\alpha$
+\end_inset
+
+, we get the equations: 
+\begin_inset Formula 
+\[
+\hat{A}u_{0}=f,
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\hat{A}u_{1}+\alpha u_{0}^{2}=0,
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\hat{A}u_{2}+2\alpha u_{0}u_{1}=0,
+\]
+
+\end_inset
+
+and so on.
+ From the first equation, we get 
+\begin_inset Formula $u_{0}=\hat{A}^{-1}f$
+\end_inset
+
+, i.e.
+ 
+\begin_inset Formula 
+\[
+u_{0}(\vec{x})=\int_{\Omega}G_{0}(\vec{x},\vec{x}')f(\vec{x}')\,d^{3}\vec{x}'.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+We want 
+\begin_inset Formula $u\approx u_{0}+u_{1}$
+\end_inset
+
+.
+ From the second equation above, we get 
+\begin_inset Formula $u_{1}=-\hat{A}^{-1}\alpha u_{0}^{2}$
+\end_inset
+
+, i.e.
+ 
+\begin_inset Formula 
+\[
+u_{1}(\vec{x})=-\int_{\Omega}G_{0}(\vec{x},\vec{x}')\alpha(\vec{x}')u_{0}(\vec{x}')^{2}\,d^{3}\vec{x}'.
+\]
+
+\end_inset
+
+ Note that if we substitute the 
+\begin_inset Formula $u_{0}$
+\end_inset
+
+ integral, we would have two nested integrals.
+\end_layout
+
+\begin_layout Enumerate
+We want 
+\begin_inset Formula $u\approx u_{0}+u_{1}+u_{2}$
+\end_inset
+
+.
+ From the third equation above, we get 
+\begin_inset Formula $u_{2}=-2\hat{A}^{-1}\alpha u_{0}u_{1}$
+\end_inset
+
+, i.e.
+ 
+\begin_inset Formula 
+\[
+u_{2}(\vec{x})=-2\int_{\Omega}G_{0}(\vec{x},\vec{x}')\alpha(\vec{x}')u_{0}(\vec{x}')u_{1}(\vec{x}')\,d^{3}\vec{x}'.
+\]
+
+\end_inset
+
+Note that if we substituted the 
+\begin_inset Formula $u_{0}$
+\end_inset
+
+ and 
+\begin_inset Formula $u_{1}$
+\end_inset
+
+ integrals, we would have a nested integral for 
+\begin_inset Formula $u_{0}$
+\end_inset
+
+ and another two nested integrals for 
+\begin_inset Formula $u_{1}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+It would be an amusing exercise to devise a Feynman-diagram notation for
+ these integrals.
+ Graphically, the nonlinear term 
+\begin_inset Formula $\alpha u^{2}$
+\end_inset
+
+ appears as a source term that arises when two Green's functions 
+\begin_inset Quotes eld
+\end_inset
+
+collide
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\end_body
+\end_document
