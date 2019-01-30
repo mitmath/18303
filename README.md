@@ -41,7 +41,7 @@ Lecture Summaries and Handouts
 
 ### Lecture 1 (Sep 7)
 
-**Handouts:** syllabus (this web page), [Lecture 1 notes](Lecture1.pdf)
+**Handouts:** syllabus (this web page), [Lecture 1 notes](notes/Lecture1.pdf)
 
 General overview of what a PDE is and why they are important. Discussed examples of some typical and important PDEs (see handout, page 1). With non-constant coefficients (the most common case in real-world physics and engineering), even the simplest PDEs are rarely solvable by hand; even with constant coefficients, only a relative handful of cases are solvable, usually high-symmetry cases (spheres, cylinders, etc.) solvable. Therefore, although we will solve a few simple cases by hand in 18.303, the emphasis will instead be on two things: learning to _think_ about PDEs by recognizing how their _structure_ relates to concepts from finite-dimensional linear algebra (matrices), and learning to _approximate_ PDEs by actual matrices in order to solve them on computers.
 
@@ -51,7 +51,7 @@ Covered the concept of **nondimensionalization**: rescaling the units so that di
 
 ### Lecture 2 (Sep 9)
 
-**Handouts:** [Fourier sine series examples](http://web.mit.edu/18.06/www/Spring09/sines.pdf), [sine-series Julia notebook](https://nbviewer.jupyter.org/github/mitmath/1806/blob/master/lectures/Sine-series.ipynb); [pset 1](pset1-f16.pdf) (due Friday 9/16)
+**Handouts:** [Fourier sine series examples](http://web.mit.edu/18.06/www/Spring09/sines.pdf), [sine-series Julia notebook](https://nbviewer.jupyter.org/github/mitmath/1806/blob/master/lectures/Sine-series.ipynb); [pset 1](psets/pset1-f16.pdf) (due Friday 9/16)
 
 Started with a very simple vector space V of functions: functions u(x) on \[0,L\] with u(0)=u(L)=0 (Dirichlet boundary conditions), and with one of the simplest operators: the 1d Laplacian Â=d²/dx². Explained how this describes some simple problems like a stretched string, 1d electrostatic problems, and heat flow between two reservoirs.
 
@@ -65,7 +65,7 @@ As a preview of things to come later, by a simple change to the time-dependence 
 
 ### Lecture 3 (Sep 12)
 
-**Handouts:** [notes on difference approximations](difference-approx.pdf); [IJulia notebook](https://nbviewer.jupyter.org/github/mitmath/18303/blob/fall16/lecture-3.ipynb) from the in-class demo
+**Handouts:** [notes on difference approximations](notes/difference-approx.pdf); [IJulia notebook](https://nbviewer.jupyter.org/github/mitmath/18303/blob/fall16/notes/lecture-3.ipynb) from the in-class demo
 
 Now, we will go back to the happy land of finite-ness for a while, by learning to approximate a PDE by a matrix. This will not only give us a way to compute things we cannot solve by hand, but it will also give us a different perspective on certain properties of the solutions that may make certain abstract concepts of the PDE clearer. We begin with one of the simplest numerical methods: we replace the continuous space by a grid, the function by the values on a grid, and derivatives by differences on the grid. This is called a **finite-difference method**.
 
@@ -77,7 +77,7 @@ Armed with center differences (see handout), went about approximating the 1d Lap
 
 ### _Optional_ Julia Tutorial (Sep 12 _evening_): 5pm, 32-155
 
-**Handouts/Files:** [Why Julia slides](https://github.com/mitmath/1806/blob/master/julia/Julia-intro.pdf) (also [pptx](https://github.com/mitmath/1806/blob/master/julia/Julia-intro.pptx?raw=true)), [Julia cheat-sheet](https://github.com/mitmath/julia-mit/blob/master/Julia-cheatsheet.pdf), [IJulia notebook from the tutorial session](https://nbviewer.jupyter.org/github/mitmath/18303/blob/fall16/julia-tut-f15.ipynb)
+**Handouts/Files:** [Why Julia slides](https://github.com/mitmath/1806/blob/master/julia/Julia-intro.pdf) (also [pptx](https://github.com/mitmath/1806/blob/master/julia/Julia-intro.pptx?raw=true)), [Julia cheat-sheet](https://github.com/mitmath/julia-mit/blob/master/Julia-cheatsheet.pdf), [IJulia notebook from the tutorial session](https://nbviewer.jupyter.org/github/mitmath/18303/blob/fall16/notes/julia-tut-f15.ipynb)
 
 For our computational work in 18.303 this semester, we’ll be using a free/open-source scientific-computing language called [Julia](http://julialang.org). If you are familiar with languages like Python or Matlab, picking up Julia should be pretty easy for you. If not, don’t worry—I won’t be requiring any heavy duty programming, just simple scripts, and in early psets I’ll mostly tell you what to type.
 
@@ -103,7 +103,7 @@ Defined the **adjoint** Â ⃰ of a linear operator: whatever we have to do to m
 
 ### Lecture 5 (Sep 17)
 
-**Handout:** [pset 1 solutions](pset1sol-f16.pdf) and [notebook](https://nbviewer.jupyter.org/github/mitmath/18303/blob/fall16/pset1sol-f16.ipynb); [pset 2](pset2-f16.pdf)
+**Handout:** [pset 1 solutions](psets/pset1sol-f16.pdf) and [notebook](https://nbviewer.jupyter.org/github/mitmath/18303/blob/fall16/psets/pset1sol-f16.ipynb); [pset 2](psets/pset2-f16.pdf)
 
 Showed that with u(0)=u(L)=0 boundary conditions and this inner product, (d²/dx²)ᵀ is real-symmetric (also called "Hermitian" or "self-adjoint"). \[There is an omitted technicality here: technically, we have only showed that the operator is symmetric. To show that it is Hermitian, we must also show that the adjoint has the same [domain](http://en.wikipedia.org/wiki/Domain_of_a_function) in the Hilbert space. Mostly we can avoid this technical distinction in real applications; it doesn't arise explicitly in the proofs here.\]
 
@@ -123,7 +123,7 @@ Not only do we now understand d²/dx² at a much deeper level, but you can obtai
 
 ### Lecture 6 (Sep 19)
 
-**Handout:** [handwritten notes](lecture-5.5.pdf)
+**Handout:** [handwritten notes](notes/lecture-5.5.pdf)
 
 I considered the operator c(x)d²/dx² for real c(x)>0. This is _not_ self-adjoint under the usual inner product, but _is_ self-adjoint if we use the _modified_ inner product ⟨u,v⟩=∫uv/c with a "weight" 1/c(x). (This modified inner product satisfies all of our required inner-product properties for positive c(x).) Therefore, c(x)d²/dx² indeed has real, negative eigenvalues, and has eigenfunctions that are orthogonal under this new inner product. Later on, we will see more examples of how sometimes you have to change the inner product in order to understand the self-adjointness of Â. Fortunately, it's usually pretty obvious how to change the inner product, typically some simple weighting factor that falls out of the definition of Â. (In fact, for matrices, it turns out that _every_ diagonalizable matrix with real eigenvalues is Hermitian under some modified inner product. I didn't prove this, however.)
 
@@ -141,17 +141,17 @@ Took the N⟶∞ limit keeping the total length L fixed, which corresponds to Δ
 
 ### Lecture 7 (Sep 21)
 
-**Handouts:** [18.303 and music](music.pdf), [music scales and intervals](scale-notes.pdf)
+**Handouts:** [18.303 and music](notes/music.pdf), [music scales and intervals](notes/scale-notes.pdf)
 
 Finishing the discrete problem from the previous lecture, considered the "inhomogeneous medium" case where we allow all the masses and spring constants to be different. Showed that this corresponds to inserting some diagonal matrices into the above expressions, and in the continuum limit gives ∂²u/∂t²\=(1/ρ) ∂/∂x (c ∂u/∂x)=Âu where ρ(x) and c(x) are positive functions. As in the previous lecture, we can see that this Â is indeed self-adjoint negative-definite, and hence we get _oscillating normal-mode solutions_, if we define the modified inner product ⟨u,v⟩=∫ρuv. And we can see this even though we probably cannot solve this PDE by hand except for very special cases of ρ and c!
 
-**Music and wave equations:** Spent a little time relating the 18.303 theory of the vibrating string to what you hear when you listen to a stringed instrument; scales, harmonics, transposition, timbre and the Fourier series, etcetera. (See [notes](music.pdf).) Performed a little demo on my Cordoba [mini](https://en.wikipedia.org/wiki/Requinto_guitar). To obtain a equal-tempered chromatic scale, each fret on a guitar (and similar instruments) shortens the strings by a factor of 21/12 (and this is why the frets get closer together as you go up the neck: they are equally spaced on a log scale).
+**Music and wave equations:** Spent a little time relating the 18.303 theory of the vibrating string to what you hear when you listen to a stringed instrument; scales, harmonics, transposition, timbre and the Fourier series, etcetera. (See [notes](notes/music.pdf).) Performed a little demo on my Cordoba [mini](https://en.wikipedia.org/wiki/Requinto_guitar). To obtain a equal-tempered chromatic scale, each fret on a guitar (and similar instruments) shortens the strings by a factor of 21/12 (and this is why the frets get closer together as you go up the neck: they are equally spaced on a log scale).
 
 ### Lecture 7 (Sep 26)
 
-**Handouts:** [pset 2 solutions](pset2sol-f16.pdf) and [notebook](https://nbviewer.jupyter.org/github/mitmath/18303/blob/fall16/pset2sol-f16.ipynb); [pset 3](pset3-f16.pdf) (due Friday 9/30), [notes on separation of variables](separation.pdf)
+**Handouts:** [pset 2 solutions](psets/pset2sol-f16.pdf) and [notebook](https://nbviewer.jupyter.org/github/mitmath/18303/blob/fall16/psets/pset2sol-f16.ipynb); [pset 3](psets/pset3-f16.pdf) (due Friday 9/30), [notes on separation of variables](notes/separation.pdf)
 
-**New topic: Separation of variables:** (See [notes](separation.pdf).) This is a technique to _reduce the dimensionality_ of a PDE by representing the solution as a product of lower-dimensional functions. It _only works in a handful of cases_, usually as a consequence of _symmetry_, but those cases are common enough that it is important to know them. It also gives us our only analytically solvable PDE examples in more than 1d; otherwise we will have to use the computer.
+**New topic: Separation of variables:** (See [notes](notes/separation.pdf).) This is a technique to _reduce the dimensionality_ of a PDE by representing the solution as a product of lower-dimensional functions. It _only works in a handful of cases_, usually as a consequence of _symmetry_, but those cases are common enough that it is important to know them. It also gives us our only analytically solvable PDE examples in more than 1d; otherwise we will have to use the computer.
 
 **Separation of Time**: The most important case is the one we've already done, under another name. We solved Au=∂u/∂t by looking for eigenfunctions Au=λu, and then multiplying by exp(λt) to get the time dependence. Similarly for Au=∂u²/∂t² except with sines and cosines. In both cases, we wrote the solution as a sum of products of purely spatial functions (the eigenfunctions) and purely temporal functions like exp(λt). The key point here is that we aren't assuming that the _solution_ is separable, only that it can be decomposed into _linear combination_ of separable functions.
 
@@ -161,7 +161,7 @@ To start with, we looked at ∇²u=λu in a 2d Lx×Ly box with Dirichlet boundar
 
 ### Lecture 8 (Sep. 28)
 
-**Handouts:** [notes on elliptic operators](lecture-6.pdf)
+**Handouts:** [notes on elliptic operators](notes/lecture-6.pdf)
 
 #### Elliptic operators in higher dimensions:
 
@@ -183,7 +183,7 @@ We can now analyze three important cases, and give them their conventional histo
 
 ### Lecture 9 (Sep. 31)
 
-**Handouts:** [handwritten notes](lecture-10.pdf), [pset 4](pset4-f16.pdf); [pset 3 solutions](pset3sol-f16.pdf)
+**Handouts:** [handwritten notes](notes/lecture-10.pdf), [pset 4](psets/pset4-f16.pdf); [pset 3 solutions](psets/pset3sol-f16.pdf)
 
 2d finite-difference discretizations: discretized the 2d Laplacian operator ∇² in an Lx×Ly box with Nx×Ny points, for Dirichlet (0) boundaries, so that u(mΔx,nΔy) is approximated by NxNy degrees of freedom um,n. Showed that simply applying the 1d center-difference rule along x and y results in a (famous) "[5-point stencil](https://en.wikipedia.org/wiki/Five-point_stencil)" approximation for -∇² in which the Laplacian at (nx,ny) depends on u at (nx,ny) and the 4 nearest-neighbor points.
 
@@ -203,7 +203,7 @@ In Julia, you exploit sparsity by using the `sparse` command and friends to crea
 
 ### Lecture 10 (Oct. 3)
 
-**Handouts:** [notes on Bessel functions and cylindrical problems](lecture-8.pdf)
+**Handouts:** [notes on Bessel functions and cylindrical problems](notes/lecture-8.pdf)
 
 Numerical examples of finite differences and Kronecker products explained in the previous lecture.
 
@@ -211,13 +211,13 @@ In Julia, you exploit sparsity by using the `sparse` command and friends to crea
 
 Starting with the ∇2 operator on a square grid, showed how we can convert to any other Ω shape with Dirichlet boundaries just by taking a subset of the rows/cols (as in problem 2 of pset 5). Recovered the Bessel solutions for a circular domain. See the IJulia notebook:
 
-*   [lecture-10.ipynb](https://nbviewer.jupyter.org/github/mitmath/18303/blob/fall16/lecture-10.ipynb)
+*   [lecture-10.ipynb](https://nbviewer.jupyter.org/github/mitmath/18303/blob/fall16/notes/lecture-10.ipynb)
 
 **Cylindrical domains:** see handout. More separation of variables: cylindrical case of a cylinder of radius R with Dirichlet boundary conditions. Show that the Laplace eigenequation here is indeed separable into a function of θ multiplied by a function of r, satisfying separate 1d ODEs. Show that the θ dependence is sin(mθ) or cos(mθ) (or any linear combination), where m is a non-negative integer (in order to be periodic in θ), or equivalently eimθ (including both positive and negative integers). The r dependence satisfies a more complicated 2nd-order ODE that we can't solve by hand (even if you have taken 18.03).
 
 ### Lecture 11 (Oct. 5)
 
-**Handouts:** [notes on Bessel functions and cylindrical problems](lecture-8.pdf); also [IJulia Bessel-function notebook](https://nbviewer.jupyter.org/github/mitmath/18303/blob/fall16/lecture-8.ipynb)
+**Handouts:** [notes on Bessel functions and cylindrical problems](notes/lecture-8.pdf); also [IJulia Bessel-function notebook](https://nbviewer.jupyter.org/github/mitmath/18303/blob/fall16/notes/lecture-8.ipynb)
 
 More separation of variables: cylindrical case of a cylinder of radius R with Dirichlet boundary conditions. Show that the Laplace eigenequation here is indeed separable into a function of θ multiplied by a function of r, satisfying separate 1d ODEs. Show that the θ dependence is sin(mθ) or cos(mθ) (or any linear combination), where m is an integer (in order to be periodic in θ). The r dependence satisfies a more complicated 2nd-order ODE that we can't solve by hand (even if you have taken 18.03).
 
@@ -229,7 +229,7 @@ To get eigenfunctions, we have to impose boundary conditions. Finite-ness of the
 
 ### Lecture 12 (Oct. 7)
 
-**Handouts:** [notes on the min–max theorem](minmax.pdf)
+**Handouts:** [notes on the min–max theorem](notes/minmax.pdf)
 
 In order to get an intuitive feel for what the eigenfunctions should look like, a powerful tool is the **min–max theorem**. See handout for notes. We derived the min-max theorem and next time will explore its consequences.
 
@@ -237,7 +237,7 @@ In order to get an intuitive feel for what the eigenfunctions should look like, 
 
 ### Lecture 13 (Oct. 12)
 
-**Handouts:** [min-max theorem examples](https://nbviewer.jupyter.org/github/mitmath/18303/blob/fall16/min-max-examples.ipynb); [pset 5](pset5-f16.pdf) (due next Monday); [pset 4 solutions](pset4sol-f16.pdf)
+**Handouts:** [min-max theorem examples](https://nbviewer.jupyter.org/github/mitmath/18303/blob/fall16/notes/min-max-examples.ipynb); [pset 5](psets/pset5-f16.pdf) (due next Monday); [pset 4 solutions](psets/pset4sol-f16.pdf)
 
 Finished notes on min-max theorem, and went over some examples; see also IJulia notebook.
 
@@ -245,13 +245,13 @@ Start on Green's functions (next lecture's notes).
 
 ### Lecture 14 (Oct. 14)
 
-**Handouts:** [introduction to Green's functions](green.pdf); [explicit check of 1d Green's function solution](Green-explicit.pdf)
+**Handouts:** [introduction to Green's functions](notes/green.pdf); [explicit check of 1d Green's function solution](Green-explicit.pdf)
 
 (See notes.) Introduced Green's functions by analogy with matrix inverses, and constructed Green's function of -d²/dx² with Dirichlet boundaries as an example.
 
 ### Lecture 15 (Oct. 17)
 
-**Handouts:** [notes on delta functions and distributions](delta-notes.pdf), [pset 6](pset6-f16.pdf) (due Friday); [pset 5 solutions](pset5sol-f16.pdf) and [notebook](https://nbviewer.jupyter.org/github/mitmath/18303/blob/fall16/pset5sol-f16.ipynb)
+**Handouts:** [notes on delta functions and distributions](notes/delta-notes.pdf), [pset 6](psets/pset6-f16.pdf) (due Friday); [pset 5 solutions](psets/pset5sol-f16.pdf) and [notebook](https://nbviewer.jupyter.org/github/mitmath/18303/blob/fall16/psets/pset5sol-f16.ipynb)
 
 Finished Green's function notes from last lecture.
 
@@ -285,7 +285,7 @@ Reviewed method-of-images solution for half-space. There are a couple of other s
 
 ### Lecture 18 (Oct. 24)
 
-**Handouts:** [pset 6 solutions](pset6sol-f16.pdf), [pset 7](pset7-f16.pdf) (due Monday)
+**Handouts:** [pset 6 solutions](psets/pset6sol-f16.pdf), [pset 7](psets/pset7-f16.pdf) (due Monday)
 
 In the image method, the "extra source" is ostensibly not on the boundary, it is on the other side of the boundary. However, we can transform it to what we want by the following trick: consider the function u(**x**) in Ω=R3 that equals (1/|**x**\-**x**'| - 1/|**x**\-**x**''|)/4π \[the method-of-images solution\] for z>0 and u(**x**)=0 for z<0. What right-hand-side does -∇²u give? In z>0 -∇²u gives δ(**x**\-**x**') as before, and for z<0 -∇²u gives zero. _At_ z=0, however, there is a slope discontinuity in (1/|**x**\-**x**'| - 1/|**x**\-**x**''|)/4π, which means that -∇²u also gives a δ(z) term: δ(z) σ(x,y) for a σ(x,y) given by the amplitude of the slope discontinuity.
 
@@ -299,7 +299,7 @@ SIE methods (most commonly the "boundary element method", BEM) are very powerful
 
 ### Lecture 19 (Oct. 26)
 
-**Handouts:** [notes on Green's functions in inhomogeneous media](inhomog-notes.pdf)
+**Handouts:** [notes on Green's functions in inhomogeneous media](notes/inhomog-notes.pdf)
 
 Notes, sections 1-3.
 
@@ -333,7 +333,7 @@ One can also have _nonlocal_ boundary conditions, in which u at one point on ∂
 
 ### Lecture 21 (Oct. 31)
 
-**Handouts:** this summary, [pset 7 solutions](pset7sol-f16.pdf)
+**Handouts:** this summary, [pset 7 solutions](psets/pset7sol-f16.pdf)
 
 **New topic: Time-stepping and stability.** Before, we turned operator equations Âu=f into matrix equations A**u**=**f** by discretizing in space. Now, we want to turn time-dependent operator equations Âu=f+∂u/∂t into discrete equations in both time and space. This will involve a new concern: **stability**.
 
@@ -377,7 +377,7 @@ The important consequence of this is: when you refine the discretization in spac
 
 ### Lecture 23: November 4
 
-**Handouts:** notebook with [conditional-stability example](https://nbviewer.jupyter.org/github/mitmath/18303/blob/fall16/conditional-stability.ipynb)
+**Handouts:** notebook with [conditional-stability example](https://nbviewer.jupyter.org/github/mitmath/18303/blob/fall16/notes/conditional-stability.ipynb)
 
 Went over a numerical example of conditional stability in a 1d diffusion equation; see notebook.
 
@@ -395,7 +395,7 @@ With the wave equation in a new form ∂**w**/∂t=D**w**, we had derived import
 
 ### Midterm Exam: November 7
 
-[midterm](midterm-f16.pdf) and [solutions](midtermsol-f16.pdf).
+[midterm](exams/midterm-f16.pdf) and [solutions](exams/midtermsol-f16.pdf).
 
 ### Lecture 24: November 9
 
@@ -423,7 +423,7 @@ Went through Von Neumann stability analysis of this leap-frog scheme, and derive
 
 ### Lecture 26: November 16
 
-**Handouts:** [Notes on Fourier transforms, wave velocity, and dispersion](fourier-dispersion.pdf), [leapfrog wave simulation notebook](https://nbviewer.jupyter.org/github/mitmath/18303/blob/fall16/wave-animation.ipynb), [pset 8](pset8-f16.pdf) (due next Wed).
+**Handouts:** [Notes on Fourier transforms, wave velocity, and dispersion](notes/fourier-dispersion.pdf), [leapfrog wave simulation notebook](https://nbviewer.jupyter.org/github/mitmath/18303/blob/fall16/notes/wave-animation.ipynb), [pset 8](psets/pset8-f16.pdf) (due next Wed).
 
 **Traveling waves: D'Alembert's solution**. Considered the 1d scalar wave equation c²∂²u/∂x²\=∂²u/∂t² on an infinite domain with a constant coefficient c. Showed that any f(x) gives possible solutions u(x,t)=f(x±ct). This is called D'Alembert's solution, and describes the function f(x) "moving" to the left or right with speed c. That is, wave equations have travelling solutions, and the constant c can be interpreted as the speed of these solutions. Adding a hard wall (Dirichlet boundary) is equivalent to looking for an odd solution f(x±ct)−f(−x±ct), which gives an _inverted reflection_ off the wall. (Neumann boundary conditions correspond to even solutions and give non-inverted reflections.) If we have two Dirichlet boundaries, as in a finite stretched string, then we obtain an infinite sequence of inverted reflections which we can write as an infinite series.
 
@@ -441,7 +441,7 @@ Handout from last lecture, through group-velocity derivation, and began on dispe
 
 ### Lecture 28: November 21
 
-**Handout:** [notes on propagating and evanescent modes in waveguides](waveguide-modes.pdf)
+**Handout:** [notes on propagating and evanescent modes in waveguides](notes/waveguide-modes.pdf)
 
 Finished notes from last lecture, including material dispersion and convolutions. Began waveguide notes.
 
@@ -473,7 +473,7 @@ Began discussing "total internal reflection" waveguides; see notes from next lec
 
 ### Lecture 32: December 2
 
-**Handouts:** [waveguide modes IJulia notebook](https://nbviewer.jupyter.org/github/mitmath/18303/blob/fall16/fall14/Waveguide-Modes.ipynb), [variational proof of slow-wave localization](slow-waveguides.pdf)
+**Handouts:** [waveguide modes IJulia notebook](https://nbviewer.jupyter.org/github/mitmath/18303/blob/fall16/notes/Waveguide-Modes.ipynb), [variational proof of slow-wave localization](notes/slow-waveguides.pdf)
 
 Went through analytical proof, based on the min–max theorem, that under very general conditions any regions with a smaller speed _c_ will lead to guided-wave (localized) solutions. See notes above.
 
