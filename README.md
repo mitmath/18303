@@ -102,7 +102,8 @@ sine functions.
 
 ## Lecture 2
 
-[Lecture Notes](https://github.com/mitmath/18303/blob/master/lecture_notes/2_fourier_series.pdf)
+[Lecture Notes](https://github.com/mitmath/18303/blob/master/lecture_notes/2_fourier_series.pdf) || 
+[Problem Set 1](https://github.com/mitmath/18303/blob/master/problem_sets/ps1.pdf)
 
 In this lecture we revisit Fourier series and make the ideas more concrete.
 We prove some properties of the Fourier series and transform and then write
