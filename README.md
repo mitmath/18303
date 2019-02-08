@@ -82,3 +82,32 @@ Tentative Schedule
 - Stochastic (Partial) Differential Equations and Diffusion-Advection Equations
 - Weak form and Galerkin expansions
 - Finite Element Methods
+
+Lecture Summary
+-------------------
+
+## Lecture 1
+
+In lecture one we reviewed linear algebra to build a perspective for infinite
+dimensional linear algebra. Topics like "What is a vector space?" were revisited
+and the abstraction away from real numbers to an algebraic structure was
+emphasized. Questions as to the difference between a matrix and a linear
+operator were settled. With this in mind, we introduced linear algebra on
+functions. The space of smooth functions forms a vector space. What are
+some linear operators for smooth functions? What is a basis for smooth functions?
+How do you write the infinite matrix for the derivative operator in the polynomial
+basis? We then used these ideas to solve the Poisson equation u_xx = f by
+diagonalizing the derivative operator and getting a solution in terms of
+sine functions.
+
+## Lecture 2
+
+[Lecture Notes](https://github.com/mitmath/18303/blob/master/lecture_notes/2_fourier_series.pdf)
+
+In this lecture we revisit Fourier series and make the ideas more concrete.
+We prove some properties of the Fourier series and transform and then write
+down the logic for how we solve the Poisson equation using operator notation.
+Using this formalism, we continue onto the Heat equation u_t = u_xx + f and
+show how to solve the Heat equation by using the eigenfunction basis of the
+Laplacian. Some simple facts about the Heat equation are then revealed by
+this solution and plotted.
