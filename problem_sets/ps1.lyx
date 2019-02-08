@@ -1,0 +1,345 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Problem Set 1
+\end_layout
+
+\begin_layout Section
+Linear Algebra Warm Up
+\end_layout
+
+\begin_layout Enumerate
+Let 
+\begin_inset Formula $\left(x,y\right)=x^{T}y$
+\end_inset
+
+ be the real dot product in 
+\begin_inset Formula $\mathbb{R}^{n}$
+\end_inset
+
+.
+ A matrix 
+\begin_inset Formula $A$
+\end_inset
+
+ is real-symmetric if and only if 
+\begin_inset Formula $\left(Ax,y\right)=\left(x,Ay\right)$
+\end_inset
+
+ for all 
+\begin_inset Formula $x,y\in\mathbb{R}^{n}$
+\end_inset
+
+.
+ Show that if a matrix 
+\begin_inset Formula $A$
+\end_inset
+
+ is real-symmetric and invertible, then 
+\begin_inset Formula $A^{-1}$
+\end_inset
+
+ is real-symmetric too.
+\end_layout
+
+\begin_layout Enumerate
+Consider the eigenvalue problem 
+\begin_inset Formula $B^{-1}Ax=\lambda x$
+\end_inset
+
+ where 
+\begin_inset Formula $A$
+\end_inset
+
+ and 
+\begin_inset Formula $B$
+\end_inset
+
+ are both real-symmetric matrices and 
+\begin_inset Formula $B$
+\end_inset
+
+ is positive-definitie, i.e.
+ 
+\begin_inset Formula $\left(Bx,x\right)>0$
+\end_inset
+
+ for any 
+\begin_inset Formula $x\neq0$
+\end_inset
+
+.
+ Define the modified dot product 
+\begin_inset Formula $\left(x,y\right)_{B}=x^{T}By$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Show that 
+\begin_inset Formula $\left(\cdot,\cdot\right)_{B}$
+\end_inset
+
+ is an inner product.
+\end_layout
+
+\begin_layout Enumerate
+Show that 
+\begin_inset Formula $C=B^{-1}A$
+\end_inset
+
+ is symmetric with respect to this dot product.
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Quasi-Periodic Boundary Conditions
+\end_layout
+
+\begin_layout Standard
+In lecture we investigated the 1D Poisson equation 
+\begin_inset Formula $Au=-\frac{d^{2}}{dx^{2}}u(x)=f(x)$
+\end_inset
+
+ with Dirichlet boundary conditions 
+\begin_inset Formula $u(0)=u(L)=0$
+\end_inset
+
+.
+ In this case, we solved for the eigenfunctions of 
+\begin_inset Formula $A$
+\end_inset
+
+ to get the Fourier sine series.
+ Now consider a variation of the problem.
+ Suppose the boundary conditions are instead 
+\begin_inset Formula $u(0)=e^{i\phi}u(L)$
+\end_inset
+
+ and 
+\begin_inset Formula $u^{\prime}(0)=e^{i\phi}u^{\prime}(L)$
+\end_inset
+
+ for some 
+\begin_inset Formula $\phi\in\mathbb{R}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+What are the eigenfunctions and eigenvalues of 
+\begin_inset Formula $A$
+\end_inset
+
+ when considering this set of functions?
+\end_layout
+
+\begin_layout Enumerate
+For what values of 
+\begin_inset Formula $\phi$
+\end_inset
+
+ will the Poisson equation with these boundary conditions not have unique
+ solutions? Why?
+\end_layout
+
+\begin_layout Enumerate
+Under what conditions (if any) on 
+\begin_inset Formula $f(x)$
+\end_inset
+
+ and 
+\begin_inset Formula $\phi$
+\end_inset
+
+ would a solution exist? (Assume that 
+\begin_inset Formula $f$
+\end_inset
+
+ has a convergent Fourier series.)
+\end_layout
+
+\begin_layout Section
+Spectral PDE Solvers
+\end_layout
+
+\begin_layout Standard
+In this problem you will code a solver for the 1D Poisson equation with
+ Dirichlet boundary conditions using the method Fourier sine series.
+ This kind of PDE solver is known as a spectral method.
+ Consider the 1D Poisson equation on the domain 
+\begin_inset Formula $\left[0,1\right]$
+\end_inset
+
+ Dirichlet boundary conditions 
+\begin_inset Formula $u(0)=u(1)=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Recall that when expanding a function 
+\begin_inset Formula $f(x)=\sum_{n=1}^{\infty}b_{n}\psi_{n}(x)=\sum_{n=1}^{\infty}b_{n}\sin\left(n\pi x\right)$
+\end_inset
+
+, the coefficients can be computed as 
+\begin_inset Formula $b_{m}=2\int_{0}^{1}f(x)\sin\left(m\pi x\right)dx$
+\end_inset
+
+.
+ Write a function which uses computational quadrature (QuadGK.jl) to transform
+ a function 
+\begin_inset Formula $f(x)$
+\end_inset
+
+ into an array 
+\begin_inset Formula $b\in\mathbb{R}^{n}$
+\end_inset
+
+ of coefficients for the sine series.
+ Test this on the function on the input 
+\begin_inset Formula $h(x)=x\left(x-1\right)$
+\end_inset
+
+
+\begin_inset Formula $\left(x-2\right)$
+\end_inset
+
+.
+ Plot 
+\begin_inset Formula $f(x)$
+\end_inset
+
+ and the sine expansion approximation with 
+\begin_inset Formula $n=1,2,$
+\end_inset
+
+ and 5 in the same graph.
+\end_layout
+
+\begin_layout Enumerate
+The Discrete Fast Fourier Transform (DFT) is an optimized way of computing
+ Fourier series coefficients from a function.
+ For an array 
+\begin_inset Formula $y\in\mathbb{R}^{n}$
+\end_inset
+
+ of evenly-spaced samples of 
+\begin_inset Formula $f(x)$
+\end_inset
+
+, it holds that 
+\begin_inset Formula $b=\frac{1}{N}DFT(y)$
+\end_inset
+
+.
+ Use FFTW.jl and its dft function to write a more optimized function that
+ computes the sine series of a function 
+\begin_inset Formula $f(x)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Since the sine functions are the eigenfunctions of the Poisson equation,
+ it holds that 
+\begin_inset Formula $A\psi_{n}=\lambda_{n}\psi_{n}$
+\end_inset
+
+.
+ Use this relation to write a function that computes the sine series coefficient
+s of the PDE's solution given the sine series of the input 
+\begin_inset Formula $f$
+\end_inset
+
+.
+ Test your function on 
+\begin_inset Formula $h$
+\end_inset
+
+.
+\end_layout
+
+\end_body
+\end_document

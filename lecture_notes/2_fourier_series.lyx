@@ -1,0 +1,679 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Properties of the Fourier Series and Transform
+\end_layout
+
+\begin_layout Author
+Chris Rackauckas
+\end_layout
+
+\begin_layout Section
+Questions of the Day
+\end_layout
+
+\begin_layout Enumerate
+Is the tranformation of a function into a Fourier series linear?
+\end_layout
+
+\begin_layout Section
+Fourier Series
+\end_layout
+
+\begin_layout Standard
+For simplicity we will assume that our functins are defined on 
+\begin_inset Formula $x\in\left[0,1\right]$
+\end_inset
+
+ and that 
+\begin_inset Formula $u(0)=u(1)=0$
+\end_inset
+
+.
+ This means that 
+\begin_inset Formula $u(x)$
+\end_inset
+
+ sufficiently nice has a Fourier series:
+\begin_inset Formula 
+\[
+u(x)=\sum_{n=1}^{\infty}b_{n}\sin\left(n\pi x\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+What are some properties of this series?
+\end_layout
+
+\begin_layout Subsubsection
+Orthogonal
+\end_layout
+
+\begin_layout Standard
+Recall that the dot product is 
+\begin_inset Formula $\left(f,g\right)=\int_{0}^{1}f(x)g(x)dx$
+\end_inset
+
+.
+ Let's take the dot product between basis elements:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\int_{0}^{1}\sin\left(n\pi x\right)\sin\left(m\pi x\right)=\int_{0}^{1}\frac{\left[\cos\left(\left(n-m\right)\pi x\right)-\cos\left(n+m\right)\pi x\right]}{2}dx
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+But 
+\begin_inset Formula $n-m\neq0$
+\end_inset
+
+ means that the integral is zero since 
+\begin_inset Formula $\cos$
+\end_inset
+
+ is even.
+ If 0, 
+\begin_inset Formula $\int_{0}^{1}\frac{\cos\left(2\pi x\right)}{2}=\frac{1}{2}.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Computing the coefficients
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+u(x) & =\sum_{n=1}^{\infty}b_{n}\sin\left(n\pi x\right)\\
+\int_{0}^{1}u(x)\sin\left(m\pi x\right)dx & =\int_{0}^{1}\sum_{n=1}^{\infty}b_{n}\sin\left(n\pi x\right)\sin\left(m\pi x\right)dx\\
+\int_{0}^{1}u(x)\sin\left(m\pi x\right)dx & =b_{n}\int_{0}^{1}\sin^{2}\left(m\pi x\right)dx\\
+2\int_{0}^{1}u(x)\sin\left(m\pi x\right)dx & =b_{n}
+\end{align*}
+
+\end_inset
+
+since 
+\begin_inset Formula $\int_{0}^{1}\sin^{2}\left(m\pi x\right)dx=2$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Spanning
+\end_layout
+
+\begin_layout Standard
+For any function 
+\begin_inset Formula $f(x)$
+\end_inset
+
+ where 
+\begin_inset Formula $\int\left|f(x)\right|^{p}dx<\infty$
+\end_inset
+
+ for some 
+\begin_inset Formula $p>1$
+\end_inset
+
+, the Fourier series converges almost everywhere to 
+\begin_inset Formula $f(x)$
+\end_inset
+
+.
+ At jump discontinuities, the Fourier series converges to the midpoint.
+\end_layout
+
+\begin_layout Paragraph
+Example: Fourier Series of 1
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename fourier_1.PNG
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+f(x)=1=\frac{4}{\pi}\sin\left(\pi x\right)+\frac{4}{3\pi}\sin\left(3\pi x\right)+\frac{4}{5\pi}\sin\left(5\pi x\right)+\ldots
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The bumps near the discontinuity are known as Gibb's phonomenon.
+\end_layout
+
+\begin_layout Subsubsection
+Example: Fourier Series of 
+\begin_inset Formula $f(x)=\frac{1}{2}-\left|x-\frac{1}{2}\right|$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename fourier_2.PNG
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+f(x)=\frac{4}{\pi^{2}}\sin\left(\pi x\right)-\frac{4}{\left(3\pi\right)^{2}}\sin\left(3\pi x\right)+\frac{4}{\left(5\pi\right)^{2}}\sin\left(5\pi x\right)+\ldots
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Fourier Transform
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $\mathcal{F}(u)$
+\end_inset
+
+ be the Fourier Transform as the function 
+\begin_inset Formula $\mathcal{F}:u\rightarrow\left[b_{1},b_{2},\ldots\right]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+What are some properties of the Fourier Transform?
+\end_layout
+
+\begin_layout Subsubsection
+Linearity
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $f(x)=\sum_{n=1}^{\infty}b_{n}\sin\left(n\pi x\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $g(x)=\sum_{n=1}^{\infty}\tilde{b}_{n}\sin\left(n\pi x\right)$
+\end_inset
+
+.
+ But
+\begin_inset Formula 
+\[
+\int_{0}^{1}\left(\alpha f(x)+\beta g(x)\right)\sin\left(n\pi x\right)dx=\alpha\int_{0}^{1}f(x)\sin\left(n\pi x\right)dx+\beta\int_{0}^{1}g(x)\sin\left(n\pi x\right)dx
+\]
+
+\end_inset
+
+ which means 
+\begin_inset Formula $\alpha f(x)+\beta g(x)=\sum_{n=1}^{\infty}\left(\alpha b_{n}+\beta\tilde{b}_{n}\right)\sin\left(n\pi x\right)$
+\end_inset
+
+.
+ This means that 
+\begin_inset Formula 
+\[
+\mathcal{F}\left(\alpha f(x)+\beta g(x)\right)=\alpha\mathcal{F}\left(f\right)+\beta\mathcal{F}\left(g\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Inverse
+\end_layout
+
+\begin_layout Standard
+Given an infinite vector 
+\begin_inset Formula $\left[b_{1},b_{2},\ldots\right]$
+\end_inset
+
+, the inverse Fourier Transform 
+\begin_inset Formula $\mathcal{F}^{-1}$
+\end_inset
+
+ is defined as 
+\begin_inset Formula $\mathcal{F}^{-1}\left(\left[b_{1},b_{2},\ldots\right]\right)=\sum_{n}b_{n}\sin\left(n\pi x\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Solving the Poisson Equation
+\end_layout
+
+\begin_layout Subsection
+Representation of 
+\begin_inset Formula $\Delta$
+\end_inset
+
+ in the Fourier Basis
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\Delta=\frac{d^{2}}{dx^{2}}$
+\end_inset
+
+.
+ The claim is that
+\begin_inset Formula 
+\[
+\Delta=\left[\begin{array}{ccc}
+-\left(\pi\right)^{2} & 0 & 0\\
+0 & -\left(2\pi\right)^{2} & \ddots\\
+0 & \ddots & \ddots
+\end{array}\right]=D
+\]
+
+\end_inset
+
+ is diagonal in the Fourier basis.
+\begin_inset Formula 
+\[
+\frac{d^{2}}{dx^{2}}\sin\left(n\pi x\right)=-\left(n\pi\right)^{2}
+\]
+
+\end_inset
+
+ and so
+\begin_inset Formula 
+\begin{align*}
+\frac{d^{2}}{dx^{2}}\sum_{n=1}^{\infty}b_{n}\sin\left(n\pi x\right) & =\sum_{n=1}^{\infty}b_{n}\frac{d^{2}}{dx^{2}}\sin\left(n\pi x\right)\\
+ & =-\sum_{n=1}^{\infty}\left(n\pi\right)^{2}b_{n}\sin\left(n\pi x\right)
+\end{align*}
+
+\end_inset
+
+ and thus for 
+\begin_inset Formula $B=\left[b_{1},b_{2},\ldots\right]^{T}$
+\end_inset
+
+, 
+\begin_inset Formula $\Delta B=\left[-\pi^{2}b_{1},-\left(2\pi\right)^{2}b_{2},\ldots\right]$
+\end_inset
+
+ which we see is multiplication by that diagonal matrix.
+\end_layout
+
+\begin_layout Subsection
+Solution to the Poisson Equation
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\Delta u & =f
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Now diagonalize 
+\begin_inset Formula $\Delta$
+\end_inset
+
+.
+ Notice that it is diagonal in the Fourier basis, and so we write the diagonaliz
+ation of 
+\begin_inset Formula $\Delta=\mathcal{F}^{-1}D\mathcal{F}$
+\end_inset
+
+ and get
+\begin_inset Formula 
+\begin{align*}
+\mathcal{F}^{-1}D\mathcal{F}u & =f\\
+u & =\mathcal{F}^{-1}D^{-1}\mathcal{F}f.
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Example Solution
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $f(x)=\frac{1}{2}-\left|x-\frac{1}{2}\right|$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula 
+\[
+f(x)=\frac{4}{\pi^{2}}\sin\left(\pi x\right)-\frac{4}{\left(3\pi\right)^{2}}\sin\left(3\pi x\right)+\frac{4}{\left(5\pi\right)^{2}}\sin\left(5\pi x\right)+\ldots
+\]
+
+\end_inset
+
+ So then
+\begin_inset Formula 
+\[
+\Delta u=f
+\]
+
+\end_inset
+
+ implies that
+\begin_inset Formula 
+\[
+u(x)=-\frac{4}{\pi^{4}}\sin\left(\pi x\right)+\frac{1}{9\pi^{4}}\sin\left(3\pi x\right)+\frac{4}{15^{2}\pi^{4}}\sin\left(5\pi x\right)+\ldots
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Solving the Heat Equation
+\end_layout
+
+\begin_layout Standard
+Let's start using some notation.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+u_{t}=\frac{du}{dt}.
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+u_{t}=\Delta u+f(t,x)
+\]
+
+\end_inset
+
+ and let 
+\begin_inset Formula $u(0,x)=u_{0}(x)$
+\end_inset
+
+ be given.
+ We want to solve for 
+\begin_inset Formula $u(t,x)$
+\end_inset
+
+.
+ Let's diagonalize 
+\begin_inset Formula $\Delta$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+u_{t}=\mathcal{F}^{-1}D\mathcal{F}u+f(t,x)
+\]
+
+\end_inset
+
+ apply 
+\begin_inset Formula $\mathcal{F}$
+\end_inset
+
+ to both sides:
+\begin_inset Formula 
+\[
+\left(\mathcal{F}u\right)_{t}=\mathcal{F}u_{t}=D\mathcal{F}u+\mathcal{F}f(t,x)
+\]
+
+\end_inset
+
+Define 
+\begin_inset Formula $v=\mathcal{F}u$
+\end_inset
+
+, then
+\begin_inset Formula 
+\[
+v_{t}=Dv+\mathcal{F}f(t,x)
+\]
+
+\end_inset
+
+ with the initial condition 
+\begin_inset Formula $v_{0}(x)=\mathcal{F}u_{0}(x)$
+\end_inset
+
+.
+ Notice that this is just a system of ordinary differential equations.
+ To see this more clearly, let's write out what this means.
+ Now, at any given point in time 
+\begin_inset Formula $u$
+\end_inset
+
+ has a Fourier series, so let's write this as
+\begin_inset Formula 
+\[
+u(t,x)=\sum_{n=1}^{\infty}b_{n}(t)\sin\left(n\pi x\right).
+\]
+
+\end_inset
+
+ Then 
+\begin_inset Formula $u(0,x)=\sum_{n=1}^{\infty}b_{n}(0)\sin\left(n\pi x\right)$
+\end_inset
+
+, so 
+\begin_inset Formula $b_{n}(0)$
+\end_inset
+
+ is given.
+ Let 
+\begin_inset Formula $\sum_{n=1}^{\infty}c_{n}(t)\sin\left(n\pi x\right)$
+\end_inset
+
+.
+ So now write out the equation:
+\begin_inset Formula 
+\begin{align*}
+\left(\sum_{n=1}^{\infty}b_{n}(t)\sin\left(n\pi x\right)\right)_{t} & =\Delta\sum_{n=1}^{\infty}b_{n}(t)\sin\left(n\pi x\right)+\sum_{n=1}^{\infty}c_{n}(t)\sin\left(n\pi x\right)\\
+\sum_{n=1}^{\infty}b_{n}^{\prime}(t)\sin\left(n\pi x\right) & =-\sum_{n=1}^{\infty}\left(n\pi\right)^{2}b_{n}(t)\sin\left(n\pi x\right)+\sum_{n=1}^{\infty}c_{n}(t)\sin\left(n\pi x\right)
+\end{align*}
+
+\end_inset
+
+ thus by matching terms we see that
+\begin_inset Formula 
+\[
+b_{n}^{\prime}(t)=-\left(n\pi\right)^{2}b_{n}(t)+c_{n}(t)
+\]
+
+\end_inset
+
+ is an infinite system of decoupled ODEs, where 
+\begin_inset Formula $b_{n}(0)$
+\end_inset
+
+ is given.
+ The solution to the Heat Equation is just given by the solution of these
+ ODEs.
+\end_layout
+
+\begin_layout Standard
+We can solve this ODE using the integrating factor method.
+ Rewrite this as:
+\begin_inset Formula 
+\[
+b_{n}^{\prime}(t)+\left(n\pi\right)^{2}b_{n}(t)=c_{n}(t)
+\]
+
+\end_inset
+
+ Now multiply both sides of the equation by 
+\begin_inset Formula $e^{\left(n\pi\right)^{2}t}$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+b_{n}^{\prime}(t)e^{\left(n\pi\right)^{2}t}+\left(n\pi\right)^{2}b_{n}(t)e^{\left(n\pi\right)^{2}t}=c_{n}(t)e^{\left(n\pi\right)^{2}t}
+\]
+
+\end_inset
+
+ Now check that:
+\begin_inset Formula 
+\[
+\left(b_{n}(t)e^{\left(n\pi\right)^{2}t}\right)^{\prime}=b_{n}^{\prime}(t)e^{\left(n\pi\right)^{2}t}+\left(n\pi\right)^{2}b_{n}(t)e^{\left(n\pi\right)^{2}t}
+\]
+
+\end_inset
+
+so then
+\begin_inset Formula 
+\[
+\left(b_{n}(t)e^{\left(n\pi\right)^{2}t}\right)^{\prime}=c_{n}(t)e^{\left(n\pi\right)^{2}t}
+\]
+
+\end_inset
+
+which means that
+\begin_inset Formula 
+\[
+b_{n}(t)e^{\left(n\pi\right)^{2}t}=\int_{0}^{t}c_{n}(t)e^{\left(n\pi\right)^{2}t}dt+C
+\]
+
+\end_inset
+
+and thus
+\begin_inset Formula 
+\[
+b_{n}(t)=e^{-\left(n\pi\right)^{2}t}\int_{0}^{t}c_{n}(t)e^{\left(n\pi\right)^{2}t}dt+e^{-\left(n\pi\right)^{2}t}b_{n}(0)
+\]
+
+\end_inset
+
+is an equation for how the Fourier coefficients evolve over time.
+ Why is 
+\begin_inset Formula $C=b_{n}(0)$
+\end_inset
+
+? It has to be: plug in 
+\begin_inset Formula $t=0$
+\end_inset
+
+.
+\end_layout
+
+\end_body
+\end_document
