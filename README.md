@@ -102,7 +102,7 @@ sine functions.
 
 ## Lecture 2
 
-[Lecture Notes](https://github.com/mitmath/18303/blob/master/lecture_notes/2_fourier_series.pdf) || 
+[Lecture Notes](https://github.com/mitmath/18303/blob/master/lecture_notes/2_fourier_series.pdf) ||
 [Problem Set 1](https://github.com/mitmath/18303/blob/master/problem_sets/ps1.pdf)
 
 In this lecture we revisit Fourier series and make the ideas more concrete.
@@ -112,3 +112,16 @@ Using this formalism, we continue onto the Heat equation u_t = u_xx + f and
 show how to solve the Heat equation by using the eigenfunction basis of the
 Laplacian. Some simple facts about the Heat equation are then revealed by
 this solution and plotted.
+
+## Lecture 3
+
+In this lecture some computational mathematics tools were demonstrated. Lyx,
+Jupyter notebooks, and Weave.jl were shown as options for writing mathematical
+documents and incorporating numerical results. A recap of the Heat equation was
+shown, and an emphasis on problem conversion was given. The same tools were then
+used to solve the Wave Equation. Then moved from global (spectral) bases to
+forming a discrete local basis. For this basis, we took evenly-spaced points
+at which to represent the function. The forward and central difference
+approximations were derived and order of convergence was discussed. If time
+allows, derivations from polynomial interpolation and Fornberg's algorithm
+were discussed.

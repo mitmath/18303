@@ -304,25 +304,18 @@ Recall that when expanding a function
 \begin_layout Enumerate
 The Discrete Fast Fourier Transform (DFT) is an optimized way of computing
  Fourier series coefficients from a function.
- For an array 
-\begin_inset Formula $y\in\mathbb{R}^{n}$
+ See the code below for an example using FFTW.jl's real-valued FFT to compute
+ the sine series.
+ Write an optimized function that computes the sine series of a function
+ 
+\begin_inset Formula $f(x)=x\left(x-\pi\right)\left(x-2\pi\right)$
 \end_inset
 
- of evenly-spaced samples of 
-\begin_inset Formula $f(x)$
+ on 
+\begin_inset Formula $\left[0,2\pi\right]$
 \end_inset
 
-, it holds that 
-\begin_inset Formula $b=\frac{1}{N}DFT(y)$
-\end_inset
-
-.
- Use FFTW.jl and its dft function to write a more optimized function that
- computes the sine series of a function 
-\begin_inset Formula $f(x)$
-\end_inset
-
-.
+ using the real-valued FFT.
 \end_layout
 
 \begin_layout Enumerate
@@ -343,6 +336,62 @@ s of the PDE's solution given the sine series of the input
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+using FFTW
+\end_layout
+
+\begin_layout Plain Layout
+
+L = 1000
+\end_layout
+
+\begin_layout Plain Layout
+
+T = 1/L
+\end_layout
+
+\begin_layout Plain Layout
+
+t = (0:L-1)*T # Notice: 1 less than the interval
+\end_layout
+
+\begin_layout Plain Layout
+
+S = @.
+ 0.53sin(2pi*45t) + 1.25sin(2pi*180t)
+\end_layout
+
+\begin_layout Plain Layout
+
+Y = rfft(S)
+\end_layout
+
+\begin_layout Plain Layout
+
+P = 2abs.(Y./L) # Frequency X is P[X+1], P[1]=constant term
+\end_layout
+
+\begin_layout Plain Layout
+
+using Plots
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(P)
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_body

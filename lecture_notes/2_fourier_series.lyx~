@@ -806,14 +806,10 @@ Relating back to the Poisson Equation
 
 \begin_layout Standard
 These equations look similar to the Poisson equation: how are they similar?
- Let's look at the Heat Equation again, and now let's assume 
-\begin_inset Formula $f(t,x)=f(x)$
-\end_inset
-
-
+ Let's look at the Heat Equation again:
 \begin_inset Formula 
 \[
-u_{t}=\Delta u+f(x)
+u_{t}=\Delta u+f(t,x)
 \]
 
 \end_inset
