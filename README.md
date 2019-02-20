@@ -149,6 +149,8 @@ Robin), and showed how this effects the properties of the linear operator.
 
 ## Lecture 6
 
+[Problem Set 2](https://github.com/mitmath/18303/blob/master/problem_sets/ps2.pdf)
+
 In this lecture we began to explore the convergence of numerical methods on
 the Heat Equation. First we derived the forward time centered space and
 backwards time centered space approximations by using our previous work on
