@@ -1,0 +1,542 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Hermitian Operators and Boundary Conditions
+\end_layout
+
+\begin_layout Author
+Chris Rackauckas
+\end_layout
+
+\begin_layout Section
+Hermitian Operator Definition
+\end_layout
+
+\begin_layout Standard
+An operator is Hermitian if 
+\begin_inset Formula $A^{\ast}=A$
+\end_inset
+
+.
+ Recall that we define the adjoint via the inner product: 
+\begin_inset Formula $\left(Ax,y\right)=\left(x,A^{\ast}y\right)$
+\end_inset
+
+ for all 
+\begin_inset Formula $x,y$
+\end_inset
+
+.
+ If we were dealing with matrices, then 
+\begin_inset Formula $\left(Ax,y\right)=\left(Ax\right)^{T}y=x^{T}A^{T}y$
+\end_inset
+
+ so 
+\begin_inset Formula $A^{\ast}=A^{T}$
+\end_inset
+
+.
+ So in some sense, when we are thinking about PDEs, 
+\begin_inset Formula $A^{\ast}$
+\end_inset
+
+ is a generalization of the transpose to infinite matrices.
+ A Hermitian operator is one which is then invariant under transpose.
+ We have recently seen two infinite matrices which satisfy this property.
+ The discretization of the Laplace in terms of Fourier modes:
+\begin_inset Formula 
+\[
+\Delta=\left[\begin{array}{ccc}
+-\left(\pi\right)^{2} & 0 & 0\\
+0 & -\left(2\pi\right)^{2} & \ddots\\
+0 & \ddots & \ddots
+\end{array}\right]=D
+\]
+
+\end_inset
+
+ and the finite difference discretization of the Laplacian:
+\begin_inset Formula 
+\[
+\delta_{0}^{2}=\left(\begin{array}{ccccc}
+-2 & 1\\
+1 & -2 & 1\\
+ & \ddots & \ddots & \ddots\\
+ &  & 1 & -2 & 1
+\end{array}\right)
+\]
+
+\end_inset
+
+ are both matrices that can flip rows and columns and have the same structure
+ (except we need to be careful at the boundaries for 
+\begin_inset Formula $\delta_{0}^{2}$
+\end_inset
+
+, a point we will go into more detail with later).
+ It might not surprise you that the Laplacian is self-adjoint (under the
+ right boundary conditions).
+ The way we prove it in the general case is by directly dealing with the
+ integral.
+ Recall that
+\begin_inset Formula 
+\begin{align*}
+\left(\Delta f,g\right) & =\int_{\Omega}\Delta f(x)g(x)dx\\
+ & =\left|f^{\prime\prime}(x)g(x)\right|_{0}^{1}-\int_{\Omega}f^{\prime}(x)g^{\prime}(x)dx\\
+ & =\left|f^{\prime\prime}(x)g(x)\right|_{0}^{1}-\left|f(x)g^{\prime\prime}(x)\right|_{0}^{1}+\int_{\Omega}f(x)\Delta g(x)dx\\
+ & =\left|f^{\prime\prime}(x)g(x)\right|_{0}^{1}-\left|f(x)g^{\prime\prime}(x)\right|_{0}^{1}+\left(f,\Delta g\right)
+\end{align*}
+
+\end_inset
+
+ So whether 
+\begin_inset Formula $\Delta$
+\end_inset
+
+ is self-adjoint does depend on what happens at the endpoints.
+ This is what we call boundary conditions and is just the beginning of our
+ emphasis on their importance.
+ So one way for 
+\begin_inset Formula $\Delta$
+\end_inset
+
+ to be self-adjoint is to be in the space where 
+\begin_inset Formula $f(0)=f(1)=0$
+\end_inset
+
+, in which case all of the boundary terms are zero.
+ Or we can simply have periodic conditions, where 
+\begin_inset Formula $f(0)=f(1)$
+\end_inset
+
+.
+ This is why the Fourier basis is so natural!
+\end_layout
+
+\begin_layout Section
+Boundary Conditions
+\end_layout
+
+\begin_layout Subsection
+Investigating a Few
+\end_layout
+
+\begin_layout Standard
+But handling the boundary conditions points out that we need to be careful
+ about our operator discretizations.
+ Notice that the first term in the stencil matrix is really 
+\begin_inset Formula $u(0)-2u(\Delta x)+u(2\Delta x)$
+\end_inset
+
+.
+ At this point, we need to know something about 
+\begin_inset Formula $u(0)$
+\end_inset
+
+ order to write the first line.
+ This means to that the PDE is actually only solved on the interior of the
+ domain, since the boundary conditions then give what the value at the boundarie
+s will be.
+ If 
+\begin_inset Formula $u(0)=u(1)=0$
+\end_inset
+
+, then that's the same as chopping off the last terms of the stencil and
+ so we get:
+\begin_inset Formula 
+\[
+\delta_{0}^{2}=\left(\begin{array}{ccccc}
+-2 & 1\\
+1 & -2 & 1\\
+ & \ddots & \ddots & \ddots\\
+ &  &  & 1 & -2
+\end{array}\right)
+\]
+
+\end_inset
+
+ if 
+\begin_inset Formula $u^{\prime}(0)=u^{\prime}(1)=0$
+\end_inset
+
+, then we have the equation 
+\begin_inset Formula $u(0)-2u(\Delta x)+u(2\Delta x)$
+\end_inset
+
+ at the end, but we can get 
+\begin_inset Formula $u(0)$
+\end_inset
+
+ through a derivative approximation:
+\begin_inset Formula 
+\[
+u^{\prime}(0)\approx\frac{u(2\Delta x)-u(0)}{2\Delta x}
+\]
+
+\end_inset
+
+ which implies a first order approximation of 
+\begin_inset Formula $u(2\Delta x)=u(0)$
+\end_inset
+
+, and so we get the stencil:
+\begin_inset Formula 
+\[
+\delta_{0}^{2}=\left(\begin{array}{ccccc}
+-2 & 2\\
+1 & -2 & 1\\
+ & \ddots & \ddots & \ddots\\
+ &  &  & 2 & -2
+\end{array}\right)
+\]
+
+\end_inset
+
+ If we have periodic boundary conditions 
+\begin_inset Formula $u(0)=u(1)$
+\end_inset
+
+, we would instead take the 
+\begin_inset Formula $u(i\Delta x)$
+\end_inset
+
+ with 
+\begin_inset Formula $i=0$
+\end_inset
+
+ at the start, and then the wrap-around would give
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\delta_{0}^{2}=\left(\begin{array}{ccccc}
+-2 & 1 &  &  & 1\\
+1 & -2 & 1\\
+ & \ddots & \ddots & \ddots\\
+1 &  &  & 1 & -2
+\end{array}\right)
+\]
+
+\end_inset
+
+ (losing the bandedness!).
+ 
+\end_layout
+
+\begin_layout Subsection
+Problem
+\end_layout
+
+\begin_layout Standard
+What happens if 
+\begin_inset Formula $u(0)=u(1)=a>0$
+\end_inset
+
+? Then we would have at the end 
+\begin_inset Formula $a-2u(\Delta x)+u(2\Delta x)$
+\end_inset
+
+.
+ How can you express this in a linear operator? The issue is...
+ you can't! With these boundary conditions the finite difference stencils
+ now become affine, i.e.
+ 
+\begin_inset Formula $ax+b$
+\end_inset
+
+ instead of simply 
+\begin_inset Formula $ax$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Boundary Conditions, Function Spaces, and Extrapolation
+\end_layout
+
+\begin_layout Standard
+These issues with boundary conditions requires us to get a little more formal
+ with our handling of the PDE.
+ Take the Heat Equation 
+\begin_inset Formula $u_{t}=\Delta u$
+\end_inset
+
+ defined on some domain 
+\begin_inset Formula $\Omega$
+\end_inset
+
+.
+ For example, 
+\begin_inset Formula $\Omega=(0,1)$
+\end_inset
+
+.
+ The boundary conditions are some conditions on 
+\begin_inset Formula $u(x)$
+\end_inset
+
+ for 
+\begin_inset Formula $x\in\partial\Omega$
+\end_inset
+
+.
+ The derivative operator goes from 
+\begin_inset Formula $u$
+\end_inset
+
+ defined on 
+\begin_inset Formula $\overline{\Omega}$
+\end_inset
+
+ to a value defined in 
+\begin_inset Formula $\Omega$
+\end_inset
+
+.
+ i.e.
+ the derivative operator changes the 
+\begin_inset Quotes eld
+\end_inset
+
+type
+\begin_inset Quotes erd
+\end_inset
+
+ of the function or the 
+\begin_inset Quotes eld
+\end_inset
+
+space
+\begin_inset Quotes erd
+\end_inset
+
+ it lives in.
+ That isn't too hard to think about though: we take two derivatives, so
+ if the function was twice-differentiable, now it's something not differentiable.
+ So there is a difference in the properties of 
+\begin_inset Formula $u$
+\end_inset
+
+ after 
+\begin_inset Formula $\Delta$
+\end_inset
+
+ is applied.
+\end_layout
+
+\begin_layout Standard
+Now let's think of the PDE with a bit more formalism.
+ Since the boundaries are fixed, if 
+\begin_inset Formula $u$
+\end_inset
+
+ is defined on 
+\begin_inset Formula $\Omega$
+\end_inset
+
+, we want to write our PDE in the interior 
+\begin_inset Formula $\Omega$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $Q$
+\end_inset
+
+ be the operator that 
+\begin_inset Quotes eld
+\end_inset
+
+extends
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Formula $u$
+\end_inset
+
+ to the boundary condition.
+ Then we have that
+\begin_inset Formula 
+\[
+u_{t}=\Delta Qu
+\]
+
+\end_inset
+
+in 
+\begin_inset Formula $\Omega$
+\end_inset
+
+.
+ What this is saying is that, we need to take 
+\begin_inset Formula $u$
+\end_inset
+
+ to a space where it is defined on 
+\begin_inset Formula $\overline{\Omega}$
+\end_inset
+
+ before we apply the Laplacian.
+ That extension to the boundary is equivalent to the boundary condition.
+ For example, if we say that 
+\begin_inset Formula $Q$
+\end_inset
+
+ extends to the boundary by 
+\begin_inset Formula $u(0)=u(\Delta x)$
+\end_inset
+
+, then 
+\begin_inset Formula $Q$
+\end_inset
+
+ is saying that 
+\begin_inset Formula $u^{\prime}(0)=0$
+\end_inset
+
+ in a first order approximation.
+ But 
+\begin_inset Formula $Q=\left(Q_{L},Q_{b}\right)$
+\end_inset
+
+ can be affine, where 
+\begin_inset Formula $Qu=Q_{L}u+b$
+\end_inset
+
+.
+ For example, with 
+\begin_inset Formula $u(0)=5$
+\end_inset
+
+ as a boundary condition, we take the interior 
+\begin_inset Formula $u$
+\end_inset
+
+ and then attach a 
+\begin_inset Formula $5$
+\end_inset
+
+ on the end to get the coefficients which include the boundary.
+ In this form, the Laplacian is always discretized as an 
+\begin_inset Formula $N\times(N+2)$
+\end_inset
+
+ matrix:
+\begin_inset Formula 
+\[
+\delta_{0}^{2}=\left(\begin{array}{ccccc}
+1 & -2 & 1\\
+0 & 1 & -2 & 1\\
+ & \ddots & \ddots & \ddots\\
+ &  & 1 & -2 & 1
+\end{array}\right)
+\]
+
+\end_inset
+
+ since now the boundary values are the first and last values of the 
+\begin_inset Formula $U$
+\end_inset
+
+ array in the approximation.
+ Notice then that the composition of the two operators, 
+\begin_inset Formula $\Delta Q$
+\end_inset
+
+, is an 
+\begin_inset Formula $N\times N$
+\end_inset
+
+ system that maps 
+\begin_inset Formula $u$
+\end_inset
+
+ on the interior back to 
+\begin_inset Formula $u$
+\end_inset
+
+ on the interior.
+ This approach then directly generalizes to having more difficult boundary
+ conditions.
+\end_layout
+
+\end_body
+\end_document
