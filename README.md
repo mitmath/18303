@@ -115,6 +115,8 @@ this solution and plotted.
 
 ## Lecture 3
 
+[Lecture Notes](https://github.com/mitmath/18303/blob/master/lecture_notes/3_finite_differences.pdf)
+
 In this lecture some computational mathematics tools were demonstrated. Lyx,
 Jupyter notebooks, and Weave.jl were shown as options for writing mathematical
 documents and incorporating numerical results. A recap of the Heat equation was
@@ -122,6 +124,36 @@ shown, and an emphasis on problem conversion was given. The same tools were then
 used to solve the Wave Equation. Then moved from global (spectral) bases to
 forming a discrete local basis. For this basis, we took evenly-spaced points
 at which to represent the function. The forward and central difference
-approximations were derived and order of convergence was discussed. If time
-allows, derivations from polynomial interpolation and Fornberg's algorithm
-were discussed.
+approximations were derived and order of convergence was discussed.
+
+## Lecture 4
+
+[Lecture Notes](https://github.com/mitmath/18303/blob/master/lecture_notes/4_hermitian.pdf)
+
+In this lecture we continued our discussion of differencing operators, proving
+the second order convergence of the second derivative central differencing
+operator.  Alternative derivations from polynomial interpolation and
+Fornberg's algorithm were discussed. From there, we looked at the properties
+of the discretization matrices and identified similarities with the Fourier
+case, leading to the idea of self-adjoint operators as a generalization of
+symmetric to infinite bases.
+
+## Lecture 5
+
+[Lecture Notes](https://github.com/mitmath/18303/blob/master/lecture_notes/4_hermitian.pdf)
+
+In this lecture we continued the discussion of self-adjoint operators and found
+it to be a bit more nuanced than we thought. The issue, was boundary conditions.
+Thus, we worked to clarify the standard boundary conditions (Dirchlet, Neumann,
+Robin), and showed how this effects the properties of the linear operator.
+
+## Lecture 6
+
+In this lecture we began to explore the convergence of numerical methods on
+the Heat Equation. First we derived the forward time centered space and
+backwards time centered space approximations by using our previous work on
+finite difference operators. We showed that we could alternatively think about
+the discretization of these PDEs as a two part problem: discretizing just space
+gives an ODE that can then be analyzed. From here, the Lax Equivalence Theorem
+was introduced, and the consistency of these methods was demonstrated. But
+are they stable?
