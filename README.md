@@ -159,3 +159,7 @@ the discretization of these PDEs as a two part problem: discretizing just space
 gives an ODE that can then be analyzed. From here, the Lax Equivalence Theorem
 was introduced, and the consistency of these methods was demonstrated. But
 are they stable?
+
+## Lecture 7
+
+[Problem Set 3](https://github.com/mitmath/18303/blob/master/problem_sets/ps3.pdf)
