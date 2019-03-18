@@ -1,0 +1,586 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Finite Difference PDE Approximations
+\end_layout
+
+\begin_layout Author
+Chris Rackauckas
+\end_layout
+
+\begin_layout Standard
+Now let's take a look at using finite differences to solve some equations!
+\end_layout
+
+\begin_layout Section
+Poisson Equation
+\end_layout
+
+\begin_layout Standard
+Let's take a look at the Poisson equation
+\begin_inset Formula 
+\[
+\Delta u=f
+\]
+
+\end_inset
+
+ For finite differencing, recall that we get some matrix 
+\begin_inset Formula $A$
+\end_inset
+
+ with a stencil 
+\begin_inset Formula $[1,-2,1]$
+\end_inset
+
+ and boundary condition handling.
+ By using 
+\begin_inset Formula $U=[u(i\Delta x)]$
+\end_inset
+
+ as an array and 
+\begin_inset Formula $F=[f(i\Delta x)]$
+\end_inset
+
+, we plug in the array approximation and get
+\begin_inset Formula 
+\[
+AU=F
+\]
+
+\end_inset
+
+ which is a linear equation to solve for 
+\begin_inset Formula $A$
+\end_inset
+
+.
+ Then by applying Gaussian elimination, LU-factorization, etc.
+ we get the solution for 
+\begin_inset Formula $U$
+\end_inset
+
+ in terms of 
+\begin_inset Formula $F$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Heat Equation
+\end_layout
+
+\begin_layout Standard
+Now we can do a similar thing to the Heat Equation.
+ The most basic method is to look at the Heat Equation
+\begin_inset Formula 
+\[
+u_{t}=u_{xx}+f(t,x)
+\]
+
+\end_inset
+
+ and then apply the central difference approximation to 
+\begin_inset Formula $u_{xx}$
+\end_inset
+
+ and the forward difference approximation to 
+\begin_inset Formula $u_{t}$
+\end_inset
+
+.
+ When this is done, you get the equation:
+\begin_inset Formula 
+\[
+\frac{u(t+\Delta t,x)-u(t,x)}{\Delta t}=\frac{u(t,x+\Delta x)-2u(t,x)+u(t,x-\Delta x)}{\Delta x^{2}}+F(t)
+\]
+
+\end_inset
+
+ where 
+\begin_inset Formula $F(t)=[f(t,i\Delta x)]$
+\end_inset
+
+.
+ We can then isolate 
+\begin_inset Formula $u(t+\Delta t,x)$
+\end_inset
+
+ and get:
+\begin_inset Formula 
+\[
+u(t+\Delta t,x)=u(t,x)+\frac{\Delta t}{\Delta x^{2}}\left(u(t,x+\Delta x)-2u(t,x)+u(t,x-\Delta x)\right)+F(t)
+\]
+
+\end_inset
+
+ This method is called the Forward Time Centered Space (FTCS) method, or
+ the Euler method with central differencing on the spatial operator.
+ When writing this using the matrix notation for the central difference
+ operator, you get
+\begin_inset Formula 
+\[
+U(t+\Delta t)=U(t)+AU(t)+F(t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+But that's not the only way you can choose to discretize this equation.
+ You could use the right hand side at time 
+\begin_inset Formula $t+\Delta t,$
+\end_inset
+
+ receiving
+\begin_inset Formula 
+\[
+U(t+\Delta t)=U(t)+AU(t+\Delta t)+F(t+\Delta t)
+\]
+
+\end_inset
+
+ and all sorts of combinations.
+ This here is equivalent to if one had done backwards differencing on the
+ 
+\begin_inset Formula $u_{t}$
+\end_inset
+
+ and is known as Backwards Time Centered Space.
+ Notice that in this case, you need to solve for 
+\begin_inset Formula $u(t+\Delta t)$
+\end_inset
+
+ which requires solving a linear system:
+\begin_inset Formula 
+\[
+\left(I-A\right)U(t+\Delta t)=U(t)+F(t+\Delta t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Convergence
+\end_layout
+
+\begin_layout Standard
+The Lax-Equivalence Theorem states that consistancy + stability implies
+ convergence.
+ Lets dive into the two parts.
+\end_layout
+
+\begin_layout Subsection
+Consistancy
+\end_layout
+
+\begin_layout Standard
+To show that a method is consistant, you need to show that its error tends
+ to zero as 
+\begin_inset Formula $\Delta t\rightarrow0$
+\end_inset
+
+.
+ For this method, let's let 
+\begin_inset Formula $\epsilon_{i,j}=u(t_{i},x_{j})-\tilde{u}(t_{i},x_{j})$
+\end_inset
+
+ where 
+\begin_inset Formula $\tilde{u}$
+\end_inset
+
+ is the true solution.
+ From our previous discussions we know:
+\begin_inset Formula 
+\[
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Stability
+\end_layout
+
+\begin_layout Standard
+Let's look at the error update equation.
+ Write
+\begin_inset Formula 
+\[
+e_{i}^{n}=u(x_{j},t_{n})-u_{j}^{n}
+\]
+
+\end_inset
+
+ For 
+\begin_inset Formula $e_{i}^{n}$
+\end_inset
+
+, as before, plug it in, add and subtract 
+\begin_inset Formula $u(x_{j},t^{n})=u_{j}^{n}$
+\end_inset
+
+, and then we get
+\begin_inset Formula 
+\[
+e_{i}^{n+1}=e_{i}^{n}+\mu\left(e_{i+1}^{n}-2e_{i}^{n}+e_{i-1}^{n}\right)+\Delta t\tau_{i}^{n}
+\]
+
+\end_inset
+
+ where 
+\begin_inset Formula $\tau_{i}^{n}\sim\mathcal{O}(\Delta t)+\mathcal{O}(\Delta x^{2})$
+\end_inset
+
+.
+ Stability requires that the homogenous equation goes to zero.
+ Another way of saying that is that the propogation of errors has errors
+ decrease their influence over time.
+ Thus we look at:
+\begin_inset Formula 
+\begin{align*}
+e_{i}^{n+1} & =e_{i}^{n}+\mu\left(e_{i+1}^{n}-2e_{i}^{n}+e_{i-1}^{n}\right)\\
+ & =\left(1-2\mu\right)e_{i}^{n}+\mu e_{i+1}^{n}+\mu e_{i-1}^{n}
+\end{align*}
+
+\end_inset
+
+ A necessary condition for decreasing is then for all coefficients to be
+ positive
+\begin_inset Formula 
+\[
+1-2\mu\geq0
+\]
+
+\end_inset
+
+ or
+\begin_inset Formula 
+\[
+\mu\leq\frac{1}{2}
+\]
+
+\end_inset
+
+ A more satisfying way may be to look at the generated ODE
+\begin_inset Formula 
+\[
+u^{\prime}=Au
+\]
+
+\end_inset
+
+ where 
+\begin_inset Formula $A$
+\end_inset
+
+ is the matrix 
+\begin_inset Formula $\left[\mu,1-2\mu,\mu\right]$
+\end_inset
+
+.
+ But finding the maximum eigenvalue is non-trivial.
+ But for linear PDEs, one nice way to analyze the stability directly is
+ to use the Fourier mode decomposition.
+ This is known as Van Neumann stability analysis.
+ To do this, decompose 
+\begin_inset Formula $U$
+\end_inset
+
+ into the Fourier modes:
+\begin_inset Formula 
+\[
+U(x,t)=\sum_{k}\hat{U}(t)e^{ikx}
+\]
+
+\end_inset
+
+ Since 
+\begin_inset Formula $x_{j}=j\Delta x$
+\end_inset
+
+, we can write this out as
+\begin_inset Formula 
+\[
+U_{j}^{n}=\hat{U}^{n}e^{ikj\Delta x}
+\]
+
+\end_inset
+
+ and then plugging this into the FTCS scheme we get
+\begin_inset Formula 
+\[
+\frac{\hat{U}^{n+1}e^{ikj\Delta x}-\hat{U}^{n}e^{ikj\Delta x}}{\Delta t}=\frac{\hat{U}^{n}e^{ik(j+1)\Delta x}-2\hat{U}^{n}e^{ikj\Delta x}+\hat{U}^{n}e^{ik(j-1)\Delta x}}{\Delta x^{2}}
+\]
+
+\end_inset
+
+ Let 
+\begin_inset Formula $G$
+\end_inset
+
+ be the growth factor, defined as
+\begin_inset Formula 
+\[
+G=\frac{\hat{U}^{n+1}}{\hat{U}^{n}}
+\]
+
+\end_inset
+
+ and thus after cancelling we get
+\begin_inset Formula 
+\[
+\frac{G-1}{\Delta t}=\frac{e^{ik\Delta x}-2+e^{-ik\Delta x}}{\Delta x^{2}}
+\]
+
+\end_inset
+
+ Since 
+\begin_inset Formula $e^{ik\Delta x}+e^{-ik\Delta x}=2\cos\left(k\Delta x\right)$
+\end_inset
+
+, then we get
+\begin_inset Formula 
+\[
+G=1-\mu\left(2\cos\left(k\Delta x\right)-2\right)
+\]
+
+\end_inset
+
+ and using the half angle formula
+\begin_inset Formula 
+\[
+G=1-4\mu\sin^{2}\left(\frac{k\Delta x}{2}\right)
+\]
+
+\end_inset
+
+ In order to be stable, we require 
+\begin_inset Formula $\left|G\right|\leq1$
+\end_inset
+
+, which means
+\begin_inset Formula 
+\[
+-1\leq1-4\mu\sin^{2}\left(\frac{k\Delta x}{2}\right)\leq1
+\]
+
+\end_inset
+
+ 
+\begin_inset Formula $\mu>0$
+\end_inset
+
+ and so 
+\begin_inset Formula $\leq1$
+\end_inset
+
+ is simple.
+ Since 
+\begin_inset Formula $\sin^{2}(x)\leq1$
+\end_inset
+
+, then we can simplify this to
+\begin_inset Formula 
+\[
+-1\leq1-4\mu
+\]
+
+\end_inset
+
+ and thus
+\begin_inset Formula 
+\[
+\mu\leq\frac{1}{2}
+\]
+
+\end_inset
+
+ With backwards Euler we get
+\begin_inset Formula 
+\[
+\frac{G-1}{\Delta t}=\frac{G}{\Delta x^{2}}\left(e^{ik\Delta x}-2+e^{-ik\Delta x}\right)
+\]
+
+\end_inset
+
+ and thus get
+\begin_inset Formula 
+\[
+G+4G\mu\sin^{2}\left(\frac{k\Delta x}{2}\right)=1
+\]
+
+\end_inset
+
+ and thus
+\begin_inset Formula 
+\[
+G=\frac{1}{1+4\mu\sin^{2}\left(\frac{k\Delta x}{2}\right)}\leq1.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Crank-Nicholson Method
+\end_layout
+
+\begin_layout Standard
+The Crank-Nicholson method is also known as the Trapezoid method when applied
+ to ODEs, and relies on the fact that
+\begin_inset Formula 
+\[
+\frac{u(t)+u(t+\Delta t)}{2\Delta t}\sim u\left(t+\frac{\Delta t}{2}\right)+\mathcal{O}\left(\Delta t^{2}\right).
+\]
+
+\end_inset
+
+This follows from a quick Taylor expansion.
+ Thus for
+\begin_inset Formula 
+\[
+u_{t}=u_{xx}
+\]
+
+\end_inset
+
+ we can approximate at the half time point
+\begin_inset Formula 
+\[
+\frac{\partial u(x_{i},t_{j}+\frac{\Delta t}{2})}{\partial t}=\frac{\partial^{2}u(x_{i},t_{j}+\frac{\Delta t}{2})}{\partial x^{2}}
+\]
+
+\end_inset
+
+ and on the left do central difference, on the right do this averaging to
+ get
+\begin_inset Formula 
+\[
+\frac{U^{n+1}-U^{n}}{\Delta t}=\frac{1}{2}\left(\frac{U_{i+1}^{n}-2U_{i}^{n}+U_{i-1}^{n}}{\Delta x^{2}}+\frac{U_{i+1}^{n+1}-2U_{i}^{n+1}+U_{i-1}^{n+1}}{\Delta x^{2}}\right)
+\]
+
+\end_inset
+
+by re-arranging we get
+\begin_inset Formula 
+\[
+-\mu U_{i+1}^{n+1}+2\left(1+\mu\right)U_{i}^{n+1}-\mu U_{i-1}^{n+1}=\mu U_{i+1}^{n}+2\left(1-\mu\right)U_{i}^{n}+\mu U_{i-1}^{n}
+\]
+
+\end_inset
+
+ which we can write as
+\begin_inset Formula 
+\[
+AU^{n+1}=BU^{n}
+\]
+
+\end_inset
+
+ and get a solution
+\begin_inset Formula 
+\[
+U^{n+1}=A\backslash BU^{n}
+\]
+
+\end_inset
+
+ Van Neumann analysis gives us very similar to what we had before, arriving
+ at
+\begin_inset Formula 
+\[
+G=\frac{2-4\mu\sin^{2}\left(\frac{k\Delta x}{2}\right)}{2+4\mu\sin^{2}\left(\frac{k\Delta x}{2}\right)}\leq\frac{2+4\mu\sin^{2}\left(\frac{k\Delta x}{2}\right)}{2+4\mu\sin^{2}\left(\frac{k\Delta x}{2}\right)}=1
+\]
+
+\end_inset
+
+ Thus the Crank-Nicholson method is a second order unconditionally A-stable
+ method.
+\end_layout
+
+\end_body
+\end_document
