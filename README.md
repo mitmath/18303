@@ -230,3 +230,12 @@ to the matrix factorization routines were shown, starting with the ADI method
 which split Crank-Nicholson into two parts and in doing so greatly simplified
 the linear algebra. This was shown to be a more general partial factorization
 scheme that could be used to speed up other methods like BDF2.
+
+## The Min–Max Theorem (guest lecture by [Prof. Steven G. Johnson](https://math.mit.edu/~stevenj/))
+
+* [notes on the min–max theorem](lecture_notes/minmax.pdf)
+* [min–max Julia examples](https://nbviewer.jupyter.org/github/mitmath/18303/blob/master/lecture_notes/minmax.ipynb)
+
+In order to get an intuitive feel for what the eigenfunctions of self-adjoint operators should look like, a powerful tool is the **min–max theorem**. See notes and examples.
+
+**Further reading:** See, for example the [min-max theorem](http://en.wikipedia.org/wiki/Min-max_theorem) and the [Rayleigh quotient](https://en.wikipedia.org/wiki/Rayleigh_quotient) articles in Wikipedia, although this presentation is rather formal. Unfortunately, much of the discussion you will find of this principle online and in textbooks is either (a) full of formal functional analysis or (b) specific to quantum mechanics \[where the operator is Â=-∇²+V for some "potential-energy" function V(x)\].
