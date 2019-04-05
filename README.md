@@ -240,11 +240,11 @@ In order to get an intuitive feel for what the eigenfunctions of self-adjoint op
 
 **Further reading:** See, for example the [min-max theorem](http://en.wikipedia.org/wiki/Min-max_theorem) and the [Rayleigh quotient](https://en.wikipedia.org/wiki/Rayleigh_quotient) articles in Wikipedia, although this presentation is rather formal. Unfortunately, much of the discussion you will find of this principle online and in textbooks is either (a) full of formal functional analysis or (b) specific to quantum mechanics \[where the operator is Â=-∇²+V for some "potential-energy" function V(x)\].
 
+## Extra Credit Problem Set
+
 [Extra Credit Problem Set](https://github.com/mitmath/18303/blob/master/problem_sets/extra_ps.pdf)
 
 This extra credit problem set has two computing exercises that go through
 pseudospectral methods and writing an implicit time stepping function. Since
 these are important tools in the practical research of PDEs in applications,
 students should be familiar with these concepts.
-
-## Extra Credit Problem Set
