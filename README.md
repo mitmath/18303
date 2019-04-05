@@ -230,3 +230,12 @@ to the matrix factorization routines were shown, starting with the ADI method
 which split Crank-Nicholson into two parts and in doing so greatly simplified
 the linear algebra. This was shown to be a more general partial factorization
 scheme that could be used to speed up other methods like BDF2.
+
+## Extra Credit Problem Set
+
+[Extra Credit Problem Set](https://github.com/mitmath/18303/blob/master/problem_sets/extra_ps.pdf)
+
+This extra credit problem set has two computing exercises that go through
+pseudospectral methods and writing an implicit time stepping function. Since
+these are important tools in the practical research of PDEs in applications,
+students should be familiar with these concepts.
