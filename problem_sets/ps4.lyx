@@ -1,0 +1,302 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+
+\renewcommand{\vec}[1]{\mathbf{#1}}
+
+\renewcommand{\labelenumi}{(\alph{enumi})}
+\renewcommand{\labelenumii}{(\roman{enumii})}
+\newcommand{\rank}{\operatorname{rank}}
+
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
+\end_preamble
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 1
+\use_package esint 2
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 0.7in
+\topmargin 0.7in
+\rightmargin 0.7in
+\bottommargin 0.7in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+18.303 Problem Set 4
+\end_layout
+
+\begin_layout Author
+Chris Rackauckas
+\end_layout
+
+\begin_layout Standard
+Due Monday, May 20th
+\end_layout
+
+\begin_layout Section
+Hermitian Green's functions
+\end_layout
+
+\begin_layout Standard
+Recall that if 
+\begin_inset Formula $\hat{A}$
+\end_inset
+
+ is Hermitian for some 
+\begin_inset Formula $\langle u,v\rangle$
+\end_inset
+
+ and is invertible, then 
+\begin_inset Formula $\hat{A}^{-1}$
+\end_inset
+
+ is also Hermitian; the proof is essentially identical to the one for matrices
+ in pset
+\begin_inset space ~
+\end_inset
+
+1.
+\end_layout
+
+\begin_layout Enumerate
+Suppose that 
+\begin_inset Formula $u=\hat{A}^{-1}f$
+\end_inset
+
+ can be expressed in terms of a Green's function 
+\begin_inset Formula $G(\vec{x},\vec{x}')$
+\end_inset
+
+, i.e.
+ 
+\begin_inset Formula $\hat{A}^{-1}f(\vec{x})=\int_{\Omega}G(\vec{x},\vec{x}')f(\vec{x}')d^{n}\vec{x}'$
+\end_inset
+
+.
+ If 
+\begin_inset Formula $\hat{A}^{-1}$
+\end_inset
+
+ is Hermitian under the usual inner product 
+\begin_inset Formula $\langle u,v\rangle=\int\bar{u}v$
+\end_inset
+
+, show that you can relate 
+\begin_inset Formula $G(\vec{x},\vec{x}')$
+\end_inset
+
+ to 
+\begin_inset Formula $G(\vec{x}',\vec{x})$
+\end_inset
+
+.
+ (This relationship is sometimes called 
+\emph on
+reciprocity.
+\emph default
+)
+\end_layout
+
+\begin_layout Enumerate
+Consider a diffusion process where 
+\begin_inset Formula $u$
+\end_inset
+
+ is concentration and 
+\begin_inset Formula $f(\vec{x})$
+\end_inset
+
+ is a source/sink (concentration per time added/removed), related by the
+ diffusion equation 
+\begin_inset Formula $\frac{\partial u}{\partial t}=\nabla\cdot D\nabla u+f$
+\end_inset
+
+, where 
+\begin_inset Formula $D(\vec{x})>0$
+\end_inset
+
+ is a diffusivity constant of different materials at different points in
+ space.
+ In steady state, 
+\begin_inset Formula $u$
+\end_inset
+
+ solves 
+\begin_inset Formula $-\nabla\cdot D\nabla u=f$
+\end_inset
+
+, and we showed in class that 
+\begin_inset Formula $\hat{A}=-\nabla\cdot D\nabla$
+\end_inset
+
+ is Hermitian and invertible (positive-definite) for Dirichlet boundary
+ conditions.
+ Using your reciprocity relationship from the previous part, explain why
+ there is no possible arrangement of materials [no possible 
+\begin_inset Formula $D(\vec{x})$
+\end_inset
+
+] that allows 
+\begin_inset Quotes eld
+\end_inset
+
+one-way diffusion
+\begin_inset Quotes erd
+\end_inset
+
+ — diffusion from a source at 
+\begin_inset Formula $\vec{x}'$
+\end_inset
+
+ to a point 
+\begin_inset Formula $\vec{x}$
+\end_inset
+
+ but not vice-versa.
+\end_layout
+
+\begin_layout Section
+Probabilistic PDE Solvers
+\end_layout
+
+\begin_layout Standard
+Use the Forward-Kolmogorov relationship to solve
+\begin_inset Formula 
+\[
+u_{t}=-\mu u_{x}+\frac{1}{2}\sigma^{2}u_{xx}
+\]
+
+\end_inset
+
+on 
+\begin_inset Formula $t\in\left[0,1\right]$
+\end_inset
+
+ with 
+\begin_inset Formula $u_{0}=\frac{1}{\sqrt{2\pi}}\exp\left(\frac{-x^{2}}{2}\right)$
+\end_inset
+
+, using individual trajectories of the stochastic differential equation:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+dX_{t}=\mu dt+\sigma dW_{t}
+\]
+
+\end_inset
+
+ computed by the Euler-Maruyama method with 
+\begin_inset Formula $\Delta t=0.01$
+\end_inset
+
+ where 
+\begin_inset Formula $\mu=\frac{1}{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma=\frac{5}{4}$
+\end_inset
+
+.
+ Show the solution of 
+\begin_inset Formula $u(1,x)$
+\end_inset
+
+ via a histogram or kernal density estimate (KDE).
+ You may want to check out KernelDensity.jl and StatPlots.jl.
+\end_layout
+
+\begin_layout Standard
+Compare this solution against a forward-time centered-space with upwinding
+ on the advection term discretization of the PDE, where 
+\begin_inset Formula $\Delta x=0.1$
+\end_inset
+
+ and 
+\begin_inset Formula $\Delta t=0.00001$
+\end_inset
+
+ on 
+\begin_inset Formula $x\in\left[-20,20\right]$
+\end_inset
+
+.
+ Show that the two solutions coincide with one another by plotting the two
+ together.
+\end_layout
+
+\end_body
+\end_document

@@ -163,3 +163,5 @@ are they stable?
 ## Lecture 7
 
 [Problem Set 3](https://github.com/mitmath/18303/blob/master/problem_sets/ps3.pdf)
+
+[Problem Set 4](https://github.com/mitmath/18303/blob/master/problem_sets/ps4.pdf)
