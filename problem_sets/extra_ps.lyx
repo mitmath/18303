@@ -99,17 +99,17 @@ Write a pseudospectral method for solving the 1D semilinear Heat equation
 \begin_layout Standard
 \begin_inset Formula 
 \[
-u_{t}=\Delta u+u^{2}-tu
+u_{t}=\Delta u+u^{2}-tu-u^{3}
 \]
 
 \end_inset
 
  with 
-\begin_inset Formula $u_{0}(x)=x^{2}$
+\begin_inset Formula $u_{0}(x)=x\left(x-2\pi\right)$
 \end_inset
 
  on 
-\begin_inset Formula $\left[-\pi,\pi\right]$
+\begin_inset Formula $\left[0,2\pi\right]$
 \end_inset
 
  with periodic boundary conditions on 
@@ -117,8 +117,72 @@ u_{t}=\Delta u+u^{2}-tu
 \end_inset
 
 .
- Use an FFT and inverse FFT to transform between point space and coefficient
- space.
+ Use an FFT and inverse FFT with a series of 100 points to transform between
+ point space and coefficient space.
+\end_layout
+
+\begin_layout Standard
+Hint: a simple way to setup an FFT for these transformations is to use ApproxFun.
+jl:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+using ApproxFun
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+#initialize Values
+\end_layout
+
+\begin_layout Plain Layout
+
+n  = 100
+\end_layout
+
+\begin_layout Plain Layout
+
+S  = Fourier()
+\end_layout
+
+\begin_layout Plain Layout
+
+F  = ApproxFun.plan_transform!(S, n)
+\end_layout
+
+\begin_layout Plain Layout
+
+iF = ApproxFun.plan_itransform(S, n)
+\end_layout
+
+\begin_layout Plain Layout
+
+x  = points(S, n)
+\end_layout
+
+\begin_layout Plain Layout
+
+Dxx = Derivative(S,2)[1:n,1:n]
+\end_layout
+
+\end_inset
+
+ If you use this version, explain why the 
+\begin_inset Formula $D_{xx}$
+\end_inset
+
+ operator has the values it does by looking at the definition at http://juliaapp
+roximation.github.io/ApproxFun.jl/latest/usage/spaces.html.
 \end_layout
 
 \begin_layout Section
@@ -137,7 +201,7 @@ Write a function that uses the Trapezoid method with Newton iterations and
 \begin_layout Standard
 \begin_inset Formula 
 \[
-u_{t}=\Delta u+u^{2}-tu
+u_{t}=\Delta u+u^{2}-tu-u^{3}
 \]
 
 \end_inset
