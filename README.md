@@ -1,11 +1,11 @@
 # 18.303: Linear Partial Differential Equations: Analysis and Numerics
 
-Fall 2019, Dr. [Chris Rackauckas](http://chrisrackauckas.com/), Dept. of Mathematics.
+Spring 2021, Dr. Vili Heinonen, Dept. of Mathematics.
 
 Overview
 --------
 
-This is the home page for the 18.303 course at MIT in Spring 2019, where the syllabus, lecture materials, problem sets, and other miscellanea are posted.
+This is the home page for the 18.303 course at MIT in Spring 2021, where the syllabus, lecture materials, problem sets, and other miscellanea are posted.
 
 > **Course description**
 >
