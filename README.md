@@ -16,9 +16,9 @@ This is the home page for the 18.303 course at MIT in Spring 2021, where the syl
 Syllabus
 --------
 
-**Lectures**: MWF 1–2pm (2-146). **Office Hours:** Wednesday 2–3pm (2-347).
+**Lectures**: TR 9:30-11 online. **Office Hours:** Wednesday 2–3pm online.
 
-**Grading**: 45% homework, 25% mid-term (March 20th), 30% final project
+**Grading**: 50% homework, 15% mid-term (March 20th), 35% final project
 (due the last day of class). Problem sets are due in class on the due date.
 The lowest problem set score will be dropped at the end of the term. Missed
 midterms require a letter from Student Support Services or Student Disabilities
