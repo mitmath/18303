@@ -16,7 +16,7 @@ This is the home page for the 18.303 course at MIT in Spring 2021, where the syl
 Syllabus
 --------
 
-**Lectures**: TR 9:30-11pm online. **Office Hours:** Wednesday 2–3pm online.
+**Lectures**: TR 9:30-11am online. **Office Hours:** Wednesday 10-11am online.
 
 **Grading**: 50% homework, 15% mid-term, 35% final project
 (due the last day of class). Problem sets are due in class on the due date.
