@@ -82,6 +82,6 @@ Tentative Schedule
 Lecture Summary
 -------------------
 
-Vector spaces and linear operators
--------------------
+## Vector spaces and linear operators
+
 During the first week we covered basic properties of vector spaces and linear operators including norms and inner products. We defined the notion of linear operators and introduced adjoints of linear operators. We went through some examples of smooth functions on the interval \[0,1\]. We used these tools and notions to solve the Poisson equation with Dirichlet boundary conditions on this interval. We also talked about bases for vector spaces and introduced the notion of an orthogonal and orthonormal bases. We introduced the basic properties of Fourier transform on a finite interval.
