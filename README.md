@@ -82,4 +82,5 @@ Tentative Schedule
 Lecture Summary
 -------------------
 
-_Lecture summaries will appear here_
+# Vector spaces and linear operators
+During the first week we covered basic properties of vector spaces and linear operators including norms and inner products. We defined the notion of linear operators and introduced adjoints of linear operators. We went through some examples of smooth functions on the interval \[0,1\]. 
