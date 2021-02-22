@@ -83,4 +83,4 @@ Lecture Summary
 -------------------
 
 # Vector spaces and linear operators
-During the first week we covered basic properties of vector spaces and linear operators including norms and inner products. We defined the notion of linear operators and introduced adjoints of linear operators. We went through some examples of smooth functions on the interval \[0,1\]. 
+During the first week we covered basic properties of vector spaces and linear operators including norms and inner products. We defined the notion of linear operators and introduced adjoints of linear operators. We went through some examples of smooth functions on the interval \[0,1\]. We used these tools and notions to solve the Poisson equation with Dirichlet boundary conditions on this interval.  
