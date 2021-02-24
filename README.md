@@ -17,7 +17,7 @@ Syllabus
 --------
 
 **Lectures**: TR 9:30-11am [https://mit.zoom.us/j/92763506665](https://mit.zoom.us/j/92763506665). 
-**Office Hours:** Wednesday 10-11am [https://mit.zoom.us/j/92763506665](https://mit.zoom.us/j/92763506665).
+**Office Hours:** Wednesday 9-10am [https://mit.zoom.us/j/92763506665](https://mit.zoom.us/j/92763506665).
 
 **Grading**: 50% homework, 15% mid-term, 35% final project
 (due the last day of class). Problem sets are due in class on the due date.
