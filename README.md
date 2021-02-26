@@ -86,3 +86,13 @@ Lecture Summary
 [Lecture 1](https://github.com/mitmath/18303/blob/master/lecture_notes/lecture01/lecture01.pdf) | [Sine series (Julia)](https://github.com/mitmath/18303/blob/master/julia/Sine-series.ipynb)
 
 During the first week we covered basic properties of vector spaces and linear operators including norms and inner products. We defined the notion of linear operators and introduced adjoints of linear operators. We went through some examples of smooth functions on the interval \[0,1\]. We used these tools and notions to solve the Poisson equation with Dirichlet boundary conditions on this interval. We also talked about bases for vector spaces and introduced the notion of an orthogonal and orthonormal bases. We introduced the basic properties of Fourier transform on a finite interval.
+
+## Finite differences
+[Lecture 2](https://github.com/mitmath/18303/blob/master/lecture_notes/lecture02/lecture02.pdf) | [Finite differences (Julia)](https://github.com/mitmath/18303/blob/master/julia/finite_differences.ipynb)
+
+We covered the basic idea of discretizing functions and writing down finite difference approximations of differential operators. We introduced backward, forward, and center difference methods and used these to write a simple discretization for the Laplacian. We talked about matrix representations for the difference operators and the importance of boundary conditions. We briefly discussed how the matrices are invertible if a linear system has a unique solution. As an example we talked about Poisson equation. We also covered deriving finite difference operators using polynomial fitting. 
+
+## Heat and wave equations
+[Lecture 3](https://github.com/mitmath/18303/blob/master/lecture_notes/lecture03/lecture03.pdf) | [Pset 1]()
+
+We showed that Laplacian operator is self-adjoint with Dirichlet boundaries. We introduced the notion of positive and negative (semi)definite operators. We talked about the _superposition principle_ and used it to solve the heat equation and the wave equation with Dirichlet boundaries. Important theme during this lecture was the ability to separate partial differential equations in sufficiently symmetric domains. 
