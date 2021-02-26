@@ -1,0 +1,206 @@
+% !TEX TS-program = xelatex
+% !TEX encoding = UTF-8 Unicode
+\input{../structure.tex}
+
+\title{Finite differences}
+\subtitle{Real space approximations}
+\date{16/2/2021}
+\date{}
+%\author{18.303 Linear Partial Differential Equations: Analysis and Numerics}
+\institute{18.303 Linear Partial Differential Equations: Analysis and Numerics}
+\titlegraphic{\hfill\includegraphics[height=2em]{../MIT-logo.pdf}}
+
+\begin{document}
+	
+	\maketitle
+	
+%	\begin{frame}{Table of contents}
+%		\setbeamertemplate{section in toc}[sections numbered]
+%		\tableofcontents%[hideallsubsections]
+%	\end{frame}
+
+%%%%%%%%%%%%%%%
+%\section{Finite differences}
+%%%%%%%%%%%%%%%
+
+%--------------------
+% Finite difference 
+
+\begin{frame}{Finite differences}
+	What is the simplest way to do differentials on a computer? 
+		
+	\pause
+	For the sake of simplicity let's assume we have $ u:[0,1] \to \R $ and we want to make sense of $ \dd{u(x)}{x} $.
+	
+	\pause
+	We \alert{discretize} the variable $ x $, the function $ u $, and the derivative $ u'(x) $. Formally this means that 
+	\[ u(x) \to u_n = u(x_n), \quad u'(x) \to u'_n,\]
+	where $ n=1,2,...,N. $
+	
+	\pause
+	For now, let's assume that $ x_n = n \Delta x $, where $ \Delta x = 1/N $ (we will later talk about non-evenly spaced discretization). We can \emph{approximate} $ u'(x) $ by writing the Taylor series for $ u $:
+	\[ u(x_n + \Delta x) = u(x_n) + u'(x_n) \Delta x + \BigO(\Delta x^2).  \]
+ 	(Here we use "Big-$ \BigO $ notation": the term $ \BigO (\Delta x^2) $ scales as $ \Delta x^2 $ approaching zero as $ \Delta x \to 0 $. Frankly it means that for small $ \Delta x $ this term is very small. ) 
+\end{frame}
+
+%--------------------
+% Finite difference 2
+
+\begin{frame}{Finite differences}
+	We can solve this for $ u'(x_n) $ giving
+	\begin{equation}\label{forward_taylor}
+		u'(x_n) =  \frac{u(x_n+\Delta x) - u(x_n)}{\Delta x} + \BigO(\Delta x)
+	\end{equation}
+	i.e. 
+	\[ u'_n \approx \frac{u_{n+1}-u_n}{\Delta x}. \]
+	
+	\pause
+	We notice that this is just a linear combination of the terms in the vector $ u_n $ i.e. it can be expressed as a linear operation
+	\[ \vec{u}' \approx \delta_+ \vec{u}. \]
+	
+	\pause
+	We call the operator $ \delta_+ $ \alert{forward difference} operator. Changing the sign of $ \Delta x $ in Eq.~\eqref{forward_taylor} gives the \alert{backward difference} operation
+	\[ u'_n \approx \frac{u_n - u_{n-1}}{\Delta x} = (\delta_- \vec{u})_n. \]
+\end{frame}
+
+%--------------------
+% Finite difference 3
+
+\begin{frame}{Finite differences}
+	The fact that we have $ \BigO(\Delta x) $ in Eq.~\eqref{forward_taylor} tells that the difference operation is \emph{first order} i.e. the error of the operation when approximating the actual differential scales linearly with $ \Delta x $. 
+	
+	\pause
+	We can do a bit better.  Calculating 
+	\[ \vec{u}' \approx \left( \frac{\delta_+ + \delta_-}{2} \right)\vec{u} = \delta_0 \vec{u} \]
+	gives in indices 
+	\[ u'_n = \frac{u_{n+1}- u_{n-1}}{2 \Delta x} + \BigO(\Delta x^2). \]
+	
+	We call $ \delta_0 $ the \alert{central difference} operator and, as we can see, it's second order in $ \Delta x $. 
+	
+	
+	%	Now, the function $ u $ is evaluated at points $ x_n $ and becomes a vector $ \vec{u} $. What about $ \delta $? We know that it's a linear operator from the vector space to itself. Since the vector space is now $ \R^N $, an operator that will do is a matrix $  $
+\end{frame}
+
+
+%--------------------
+% Exercise
+
+\begin{frame}{Exercise \exercisen}
+	%	\metroset{block=fill}
+%	\centering
+%	\begin{block}{Inner product induces a norm}
+		Derive a formula for the second order derivative $ u''_n $ by using the Taylor series for $ u_{n+1} $ and $ u_{n-1} $.
+%	\end{block}	
+\end{frame}
+
+%--------------------
+% Operators 1
+
+\begin{frame}{Operators $ \delta $}
+	Note that in the discrete setting our vector space is just $ \R^n $. What are the difference operators $ \delta $ then? % \pause
+	They are linear maps i.e. matrices. 
+	
+	\pause
+	To calculate a matrix for the second differential, let's write
+	 \[ \delta^{(2)} \vec{u} = \frac{1}{\Delta x^2}\begin{pmatrix}
+		u_0 - 2 u_1 + u_2 \\ u_1 - 2 u_2 + u_3 \\  \vdots \\ u_{N-1} - 2u_{N} + u_{N+1}
+	\end{pmatrix}. \] 
+	
+	\pause
+	We immediately notice that we need values $ u_0 $ and $ u_{N+1} $. In order to define the operator properly, we need a notion of boundary conditions.
+
+\end{frame}
+
+%--------------------
+% Operators 2
+
+\begin{frame}{Operators $ \delta $}
+	We can write this e.g. for Dirichlet boundaries defining $ u_0 = u_{N+1} = 0 $. 
+	
+	\pause
+	Now,
+	\[ \delta^{(2)}_{\text{D}} \vec{u} = \frac{1}{\Delta x^2}\begin{pmatrix}
+		 - 2 u_1 + u_2 \\ u_1 - 2 u_2 + u_3 \\  \vdots \\ u_{N-1} - 2u_{N}
+	\end{pmatrix} \]
+	and we can write
+	\[ \delta^{(2)}_{\text{D}} = \frac{1}{\Delta x^2} \begin{pmatrix}
+		-2 & 1  &   & &  &  \\
+		1  & -2 & 1 &  &  & \\
+		 & \ddots & \ddots & \ddots  & & \\
+		 & & 1 & -2 & 1 & \\
+		 & & & 1 & -2 &
+	\end{pmatrix}. \]
+	
+	\pause
+	This matrix takes vectors from $ \R^N $ to $ \R^N $ i.e. it's a square matrix. 
+	
+\end{frame}
+
+%--------------------
+% Poisson revisited
+
+\begin{frame}{Poisson equation revisited}
+	We can write our Poisson equation in the discretized setting as 
+	\[ \delta^{(2)}_{\text{D}} \vec{u} = \vec{f}. \]
+	
+	This is a \emph{sparse} linear system that can be solved for any $ \vec{f} $ ($ \delta^{(2)}_{\text{D}} $ is invertible). 
+	
+	We can also formulate an eigenvalue problem 
+	\[ \delta^{(2)}_{\text{D}} \ffor  = \lambda \ffor. \]
+\end{frame}
+
+%--------------------
+% Exercise
+
+\begin{frame}{Exercise \exercisen}
+	Try the ansatz $ \phi_k^{(n)} = \sin(a_n k) $, $ k=1,...,N $ for solving the eigenvalue problem 
+	\[ \delta^{(2)}_{\text{D}} \ffor^{(n)}  = \lambda_n \ffor^{(n)}. \]
+	
+%	What is the value of $ a_n $? What about $ \lambda_n $?
+\end{frame}
+
+%--------------------
+% From polynomials
+
+\begin{frame}{Finite differences from polynomial interpolation}
+	Assume we are given three points $ 0 $, $ \Delta x $, and $ 2 \Delta x $ with corresponding values for $ u $: $ u_0 $, $ u_1 $, and $ u_2 $. 
+	
+	We can fit a second order polynomial 
+	\[ p_2(x) = a_0 + a_1 x + a_2 x^2 \]
+	by requiring that $ p_2(x_i) = u_i $. 
+	
+	\pause
+	This gives a linear system 
+	\begin{align*}
+		u_{0}	&= p_2(0) = a_{0}, \\
+		u_{1}	&= p_2(\Delta x) = a_{2}\Delta x^{2} + a_{1}\Delta x + a_{0}, \\
+		u_{2}	&= p_2(2 \Delta x)=4a_{2}\Delta x^{2} + 2a_{1}\Delta x + a_{0}.
+	\end{align*}
+\end{frame}
+
+\begin{frame}{Finite differences from polynomial interpolation}
+	Solving for $ a_k $ gives 
+	\begin{align*}
+		a_{0}	&= u_{0}, \\
+		a_{1}	&=\frac{-3 u_0 + 4 u_1 - u_2}{2 \Delta x}, \\
+		a_{2}	&= \frac{u_0 - 2 u_1 + u_2}{2 \Delta x^2}.
+	\end{align*}
+	
+	\pause
+	We can evaluate 
+	\[ p'(\Delta x) = \frac{u_2 - u_0}{2 \Delta x} \]
+	and 
+	\[ p''(\Delta x) = \frac{u_2 - 2 u_1 + u_0}{\Delta x^2}. \]
+\end{frame}
+
+\begin{frame}{Finite differences from polynomial interpolation}
+	This gives us a systematic way of deriving stencils (operators) for finite differences on any number of points (we could have chosen e.g. 5 points and a 4th order polynomial). 
+	
+	\pause
+	Moreover, we could have chosen our points with a non-equal spacing and could have still solved for the coefficients $ a_k $. This shows that this method can be used for non-uniform grids. 
+	
+	\pause
+	The algorithm that automatically generates stencils from the interpolating polynomial forms is known as the Fornberg algorithm.
+\end{frame}
+
+\end{document}

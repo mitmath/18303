@@ -1,0 +1,66 @@
+\documentclass[10pt,aspectratio=1610]{beamer}
+%\documentclass[10pt]{beamer}
+
+\usetheme[progressbar=frametitle,numbering=counter]{metropolis}
+\usepackage{appendixnumberbeamer}
+
+
+\usepackage{booktabs}
+\usepackage[scale=2]{ccicons}
+
+\usepackage{pgfplots}
+\usepgfplotslibrary{dateplot}
+
+\usepackage{xspace}
+\usepackage{bm}
+
+%\newtheorem{definition1}{Definition}
+
+\newcounter{mydef}
+\stepcounter{mydef}
+\newenvironment{mydefinition}{\begin{block}{Definition \themydef\stepcounter{mydef}}}{\end{block}}
+
+% Color definitions 
+%\usepackage[dvipsnames]{xcolor}
+
+% Remove "Figure #" from figures
+\setbeamertemplate{caption}{\raggedright\insertcaption\par}
+
+% Custom commands
+% Metropolis theme name 
+\newcommand{\themename}{\textbf{\textsc{metropolis}}\xspace}
+
+% Derivatives
+\newcommand{\pfrac}[3][]{\frac{\partial^{#1} #2}{\partial #3^{#1}}}
+\newcommand{\dd}[3][]{\frac{\mathrm{d}^{#1} #2}{\mathrm{d} #3^{#1}}}
+\newcommand{\pp}[2][]{\partial^{#1}_{#2}}
+
+
+\newcounter{example}
+\stepcounter{example}
+\newcounter{exercise}
+\stepcounter{exercise}
+
+\newcommand{\exercisen}{\theexercise\stepcounter{exercise}}
+\newcommand{\examplen}{\theexample\stepcounter{example}}
+
+\renewcommand{\vec}{\mathbf}
+\newcommand{\varone}{\vec{x}}
+\newcommand{\argone}{(t,\varone)}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\fone}{\vec{f}}
+\newcommand{\ftwo}{\vec{g}}
+\newcommand{\fthr}{\vec{h}}
+\newcommand{\ffor}{\bm{\phi}}
+\newcommand{\opone}{\mathcal{L}}
+\newcommand{\optwo}{\mathcal{G}}
+\renewcommand{\Re}{\operatorname{Re}}
+\newcommand{\iprod}[2]{\langle #1,#2 \rangle}
+\newcommand{\diff}{\mathrm{d}}
+\newcommand{\fouriert}{\mathcal{F}}
+\newcommand{\BigO}{\mathcal{O}}

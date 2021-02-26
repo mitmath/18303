@@ -1,0 +1,246 @@
+% !TEX TS-program = xelatex
+% !TEX encoding = UTF-8 Unicode
+\input{../structure.tex}
+
+\title{Heat and wave equations}
+\subtitle{Introduction in 1d}
+\date{16/2/2021}
+\date{}
+%\author{18.303 Linear Partial Differential Equations: Analysis and Numerics}
+\institute{18.303 Linear Partial Differential Equations: Analysis and Numerics}
+\titlegraphic{\hfill\includegraphics[height=2em]{../MIT-logo.pdf}}
+
+\begin{document}
+	
+	\maketitle
+	
+%	\begin{frame}{Table of contents}
+%		\setbeamertemplate{section in toc}[sections numbered]
+%		\tableofcontents%[hideallsubsections]
+%	\end{frame}
+
+%%%%%%%%%%%%%%%
+%\section{Finite differences}
+%%%%%%%%%%%%%%%
+
+%--------------------
+% Adjoints 
+
+\begin{frame}{Operator adjoints, redux}
+	We recall that the adjoint of an operator $ \opone $, $ \opone^{*} $, is defined using the inner product as 
+	\[ \iprod{\fone}{\opone \ftwo}  = \iprod{\opone^{*}\fone}{\ftwo}\]
+	for all $ \fone, \ftwo \in V $. If $ \opone = \opone^{*} $ we say the operator is self-adjoint. 
+\end{frame}
+
+\begin{frame}{Operator adjoints, redux}
+	\textbf{Example \examplen:} Let us again think about functions $ u: [0,1] \to \R $ with Dirichlet boundaries ($ u(0)=u(1)=0 $). We will look at the Laplace operator $ \Delta =\dd[2]{}{x}$. Writing the inner product for some $ f $ and $ g $ gives
+	\[ \iprod{f}{\Delta g} = \int_{0}^{1} f(x) \dd[2]{}{x} g(x) \diff x. \]
+	
+	\pause
+	We can use integration by part giving 
+	\[ \left. f(x) \dd{}{x} g(x) \right|_{0}^{1} -  \int_{0}^{1} \dd{}{x} f(x) \dd{}{x} g(x) \diff x. \]
+	
+	\pause
+	We notice that the first term is zero due to the boundary conditions. Repeating integration by parts gives
+	\[ \iprod{f}{\Delta g} = \int_{0}^{1} \dd[2]{}{x} f(x)  g(x) \diff x = \iprod{\Delta f}{g} \]
+	i.e. the Laplacian is self-adjoint with these boundaries.
+\end{frame}
+
+\begin{frame}{Positive and negative definite operators}
+	\begin{mydefinition}
+		The self-adjoint operator $ \opone $ is \alert{positive definite} iff $ \iprod{\fone}{\opone \fone} > 0 $ for all $ 0 \neq \fone \in V $.
+	\end{mydefinition}
+	If the equality is not strict (i.e. $ \geq $), the operator is called \alert{positive semidefinite}. 
+	
+	\pause
+	If the inner product is negative we have the corresponding concepts \alert{negative definite} and \alert{negative semidefinite} operators.
+	
+	\pause
+	\textbf{Example \examplen :} The Laplacian for the vectors $ u: [0,1] \to \R $ with Dirichlet boundaries is negative definite. 
+	
+	\pause
+	\textbf{Proof:} 
+	\[ \iprod{u}{\Delta u} = \int_{0}^{1} u(x) \dd[2]{}{x} u(x) \diff x = -\int_{0}^{1} \dd{u(x)}{x} \dd{u(x)}{x} = -\norm{\dd{u}{x}}^2 < 0. \]
+	
+	Here we used integration by part as before. Why can't the norm be zero?
+\end{frame}
+
+\begin{frame}{Superposition principle}
+	Assume $ \fone $ and $ \ftwo $ are in the null space of the operator $ \opone $ i.e. ($ \opone \fone = \opone \ftwo = 0 $). 
+	
+	\pause
+	This implies that for any constants $ \alpha $ and $ \beta  $, $ \alpha \fone + \beta \ftwo  $ is also in the null space. 
+	
+	\pause
+	Often linear differential equations are in fact problems for finding the null space of the operator. 
+	
+	\pause
+	Boundary conditions give the necessary information for fixing all the coefficients in front of the individual solutions for the differential equation.
+\end{frame}
+
+\begin{frame}{Heat equation}
+	We look at functions $ u: \R_{+} \times [0,1] \to \R $. These are functions $ u(t,x) $ defined at non-negative times and on the interval $x \in  [0,1] $. Let us assume Dirichlet boundaries again.
+	
+	\pause
+	\metroset{block=fill}
+	\begin{block}{\centering Heat equation with Dirichlet boundaries}
+		\begin{align*}
+			&\pfrac{u(t,x)}{t} = \pfrac[2]{u(t,x)}{x}; \\
+			&u(t,0) = u(t,1) = 0,\; t \in \R_{+}; \\
+			&u(0,x) = u_0(x), \; x \in [0,1].
+		\end{align*}
+	\end{block}
+	
+	\pause
+	\textbf{Important!} When the domain of the function is a Cartesian product of two spaces and the boundary conditions are defined \emph{independently} for all variables, a linear differential equation is \emph{separable}. This means that the individual solutions are of the form $ a_n (t) \phi_n (x) $.
+\end{frame}
+
+\begin{frame}
+	Plugging in the separated ansatz gives 
+	\[ \pfrac{a_n(t)}{t} \phi_n (x) = a_n(t) \pfrac[2]{\phi_n(x)}{x}. \]
+	
+	\pause
+	Dividing by the $ a_n $ (let's not worry at this point if this can be zero) gives
+	\[ \frac{\dot{a}_{n}(t)}{a_{n}(t)} = \frac{\phi_n''(x)}{\phi_n(x)}. \]
+	
+	\pause
+	We note that we can adjust $ t $ and $ x $ \emph{independently}. The only possible way this equation holds for all $ t $ and $ x $ is if both sides are constant. We get two eigenvalue problems:
+	
+	\pause
+	\begin{align*}
+		\phi_n''(x) &= -\lambda_n^2 \phi_n,  \\
+		\dot{a}_{n}(t) &= -\lambda_n^2 a_n(t).
+	\end{align*}
+	
+	We know that the solution to the first one is \alert{$ \phi_n(x) = \sin(n \pi x) $} (at any given time we have Dirichlet boundaries). This also gives \alert{$ \lambda_n = n \pi $}.
+\end{frame}
+
+\begin{frame}
+	The second equation is a simple ordinary differential equation, which we can solve by writing it as 
+	\[ \dd{\log(a_n(t))}{t} = - \lambda_n^2. \]
+	
+	\pause
+	We have the initial data $ u(0,x) = u_0(x) $ suggesting we integrate the equation above from $ 0 $ to $ t $. This gives
+	
+	\pause
+	\[ \begin{split}
+		\int_{0}^{t}  \dd{\log(a_n(t'))}{t'} \diff t' &= \int_{0}^{t} -\lambda_n \diff t, \\
+		\log(a_n(t))-\log(a_n(0)) &= -\lambda_n^2 t, \\
+		\log(a_n(t)/a_n(0)) &= -\lambda_n^2 t.
+	\end{split} \]
+	
+	\pause
+	Solving for $ a_n(t) $ gives
+	\begin{equation}\label{heat_coefficients}
+		a_n(t) = a_n(0) e^{-\lambda_n^2 t}.
+	\end{equation}
+	
+\end{frame}
+
+\begin{frame}
+	Now we have the general solution (according to the superposition principle) given as
+	\metroset{block=fill}
+	\begin{block}{\centering Heat equation with Dirichlet boundaries, solution}
+		\begin{align*}
+			u(t,x) &= \sum_{n=1}^{\infty} a_n(t) \phi_n(x), \; \text{where} \\
+			a_n(t) &= a_n(0) e^{-\lambda_n^2 t}, \; \phi_n(x) = \sin(n \pi x).
+		\end{align*}
+	\end{block}
+
+	\pause
+	How do we get the coefficients $ a_n(0) $?
+	
+	\pause
+	At time $ t=0 $ we have 
+	\[ u(0,x) = u_0 (x) = \sum_{n=1}^{\infty} a_n(0) \sin(n \pi x). \]
+	
+	\pause
+	What we do is we express $ u_0  $ in the basis $ \{ \phi_n \}_{n=1}^\infty $ giving the coefficients $ a_n(0) $. If $ u_0 = \sum_{n=1}^{\infty} \hat{u}_0^{(n)} \phi_n $, then $ a_n(0) =\hat{u}_0^{(n)} $.
+\end{frame}
+
+\begin{frame}{Exercise \exercisen}
+	Solve the heat equation on the same domain with the same initial condition and the boundary condition 
+	\[ u(t,0) = 0, \; u'(t,1) = 0. \]
+	
+	How is the solution different?
+\end{frame}
+
+\begin{frame}{Wave equation}
+	Again, $ u: \R_{+} \times [0,1] \to \R $ and we assume Dirichlet boundaries.
+	
+	\pause
+	\metroset{block=fill}
+	\begin{block}{\centering Wave equation with Dirichlet boundaries}
+		\begin{align*}
+			&\pfrac[2]{u(t,x)}{t} = \pfrac[2]{u(t,x)}{x}; \\
+			&u(t,0) = u(t,1) = 0,\; t \in \R_{+}; \\
+			&u(0,x) = u_0(x),\; \dot{u}(0,x) = v_0 (x), \; x \in [0,1].
+		\end{align*}
+	\end{block}
+
+	Notice that we need more initial data since the order of the PDE in time is 2. 
+
+%	\textbf{Important!} When the domain of the function is a Cartesian product of two spaces and the boundary conditions are defined \emph{independently} for all variables, a linear differential equation is \emph{separable}. This means that the individual solutions are of the form $ a_n (t) \phi_n (x) $.
+\end{frame}
+
+\begin{frame}
+	Again, the system can be separated and we get the eigenvalue problems
+	\begin{align*}
+		\phi_n''(x) &= -\lambda_n^2 \phi_n,  \\
+		\ddot{a}_{n}(t) &= -\lambda_n^2 a_n(t).
+	\end{align*}
+
+	\pause
+	The general single (real solution) for the latter equation is 
+	\[ a_n(t) = \alpha_n \cos(\lambda_n t) + \beta_n \sin(\lambda_n t). \]
+\end{frame}
+
+\begin{frame}
+	\metroset{block=fill}
+	\begin{block}{\centering Wave equation with Dirichlet boundaries, solution}
+		\begin{align*}
+			u(t,x) &= \sum_{n=1}^{\infty} a_n(t) \phi_n(x), \; \text{where} \\
+			a_n(t) &= \alpha_n \cos(\lambda_n t) + \beta_n \sin(\lambda_n t), \; \phi_n(x) = \sin(n \pi x)(=\sin(\lambda_n x)).
+		\end{align*}
+	\end{block}
+
+	\pause
+	We get the coefficients $ \alpha_n $ and $ \beta_n $ from the initial condition:
+	\begin{align*}
+		u_0 (x) &= \sum_{n=1}^{\infty} \alpha_n \phi_n(x), \\
+		v_0 (x) &= \dot{u}(0,x) = \sum_{n=1}^{\infty} \beta_n \lambda_n \phi_n(x).
+	\end{align*}
+
+	Let $ \hat{u}_0^{(n)} $ and $ \hat{v}_0^{(n)} $ be the sine series coefficients of $ u $ and $ v $, respectively. We have 
+	\[ \alpha_n = \hat{u}_0^{(n)} ,\; \beta_n = \hat{v}_0^{(n)}/\lambda_n. \]
+\end{frame}
+
+\begin{frame}{Some observations}
+	\begin{itemize}[<+->]
+		\item Notice how solving the time dependent part of the equation reduced to solving an ordinary (simple) differential equation
+		\item The same methodology carries over to higher dimensional complicated structures
+		\item Often we have to solve the eigenvalue of the Laplacian in a complicated domain (on a computer) but after this, solving for the time evolution of the spatial eigenmodes (here $ \phi_n $) is pretty much trivial
+		\item This idea can be generalized to other dynamical systems: this property follows from the fact that time is an \emph{independent} parameter and doesn't mix with the spatial part of the boundary value problem	
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Notation}
+	\begin{table}
+		\caption{Some notation for differential operators}
+		\begin{tabular}{lccc}
+			\toprule
+			Name & Notation & Alternative notation & Cartesian coordinates \\
+			\midrule
+			Total differential & $ \diff f/\diff x $ & $ f'(x) $ (1d) & - \\
+			Partial differential & $ \partial f/\partial x $ & $ \pp{x} f $, $ f_x $ & -\\
+			Time derivative & $ \diff f/\diff t $ & $ \dot{f} $ & - \\
+			Gradient & $ \nabla \cdot f $ & $ \operatorname{grad}(f) $ & $ (\pp{x}f,\pp{y}f) $ \\
+			Divergence & $ \nabla \cdot \fone $ & $ \operatorname{div}(\fone) $ & $ \pp{x} f_x + \pp{y} f_y $ \\
+			Curl (2d) & $ \nabla \times \fone $ & $ \nabla \wedge \fone $ & $ \pp{x}f_y - \pp{y} f_x $ \\
+			Laplacian & $ \Delta f$ & $ \nabla^2 f $ &  $ (\pp[2]{x} + \pp[2]{y})f $ \\
+			\bottomrule		
+		\end{tabular}
+	\end{table}
+\end{frame}
+
+\end{document}
