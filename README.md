@@ -101,3 +101,8 @@ We showed that Laplacian operator is self-adjoint with Dirichlet boundaries. We 
 [Lecture 4](https://github.com/mitmath/18303/blob/master/lecture_notes/lecture04/lecture04.pdf)
 
 We discussed some general properties of different boundary conditions for partial differential equations. We showed that the general solution is the solution to the homogeneous problem with the desired boundary condition + the solution to the inhomogeneous problem with zero boundaries. We revisited boundary conditions within the framework of finite difference approximation. We saw how the uniqueness of the solution to a linear PDE given by the boundary condition translates in manifested in the finite difference approximation. 
+
+## Problems in higher dimensions
+[Lecture 5](https://github.com/mitmath/18303/blob/master/lecture_notes/lecture05/lecture05.pdf)
+
+We talked about how some of the ideas we used earlier extend to problems in higher dimensions. The main method here was separation of variables, which is a powerful technique to solve PDEs when the problem is nicely symmetric. This is true especially for time-dependent problems -- time is usually independent of the spatial dimensions so solving for the time evolution once you have solved the spatial part is often not too hard. We also discussed calculating Fourier coefficients in greater detail and defined the finite Fourier transform as a linear map from one vector space to another. 
