@@ -106,3 +106,39 @@ We discussed some general properties of different boundary conditions for partia
 [Lecture 5](https://github.com/mitmath/18303/blob/master/lecture_notes/lecture05/lecture05.pdf)
 
 We talked about how some of the ideas we used earlier extend to problems in higher dimensions. The main method here was separation of variables, which is a powerful technique to solve PDEs when the problem is nicely symmetric. This is true especially for time-dependent problems -- time is usually independent of the spatial dimensions so solving for the time evolution once you have solved the spatial part is often not too hard. We also discussed calculating Fourier coefficients in greater detail and defined the finite Fourier transform as a linear map from one vector space to another. 
+
+## On stability of numerical schemes
+[Lecture 6](https://github.com/mitmath/18303/blob/master/lecture_notes/lecture06/lecture06.pdf)
+
+In this lecture we learned some techniques for analyzing the stability of time integration schemes. We considered a wave equation with damping controlled by the coefficient µ. The time evolution of the system can change drastically depending on µ. We briefly talked about what we mean by saying that a time integrator is stable. We saw how we can use the eigenvalues of the Laplacian to analyze the stability of the heat equation with different time discretization schemes. 
+
+## Inhomogeneous PDEs revisited
+[Lecture 7](https://github.com/mitmath/18303/blob/master/lecture_notes/lecture07/lecture07.pdf)
+
+We talked about general linear PDEs with various boundary conditions. One of the main points was that the solution of an inhomogeneous PDE can be seen as the solution to the homogeneous problem with the given boundary conditions + the solution to the inhomogeneous problem with zero boundaries. We solved the heat equation in n+1 dimensions. If the eigenproblem can be solved for the spatial part, it is always easy to solve the time evolution of the coefficients of the field in the eigenbasis. We showed how to do this.
+
+We also solved the n+1 dimensional wave equation in the eigenbasis of the Laplacian. We introduced the _Fourier transform_ to solve for the time evolution of the coefficients.
+
+## Distributions and Fourier transform
+[Lecture 8](https://github.com/mitmath/18303/blob/master/lecture_notes/lecture08/lecture08.pdf)
+
+We introduced the notion of distributions: a generalization of functions that make sense under integration. Specifically, we discussed Dirac delta distribution that can be used to extract a value of a function at a given point by using an inner product between the Delta distribution and the function. We covered some of the basic features of the delta distribution. 
+
+We formally defined the Fourier transform and discussed its properties. We showed how one can see the Fourier transform as a representation of a function in the Fourier basis i.e. as superposition of plane waves. We derived some identities for the Fourier transform using the properties of the delta distribution. We also covered the connection between Fourier coefficients and the Fourier transform.
+
+## Wave equation and resonances
+[Lecture 9](https://github.com/mitmath/18303/blob/master/lecture_notes/lecture09/lecture09.pdf)
+
+We introduced Laplace transform and discussed some of its properties (i.e. the connection with the Fourier transform). We talked about the good and the bad of the Laplace transform and pointed out some problems with calculating the inverse Laplace transform. In the end we came up with a reasonable formula for the inverse Laplace transform. 
+
+We considered the time evolution of the driven harmonic oscillator (time evolution of the eigenbasis coefficients of the wave equation with an oscillating input). We solved this equation with an ansatz explaining the phenomenon of _resonance_. 
+
+ ## Wave equation and resonances vol. 2
+[Lecture 10](https://github.com/mitmath/18303/blob/master/lecture_notes/lecture10/lecture10.pdf)
+
+We did a recap of complex analysis: the basic properties of complex numbers, what it means to be complex differentiable and how to do contour integrals on the complex plane. These contour integrals are useful for dealing with (inverse) Fourier and Laplace transforms. We used the Laplace transform to solve the driven harmonic oscillator ODE from last time and covered also the case of resonant driving frequencies. 
+
+ ## Finite differences in higher dimensions
+[Lecture 11](https://github.com/mitmath/18303/blob/master/lecture_notes/lecture11/lecture11.pdf)
+
+We discussed the Poisson equation with general Dirichlet boundary conditions. After briefly discussing the 1d case and how we deal with the boundary conditions we formulated the problem in 2d. We showed how to build _block matrices_ that let us write down the Poisson equation as a simple linear system in the discretized setting. We also talked about boundary conditions in the 2d case. 

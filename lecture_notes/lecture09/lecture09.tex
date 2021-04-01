@@ -212,17 +212,44 @@
 	What if $ \omega_0 = \lambda $?
 	
 	\pause
-	In this case this is solved by an ansatz $ u(t) = A t \sin(\omega_0 t) + B t \cos(\omega_0 t)  = t(A  \sin(\lambda t) + B  \cos(\lambda t)) $. Plugging this in gives
-	\[ -t \lambda^2 (A  \sin(\lambda t) + B  \cos(\lambda t) ) 
-	+ 2 \lambda (A \cos(\lambda t) - B \sin(\lambda t)  ) + t\lambda^2 (A  \sin(\lambda t) + B  \cos(\lambda t)) = \sin(\lambda t). \]
+	In this case this is solved by an ansatz $ u(t) = A t \sin(\omega_0 t) + B t \cos(\omega_0 t) = t(A  \sin(\lambda t) + B  \cos(\lambda t))$. 
+	
+	\pause
+	Plugging this in gives
+	\[ 
+%	\begin{split}
+	-t \lambda^2 (A  \sin(\lambda t) + B  \cos(\lambda t) ) 
+	+ 2 \lambda (A \cos(\lambda t) - B \sin(\lambda t)  ) 
+	+ t\lambda^2 (A  \sin(\lambda t) + B  \cos(\lambda t)) 
+	= \sin(\lambda t). 
+%	\end{split}
+	\]
 	
 	\pause
 	Equating this with the RHS gives 
 	
 	\pause
-	\[ A= 0, B = -\frac{1}{2 \lambda} \]
+	\[ A= 0, B = -\frac{1}{2 \lambda},  \]
 	and the solution is 
 	\[ u(t) = -\frac{t}{2 \lambda} \cos(\lambda t). \]
+\end{frame}
+
+\begin{frame}
+	\[ u(t) = -\frac{t}{2 \lambda} \cos(\lambda t). \]
+	The initial condition $ u(0) = 0 $ works well but calculating 
+	\[ u'(t) = -\frac{1}{2\lambda} \left( \cos(\lambda t) - t \sin(\lambda t) \right) \]
+	shows that $ u'(0) = -\frac{1}{2\lambda} \neq 0 $.
+	
+	\pause
+	What to do?
+	
+	\pause
+	We can always add terms that solve the homogeneous equation. These are terms $ C \sin(\lambda t) + D \cos(\lambda t)  $. $ D = 0 $ because $ u(0) = 0 $. Fixing the boundary condition gives 
+	\[ \left(\dd{}{t}  C \sin(\lambda t) \right)_{t=0} = C \lambda  = \frac{1}{2\lambda}. \]
+	
+	\pause
+	From this we solve $ C = 1/(2\lambda^2) $, which gives the solution
+	\[ u(t) = \frac{1}{2\lambda^2} \sin(\lambda t) - \frac{t}{2\lambda} \cos(\lambda t).  \]
 \end{frame}
 
 \begin{frame}
