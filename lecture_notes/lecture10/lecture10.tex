@@ -1,0 +1,299 @@
+% !TEX TS-program = xelatex
+% !TEX encoding = UTF-8 Unicode
+\input{../structure.tex}
+
+\title{Wave equation and resonances vol. 2}
+\subtitle{How radio works etc...}
+\date{25/3/2021}
+\date{}
+%\author{18.303 Linear Partial Differential Equations: Analysis and Numerics}
+\institute{18.303 Linear Partial Differential Equations: Analysis and Numerics}
+\titlegraphic{\hfill\includegraphics[height=2em]{../MIT-logo.pdf}}
+
+\begin{document}
+	
+	\maketitle
+	
+%	\begin{frame}{Table of contents}
+%		\setbeamertemplate{section in toc}[sections numbered]
+%		\tableofcontents%[hideallsubsections]
+%	\end{frame}
+
+\begin{frame}{Some results from complex analysis}
+	Complex numbers can be seen as a vector space $ V $ over the real numbers $ R $. The special thing in this setting is that we can multiply the vectors.
+	
+	\pause
+	Complex multiplication is a bilinear from i.e. given complex numbers (vectors) $ z $ and $ h $, we have
+	\[ az \cdot bh = ab (z \cdot h) \]
+	with any real numbers $ a $ and $ b $. Normally we just drop the $ \cdot $ since complex multiplication has the algebraic properties of the real numbers i.e.
+	\begin{enumerate}
+		\item Associativity: $ z_1 (z_2 z_3) = (z_1 z_2)z_3 $.
+		\item Commutativity: $z_1 z_2 = z_2 z_1$.
+		\item Distributivity: $z_1 (z_2 + z_3) = z_1 z_2 + z_3 z_4$.
+	\end{enumerate}
+	
+	\pause
+	We can write a complex number as a tuple of real numbers $ z = (x,y) = x + iy$, where $ x $ is the \alert{real part} and $ y $ is the \alert{imaginary part} also written as $ z = \Re(z) $ and $ y = \Im(z) $. The multiplication is defined by the above properties and the most important equality:
+	$$ i^2 = -1. $$
+\end{frame}
+
+\begin{frame}
+	We can define the complex conjugate for a complex number $ z = x + iy $ as
+	\[ z^* = x - iy. \]
+	
+	\pause
+	This is very useful since it can be used to define an inner product 
+	\[ \iprod{z_1}{z_2} = \Re(z_1^* z_2) = \Re(z_1 z_2^*), \]
+	which in turn will define a norm
+	\[ \norm{z}^2 =  \Re(z^* z) = x^2 + y^2. \]
+	
+	\pause
+	What does the imaginary part of $ z_1 z_2^* $ give?
+	
+	\pause
+	\[ \Im(z_1 z_2^*) = -x_1 y_2 + x_2 y_1 \cong \vz_2 \times \vz_1 = -\vz_1 \times \vz_2, \]
+	if $ z_i $ are seen as vectors in $ \R^2 $ and $ \times $ is the cross product.
+\end{frame}
+
+\begin{frame}{Polar decomposition}
+	We can write a complex number in polar coordinates as
+	\[ z =  r(\cos(\varphi)) + i\sin(\varphi)), \]
+	where $ r \in \R_+ $ and $ \varphi \in [0,2\pi) $.
+	
+	\pause
+	The polar decomposition for complex numbers can be written using an exponential form:
+	\[ z = r e^{i \varphi}, \]
+	where the argument in the exponential can be defined as the sum 
+	\[ e^{z} = \sum_{n=0}^{\infty} \frac{z^n}{n!}. \]
+\end{frame}
+
+\begin{frame}{Geometric interpretation of complex numbers}
+	In the polar form we can write
+	\[ z_1 z_2 = r_1 r_2 e^{i(\varphi_1+\varphi_2)}. \]
+	
+	\pause
+	Let us assume for a while that $ r_2 = 1 $. Geometrically this will describe a rotation of the vector $ z_1 $ by an angle $ \varphi_2 $. After the rotation we scale the result by $ r_2 $. So, complex multiplication is \emph{rotation} + \emph{scaling}. 
+\end{frame}
+
+\begin{frame}{On the algebra of complex numbers}
+	We just saw that multiplying by a unit complex number can be geometrically seen as a rotation. For vectors in $ \R^2 $ we write rotations using the rotation matrix
+	\[ O(\varphi) = \begin{pmatrix}
+		\cos(\varphi) & -\sin(\varphi) \\
+		\sin(\varphi) & \cos(\varphi)
+	\end{pmatrix}. \]
+
+	\pause
+	Imagine $ \varphi $ is very small. We can write
+	\[ O(\varphi) = \begin{pmatrix}
+		\cos(0) & -\sin(0) \\
+		\sin(0) & \cos(0)
+		\end{pmatrix} 
+	+ \varphi \begin{pmatrix}
+		-\sin(0) & -\cos(0) \\
+		\cos(0) & -\sin(0)
+	\end{pmatrix} + \BigO(\varphi^2) 
+	= I + \varphi i +  \BigO(\varphi^2),
+	\]
+	where 
+	\[ I = \begin{pmatrix}
+		1 & 0 \\
+		0 & 1
+	\end{pmatrix}, \quad
+	i = \begin{pmatrix}
+		0 & -1 \\
+		1 & 0
+	\end{pmatrix}.  \]
+	
+	\pause
+	We notice that $ i^2 = -1 $. Coincidence? \pause No, but that's a story for another day.
+\end{frame}
+
+\begin{frame}{Complex functions}
+	Consider a complex function $ f: \CC \to \CC $. We write
+	\[ f(x,y) = u(x,y) + i v(x,y). \]
+	
+	\pause
+	Let's define the derivative of this function at $ (x,y) $:
+	\[ \pfrac{f(x,y)}{z} = \lim_{z'\to 0} \frac{f(x+x',y+y')-f(x,y)}{z'} = \lim_{r \to 0^+} \frac{f(x+r \cos(\varphi),y+r\sin(\varphi))-f(x,y)}{r e^{i\varphi}}. \]
+	Here $ z' = x' + iy' = r \exp(i\varphi) $.  
+	
+	\pause
+	Assuming $ f $ is differentiable with respect to $ x $ and $ y $ we can Expand this giving
+	\[ \lim_{r \to 0^+} e^{-i\varphi}\frac{r\cos(\varphi)f_x(x,y) + r\sin(\varphi) f_y(x,y) + \BigO(r^2)}{r } = (\cos(\varphi) - i\sin(\varphi))(\cos(\varphi) f_x + \sin(\varphi) f_y). \]
+	
+	\pause
+	The problem here is that $ z' $ can approach zero from any direction given by $ \varphi $. However, we want the derivative to be unique so we require it doesn't depend on $ \varphi. $
+\end{frame}
+
+\begin{frame}
+	We have 
+	\[ \pfrac{f(x,y)}{z} = \cos^2(\varphi) f_x - i \sin^2(\varphi) f_y + (f_y -i f_x )\sin(\varphi)\cos(\varphi). \]
+	
+	\pause
+	We note that $ \cos^2(\varphi) = (\cos(2\varphi)+1)/2 $, $ \sin^2(\varphi) = (-\cos(2\varphi)+1)/2 $, and $ \sin(\varphi)\cos(\varphi) = \sin(2\varphi)/2 $. This gives
+	\[ \pfrac{f(x,y)}{z} = \frac{1}{2} \left[f_x - i f_y + (f_x + i f_y)\cos(2\varphi) 
+	+ (f_y - if_x) \sin(2\varphi)
+	\right]\].
+	
+	\pause
+	How will this be independent of $ \varphi $?
+	
+	\pause
+	We have 
+	\[ f_y = i f_x \]
+	or writing in components $ f = u + iv $
+	\[ u_x = v_y, \; -u_y = v_x. \]
+	These are the famous Cauchy-Riemann equations and they are a condition to complex differentiability. 
+\end{frame}
+
+\begin{frame}
+	
+	{\color{olive} If the complex map $ f $ is seen as a map from $ \R^2 \to \R^2 $, the complex differentiable maps form an important class called \emph{conformal maps}. These maps are angle preserving: what it means is that any two lines that cross in the domain of $ f $ cross at exactly the same angle after $ f $ is applied. 
+	
+	\pause	
+	These maps have been used traditionally e.g. in cartography since they preserve shapes of small objects (but not necessarily sizes). This can be seen in the usual Mercator projector for the Earth: it represents the shapes of countries correctly but distorts the sizes (Northern countries and Antarctica look huge). }
+
+	\pause
+	It is necessary to talk about complex differentiability in order to calculate integrals and derivatives of complex functions. Doing calculus with complex differentiable functions works in most cases just like with real functions.
+\end{frame}
+
+\begin{frame}
+	However, complex differentiability is considerably more restrictive condition than real differentiability. 
+	
+	\pause
+	In fact, if a complex function $ f $ is complex differentiable on a complex disc $ D(z',R) = \{ z \in \CC : |z-z'| < R \}$, that function is not only infinitely differentiable (smooth) but analytical on that disk (these functions are called \alert{holomorphic} on that disk). That means that 
+	\[ f(z) = \sum_{n=0}^{\infty} f^{(n)}(z') \frac{z^n}{n!}. \]
+	
+	\pause
+	For such functions there's a function $ F(z) $ s.t. $ F'(z) = f(z) $. Any line integrals
+	\[ \int_\gamma f(z) \diff z = \int_{0}^{1} F'(z) \dd{z(t)}{t} \diff t 
+	= \int_{0}^{1} \dd{F(z)}{t}  \diff t = F(z(1))-F(z(0)) \]
+	independent of the path $ \gamma $ as long as we stay on that disk.
+\end{frame}
+
+\begin{frame}{Contour integrals}
+	Imagine the path $ \gamma $ is a simple loop (a Jordan curve). What does the integral 
+	\[ \oint_\gamma f(z) \diff z \]
+	give if $ f $ is differentiable?
+	
+	\pause
+	Obviously the endpoint and the starting point of the previous calculation are the same and the integral gives 0. 
+	
+	\pause
+	However, in presence of singularities things get more interesting. Let's do a circular line integral around the origin for $ f(z) = 1/z $.
+\end{frame}
+
+\begin{frame}
+	\[ \oint_\gamma f(z) \diff z = \int_{0}^{2\pi} f(R e^{i\theta}) \diff (R e^{i\theta}). \]
+	We plug in the function and calculate the differential
+	\[ \oint_\gamma f(z) \diff z = \int_{0}^{2\pi} \frac{1}{R e^{i\theta}} iR e^{i\theta} \diff \theta = 2\pi i. \]
+	
+	\pause
+	Notice how this doesn't depend on $ R $. It turns out that this is true if we multiply the singularity with any complex differentiable function. These sort of functions are called \alert{meromorphic} functions. Let's do the integral for $ f(z) = g(z)/z $, where $ g(z) $ is holomorphic on the disk with radius $ R' > R $. 
+	
+	\pause
+	\[ \oint_\gamma f(z) \diff z = \int_{0}^{2\pi} \frac{g(R e^{i\theta})}{R e^{i\theta}} iR e^{i\theta} \diff \theta 
+	= \int_{0}^{2\pi} i g(R e^{i\theta}) \diff \theta.
+	\]
+	
+	\pause
+	Since this integral can be as small as we want we can take the limit $ R \to 0^{+} $ and giving $ 2\pi i g(0)$.
+\end{frame}
+
+\begin{frame}{Residue theorem}
+	We define a residue of a point as 
+	\[ \resid(f,c) = \frac{1}{2\pi i}\lim_{\epsilon \to 0^{+}} \oint_{D(c,\epsilon)} f(z) \diff z.  \]
+	
+	\pause
+	The order of the pole is the power of divergence $ n $ in $ f(z)/z^n $. We can repeat the calculation above for higher order poles and by using integration by parts we get 
+	\[ \resid(f,c) = \frac{1}{(n-1)!} \lim_{z \to c} ((z-c)^n f^{(n-1)}(z)), \]
+	where $ f^{(n)} $ is the $ n $th order derivative.
+	
+	\pause
+	Now any circular integral (the path just has to be non-self-intersecting and homeomorphic to a circle) can be calculated as 
+	\[ \oint_\gamma f(z) \diff z = 2\pi i \sum_{i} \resid(f,z_i),  \]
+	where $ z_i $ are the locations of the singularities (poles) inside the path $ \gamma $.
+\end{frame}
+
+\begin{frame}{Back to resonances}
+	Last time we defined the Laplace transform 
+	\[ \opone[f](s) = \int_{0}^{\infty} e^{-st} f(t) \diff t \]
+	with the inverse transform 
+	\[ \opone^{-1}[F](t) = \frac{1}{2\pi i} \int_{M - i\infty}^{M + i\infty} e^{st} F(s) \diff s,  \]
+	where $ M > \Re(s_i) $ and $ s_i $ are the singularities of $ F(s) $.
+\end{frame}
+
+\begin{frame}
+	By making the change of variables $ s = i k $ we get 
+	\[ \opone^{-1}[F](t) = \frac{1}{2\pi} \int_{\infty - iM}^{\infty - iM} e^{ikt} F(ik) \diff k.  \]
+	
+	\pause
+	Often this can be turned into a complex contour integral by adding an infinite complex segment that integrates to zero by itself. In this case this integral evaluates to
+	\[ \opone^{-1}[F](t) = i \sum_{n} \resid(e^{ikt} F(ik), z_n), \]
+	where $ z_n $ are the poles of the integrand on the complex plane with $ \Im(z) > -M $. 
+\end{frame}
+
+\begin{frame}{Resonances revisited}
+	Let's consider again the equation 
+	\[ u''(t) + \lambda^2 u(t) = \sin(\omega_0 t), \]
+	now with 
+	\[ u'(0) = v_0, \; u(0) = u_0. \]
+	
+	\pause
+	Let's calculate the Laplace transform of this equation. We get 
+	\[ s^2 U(s) + \lambda^2 U(s) - u(0)s - u'(0) = \frac{\omega_0}{\omega_0^2 + s^2}. \]
+	
+	\pause
+	Reorganizing and inserting the initial conditions gives
+	\[ U(s) = \frac{\omega_0}{(\omega_0^2 + s^2)(s^2 + \lambda^2)} + \frac{u_0 s}{s^2 + \lambda^2} + \frac{v_0}{s^2 + \lambda^2}. \]
+	
+\end{frame}
+
+\begin{frame}
+	\[ U(s) = \frac{\omega_0}{(\omega_0^2 + s^2)(s^2 + \lambda^2)} + \frac{u_0 s}{s^2 + \lambda^2} + \frac{v_0}{s^2 + \lambda^2}. \]
+	
+	\pause
+	Now we need to calculate the inverse Fourier transform of the right hand side. Some of the terms we already now. The last term is the Laplace transform of $ v_0 \sin(\lambda t)/\lambda $. You can verify for yourself that the second last term gives $ u_0 \cos(\lambda t) $. So we just need to worry about the first term.
+	
+	\pause
+	Let's write it as 
+	\[ \frac{\omega_0}{(\omega_0^2 + s^2)(s^2 + \lambda^2)} = \frac{A}{\omega_0^2 + s^2} + \frac{B}{\lambda^2 + s^2}. \]
+	
+	\pause
+	We can solve for $ A $ and $ B $ by requiring that the equality holds for all $ s $. We get 
+	\[ B = -A =  \frac{\omega_0}{\omega_0^2-\lambda^2}.\]
+	
+	\pause
+	The first term is the Laplace transform of $ A \sin(\omega_0 t)/\omega_0 $ and the second one gives $ B \sin(\lambda t)/\lambda $. 
+\end{frame}
+
+\begin{frame}
+	Now we have
+	\[ u(t) = \frac{1}{\omega_0^2 - \lambda^2} \left( -\sin(\omega_0 t) + \frac{\omega_0}{\lambda} \sin(\lambda t)  \right) + \frac{v_0}{\lambda} \sin(\lambda t) + u_0 \cos(\lambda t) \]
+	
+	\pause
+	Notice how the first term doesn't affect the initial conditions. Ok, what if $ \omega_0 \to \lambda $?
+	
+	\pause
+	Let us write $ \omega_0 = \lambda + \epsilon $. We get
+	\[ \frac{1}{\omega_0^2 - \lambda^2} \left( -\sin(\omega_0 t) + \frac{\omega_0}{\lambda} \sin(\lambda t)  \right) = \frac{1}{\epsilon (2\lambda + \epsilon)}  
+	\left(  
+	\frac{\lambda + \epsilon}{\lambda} \sin(\lambda t) - \sin(\lambda t) \cos(\epsilon t) - \cos(\lambda t) \sin (\epsilon t)
+	\right).
+	\]
+	
+	\pause
+	Gathering the terms that scale with $ \epsilon $ gives
+	\[ ... = \frac{1}{2\lambda}  \lim\limits_{\epsilon \to 0} \left(
+	\frac{\sin(\lambda t)}{\lambda} -
+	\cos(\lambda t)\frac{\sin(\epsilon t)}{\epsilon} \right)\]
+	
+	\pause
+	The limit drops $ t $ and we get
+	\[ u(t) = \frac{\sin(\lambda t)}{2\lambda^2}-\frac{t\cos(\lambda t)}{2\lambda} + \frac{v_0}{\lambda} \sin(\lambda t) + u_0 \cos(\lambda t). \]
+	
+	\pause
+	After a long calculation it is always a good idea to check if it really solves the (boundary) initial value problem. This can be done quite efficiently with e.g. Mathematica.
+\end{frame}
+
+\end{document}
