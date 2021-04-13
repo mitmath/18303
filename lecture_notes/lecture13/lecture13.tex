@@ -1,0 +1,149 @@
+% !TEX TS-program = xelatex
+% !TEX encoding = UTF-8 Unicode
+\input{../structure.tex}
+
+\title{Some important basis functions}
+\subtitle{We also solve some cool problems}
+\date{25/3/2021}
+\date{}
+%\author{18.303 Linear Partial Differential Equations: Analysis and Numerics}
+\institute{18.303 Linear Partial Differential Equations: Analysis and Numerics}
+\titlegraphic{\hfill\includegraphics[height=2em]{../MIT-logo.pdf}}
+
+\begin{document}
+	
+	\maketitle
+	
+%	\begin{frame}{Table of contents}
+%		\setbeamertemplate{section in toc}[sections numbered]
+%		\tableofcontents%[hideallsubsections]
+%	\end{frame}
+
+\begin{frame}{Laplace equation in spherical coordinates}
+	We solve for $ \Delta f = 0 $ in spherical coordinates.
+	
+	\pause
+	We have the coordinate chart between the Cartesian and spherical coordinates:
+	\[  
+	\begin{split}
+		x &= r \sin(\theta) \cos(\varphi) \\
+		y &= r \sin(\theta) \sin(\varphi) \\
+		z &= r \cos(\theta),
+	\end{split}
+	\]
+	where $ r \in \R_+ $, $ \theta \in [0,\pi] $, and $ \varphi \in [0,2\pi) $.
+	
+	\pause
+	It requires a bit of work to calculate the change of coordinates but ultimately we get 
+	\[ \Delta f(r, \theta, \varphi) = \left[ 
+	\frac{1}{r^2} \partial_r \left(r^2 \partial_r \right) 
+	+ \frac{1}{r^2 \sin(\theta)} \partial_\theta \left( \sin(\theta) \partial_\theta \right)
+	+ \frac{1}{r^2 \sin^2(\theta)} \partial_{\varphi}^2 
+	\right] f(r,\theta,\varphi) = 0.
+	\]
+	
+	\pause
+	We use separation by variables and write $ f(r,\theta,\varphi) = R(r)\Theta(\theta) \Phi(\varphi) $.
+\end{frame}
+
+\begin{frame}
+	Multiplying by $ r^2 $ and reorganizing gives
+	\[ \frac{\partial_r \left(r^2 R'(r) \right)}{R(r)} 
+	+ \frac{\sin^{-1}(\theta) \partial_\theta \left( \sin(\theta) \Theta '(\theta) \right)}{\Theta(\theta)} + \frac{1}{\sin^2(\theta)} \frac{\Phi''(\varphi)}{\Phi(\varphi)} = 0.
+	\]
+	
+	\pause
+	This has to hold for all $ r $, $ \theta $, and $ \varphi $ so some parts need to be constants. Probably the easiest is 
+	\[ \Phi_m''(\varphi) = m^2 \Phi_m(\varphi). \]
+	
+	\pause
+	This gives the azimuthal part of the function and $ \Phi $ is periodic. It is solved by 
+	\[ \Phi_m(\varphi) = e^{i m \varphi}, \]
+	where $ m $ is an integer. 
+\end{frame}
+
+\begin{frame}
+	Now we have
+	\[  
+	\begin{split}
+		\partial_r \left(r^2 \partial_r R_\ell (r)  \right) &= \lambda_\ell R_\ell (r), \\ 
+		\frac{1}{\sin(\theta)} \partial_\theta \left( \sin(\theta) \partial_\theta \Theta_\ell^{m} (\theta)  \right)  - \frac{m^2}{\sin^2(\theta)}\Theta_\ell^{m} &= - \lambda_\ell \Theta_\ell^{m} (\theta).
+	\end{split}
+	\]
+	
+	\pause
+	Since $ \theta \in [0,\pi] $, we can make a change of variables $ t = \cos(\theta) \in [-1,1] $ ($ \cos $ is a bijection on this interval). We say $ \Theta_\ell^{m} (\theta) = P_\ell^{m} (\cos(\theta)) = P_\ell^{m} (t)$.
+	
+	\pause
+	The derivative with respect to $ \theta $ transforms as 
+	$$ \partial_\theta \to \frac{\partial t}{\partial \theta} \partial_t = -\sin(\theta) \partial_t. $$ 
+	
+	\pause
+	Now the equation for the latitudinal part becomes 
+	\[ \partial_t \left(\sin^2(\theta) \partial_t P_\ell^{m} \right) - \frac{m^2}{\sin^2(\theta)} P_\ell^{m} = -\lambda_\ell P_\ell^{m} (t).  \]
+\end{frame}
+
+\begin{frame}
+	Writing $ \sin^2(\theta) = 1-\cos^2(\theta) = 1-t^2 $ gives
+	\[ \partial_t \left((1-t^2) \partial_t P_\ell^{m} \right) - \frac{m^2}{1-t^2} P_\ell^{m} = -\lambda_\ell P_\ell^{m} (t).  \]
+	
+	\pause
+	The only way $ P_\ell^{m}(\pm 1) $ is finite is if $ \lambda_\ell = \ell (\ell+1) $, where $ \ell  $  is a non-negative integer (this is a long story why this happens). Because the differential operator to the left is negative semi-definite, we have to have $ |m| \leq \ell $.
+	
+	\pause
+	The solution to this DE is given by the \alert{Associated Legendre polynomials}. The usual Legendre polynomials $ P_\ell $ are given for $ m=0 $. Now $ \Theta_\ell^{m}(\theta) = P_\ell^{m} (\cos(\theta)). $
+	
+	\pause
+	The polynomials $ P_\ell $ are degree $ \ell $ and are uniquely defined by $ P_\ell (1) = 1 $ and the orthogonality condition 
+	\[ \int_{-1}^{1} P_\ell (t) P_{\ell'} (t) \diff t = 0 \]
+	if $ \ell \neq \ell' $. If $ \ell = \ell' $, this integral gives $ 2/(2\ell + 1) $.
+\end{frame}
+
+\begin{frame}
+	The associated Legendre polynomials can be calculated from the Legendre polynomials through
+	\[ P_\ell^{m}(t) = (-1)^m (1 - t^2 )^{m/2} \dd[m]{}{t} P_\ell (t). \]
+	
+	\pause
+	The (normal) Legendre polynomials can also be obtained as 
+	\[ P_\ell (t) = \frac{1}{2^{\ell} \ell! } \dd[\ell]{}{t} (t^2 -1)^{\ell}. \]
+	
+	\pause
+	These polynomials have many nifty properties but we will not spend too much time on that today.
+	
+\end{frame}
+
+\begin{frame}
+	Finally we have the radial part 
+	\[ \partial_r (r^2 R'_\ell (r) ) = \ell(\ell+1) R_\ell (r). \]
+	
+	\pause
+	This is solved by an ansatz $ R = r^{\alpha} $ giving 
+	\[ \alpha (\alpha + 1) = \ell (\ell +1 ), \]
+	which implies $ \alpha = \ell $ or $ \alpha = -\ell - 1. $ Now
+	\[ R(r) = A_{\ell} r^{\ell r} + B_{\ell} r^{-\ell-1}. \]
+	
+	\pause
+	If we require that $ R $ is bounded at the origin, it implies that $ B_{\ell} = 0 $. Another usual boundary condition for $ R $ is that it is bounded at infinity. In that case $ A_{\ell} = 0 $. Alternatively you can add your favorite boundary condition at some fixed $ r_0 $ and solve for the coefficients. 
+\end{frame}
+
+\begin{frame}{Spherical harmonics}
+	The functions 
+	\[ Y_\ell^{m} (\theta,\varphi) = \sqrt{\frac{(2 \ell +1 )}{4\pi} \frac{(\ell -m)!}{(\ell + m)!}} P_\ell^{m} (\cos\theta) e^{im\varphi}   \]
+	are the spherical harmonics that satisfy
+	\[ r^2 \Delta Y_\ell^{m} = -\ell (\ell + 1) Y_\ell^{m} \]
+	i.e. they are the eigenfunctions of the Laplacian on the surface of a sphere with a fixed radius $ r $. 
+	
+	\pause
+	They are also normalized satisfying 
+	\[ \int_{\partial \Omega } Y_\ell^{m} Y_{\ell'}^{m'} \diff S = \int_{0}^{2\pi} \int_{0}^{\pi} \sin(\theta) Y_\ell^{m} Y_{\ell'}^{m'} \diff \theta \diff \varphi = \delta_{\ell}^{\ell'} \delta_{m}^{m'}.  \]
+	
+	\pause
+	They define a perfectly good basis for dealing with differential equations on a sphere. 
+\end{frame}
+
+%We use integration by part to give
+%\[ L_{0,j}  = \left.\phi_0(x) \phi_j'(x)  \right| _{x=-1}^{1} 
+%-\int_{-1}^{1} \phi_0' (x) \phi_j'(x) \diff x.   \]
+
+%Since the order of $ \phi_0 $ is zero, the derivative will give zero. 
+\end{document}
