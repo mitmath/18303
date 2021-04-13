@@ -142,3 +142,13 @@ We did a recap of complex analysis: the basic properties of complex numbers, wha
 [Lecture 11](https://github.com/mitmath/18303/blob/master/lecture_notes/lecture11/lecture11.pdf)
 
 We discussed the Poisson equation with general Dirichlet boundary conditions. After briefly discussing the 1d case and how we deal with the boundary conditions we formulated the problem in 2d. We showed how to build _block matrices_ that let us write down the Poisson equation as a simple linear system in the discretized setting. We also talked about boundary conditions in the 2d case. 
+
+ ## Spectral methods and the weak formulation
+[Lecture 12](https://github.com/mitmath/18303/blob/master/lecture_notes/lecture12/lecture12.pdf)
+
+We talked about the weak (variational) formulation of a boundary value problem. The idea is that a certain inner product has to hold for _all_ test functions that go smoothly to zero at the boundary. For computational applications we can use a basis for the function to be solved and the test functions that gives a sparse linear operator for a truncated set of functions. Usually these functions are such that it is easy to calculate their derivatives. 
+
+ ## Some important basis functions
+[Lecture 13](https://github.com/mitmath/18303/blob/master/lecture_notes/lecture13/lecture13.pdf)
+
+We solved the Laplace equation in spherical coordinates introducing the spherical harmonics and Associated Legendre polynomials. We discussed the properties of these basis functions in the framework of weak solutions to a partial differential equation. 
