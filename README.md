@@ -152,3 +152,35 @@ We talked about the weak (variational) formulation of a boundary value problem. 
 [Lecture 13](https://github.com/mitmath/18303/blob/master/lecture_notes/lecture13/lecture13.pdf)
 
 We solved the Laplace equation in spherical coordinates introducing the spherical harmonics and Associated Legendre polynomials. We discussed the properties of these basis functions in the framework of weak solutions to a partial differential equation. 
+
+## Finite element methods
+[Lecture 14](https://github.com/mitmath/18303/blob/master/lecture_notes/lecture14/lecture14.pdf)
+
+We used the weak (variational) formulation to define Finite Element Methods (FEMs). The basic idea behind FEMs is that we solve the variational problem with an approximate basis of functions that have a small support (set where the functions value is non-zero). Essentially the basis functions are defined on some small elements that can be glued together to form the whole domain of the differential equation. We worked out the Poisson equation in 1d using piecewise linear functionals defined on some intervals and saw that for equally sized elements this gave us essentially the same linear system that the finite difference method gave us. FEMs are especially useful when the domains are complicated and computationally efficient if the solution only varies fast on some small portion of the domain. 
+
+## Functionals and the variational derivative
+[Lecture 15](https://github.com/mitmath/18303/blob/master/lecture_notes/lecture15/lecture15.pdf)
+
+We introduced functionals as maps from some vector space to real (or complex) numbers. We wrote them in terms of integrals over functions and their derivatives (these are _not_ all the functionals). We generalized the gradient of a function to a variational (functional) derivative of a functional. This was done using the inner product, which allows us to write the variation of a functional at a given point (given function) to some direction defined by another function. We showed a connection between wave and heat equations to scaler quantities (energies) expressed as functionals. 
+
+## Lotka-Volterra equations
+[Lecture 16](https://github.com/mitmath/18303/blob/master/lecture_notes/lecture16/lecture16.pdf)
+
+We discussed Lotka-Volterra system as a simple example of a non-linear system. We talked about stationary points of the system and used perturbative methods to analyze the behavior of the system near these stationary points. In addition we derived a special conserved quantity that can be used to check the solution of the system.
+
+## Green's functions
+[Lecture 17](https://github.com/mitmath/18303/blob/master/lecture_notes/lecture17/lecture17.pdf)
+
+We defined Green's functions as a direct method for solving a linear PDE. A Green's function is essentially the continuous generalization of an inverse of a matrix. We used the delta distribution and Fourier transform to calculate a Green's function explicitly for some model systems. An important takeaway is that Green's functions depend not only on the PDE but also the boundary conditions and the boundary.
+
+## Revisiting vector calculus
+[Lecture 18](https://github.com/mitmath/18303/blob/master/lecture_notes/lecture18/lecture18.pdf)
+
+We did a quick recap of some of the important results from vector calculus. Most importantly we discussed Gauss' divergence theorem, Stokes' theorem and the fundamental theorem of calculus. All of these theorems relate the integral of some useful differential operator operating on a given function to a certain boundary integral. 
+
+## Advection problems
+[Lecture 19](https://github.com/mitmath/18303/blob/master/lecture_notes/lecture19/lecture19.pdf) | [Lecture 20](https://github.com/mitmath/18303/blob/master/lecture_notes/lecture20/lecture20.pdf)
+
+We introduced Burgers' equation as a simple advection problem. In order to solve the problem we discussed the method of characteristics: a powerful method for solving 1st order PDEs. We talked about numerical strategies for solving the Burgers' equation and showed that many of the good old finite difference discretization schemes are actually unconditionally unstable. To this end, we introduced upwind and downwind methods. There are implicit or explicit discretization schemes that take into account the direction of the flow. 
+
+We also did a quick summary of the different methods covered in this class and discussed strategies for solving different kind of PDEs. We outlined some of the strengths and weaknesses of certain numerical and analytical schemes. 

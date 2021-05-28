@@ -1,0 +1,200 @@
+% !TEX TS-program = xelatex
+% !TEX encoding = UTF-8 Unicode
+\input{../structure.tex}
+
+\title{Lotka-Volterra equations}
+\subtitle{An example of a non-linear system}
+\date{25/3/2021}
+\date{}
+%\author{18.303 Linear Partial Differential Equations: Analysis and Numerics}
+\institute{18.303 Linear Partial Differential Equations: Analysis and Numerics}
+\titlegraphic{\hfill\includegraphics[height=2em]{../MIT-logo.pdf}}
+
+\begin{document}
+	
+	\maketitle
+	
+%	\begin{frame}{Table of contents}
+%		\setbeamertemplate{section in toc}[sections numbered]
+%		\tableofcontents%[hideallsubsections]
+%	\end{frame}
+
+\begin{frame}{Lotka-Volterra equations}
+	The Lotka-Volterra system is given by 
+	\[ 
+	\begin{split}
+			\dd{x(t)}{t} &= a x(t) - b x(t) y(t) \\
+			\dd{y(t)}{t} &= c x(t) y(t) - d y(t),
+	\end{split}	
+	\] 
+	where $ a $, $ b $, $ c $, and $ d $ are non-negative parameters. 
+	
+	\pause
+	This is used as a simple model for an ecological system of predators and prey: assume $ x $ is the number of prey and $ y $ is the number of predarors. 
+	
+	\pause
+	\begin{itemize}
+		\item $ a $ controls exponential growth of the prey i.e. the growth is proportional to the number of prey.
+		\item The term with $ b $ is the rate at which the predators eat prey: it's proportional to both of the population sizes. 
+		\item $ c $ controls the proliferation of predators, it's again proportional to both population sizes. 
+		\item  $ d $ is the "death rate" of the predators proportional to the population size.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\[ 
+	\begin{split}
+		\dd{x(t)}{t} &= a x(t) - b x(t) y(t) \\
+		\dd{y(t)}{t} &= c x(t) y(t) - d y(t),
+	\end{split}	
+	\] 
+	Which parameters are important for the behavior? 
+	
+	\pause
+	With PDEs, and especially non-linear PDEs, one can get rid of some parameters by scaling the fields and the arguments of the fields. We define $ x = d z /c  $. 
+	
+	\pause
+	The equation for $ x $ is linear in $ x $ so we get the same equation for $ z $. For $ y $ we have
+	\[ \dd{y(t)}{t} = d z(t) y(t) - d y(t). \]
+	
+	\pause
+	We can define $ \tau = d t $ giving the change of the time derivatives $ \partial_t = d \partial_\tau $. 
+\end{frame}
+
+\begin{frame}
+	Now we have
+	\[ 
+	\begin{split}
+		\dd{z(\tau)}{\tau} &=  \alpha z(\tau) - \beta z(\tau) y(\tau) \\
+		\dd{y(\tau)}{\tau} &= z(\tau) y(\tau) - y(\tau),
+	\end{split}	
+	\] 
+	where $ \alpha = a/d $ and $ \beta = b/d $. We see that up to a rescaling, this is a two-parameter model. 
+	
+	\pause
+	This is sometimes called non-dimensionalization of the equations and it is useful when we want to see, which combinations of parameters can change the solutions qualitatively. 
+	
+	\pause
+	Now we are facing the problem of solving the system, which in general can't be done analytically. However, we can still say something about it.
+\end{frame}
+
+\begin{frame}{Conserved quantities}
+	We can ask ourselves if there are conserved quantities. We have
+	\[ \frac{\dot{z}}{\dot{y}} = \frac{z(\alpha  - \beta  y) }{y (z  - 1)}. \]
+	
+	\pause
+	We notice that the equation is separable giving
+	\[ \left( 1 - \frac{1}{z} \right) \dot{z} = \left(  \frac{\alpha}{y} - \beta \right) \dot{y}. \]
+	
+	\pause
+	Integrating with respect to $ \tau $ from 0 to $ \tau $ gives
+	\[ z(\tau) - z(0) - \log(z(\tau)) + \log(z(0)) = \alpha \log(y(\tau)) - \alpha\log(y(0)) - \beta y(\tau) + \beta y(0). \]
+	
+	\pause
+	Reorganizing gives
+	\[ z(\tau) + \beta y(\tau) - \log(z(\tau) y(\tau)^{\alpha}) = -\log(z(0)  y(0)^{\alpha}) + z(0) + \beta y(0) =: V.  \]
+	
+	\pause
+	We have discovered a conserved quantity $ V $. You can also show that the solutions are closed curves on the $ (z,y) $ plane.
+\end{frame}
+
+\begin{frame}{Fixed points}
+	Another thing we can do is to examine the system close to where the time evolution is zero. By requiring $ \dot{z}, \dot{y} = 0 $ we get
+	\[  
+	\begin{split}
+		z(\alpha-\beta y) &= 0, \\
+		y(z - 1) &= 0. 
+	\end{split}
+	\]
+	
+	\pause
+	We find two fixed points, namely $ (z,y) = (0,0) $ and $ (z,y) = (1,\alpha/\beta) $. We can linearize the system near the fixed point by applying a small perturbation $ z = z_{p} + \epsilon \phi $, $ y = y_{p} + \epsilon \psi $, where $ z_{p} $ and $ y_{p} $ are the fixed point coordinates. 
+	
+	\pause
+	For small $ \epsilon $ we can write the differential equations up to linear order. For the point $ (0,0) $ we get 
+	\[  
+	\begin{split}
+		\dot{\phi} &= \alpha \phi, \\ 
+		\dot{\psi} &= -\psi.
+	\end{split}
+	\]
+	
+	\pause
+	We see immediately that the small time behavior of this fixed point is the prey population exploding and the predator population decaying exponentially. 
+\end{frame}
+
+\begin{frame}
+	What about the other fixed point? 
+	
+	\pause
+	For $ (1,\alpha/\beta) $ we get the linearized equations
+	\[  
+	\begin{split}
+		\dot{\phi} &= -\beta \psi, \\ 
+		\dot{\psi} &= \frac{\alpha}{\beta} \phi.
+	\end{split}
+	\]
+	
+	\pause
+	The solution is of the form 
+	\[  
+	\phi(\tau) = A \cos(\sqrt{\alpha} \tau - \varphi), \; \psi(\tau) = A \frac{ \sqrt{\alpha}}{\beta} \sin(\sqrt{\alpha} \tau - \varphi), 
+	\]
+	where $ A $ and $ \varphi $ can be solved from the initial condition. This is described by an elliptical time evolution around the fixed point on a fixed trajectory (just as the conserved energy suggests). 
+\end{frame}
+
+\begin{frame}{Fixed points of general non-linear systems}
+	Assume we have a more general system
+	\[ 
+	\begin{split}
+		\dot{x} &= f^{(x)}(x,y), \\
+		\dot{y} &= f^{(y)}(x,y).
+	\end{split}
+	\]
+	
+	\pause
+	We can repeat the calculation we did for fixed points $ f^{(x)}(x_{p},y_{p}) = f^{(y)}(x_p,y_p) = 0 $. We expand around the fixed point. We get 
+	\[  
+	\delta \dot{\vr} = J \delta  \vr,
+	\]
+	where 
+	\[ 
+	J = \begin{pmatrix}
+		f^{(x)}_x(\vr_p) & f^{(x)}_y(\vr_p) \\
+		f^{(y)}_x(\vr_p) & f^{(y)}_y(\vr_p)
+	\end{pmatrix}
+	\]
+	is the \emph{Jacobian} of the system and $ \vr_{p} + \delta \vr = (x,y)^T $.
+\end{frame}
+
+\begin{frame}
+	We can write the linear system as 
+	\[  
+	\dot{\bm{\phi}} = \Lambda \bm{\phi}
+	\]
+	in the eigenbasis of $ J $. Here $ \Lambda $ is a diagonal matrix with the corresponding eigenvalues on the diagonal. 
+	
+	\pause
+	The behavior of the system near the fixed point is determined by the eigenvalues of $ J $. 
+	\begin{itemize}
+		\item If the eigenvalues are complex, they come in complex conjugate pairs ($ J $ is real)
+		\begin{itemize}
+			\item For such systems its faith is determined by the sign of the real part of the eigenvalues: if it's negative, the solution decays to the fixed point, if it's positive the amplitudes of the oscillations grow exponentially. 
+			\item For the limiting case where the real part is zero we get a harmonic oscillator (the latter case for our predator-prey system)
+		\end{itemize}
+		\item If the eigenvalues are real:
+		\begin{itemize}
+			\item If both of the eigenvalues are negative, the solution decays exponentially to the fixed point
+			\item If either one of the eigenvalues is positive, the perturbation grows exponentially (the first case for the Lotka-Volterra system)
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Categorization of fixed points}
+	Fixed points can be \alert{attractive} or \alert{repulsive}. The first case corresponds to negative eigenvalues of $ J $ and the latter to positive. 
+	
+	\pause
+	For complex eigenvalues the solution can be oscillatory without a change in the oscillation amplitude. There's also the case when $ J $ has a degenerate eigenvalue. This is a bit more complicated but generally the behavior will still depend on the sign of the real part of the eigenvalue. However, in this case it is possible that even systems with a purely imaginary eigenvalue decay.
+\end{frame}
+
+\end{document}

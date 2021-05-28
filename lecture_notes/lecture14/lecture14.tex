@@ -1,0 +1,251 @@
+% !TEX TS-program = xelatex
+% !TEX encoding = UTF-8 Unicode
+\input{../structure.tex}
+
+\title{Finite element methods}
+\subtitle{Making use of the weak formulation}
+\date{25/3/2021}
+\date{}
+%\author{18.303 Linear Partial Differential Equations: Analysis and Numerics}
+\institute{18.303 Linear Partial Differential Equations: Analysis and Numerics}
+\titlegraphic{\hfill\includegraphics[height=2em]{../MIT-logo.pdf}}
+
+\begin{document}
+	
+	\maketitle
+	
+%	\begin{frame}{Table of contents}
+%		\setbeamertemplate{section in toc}[sections numbered]
+%		\tableofcontents%[hideallsubsections]
+%	\end{frame}
+
+\begin{frame}{Finite element methods}
+	Let's consider again a weak formulation for a PDE. Assume we want to solve
+	\[ \opone u (\vx) = f(\vx), \]
+	on some domain $ \Omega $ subject to a boundary condition
+	\[ \optwo u (\vx)  = b(\vx) \]
+	on the boundary $ \vx \in \partial \Omega $. The weak (variational) formulation reads
+	\[ \iprod{\varphi}{\opone u} = \iprod{\varphi}{f} \]
+	for all $ \varphi $ in a space of test functions (usually $ \varphi \in C_{0}^{\infty} $).
+	
+	\pause
+	In order to find an approximate solution to this problem on a computer we choose a suitable basis $ \{ \varphi_\vec{i} \} $ for $ \varphi $ and $ u $. The space for $ u $ is typically slightly bigger than the space for $ \varphi $ because of the boundaries but we'll get back to that later.
+	
+	\pause
+	Let's write
+	\[ u(\vx) = \sum_{\vec{j}} \hat{u}_\vec{j} \varphi_\vec{j}(\vx). \]
+\end{frame}
+
+\begin{frame}
+	After some calculation we get
+	\[ \sum_{\vec{j}} \iprod{\varphi_\vec{i}}{\opone \varphi_\vec{j}} \hat{u}_\vec{j} = \iprod{\varphi_\vec{i}}{f}  \]
+	for all $ \vec{i}. $
+	
+	\pause
+	We write $ L_{\vec{i},\vec{j}} = \iprod{\varphi_\vec{i}}{\opone \varphi_\vec{j}} $ and $ \hat{f}_\vec{i} = \iprod{\varphi_\vec{i}}{f} $ giving us a linear system
+	\[ L \hat{\vu} = \hat{\fone}, \]
+	where $ \hat{\vu} $ is a vector with the expansion coefficients for $ u $ in the basis $ \{ \varphi_\vec{i} \} $ and $ \hat{\fone} $ is a vector with $ f $ projected on the respective basis functions $ \varphi_\vec{j} $. 
+	
+	\pause
+	\alert{Finite element methods} (FEMs) constitute a group of techniques where the basis functions are chosen in such a way that they have a small support in real space. We'll still have to deal with the boundary conditions and some other technical details but this might be best illuminated by an example.
+\end{frame}
+
+\begin{frame}{Poisson equation with FEM}
+	\begin{columns}[T,onlytextwidth]
+	\column{0.46\textwidth}
+	Let's consider the good old Poisson equation
+	\[ \dd[2]{u(x)}{x} = f(x) \]
+	on the interval $ x \in (0,1) $ with the boundary conditions $ u(0)=u_- $ and $ u(1) = u_+ $. 
+	
+	\pause
+	Let's choose the basis $ \varphi_k $ to be piecewise linear such that 
+	\[ \varphi_i(x_i) = 1 \]
+	and
+	\[ \varphi_i(x_i \pm \Delta x) = \varphi_i(x_{i\pm 1}) = 0. \]
+	
+	Here $ x_i = i \Delta x $ and $ \Delta x = 1/(N+1) $. 
+	
+	\column{0.08\linewidth}
+	\column{0.46\textwidth}
+	\begin{figure}
+		\centering
+		\includegraphics[width=\linewidth]{piecewise.pdf}
+		\caption{The basis functions $ \varphi_k $ for $ N=9 $.}
+	\end{figure}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+	We express $ u $ in this basis giving
+	\[ u(x) = \sum_{j=0}^{N+1} \hat{u}_j \varphi_j(x). \]
+	
+	\pause
+	We see immediately that $ u(0) = \hat{u}_0 = u_- $ and $ u(1) = \hat{u}_{N+1} = u_+ $. The remaining job is to solve the values for the rest of the coefficients. 
+	
+	\pause
+	For the right hand side of the equation we calculate
+	\[ \iprod{\varphi_i}{f} = \int_{0}^{1} \varphi_i(x) f(x) \diff x = f_i, \]
+	where $ i = 1,2,...,N $.
+	
+	\pause
+	Now we have to evaluate the matrix
+	\[ L_{i,j} = \iprod{\varphi_i}{\dd[2]{}{x} \varphi_j} = \int_{0}^{1} \varphi_i(x) \varphi_j''(x) \diff x = \left( \varphi_i(x) \varphi_j'(x) \right)_{0}^{1} - \int_{0}^{1} \varphi_i'(x) \varphi_j'(x) \diff x. \]
+	
+	\pause
+	Now, two functions $ \varphi_i $ and $ \varphi_j $ are overlapping only if they are the same or if $ i = j \pm 1 $. Otherwise this integral will evaluate to zero i.e. $ L $ will be tridiagonal. Furthermore, the boundary term will vanish since $ \varphi_i(0) = \varphi_i(1) = 0 $, when $ i= 1,2,3,...N. $
+\end{frame}
+
+\begin{frame}
+	Let's calculate the diagonals first assume $ i = j $. We have 
+	\[ L_{i,i} = -\int_{0}^{1} \varphi_i'(x)^2 \diff x.  \]
+	
+	\pause
+	Now we only get a contribution on the interval $ x \in (x_{i-1},x_{i+1}) $ i.e. 
+	\[ L_{i,i} =  - \int_{x_i - \Delta x}^{x_i + \Delta x} \varphi_i'(x)^2 \diff x.  \]
+	
+	\pause
+	The function $ \varphi_i $ goes from $ 0 $ to $ 1 $ when $ x $ goes from $ x_{i-1} $ to $ x_i $. This behavior is reversed when going from $ x_i $ to $ x_{i+1} $. Hence we have
+	\[ \varphi_i'(x) = \begin{cases}
+		1/\Delta x, & x \in (x_{i-1}, x_{i}) \\
+		- 1/\Delta x, & x \in (x_{i},x_{i+1}) \\
+		0, & \text{otherwise}.
+	\end{cases} \]
+\end{frame}
+
+\begin{frame}
+	This gives 
+	\[ L_{i,i} = - \int_{x_i - \Delta x}^{x_i + \Delta x} \frac{1}{\Delta x^2} \diff x 
+	= -\dfrac{2}{\Delta x}.  \]
+	
+	\pause
+	Assume now $ j = i-1 $. Now we only get a contribution on the interval $ (x_{i-1},x_i) $. We have 
+	$$ L_{i,i-1} = - \int_{x_{i-1}}^{x_i} \varphi_i'(x) \varphi_{i-1}'(x) \diff x.
+	$$
+	
+	\pause
+	The integrand will always be negative because of the alternating behavior of the derivative of $ \varphi_i $. We get 
+	\[ L_{i,i-1} = \int_{x_{i-1}}^{x_i} \dfrac{1}{\Delta x^2} \diff x  = \dfrac{1}{\Delta x}. \]
+	
+	\pause
+	We can carry out the same calculation for $ j=i+1 $ giving 
+	\[ L_{i,i+1} = L_{i,i-1} = \frac{1}{\Delta x}.\]
+	
+	\pause
+	What about the boundaries?
+\end{frame}
+
+\begin{frame}
+	In a similar way as before, we have a linear system for the \emph{interior points} $ x_i $, where $ i = 1,2,3,...,N $ but the boundaries will enter these equations. 
+	
+	\pause
+	We get 
+	\[ \sum_{j=0}^{N+1} \iprod{\varphi_i}{\varphi_j} \hat{u}_j = f_i. \]
+	
+	\pause
+	We require that the weak formulation holds for \emph{all} test functions for which $ \varphi(0) = \varphi(1) = 0 $. Hence $ i $ goes only from $ 1 $ to $ N $. However, the function $ u $ itself is not in this space of functions but includes the boundary functions $ \varphi_0 $ and $ \varphi_{N+1} $.
+	
+	\pause
+	Assume $ i=1 $. We get the element 
+	\[ \iprod{\varphi_1}{\varphi_0} \hat{u}_0 =  \frac{u_-}{\Delta x}.  \]
+	For the inner product we get $ 1/\Delta x $ for the same reasons as before. Now this term will enter the first equation just as when we talked about finite difference methods. 
+	
+	\pause
+	Similarly we will have the term 
+	\[ \iprod{\varphi_N}{\varphi_{N+1}} \hat{u}_{N+1} =  \frac{u_+}{\Delta x} \]
+	for the last row. 
+\end{frame}
+
+\begin{frame}
+	Now we have the equation
+	\[ L \hat{\vu} + \vec{b} = \fone, \]
+	where $ \vec{b} $ has the boundary conditions i.e. $ b_1 = u_-/\Delta x $ and $ b_N = u_+/\Delta x $ and otherwise $ b_k = 0 $. 
+	
+	\pause
+	How does $ L $ look like?
+	
+	\pause
+	\[ L = \frac{1}{\Delta x} \begin{pmatrix}
+		-2 & 1 &  && \\
+		1 & -2 & 1 && \\
+		& \ddots & \ddots & \ddots& \\
+		&&1 &-2& 1 \\
+		&&& 1 &-2 
+	\end{pmatrix}. \]
+
+	Looks familiar? 
+\end{frame}
+
+\begin{frame}
+	Furthermore. Assume we are given $ f(x_k) $. We have 
+	\[ f_i = \iprod{\varphi_i}{f} = \int_0^{1} \varphi_i (x) f(x) \diff x. \]
+	
+	\pause
+	Using a zeroth order approximation (assuming $ f $ is piecewise constant) gives 
+	\[ f_i = f(x_i) \int_0^{1} \varphi_i (x)  \diff x  = \Delta xf(x_i).  \]
+	
+	\pause
+	This integral just evaluates the area of the triangle with height 1 and width $ 2 \Delta x $. Now the discretized equation is exactly the same as for our basic finite difference case.  
+\end{frame}
+
+\begin{frame}{Some remarks}
+	\begin{itemize}[<+->]
+		\item Notice that the test functions vanish at the boundary but the function we solved for includes basis functions that are non-zero at the boundary. This is typically the case with boundary value problems. 
+		\item Even though we have a second order derivative in the problem, we can use linear basis functions whose second derivative is zero. This is a nice property of the weak problems and we could have done the calculations without integration by parts by using delta distributions.
+		\item Notice however that we couldn't have used zeroth order piecewise functions. 
+		\item In practice the basis functions are chosen to be polynomials for which the order and other specifics are dictated by the problem at hand. The unifying theme is that they have small support so that matrix $ L $ will be sparse. 
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Higher dimensions}
+	\begin{columns}[T,onlytextwidth]
+		\column{0.46\textwidth}
+		Consider the Laplace equation with Dirichlet boundaries
+		\[ \Delta u(\vx) = 0, \]
+		when $ \vx \in \Omega $ and 
+		\[ u(\vx) = v(\vx) \]
+		on the boundary $ \vx \in \partial \Omega $.
+		
+		\pause
+		We can define piecewise linear functions on triangles shown on the right. 
+		
+		\column{0.08\linewidth}
+		\column{0.46\textwidth}
+		\begin{figure}
+			\centering
+			\includegraphics[width=\linewidth]{omega_loose_mesh.png}
+			\caption{Triangular mesh for the Laplace equation.}
+		\end{figure}
+	\end{columns}
+\end{frame}
+
+\begin{frame}
+	Solving the 2d equation is very similar. 
+	\begin{itemize}[<+->]
+		\item The matrix elements $ L_{i,j} = \iprod{\varphi_i}{\varphi_j} $ will only have nearest neighbor terms. 
+		\item The boundary contributes some boundary vector $ \vec{b} $ through terms $ \iprod{\varphi_i}{\varphi_j}, $ where $ \varphi_j $ is on the boundary.
+		\item We will have to solve for the sparse system 
+		\[ L \hat{\vu} = -\vec{b}. \]
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\begin{columns}[T,onlytextwidth]
+		\column{0.5\textwidth}
+		\begin{figure}
+			\centering
+			\includegraphics[width=0.8\linewidth]{omega_loose_mesh.png}\\
+			\includegraphics[width=0.8\linewidth]{omega_loose_solution.png}
+			\caption{Loose mesh.}
+		\end{figure}
+		
+		\column{0.5\textwidth}
+		\begin{figure}
+			\centering
+			\includegraphics[width=0.8\linewidth]{omega_tight_mesh.png}\\
+			\includegraphics[width=0.8\linewidth]{omega_tight_solution.png}
+			\caption{More triangles.}
+		\end{figure}
+	\end{columns}
+\end{frame}
+
+\end{document}
