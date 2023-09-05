@@ -25,7 +25,7 @@ professional obligations, or illness. In the event of a justified absence, a mak
 discussing it with classmates. Always write up the solution on
 your own and acknowledge your collaborators.
 
-**Books**: Introduction to Partial Differential Equations by Olver.
+**Books**: [Introduction to Partial Differential Equations](https://www-users.cse.umn.edu/~olver/pde.html) by Olver.
 
 **Final project**: Instead of a final exam, study a PDE and/or numerical
 solver not covered in class, and write a 5-10 page academic-style paper that
