@@ -1,6 +1,6 @@
 # 18.303: Linear Partial Differential Equations: Analysis and Numerics
 
-This is the main repository of course materials for 18.303 at MIT, taught by Dr. [Andrew Horning](https://math.mit.edu/directory/profile.php?pid=2334), in Fall 2023. The syllabus is attached in the README below. Lecture notes, problem sets, exams, and supplementary materials will be posted in the repo directory.
+This is the main repository of course materials for 18.303 at MIT, taught by Dr. Andrew Horning, in Fall 2023. The syllabus is attached in the README below. Lecture notes, problem sets, exams, and supplementary materials will be posted in the repo directory.
 
 > **Course description**
 >
@@ -25,7 +25,7 @@ professional obligations, or illness. In the event of a justified absence, a mak
 discussing it with classmates. Always write up the solution on
 your own and acknowledge your collaborators.
 
-**Books**: Introduction to Partial Differential Equations by Olver.
+**Books**: [Introduction to Partial Differential Equations](https://www-users.cse.umn.edu/~olver/pde.html) by Olver.
 
 **Final project**: Instead of a final exam, study a PDE and/or numerical
 solver not covered in class, and write a 5-10 page academic-style paper that
