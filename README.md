@@ -8,8 +8,7 @@ This is the main repository of course materials for 18.303 at MIT, taught by Dr.
 >
 > Prerequisite: linear algebra ([18.06](http://web.mit.edu/18.06), 18.700, or equivalent).
 
-Syllabus
---------
+## Syllabus
 
 **Lectures**: MW 11:00 am - 12:30 pm in Room 2-142. 
 
@@ -48,8 +47,7 @@ Julia) and demonstrate results for some test problems. Validate your solution
 You must submit a one-page proposal of your intended final-project topic,
 summarizing what you intend to do. Potential projects will be suggested as the course progresses.
 
-Tentative Schedule
---------------------
+## Tentative Schedule
 
 - Why study *linear* PDEs?
 - The "linear algebra" of taking derivatives
@@ -66,5 +64,19 @@ Tentative Schedule
 - Weak form and Galerkin's method
 - Finite Element Methods
 
-Lecture Summaries
--------------------
+## Lecture Summaries
+
+### Lecture 1
+
+- What are linear partial differential equations (PDEs) and why should we solve them?
+- Example: the transport equation and its characteristic curves.
+
+[Notes](https://github.com/mitmath/18303/blob/master/lecture_notes/lecture_1.pdf) 
+
+### Lecture 2
+
+- First-order linear PDEs.
+- Reduction to an ODE system: the method of characteristics.
+- Computation on a grid: finite differences.
+
+[Notes](https://github.com/mitmath/18303/blob/master/lecture_notes/lecture_2.pdf)
