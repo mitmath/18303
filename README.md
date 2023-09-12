@@ -12,7 +12,7 @@ This is the main repository of course materials for 18.303 at MIT, taught by Dr.
 
 **Lectures**: MW 11:00 am - 12:30 pm in Room 2-142. 
 
-**Office Hours:** TBD in Room 2-238C.
+**Office Hours:** 4pm on Tuesday and Wednesday in Room 2-238C.
 
 **Grading**: 50% homework, 15% mid-term, 35% final project
 (due the last day of class). Problem sets are due in class on the due date. Missed
