@@ -71,7 +71,7 @@ summarizing what you intend to do. Potential projects will be suggested as the c
 - What are linear partial differential equations (PDEs) and why should we solve them?
 - Example: the transport equation and its characteristic curves.
 
-[Notes](https://github.com/mitmath/18303/blob/master/lecture_notes/lecture_1.pdf) 
+[Notes](https://github.com/mitmath/18303/blob/master/lecture_notes/lecture_1.pdf) | Olver, Chapter 1
 
 ### Lecture 2
 
@@ -79,4 +79,4 @@ summarizing what you intend to do. Potential projects will be suggested as the c
 - Reduction to an ODE system: the method of characteristics.
 - Computation on a grid: finite differences.
 
-[Notes](https://github.com/mitmath/18303/blob/master/lecture_notes/lecture_2.pdf)
+[Notes](https://github.com/mitmath/18303/blob/master/lecture_notes/lecture_2.pdf) | Olver, Chapter 2.1-2.2
