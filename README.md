@@ -80,3 +80,11 @@ summarizing what you intend to do. Potential projects will be suggested as the c
 - Computation on a grid: finite differences.
 
 [Notes](https://github.com/mitmath/18303/blob/master/lecture_notes/lecture_2.pdf) | Olver, Chapter 2.1-2.2
+
+### Lecture 3
+
+- Finite differences: approximation errors.
+- Time-stepping and spatial discretizations.
+- A linear algebraic roadmap for linear PDEs.
+
+[Notes](https://github.com/mitmath/18303/blob/master/lecture_notes/lecture_3.pdf) | Olver, Chapter 5.1
