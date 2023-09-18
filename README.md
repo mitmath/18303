@@ -92,3 +92,12 @@ summarizing what you intend to do. Potential projects will be suggested as the c
 - A linear algebraic roadmap for linear PDEs.
 
 [Notes](https://github.com/mitmath/18303/blob/master/lecture_notes/lecture_3.pdf) | Olver, Chapter 5.1
+
+### Lecture 4
+
+- Function spaces and bases.
+- The nullspace of a differential operator.
+- Boundary conditions and invertibility.
+- Inner products, norms, and integrability.
+
+
