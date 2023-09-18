@@ -100,4 +100,5 @@ summarizing what you intend to do. Potential projects will be suggested as the c
 - Boundary conditions and invertibility.
 - Inner products, norms, and integrability.
 
+[Notes](https://github.com/mitmath/18303/blob/master/lecture_notes/lecture_4.pdf)
 
