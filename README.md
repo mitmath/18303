@@ -102,3 +102,12 @@ summarizing what you intend to do. Potential projects will be suggested as the c
 
 [Notes](https://github.com/mitmath/18303/blob/master/lecture_notes/lecture_4.pdf) | [Linear Algebra with Functions](https://github.com/mitmath/18303/blob/master/supp_material/linear_algebra_with_functions.pdf)
 
+
+### Lecture 5
+
+- Diagonalizing differential operators.
+- Fourier's basis and its properties.
+- Poisson's equation: separation of variables.
+
+[Notes](https://github.com/mitmath/18303/blob/master/lecture_notes/lecture_5.pdf)
+
