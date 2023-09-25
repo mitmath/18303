@@ -111,3 +111,11 @@ summarizing what you intend to do. Potential projects will be suggested as the c
 
 [Notes](https://github.com/mitmath/18303/blob/master/lecture_notes/lecture_5.pdf)
 
+### Lecture 6
+
+- Poisson's equation with homogeneous boundary conditions.
+- Enforcing homogeneous boundary conditions through a basis.
+- Enforcing inhomogeneous boundary conditions via nullspace.
+
+[Notes](https://github.com/mitmath/18303/blob/master/lecture_notes/lecture_6.pdf)
+
