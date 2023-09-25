@@ -109,7 +109,7 @@ summarizing what you intend to do. Potential projects will be suggested as the c
 - Fourier's basis and its properties.
 - Poisson's equation: separation of variables.
 
-[Notes](https://github.com/mitmath/18303/blob/master/lecture_notes/lecture_5.pdf)
+[Notes](https://github.com/mitmath/18303/blob/master/lecture_notes/lecture_5.pdf) | Olver, Chapter 3.2
 
 ### Lecture 6
 
@@ -117,5 +117,5 @@ summarizing what you intend to do. Potential projects will be suggested as the c
 - Enforcing homogeneous boundary conditions through a basis.
 - Enforcing inhomogeneous boundary conditions via nullspace.
 
-[Notes](https://github.com/mitmath/18303/blob/master/lecture_notes/lecture_6.pdf)
+[Notes](https://github.com/mitmath/18303/blob/master/lecture_notes/lecture_6.pdf) | Olver, Chapter 4.3
 
