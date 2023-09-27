@@ -49,7 +49,8 @@ summarizing what you intend to do. Potential projects will be suggested as the c
 
 ## Assignments
 
-- [Homework 1](https://github.com/mitmath/18303/blob/master/problem_sets/hw1.pdf) is due at 10pm on Friday, September 22.
+- [Homework 1](https://github.com/mitmath/18303/blob/master/problem_sets/hw1.pdf) is due at 10pm on Friday, September 22 ([Solutions](https://github.com/mitmath/18303/blob/master/problem_sets/hw1_soln.pdf)).
+- [Homework 2](https://github.com/mitmath/18303/blob/master/problem_sets/hw2.pdf) is due at 10pm on Friday, October 6.
 
 ## Tentative Schedule
 
