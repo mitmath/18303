@@ -122,9 +122,16 @@ summarizing what you intend to do. Potential projects will be suggested as the c
 
 ### Lecture 7
 
-- Diagonalization in separable domains
-- Laplace's equation in a disk
-- Poisson's formula for the disk
+- Diagonalization in separable domains.
+- Laplace's equation in a disk.
+- Poisson's formula for the disk.
 
-[Notes](https://github.com/mitmath/18303/blob/master/lecture_notes/lecture_7.pdf)
+[Notes](https://github.com/mitmath/18303/blob/master/lecture_notes/lecture_7.pdf) | Olver, Chapter 4.3
+
+### Lecture 8
+
+- Maximum and minimum principles.
+- Finite differences in 2 dimensions.
+
+[Notes](https://github.com/mitmath/18303/blob/master/lecture_notes/lecture_8.pdf) | Olver, Chapter 4.3
 
