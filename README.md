@@ -120,3 +120,11 @@ summarizing what you intend to do. Potential projects will be suggested as the c
 
 [Notes](https://github.com/mitmath/18303/blob/master/lecture_notes/lecture_6.pdf) | Olver, Chapter 4.3
 
+### Lecture 7
+
+- Diagonalization in separable domains
+- Laplace's equation in a disk
+- Poisson's formula for the disk
+
+[Notes](https://github.com/mitmath/18303/blob/master/lecture_notes/lecture_7.pdf)
+
