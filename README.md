@@ -135,3 +135,10 @@ summarizing what you intend to do. Potential projects will be suggested as the c
 
 [Notes](https://github.com/mitmath/18303/blob/master/lecture_notes/lecture_8.pdf) | Olver, Chapter 4.3 | [poissonFD.ipynb](https://github.com/mitmath/18303/blob/master/supp_material/poissonFD.ipynb)
 
+### Lecture 9
+
+- Kronecker products and the "vec" identity.
+- Finite difference discretizations on separable domains.
+- Fourier spectral discretizations on periodic domains.
+
+[Notes](https://github.com/mitmath/18303/blob/master/lecture_notes/lecture_9.pdf)https://github.com/mitmath/18303/blob/master/lecture_notes/lecture_9.pdf)
