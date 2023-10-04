@@ -141,4 +141,4 @@ summarizing what you intend to do. Potential projects will be suggested as the c
 - Finite difference discretizations on separable domains.
 - Fourier spectral discretizations on periodic domains.
 
-[Notes](https://github.com/mitmath/18303/blob/master/lecture_notes/lecture_9.pdf)https://github.com/mitmath/18303/blob/master/lecture_notes/lecture_9.pdf)
+[Notes](https://github.com/mitmath/18303/blob/master/lecture_notes/lecture_9.pdf)
