@@ -142,3 +142,11 @@ summarizing what you intend to do. Potential projects will be suggested as the c
 - Fourier spectral discretizations on periodic domains.
 
 [Notes](https://github.com/mitmath/18303/blob/master/lecture_notes/lecture_9.pdf)
+
+### Lecture 10
+
+- The heat equation and its derivation
+- Boundary conditions and their physics
+- Fourier series solution and the operator exponential
+
+[Notes](https://github.com/mitmath/18303/blob/master/lecture_notes/lecture_10.pdf) | Olver, Chapter 4.1
