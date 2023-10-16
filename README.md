@@ -150,3 +150,11 @@ summarizing what you intend to do. Potential projects will be suggested as the c
 - Fourier series solution and the operator exponential
 
 [Notes](https://github.com/mitmath/18303/blob/master/lecture_notes/lecture_10.pdf) | Olver, Chapter 4.1
+
+### Lecture 11
+
+- Operator exponentials and Fourier series solutions
+- Smoothness, asymptotics, and equilibrium solutions
+- Homogeneous vs inhomogeneous boundary conditions
+
+[Notes](https://github.com/mitmath/18303/blob/master/lecture_notes/lecture_11.pdf) | Olver, Chapter 4.1
