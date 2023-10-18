@@ -163,5 +163,6 @@ summarizing what you intend to do. Potential projects will be suggested as the c
 
 - Heat flow in a rod with temperature fixed at endpoints.
 - Heat flow in a disk with temperature prescribed on boundary.
+- Dirichlet eigenfunctions of the Laplacian in a disk.
 
 [Notes](https://github.com/mitmath/18303/blob/master/lecture_notes/lecture_12.pdf) | Olver, Chapter 4.1
