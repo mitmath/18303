@@ -145,16 +145,23 @@ summarizing what you intend to do. Potential projects will be suggested as the c
 
 ### Lecture 10
 
-- The heat equation and its derivation
-- Boundary conditions and their physics
-- Fourier series solution and the operator exponential
+- The heat equation and its derivation.
+- Boundary conditions and their physics.
+- Fourier series solution and the operator exponential.
 
 [Notes](https://github.com/mitmath/18303/blob/master/lecture_notes/lecture_10.pdf) | Olver, Chapter 4.1
 
 ### Lecture 11
 
-- Operator exponentials and Fourier series solutions
-- Smoothness, asymptotics, and equilibrium solutions
-- Homogeneous vs inhomogeneous boundary conditions
+- Operator exponentials of self-adjoint operators.
+- Smoothness, asymptotics, and equilibrium solutions.
+- Homogeneous vs inhomogeneous boundary conditions.
 
 [Notes](https://github.com/mitmath/18303/blob/master/lecture_notes/lecture_11.pdf) | Olver, Chapter 4.1
+
+### Lecture 12
+
+- Heat flow in a rod with temperature fixed at endpoints.
+- Heat flow in a disk with temperature prescribed on boundary.
+
+[Notes](https://github.com/mitmath/18303/blob/master/lecture_notes/lecture_12.pdf) | Olver, Chapter 4.1
