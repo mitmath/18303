@@ -154,7 +154,7 @@ summarizing what you intend to do. Potential projects will be suggested as the c
 
 ### Lecture 11
 
-- Operator exponentials of self-adjoint operators.
+- Operator exponential for the heat equation.
 - Smoothness, asymptotics, and equilibrium solutions.
 - Homogeneous vs inhomogeneous boundary conditions.
 
@@ -167,3 +167,19 @@ summarizing what you intend to do. Potential projects will be suggested as the c
 - Dirichlet eigenfunctions of the Laplacian in a disk.
 
 [Notes](https://github.com/mitmath/18303/blob/master/lecture_notes/lecture_12.pdf) | Olver, Chapter 4.1
+
+### Lecture 13
+
+- Operator exponentials of self-adjoint operators.
+- Growth, decay, and conservation via eigenvalues.
+- Examples: transport (revisited) and a (quantum) particle-in-a-box.
+
+[Notes](https://github.com/mitmath/18303/blob/master/lecture_notes/lecture_13.pdf)
+
+### Lecture 14 
+
+- The wave equation on a periodic domain.
+- Operator 'exponential' for the wave equation.
+- Characteristics and causality for solutions.
+
+[Notes](https://github.com/mitmath/18303/blob/master/lecture_notes/lecture_14.pdf)
