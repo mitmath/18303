@@ -14,7 +14,7 @@ This is the main repository of course materials for 18.303 at MIT, taught by Dr.
 
 **Office Hours:** 4pm on Tuesday and Wednesday in Room 2-238C.
 
-**Grading**: 50% homework, 15% mid-term, 35% final project
+**Grading**: 50% homework, 15% mid-term (November 8), 35% final project
 (due the last day of class). Problem sets are due in class on the due date. Missed
 midterms require a letter from Student Support Services or Student Disabilities
 Services to justify accommodations. Justifiable reasons for absence include sports,
@@ -44,7 +44,7 @@ properties (and stability, for timestepping)? Implement the method (e.g. in
 Julia) and demonstrate results for some test problems. Validate your solution
 (show that it converges in some known case).
 
-You must submit a one-page proposal of your intended final-project topic,
+You must submit a one-page proposal of your intended final-project topic (November 17),
 summarizing what you intend to do. Potential projects will be suggested as the course progresses.
 
 ## Assignments
