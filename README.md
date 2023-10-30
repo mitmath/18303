@@ -182,4 +182,4 @@ summarizing what you intend to do. Potential projects will be suggested as the c
 - Operator 'exponential' for the wave equation.
 - Characteristics and causality for solutions.
 
-[Notes](https://github.com/mitmath/18303/blob/master/lecture_notes/lecture_14.pdf)
+[Notes](https://github.com/mitmath/18303/blob/master/lecture_notes/lecture_14.pdf) | Olver, Chapter 4.2
