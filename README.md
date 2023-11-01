@@ -183,3 +183,11 @@ summarizing what you intend to do. Potential projects will be suggested as the c
 - Characteristics and causality for solutions.
 
 [Notes](https://github.com/mitmath/18303/blob/master/lecture_notes/lecture_14.pdf) | Olver, Chapter 4.2
+
+### Lecture 15
+
+- Extracting d'Alembert's solution from the characteristics.
+- Causal domains and data.
+- Examples: traveling waves, standing waves, and a Gaussian velocity impulse.
+
+[Notes](https://github.com/mitmath/18303/blob/master/lecture_notes/lecture_15.pdf) | Olver Chapter 2.4
