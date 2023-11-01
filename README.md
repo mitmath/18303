@@ -14,7 +14,7 @@ This is the main repository of course materials for 18.303 at MIT, taught by Dr.
 
 **Office Hours:** 4pm on Tuesday and Wednesday in Room 2-238C.
 
-**Grading**: 50% homework, 15% mid-term, 35% final project
+**Grading**: 50% homework, 15% mid-term (November 8), 35% final project
 (due the last day of class). Problem sets are due in class on the due date. Missed
 midterms require a letter from Student Support Services or Student Disabilities
 Services to justify accommodations. Justifiable reasons for absence include sports,
@@ -44,7 +44,7 @@ properties (and stability, for timestepping)? Implement the method (e.g. in
 Julia) and demonstrate results for some test problems. Validate your solution
 (show that it converges in some known case).
 
-You must submit a one-page proposal of your intended final-project topic,
+You must submit a one-page proposal of your intended final-project topic (November 17),
 summarizing what you intend to do. Potential projects will be suggested as the course progresses.
 
 ## Assignments
@@ -154,7 +154,7 @@ summarizing what you intend to do. Potential projects will be suggested as the c
 
 ### Lecture 11
 
-- Operator exponentials of self-adjoint operators.
+- Operator exponential for the heat equation.
 - Smoothness, asymptotics, and equilibrium solutions.
 - Homogeneous vs inhomogeneous boundary conditions.
 
@@ -167,3 +167,19 @@ summarizing what you intend to do. Potential projects will be suggested as the c
 - Dirichlet eigenfunctions of the Laplacian in a disk.
 
 [Notes](https://github.com/mitmath/18303/blob/master/lecture_notes/lecture_12.pdf) | Olver, Chapter 4.1
+
+### Lecture 13
+
+- Operator exponentials of self-adjoint operators.
+- Growth, decay, and conservation via eigenvalues.
+- Examples: transport (revisited) and a (quantum) particle-in-a-box.
+
+[Notes](https://github.com/mitmath/18303/blob/master/lecture_notes/lecture_13.pdf)
+
+### Lecture 14 
+
+- The wave equation on a periodic domain.
+- Operator 'exponential' for the wave equation.
+- Characteristics and causality for solutions.
+
+[Notes](https://github.com/mitmath/18303/blob/master/lecture_notes/lecture_14.pdf) | Olver, Chapter 4.2
