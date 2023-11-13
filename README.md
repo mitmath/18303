@@ -199,3 +199,11 @@ summarizing what you intend to do. Potential projects will be suggested as the c
 - Neumann boundary conditions.
 
 [Notes](https://github.com/mitmath/18303/blob/master/lecture_notes/lecture_16.pdf) | Olver, Chapter 4.2
+
+### Lecture 17
+
+- Finite-difference schemes for time-dependent PDE
+- Forward Euler approximation of the heat equation
+- Stability analysis for time-stepping schemes
+
+[Notes](https://github.com/mitmath/18303/blob/master/lecture_notes/lecture_17.pdf) | Olver, Chapter 5.2
