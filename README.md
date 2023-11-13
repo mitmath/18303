@@ -190,4 +190,12 @@ summarizing what you intend to do. Potential projects will be suggested as the c
 - Causal domains and data.
 - Examples: traveling waves, standing waves, and a Gaussian velocity impulse.
 
-[Notes](https://github.com/mitmath/18303/blob/master/lecture_notes/lecture_15.pdf) | Olver Chapter 2.4
+[Notes](https://github.com/mitmath/18303/blob/master/lecture_notes/lecture_15.pdf) | Olver, Chapter 2.4
+
+### Lecture 16
+
+- Waves and reflections on bounded domains.
+- Dirichlet boundary conditions.
+- Neumann boundary conditions.
+
+[Notes](https://github.com/mitmath/18303/blob/master/lecture_notes/lecture_16.pdf) | Olver, Chapter 4.2
