@@ -207,3 +207,11 @@ summarizing what you intend to do. Potential projects will be suggested as the c
 - Stability analysis for time-stepping schemes
 
 [Notes](https://github.com/mitmath/18303/blob/master/lecture_notes/lecture_17.pdf) | Olver, Chapter 5.2
+
+### Lecture 18
+
+- Explicit and implicit time-stepping schemes
+- Stability analysis for transport equations
+- Numerical diffusion
+
+[Notes](https://github.com/mitmath/18303/blob/master/lecture_notes/lecture_18.pdf) | [Stable FD Notebook](https://github.com/mitmath/18303/blob/master/supp_material/fd_stability.ipynb) | Olver, Chapter 5.3
