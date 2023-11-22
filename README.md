@@ -215,3 +215,12 @@ summarizing what you intend to do. Potential projects will be suggested as the c
 - Numerical diffusion
 
 [Notes](https://github.com/mitmath/18303/blob/master/lecture_notes/lecture_18.pdf) | [Stable FD Notebook](https://github.com/mitmath/18303/blob/master/supp_material/fd_stability.ipynb) | Olver, Chapter 5.3
+
+### Lecture 19
+
+- Roots of numerical diffusion
+- Limitations of eigenvalue analysis (e.g., transport with a boundary)
+- Characteristics and the CFL condition
+
+[Notes](https://github.com/mitmath/18303/blob/master/lecture_notes/lecture_19.pdf) | [Stable FD Notebook](https://github.com/mitmath/18303/blob/master/supp_material/fd_stability.ipynb) | Olver, Chapter 5.3
+
