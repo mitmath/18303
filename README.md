@@ -202,17 +202,17 @@ summarizing what you intend to do. Potential projects will be suggested as the c
 
 ### Lecture 17
 
-- Finite-difference schemes for time-dependent PDE
-- Forward Euler approximation of the heat equation
-- Stability analysis for time-stepping schemes
+- Finite-difference schemes for time-dependent PDE.
+- Forward Euler approximation of the heat equation.
+- Stability analysis for time-stepping schemes.
 
 [Notes](https://github.com/mitmath/18303/blob/master/lecture_notes/lecture_17.pdf) | Olver, Chapter 5.2
 
 ### Lecture 18
 
-- Explicit and implicit time-stepping schemes
-- Stability analysis for transport equations
-- Numerical diffusion
+- Explicit and implicit time-stepping schemes.
+- Stability analysis for transport equations.
+- Numerical diffusion.
 
 [Notes](https://github.com/mitmath/18303/blob/master/lecture_notes/lecture_18.pdf) | [Stable FD Notebook](https://github.com/mitmath/18303/blob/master/supp_material/fd_stability.ipynb) | Olver, Chapter 5.3
 
@@ -223,4 +223,12 @@ summarizing what you intend to do. Potential projects will be suggested as the c
 - Characteristics and the CFL condition
 
 [Notes](https://github.com/mitmath/18303/blob/master/lecture_notes/lecture_19.pdf) | [Stable FD Notebook](https://github.com/mitmath/18303/blob/master/supp_material/fd_stability.ipynb) | Olver, Chapter 5.3
+
+### Lecture 20
+
+- Finite difference approximations for the wave equation
+- CFL condition for the wave equation
+- Numerical approximations of the operator exponential.
+
+[Stable FD Notebook](https://github.com/mitmath/18303/blob/master/supp_material/fd_stability.ipynb) | Olver, Chapter 5.4
 
