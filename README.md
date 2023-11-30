@@ -219,17 +219,25 @@ summarizing what you intend to do. Potential projects will be suggested as the c
 
 ### Lecture 19
 
-- Roots of numerical diffusion
-- Limitations of eigenvalue analysis (e.g., transport with a boundary)
-- Characteristics and the CFL condition
+- Roots of numerical diffusion.
+- Limitations of eigenvalue analysis (e.g., transport with a boundary).
+- Characteristics and the CFL condition.
 
 [Notes](https://github.com/mitmath/18303/blob/master/lecture_notes/lecture_19.pdf) | [Stable FD Notebook](https://github.com/mitmath/18303/blob/master/supp_material/fd_stability.ipynb) | Olver, Chapter 5.3
 
 ### Lecture 20
 
-- Finite difference approximations for the wave equation
-- CFL condition for the wave equation
+- Finite difference approximations for the wave equation.
+- CFL condition for the wave equation.
 - Numerical approximations of the operator exponential.
 
 [Stable FD Notebook](https://github.com/mitmath/18303/blob/master/supp_material/fd_stability.ipynb) | Olver, Chapter 5.4
+
+### Lecture 21
+
+- The "inverse" of a differential operator.
+- Dirac's delta function and Green's functions.
+- Green's function for the second derivative operator.
+
+[Notes](https://github.com/mitmath/18303/blob/master/lecture_notes/lecture_21.pdf) | Olver, Chapter 6.1
 
