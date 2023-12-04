@@ -241,3 +241,11 @@ summarizing what you intend to do. Potential projects will be suggested as the c
 
 [Notes](https://github.com/mitmath/18303/blob/master/lecture_notes/lecture_21.pdf) | Olver, Chapter 6.1
 
+### Lecture 22
+
+- Physical interpretations of Green's functions
+- Symmetry of Green's function for self-adjoint operator
+- Distributions and their "calculus"
+
+[Notes](https://github.com/mitmath/18303/blob/master/lecture_notes/lecture_22.pdf) | Olver, Chapter 6.2
+
