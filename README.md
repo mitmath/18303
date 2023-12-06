@@ -245,7 +245,15 @@ summarizing what you intend to do. Potential projects will be suggested as the c
 
 - Physical interpretations of Green's functions.
 - Symmetry of Green's function for self-adjoint operator.
-- Distributions and their "calculus."
+- The delta function as a "distribution."
 
 [Notes](https://github.com/mitmath/18303/blob/master/lecture_notes/lecture_22.pdf) | Olver, Chapter 6.2
+
+### Lecture 23
+
+- Distributions and their calculus.
+- Properties of the Green's function.
+- The Green's function for the Helmholtz operator.
+
+[Notes](https://github.com/mitmath/18303/blob/master/lecture_notes/lecture_23.pdf) | Olver, Chapter 6.2
 
